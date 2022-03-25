@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white"
+    tools:context=".activity.LoginScreenActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/line1"
+            android:layout_marginTop="@dimen/_44sdp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img"
+            android:layout_marginTop="@dimen/_29sdp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_33sdp"
+                    android:fontFamily="@font/mulish_extrabold"
+                    android:text="Login"
+                    android:textFontWeight="800"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:textColor="@color/black_b"
+                    android:textSize="@dimen/_30sdp" />
+
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:backgroundTint="@color/gray_a"
+                    android:fontFamily="@font/mulish_regular"
+                    android:hint="@string/email_address"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:textFontWeight="400"
+                    android:imeOptions="actionNext"
+                    android:layout_marginTop="@dimen/_33sdp"
+                    android:textColorHint="@color/black_a"
+                    android:textSize="@dimen/_14sdp" />
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginVertical="@dimen/_8sdp"
+                    android:backgroundTint="@color/gray_a"
+                    android:drawableRight="@drawable/ic_vector__38_"
+                    android:fontFamily="@font/mulish_regular"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLength="6"
+                    android:layout_marginTop="@dimen/_27sdp"
+                    android:textFontWeight="400"
+                    android:maxLines="1"
+                    android:textColorHint="@color/black_a"
+                    android:textSize="@dimen/_14sdp" />
+
+
+                <TextView
+                    android:id="@+id/tvFotgotPass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:fontFamily="@font/mulish_regular"
+                    android:text="Forgott Password?"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:textFontWeight="400"
+                    android:textColor="@color/black_a"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="normal" />
+
+                <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_backg"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/_15sdp"
+                    android:textColor="@color/black_c"
+                    android:text="Login"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/raleway_bold"
+                    android:textFontWeight="700"
+                    android:layout_marginHorizontal="@dimen/_12sdp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_21sdp"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/_44sdp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Don't have an Account ?"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="normal"
+                        android:layout_gravity="end"
+                        android:textColor="@color/gray_b"
+                        android:fontFamily="@font/mulish_light"
+                        android:textFontWeight="300"/>
+
+                    <TextView
+                        android:id="@+id/tvSignup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" SignUp"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="normal"
+                        android:layout_gravity="end"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/mulish_bold"
+                        android:textFontWeight="700"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

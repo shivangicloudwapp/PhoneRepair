@@ -10,7 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoneRepair">
         <activity
+            android:name=".activity.DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.VerifyOtpActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.MobileLoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.SignupScreenActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.LoginScreenActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

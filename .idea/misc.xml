@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/btn_backg.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/ic_group_4.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/ic_vector__38_.xml" value="0.2485" />
+        <entry key="app/src/main/res/drawable/ic_vector__40_.xml" value="0.2485" />
+        <entry key="app/src/main/res/drawable/ic_vector__42_.xml" value="0.2485" />
+        <entry key="app/src/main/res/drawable/ic_vector__43_.xml" value="0.2485" />
+        <entry key="app/src/main/res/drawable/ic_vector__48_.xml" value="0.244" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.23489583333333333" />
+        <entry key="app/src/main/res/layout/activity_login_screen.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.10190217391304347" />
+        <entry key="app/src/main/res/layout/activity_mobile_login.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/activity_signup_screen.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/activity_verify_otp.xml" value="0.22" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

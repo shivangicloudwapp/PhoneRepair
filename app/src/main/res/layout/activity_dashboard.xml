@@ -8,107 +8,124 @@
     android:orientation="vertical"
     tools:context=".activity.DashboardActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_26sdp"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/ivLocation"
-                android:layout_width="@dimen/_22sdp"
-                android:layout_height="@dimen/_22sdp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_group__19_" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_80sdp"
-                android:layout_toRightOf="@+id/ivLocation"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <TextView
-                    android:id="@+id/tvAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_12sdp"
-                    android:layout_weight="1.5"
-                    android:fontFamily="@font/mulish_regular"
-                    android:text="Āzenes iela 22A, Kurzemes Rīga, LV-1048, Latvia"
-                    android:textColor="@color/textClr"
-                    android:textFontWeight="400"
-                    android:textSize="@dimen/_11sdp"
-                    tools:ignore="Suspicious0dp" />
-
-                <ImageView
-                    android:layout_width="@dimen/_22sdp"
-                    android:layout_height="@dimen/_22sdp"
-                    android:layout_weight=".5"
-                    android:layout_marginRight="@dimen/_14sdp"
-                    android:src="@drawable/ic_vector__46_" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true">
-
-                <ImageView
-                    android:id="@+id/tvCart"
-                    android:layout_width="@dimen/_22sdp"
-                    android:layout_height="@dimen/_22sdp"
-                    android:layout_marginRight="@dimen/_11sdp"
-                    android:src="@drawable/ic_vector__42_" />
-
-                <ImageView
-                    android:id="@+id/tvNotification"
-                    android:layout_width="@dimen/_22sdp"
-                    android:layout_height="@dimen/_22sdp"
-                    android:src="@drawable/ic_vector__43_" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_43sdp"
-            android:layout_marginTop="@dimen/_24sdp"
-            android:layout_marginHorizontal="@dimen/_16sdp"
-            android:drawablePadding="@dimen/_14sdp"
-            android:background="@drawable/rectangle26"
-            android:drawableStart="@drawable/ic_vector__48_"/>
-
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_172sdp"
-            android:background="@drawable/rectangle26"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:layout_marginHorizontal="@dimen/_16sdp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="All Types Mobiles Repairing Services"/>
-
-            <ImageView
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/group7"
-                android:scaleType="fitCenter"
-                android:layout_margin="@dimen/_12sdp"/>
+                android:orientation="vertical">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_26sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/ivLocation"
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_group__19_" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_80sdp"
+                        android:layout_toRightOf="@+id/ivLocation"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/tvAddress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_12sdp"
+                            android:layout_weight="1.5"
+                            android:fontFamily="@font/mulish_regular"
+                            android:text="Āzenes iela 22A, Kurzemes Rīga, LV-1048, Latvia"
+                            android:textColor="@color/textClr"
+                            android:textFontWeight="400"
+                            android:textSize="@dimen/_11sdp"
+                            tools:ignore="Suspicious0dp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_22sdp"
+                            android:layout_height="@dimen/_22sdp"
+                            android:layout_marginRight="@dimen/_14sdp"
+                            android:layout_weight=".5"
+                            android:src="@drawable/ic_vector__46_" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true">
+
+                        <ImageView
+                            android:id="@+id/tvCart"
+                            android:layout_width="@dimen/_22sdp"
+                            android:layout_height="@dimen/_22sdp"
+                            android:layout_marginRight="@dimen/_11sdp"
+                            android:src="@drawable/ic_vector__42_" />
+
+                        <ImageView
+                            android:id="@+id/tvNotification"
+                            android:layout_width="@dimen/_22sdp"
+                            android:layout_height="@dimen/_22sdp"
+                            android:src="@drawable/ic_vector__43_" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_43sdp"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:layout_weight="400"
+                    android:background="@drawable/rectangle26"
+                    android:drawableStart="@drawable/ic_vector__48_"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/mulish_regular"
+                    android:hint="What you want Repair?"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_170sdp"
+                    android:layout_marginHorizontal="@dimen/_12sdp"
+                    android:layout_marginVertical="@dimen/_8sdp"
+                    android:background="@drawable/img_1" />
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_170sdp"
+                    android:layout_marginHorizontal="@dimen/_12sdp"
+                    android:background="@drawable/group1042" />
+
+
+            </LinearLayout>
         </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 

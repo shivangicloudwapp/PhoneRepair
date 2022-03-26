@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".fragment.ServicesFragment">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Services"
+        android:textColor="@color/black_b"
+        android:textSize="@dimen/_18sdp"
+        android:fontFamily="@font/mulish_extrabold"
+        android:textFontWeight="800"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_30sdp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line1"
+        android:layout_marginTop="@dimen/_10sdp"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tlServices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        app:tabIndicatorHeight="@dimen/_2sdp"
+        app:tabMode="fixed"
+        app:tabTextAppearance="@style/MyCustomTextAppearance"
+        app:tabIndicatorColor="@color/black_b" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@drawable/line1"
+        android:layout_marginHorizontal="@dimen/_14sdp"/>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpService"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>

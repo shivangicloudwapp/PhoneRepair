@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="@color/white"
+    android:scrollbars="none"
     tools:context=".activity.MobileLoginActivity">
 
 
@@ -62,11 +63,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_39sdp"
                         android:fontFamily="@font/mulish_extrabold"
-                        android:text="Enter Phone Number"
+                        android:text="Enter Phone
+                          Number"
                         android:textColor="@color/black_b"
-                        android:textFontWeight="800"
+                        android:textFontWeight="600"
                         android:layout_marginHorizontal="@dimen/_12sdp"
-                        android:textSize="@dimen/_30sdp" />
+                        android:textSize="@dimen/_29sdp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -87,7 +89,6 @@
                         android:layout_marginHorizontal="@dimen/_12sdp"
                         android:layout_marginVertical="@dimen/_8sdp"
                         android:backgroundTint="@color/gray_a"
-                        android:drawableRight="@drawable/ic_vector__38_"
                         android:fontFamily="@font/mulish_regular"
                         android:hint="+62 5254346545"
                         android:inputType="textPassword"

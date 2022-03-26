@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="@color/white"
+    android:scrollbars="none"
     tools:context=".activity.LoginScreenActivity">
 
     <LinearLayout
@@ -37,17 +38,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_33sdp"
                     android:fontFamily="@font/mulish_extrabold"
                     android:text="Login"
-                    android:textFontWeight="800"
-                    android:layout_marginHorizontal="@dimen/_16sdp"
                     android:textColor="@color/black_b"
-                    android:textSize="@dimen/_30sdp" />
-
+                    android:textFontWeight="600"
+                    android:textSize="@dimen/_28sdp" />
 
                 <EditText
                     android:id="@+id/etEmail"
@@ -72,7 +73,7 @@
                     android:layout_marginHorizontal="@dimen/_15sdp"
                     android:layout_marginVertical="@dimen/_8sdp"
                     android:backgroundTint="@color/gray_a"
-                    android:drawableRight="@drawable/ic_vector__38_"
+                    android:drawableRight="@drawable/ic_group_7"
                     android:fontFamily="@font/mulish_regular"
                     android:hint="@string/password"
                     android:inputType="textPassword"
@@ -111,6 +112,7 @@
                     android:textAllCaps="false"
                     android:fontFamily="@font/raleway_bold"
                     android:textFontWeight="700"
+                    android:textAlignment="center"
                     android:layout_marginHorizontal="@dimen/_12sdp"/>
 
                 <LinearLayout

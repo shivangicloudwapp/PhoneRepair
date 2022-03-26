@@ -3,7 +3,10 @@
     <string name="email_address">Email Address</string>
     <string name="password">Password</string>
     <string name="name">Name</string>
-    <string name="enter_the_four_digit_code_we_sent_to_you_62_23723782738"><font color='#868889' weight='700' fontFamily='mulish_black'>Enter the four digit code we sent to you</font><font color='#000000' weight='600' fontFamily='mulish_semibold' > +62 23723782738</font></string>
-    <string name="resend_otp_00_28"><font color='#868889' weight='600' fontFamily='mulish_black'>Resend OTP</font> <font color='#C6FF00' weight='600' fontFamily='mulish_semibold'>00:28</font></string>
+    <string name="enter_the_four_digit_code_we_sent_to_you_62_23723782738"><font color='#868889' fontFamily='mulish_black' weight='700'>Enter the four digit code we sent to you</font><font color='#000000' fontFamily='mulish_semibold' weight='600'> +62 23723782738</font></string>
+    <string name="resend_otp_00_28"><font color='#868889' fontFamily='mulish_black' weight='600'>Resend OTP</font> <font color='#C6FF00' fontFamily='mulish_semibold' weight='600'>00:28</font></string>
+    <string name="our_exclusive_stores">Our Exclusive Stores</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

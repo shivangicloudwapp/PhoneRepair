@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.HomeFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_60sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangle"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_12sdp"
+                        android:layout_marginTop="@dimen/_26sdp"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivLocation"
+                            android:layout_width="@dimen/_22sdp"
+                            android:layout_height="@dimen/_22sdp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_group__19_" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_80sdp"
+                            android:layout_toRightOf="@+id/ivLocation"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tvAddress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_12sdp"
+                                android:layout_weight="1.5"
+                                android:fontFamily="@font/mulish_regular"
+                                android:text="Āzenes iela 22A, Kurzemes Rīga, LV-1048, Latvia"
+                                android:textColor="@color/textClr"
+                                android:textFontWeight="400"
+                                android:textSize="@dimen/_11sdp"
+                                tools:ignore="Suspicious0dp" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_22sdp"
+                                android:layout_height="@dimen/_22sdp"
+                                android:layout_marginRight="@dimen/_14sdp"
+                                android:layout_weight=".5"
+                                android:src="@drawable/ic_vector__46_" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true">
+
+                            <ImageView
+                                android:id="@+id/tvCart"
+                                android:layout_width="@dimen/_22sdp"
+                                android:layout_height="@dimen/_22sdp"
+                                android:layout_marginRight="@dimen/_11sdp"
+                                android:src="@drawable/ic_group__22_" />
+
+                            <ImageView
+                                android:id="@+id/tvNotification"
+                                android:layout_width="@dimen/_22sdp"
+                                android:layout_height="@dimen/_22sdp"
+                                android:src="@drawable/ic_vector__43_" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_43sdp"
+                        android:layout_marginHorizontal="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_24sdp"
+                        android:layout_weight="400"
+                        android:background="@drawable/rectangle26"
+                        android:drawableStart="@drawable/ic_vector__48_"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:fontFamily="@font/mulish_regular"
+                        android:hint="What you want Repair?"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_160sdp"
+                        android:layout_marginHorizontal="@dimen/_12sdp"
+                        android:layout_marginVertical="@dimen/_8sdp"
+                        android:background="@drawable/img_1" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_160sdp"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:layout_marginTop="-14dp"
+                android:orientation="vertical"
+                android:background="@drawable/group1042" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_20sdp"
+                    android:textFontWeight="400"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:layout_marginStart="@dimen/_9sdp"
+                    android:fontFamily="@font/mulish_regular"
+                    android:text="Book Your Mobile\nRepair Service Now"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13sdp"
+                        android:textFontWeight="700"
+                        android:layout_marginTop="@dimen/_38sdp"
+                        android:layout_marginStart="@dimen/_9sdp"
+                        android:fontFamily="@font/mulish_regular"
+                        android:text="Mobile Repair\nExpert"/>
+
+                    <Button
+                        android:id="@+id/btnBookNow"
+                        android:layout_width="@dimen/_120sdp"
+                        android:layout_height="@dimen/_26sdp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="@dimen/_6sdp"
+                        android:layout_marginTop="@dimen/_50sdp"
+                        android:layout_marginEnd="@dimen/_9sdp"
+                        android:background="@drawable/gradient_btn"
+                        android:fontFamily="@font/mulish_semibold"
+                        android:text="Book Now"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black_b"
+                        android:textFontWeight="600"
+                        android:textSize="@dimen/_15sdp" />
+                </RelativeLayout>
+
+
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:fontFamily="@font/mulish_semibold"
+                    android:text="@string/our_exclusive_stores"
+                    android:textColor="@color/txt_clr"
+                    android:textFontWeight="500"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    android:id="@+id/tvSeeAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/_14sdp"
+                    android:fontFamily="@font/mulish_regular"
+                    android:text="See All"
+                    android:textColor="@color/txt_clr"
+                    android:textFontWeight="400"
+                    android:textSize="@dimen/_12sdp" />
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvourExcluStore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_20sdp"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

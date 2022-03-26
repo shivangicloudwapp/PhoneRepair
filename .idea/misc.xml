@@ -3,20 +3,58 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bottom_nav_item.xml" value="0.2515" />
+        <entry key="app/src/main/res/drawable/bottom_nav_item_color.xml" value="0.2515" />
+        <entry key="app/src/main/res/drawable/bottom_navigation_item_color.xml" value="0.2515" />
+        <entry key="app/src/main/res/drawable/btn2_radius_backg.xml" value="0.2515" />
         <entry key="app/src/main/res/drawable/btn_backg.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/doted_line.xml" value="0.26" />
+        <entry key="app/src/main/res/drawable/gradient_btn.xml" value="0.26" />
         <entry key="app/src/main/res/drawable/ic_group_4.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/ic_group_7.xml" value="0.26" />
+        <entry key="app/src/main/res/drawable/ic_group_871.xml" value="0.26" />
+        <entry key="app/src/main/res/drawable/ic_group_872.xml" value="0.26" />
+        <entry key="app/src/main/res/drawable/ic_group__19_.xml" value="0.26" />
+        <entry key="app/src/main/res/drawable/ic_group__20_.xml" value="0.26" />
+        <entry key="app/src/main/res/drawable/ic_group__21_.xml" value="0.26" />
         <entry key="app/src/main/res/drawable/ic_vector__38_.xml" value="0.2485" />
         <entry key="app/src/main/res/drawable/ic_vector__40_.xml" value="0.2485" />
         <entry key="app/src/main/res/drawable/ic_vector__42_.xml" value="0.2485" />
         <entry key="app/src/main/res/drawable/ic_vector__43_.xml" value="0.2485" />
+        <entry key="app/src/main/res/drawable/ic_vector__44_.xml" value="0.26" />
+        <entry key="app/src/main/res/drawable/ic_vector__45_.xml" value="0.26" />
+        <entry key="app/src/main/res/drawable/ic_vector__46_.xml" value="0.26" />
+        <entry key="app/src/main/res/drawable/ic_vector__47_.xml" value="0.26" />
         <entry key="app/src/main/res/drawable/ic_vector__48_.xml" value="0.244" />
-        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.23489583333333333" />
-        <entry key="app/src/main/res/layout/activity_login_screen.xml" value="0.2" />
+        <entry key="app/src/main/res/drawable/ic_vector__49_.xml" value="0.2515" />
+        <entry key="app/src/main/res/drawable/ic_vector__52_.xml" value="0.26" />
+        <entry key="app/src/main/res/drawable/ic_vector__54_.xml" value="0.26" />
+        <entry key="app/src/main/res/drawable/ic_vector__55_.xml" value="0.26" />
+        <entry key="app/src/main/res/drawable/nav_item_color_state.xml" value="0.2515" />
+        <entry key="app/src/main/res/layout/activity_all_stores.xml" value="0.15945945945945947" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/activity_login_screen.xml" value="0.14" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10190217391304347" />
-        <entry key="app/src/main/res/layout/activity_mobile_login.xml" value="0.2578125" />
-        <entry key="app/src/main/res/layout/activity_signup_screen.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_mobile_login.xml" value="0.14" />
+        <entry key="app/src/main/res/layout/activity_signup_screen.xml" value="0.14" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_verify_otp.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_accepted.xml" value="0.13344594594594594" />
+        <entry key="app/src/main/res/layout/fragment_completed.xml" value="0.13344594594594594" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19763513513513514" />
+        <entry key="app/src/main/res/layout/fragment_order.xml" value="0.20506756756756755" />
+        <entry key="app/src/main/res/layout/fragment_pending.xml" value="0.13344594594594594" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_rejected.xml" value="0.13344594594594594" />
+        <entry key="app/src/main/res/layout/fragment_sending.xml" value="0.1543918918918919" />
+        <entry key="app/src/main/res/layout/fragment_services.xml" value="0.20506756756756755" />
+        <entry key="app/src/main/res/layout/list_all_store.xml" value="0.16722972972972974" />
+        <entry key="app/src/main/res/layout/list_order.xml" value="0.20506756756756755" />
+        <entry key="app/src/main/res/layout/list_our_exclusive_store.xml" value="0.16722972972972974" />
+        <entry key="app/src/main/res/layout/list_pending.xml" value="0.17871621621621622" />
+        <entry key="app/src/main/res/layout/our_exclusive_store.xml" value="0.22" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.25052083333333336" />
+        <entry key="app/src/release/res/layout/bottom_nav_item_color.xml" value="0.25052083333333336" />
       </map>
     </option>
   </component>

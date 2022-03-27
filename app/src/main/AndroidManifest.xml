@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoneRepair">
         <activity
+            android:name=".activity.BookServiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.StoreDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.AllStoresActivity"
             android:exported="false" />
         <activity

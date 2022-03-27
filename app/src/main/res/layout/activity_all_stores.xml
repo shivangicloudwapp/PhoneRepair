@@ -17,19 +17,23 @@
             android:id="@+id/ivBackAllStores"
             android:layout_width="@dimen/_18sdp"
             android:layout_height="@dimen/_18sdp"
+            android:layout_centerVertical="true"
             android:src="@drawable/ic_vector__40_" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="All Stores"
-            android:textSize="@dimen/_18sdp"
-            android:textFontWeight="800"
-            android:textColor="@color/black_b"
             android:layout_centerInParent="true"
-            android:fontFamily="@font/mulish_extrabold"/>
+            android:fontFamily="@font/mulish_extrabold"
+            android:text="All Stores"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black_b"
+            android:textFontWeight="800"
+            android:textSize="@dimen/_18sdp" />
         <ImageView
             android:layout_width="@dimen/_18sdp"
             android:layout_height="@dimen/_18sdp"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:src="@drawable/ic_group__22_"/>
 

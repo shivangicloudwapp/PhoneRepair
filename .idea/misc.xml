@@ -3,6 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/drawable/ic_auxiliary_cable.xml" value="0.169" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/drawable/line_bac.xml" value="0.1715" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/layout/activity_all_stores.xml" value="0.14010416666666667" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/layout/activity_book_service.xml" value="0.25" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/layout/activity_store_details.xml" value="0.19655797101449277" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/layout/fragment_accepted.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/layout/fragment_completed.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/layout/fragment_order.xml" value="0.25" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/layout/fragment_pending.xml" value="0.14010416666666667" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/layout/fragment_rejected.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/layout/fragment_services.xml" value="0.14010416666666667" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/layout/list_accepted.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/layout/list_completed.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/layout/list_pending.xml" value="0.2" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/layout/list_rejected.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/PLANET/AndroidStudioProjects/PhoneRepair/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
         <entry key="app/src/main/res/drawable/bottom_nav_item.xml" value="0.2515" />
         <entry key="app/src/main/res/drawable/bottom_nav_item_color.xml" value="0.2515" />
         <entry key="app/src/main/res/drawable/bottom_navigation_item_color.xml" value="0.2515" />
@@ -58,7 +74,8 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.adapter.ServicesTabPagerAdapter;
+import com.cwt.phonerepair.adapter.WalletTabPgerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class StoreWalletActivity extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class StoreWalletActivity extends AppCompatActivity {
         tlWallet.addTab(tlWallet.newTab().setText("Transaction"));
         tlWallet.addTab(tlWallet.newTab().setText("Withdrawal"));
 
-        ServicesTabPagerAdapter adapter=new ServicesTabPagerAdapter(context, getSupportFragmentManager(),tlWallet.getTabCount());
+        WalletTabPgerAdapter adapter=new WalletTabPgerAdapter(context, getSupportFragmentManager(),tlWallet.getTabCount());
         vpWallet.setAdapter(adapter);
         vpWallet.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tlWallet));
         tlWallet.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){

@@ -103,6 +103,7 @@
             android:layout_gravity="top"
             app:tabIndicatorHeight="@dimen/_2sdp"
             app:tabMode="fixed"
+            android:layout_marginHorizontal="@dimen/_15sdp"
             app:tabTextAppearance="@style/MyCustomTextAppearance"
             app:tabIndicatorColor="@color/black_b" />
 

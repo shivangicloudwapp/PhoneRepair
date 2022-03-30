@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ProductDetailsActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_28sdp"
+                    android:layout_marginHorizontal="@dimen/_15sdp">
+
+                    <ImageView
+                        android:id="@+id/ivBackProDetail"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_vector__40_" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/mulish_extrabold"
+                        android:text="Product Details"
+                        android:textColor="@color/black_b"
+                        android:textFontWeight="800"
+                        android:textSize="@dimen/_18sdp" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_group__22_" />
+
+                </RelativeLayout>
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/line1"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginHorizontal="@dimen/_14sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Iphone 13 Pro\nMax"
+                            android:textSize="@dimen/_20sdp"
+                            android:fontFamily="@font/mulish_semibold"
+                            android:textFontWeight="600"
+                            android:textStyle="normal"
+                            android:textColor="@color/black"/>
+
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_140sdp"
+                            android:id="@+id/view_pager"
+                            android:layout_marginTop="@dimen/_14sdp"/>
+                        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                            android:id="@+id/dots_indicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:dotsColor="@color/gray_c"
+                            app:dotsCornerRadius="8dp"
+                            app:dotsSize="8dp"
+                            app:dotsSpacing="4dp"
+                            app:dotsWidthFactor="2.5"
+                            app:selectedDotColor="@color/green"
+                            app:progressMode="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/_9sdp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="@dimen/_12sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="RM499"
+                                android:textSize="@dimen/_18sdp"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:textFontWeight="600"
+                                android:textStyle="normal"
+                                android:textColor="@color/txt_clr"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Product Highlight"
+                                android:textSize="@dimen/_15sdp"
+                                android:fontFamily="@font/mulish_bold"
+                                android:textFontWeight="700"
+                                android:textStyle="normal"
+                                android:textColor="@color/txt_clr"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="The Mobile Store currently is covering and has more than 700+ outlets in different major cities in different states across India. Today you will virtually find no person who is not using the mobile phone for their work or for personal use. No matter whether you are college students, salesman, a storekeeper, or a pilot a mobile phone is a must for all."
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@font/mulish_light"
+                                android:textFontWeight="300"
+                                android:textStyle="normal"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:textColor="@color/item_unsclr"/>
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/_12sdp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:text="Related Products"
+                                    android:textColor="@color/txt_clr"
+                                    android:textFontWeight="700"
+                                    android:textSize="@dimen/_15sdp" />
+
+                                <TextView
+                                    android:id="@+id/tvSeeAll"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:fontFamily="@font/mulish_regular"
+                                    android:text="See All"
+                                    android:textColor="@color/txt_clr"
+                                    android:textFontWeight="400"
+                                    android:textSize="@dimen/_12sdp" />
+
+                            </RelativeLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_Prodcut"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_16sdp" />
+
+
+
+
+
+
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="@dimen/_12sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Customer Feedback"
+                                android:fontFamily="@font/mulish_bold"
+                                android:textFontWeight="700"
+                                android:textSize="@dimen/_15sdp"
+                                android:textColor="@color/txt_clr"/>
+
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="@dimen/_8sdp"
+                                app:cardElevation="1dp"
+                                android:layout_marginTop="@dimen/_12sdp"
+                                android:layout_marginBottom="@dimen/_4sdp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:layout_margin="@dimen/_8sdp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_48sdp"
+                                            android:layout_height="@dimen/_48sdp"
+                                            android:src="@drawable/customerimg"
+                                            android:layout_marginTop="@dimen/_10sdp"/>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="@dimen/_8sdp">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Charlotte"
+                                                android:fontFamily="@font/mulish_bold"
+                                                android:textFontWeight="700"
+                                                android:textColor="@color/txt_clr"
+                                                android:textStyle="normal"
+                                                android:textSize="@dimen/_13sdp"/>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal"
+                                                android:layout_marginTop="@dimen/_3sdp">
+                                                <ImageView
+                                                    android:layout_width="@dimen/_10sdp"
+                                                    android:layout_height="@dimen/_10sdp"
+                                                    android:src="@drawable/ratingstar"
+                                                    android:layout_marginStart="@dimen/_2sdp"/>
+                                                <ImageView
+                                                    android:layout_width="@dimen/_10sdp"
+                                                    android:layout_height="@dimen/_10sdp"
+                                                    android:src="@drawable/ratingstar"
+                                                    android:layout_marginStart="@dimen/_2sdp"/>
+                                                <ImageView
+                                                    android:layout_width="@dimen/_10sdp"
+                                                    android:layout_height="@dimen/_10sdp"
+                                                    android:src="@drawable/ratingstar"
+                                                    android:layout_marginStart="@dimen/_2sdp"/>
+                                                <ImageView
+                                                    android:layout_width="@dimen/_10sdp"
+                                                    android:layout_height="@dimen/_10sdp"
+                                                    android:src="@drawable/ratingstar"
+                                                    android:layout_marginStart="@dimen/_2sdp"/>
+                                                <ImageView
+                                                    android:layout_width="@dimen/_10sdp"
+                                                    android:layout_height="@dimen/_10sdp"
+                                                    android:src="@drawable/ratingstar"
+                                                    android:layout_marginStart="@dimen/_2sdp"/>
+
+
+
+                                            </LinearLayout>
+
+
+
+
+                                        </LinearLayout>
+
+
+
+                                    </LinearLayout>
+
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="The Sprint Review is not just about product demonstration, it is an inspection of the completed Sprint, the Product Backlog and the marketplace. Also, it is a place for reviewing budgets, timeline and capabilities. Each Sprint is an important risk mitigation tool and the Sprint Review is a decision point for the Product Owner."
+                                        android:fontFamily="@font/mulish_light"
+                                        android:textFontWeight="300"
+                                        android:textColor="@color/item_unsclr"
+                                        android:textStyle="normal"
+                                        android:textSize="@dimen/_10sdp"
+                                        android:layout_marginTop="@dimen/_11sdp"
+                                        android:layout_marginBottom="@dimen/_10sdp"/>
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="@dimen/_8sdp"
+                                app:cardElevation="1dp"
+                                android:layout_marginBottom="@dimen/_90sdp"
+                                android:layout_marginTop="@dimen/_12sdp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:layout_margin="@dimen/_8sdp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/_48sdp"
+                                            android:layout_height="@dimen/_48sdp"
+                                            android:src="@drawable/customerimg2"
+                                            android:layout_marginTop="@dimen/_10sdp"/>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="@dimen/_8sdp">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Andrino"
+                                                android:fontFamily="@font/mulish_bold"
+                                                android:textFontWeight="700"
+                                                android:textColor="@color/txt_clr"
+                                                android:textStyle="normal"
+                                                android:textSize="@dimen/_13sdp"/>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal"
+                                                android:layout_marginTop="@dimen/_3sdp">
+                                                <ImageView
+                                                    android:layout_width="@dimen/_10sdp"
+                                                    android:layout_height="@dimen/_10sdp"
+                                                    android:src="@drawable/ratingstar"
+                                                    android:layout_marginStart="@dimen/_2sdp"/>
+                                                <ImageView
+                                                    android:layout_width="@dimen/_10sdp"
+                                                    android:layout_height="@dimen/_10sdp"
+                                                    android:src="@drawable/ratingstar"
+                                                    android:layout_marginStart="@dimen/_2sdp"/>
+                                                <ImageView
+                                                    android:layout_width="@dimen/_10sdp"
+                                                    android:layout_height="@dimen/_10sdp"
+                                                    android:src="@drawable/ratingstar"
+                                                    android:layout_marginStart="@dimen/_2sdp"/>
+                                                <ImageView
+                                                    android:layout_width="@dimen/_10sdp"
+                                                    android:layout_height="@dimen/_10sdp"
+                                                    android:src="@drawable/ratingstar"
+                                                    android:layout_marginStart="@dimen/_2sdp"/>
+                                                <ImageView
+                                                    android:layout_width="@dimen/_10sdp"
+                                                    android:layout_height="@dimen/_10sdp"
+                                                    android:src="@drawable/ratingstar"
+                                                    android:layout_marginStart="@dimen/_2sdp"/>
+
+
+
+                                            </LinearLayout>
+
+
+
+
+                                        </LinearLayout>
+
+
+
+                                    </LinearLayout>
+
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="The Sprint Review is not just about product demonstration, it is an inspection of the completed Sprint, the Product Backlog and the marketplace. Also, it is a place for reviewing budgets, timeline and capabilities. Each Sprint is an important risk mitigation tool and the Sprint Review is a decision point for the Product Owner."
+                                        android:fontFamily="@font/mulish_light"
+                                        android:textFontWeight="300"
+                                        android:textColor="@color/item_unsclr"
+                                        android:textStyle="normal"
+                                        android:textSize="@dimen/_10sdp"
+                                        android:layout_marginTop="@dimen/_11sdp"/>
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+
+
+
+                        </LinearLayout>
+
+
+
+
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60sdp"
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
+                android:layout_marginHorizontal="@dimen/_2sdp"
+                android:background="@drawable/card_top_radius">
+                <Button
+                    android:id="@+id/btnAddtocart"
+                    android:layout_width="@dimen/_140sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:text=" Add to Cart"
+                    android:textFontWeight="600"
+                    android:textAllCaps="false"
+                    android:background="@drawable/btn_backg"
+                    android:fontFamily="@font/mulish_semibold"
+                    android:textSize="@dimen/_16sdp"
+                    android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

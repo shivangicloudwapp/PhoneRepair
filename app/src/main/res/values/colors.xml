@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black_a">#82000000</color>
+    <color name="black_b">#000000</color>
+    <color name="gray_a">#C7C7C7</color>
+    <color name="gray_c">#D9D9D9</color>
+    <color name="green">#C6FF00</color>
+    <color name="black_c">#181818</color>
+    <color name="black_d">#121212</color>
+    <color name="gray_b">#868889</color>
+    <color name="line_clr">#EDEDED</color>
+    <color name="otp_dash">#3DC7C7C7</color>
+    <color name="textClr">#676D6D</color>
+    <color name="item_unsclr">#8E8E8E</color>
+    <color name="txt_clr">#3D3E3E</color>
+    <color name="txt_clr1">#252837</color>
+    <color name="txt_clr2">#3D3E3E</color>
+    <color name="txt_clr3">#646E77</color>
+    <color name="txt_clr4">#AAAAAA</color>
+    <color name="txt_orange">#DA9B1E</color>
+    <color name="dot_line">#EDD0D0D0</color>
+    <color name="pendingclr">#DA9B1E</color>
+    <color name="rejectedclr">#C60404</color>
+    <color name="acceptclr">#2797C2</color>
+    <color name="compltclr">#17B10A</color>
+    <color name="red">#D80000</color>
+    <color name="green2">#21E202</color>
+    <color name="textclr">#AAAAAA</color>
+    <color name="blackd">#121212</color>
+    <color name="unPaid">#DA235A</color>
+    <color name="hint_clr">#7A7A7A</color>
+    <color name="ratclr">#E3FF80</color>
+
+
+</resources>

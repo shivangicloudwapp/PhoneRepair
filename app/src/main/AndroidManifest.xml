@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cwt.phonerepair">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PhoneRepair">
+        <activity
+            android:name=".storeactivity.StoreWalletActivity"
+            android:exported="false" />
+        <activity
+            android:name=".storeactivity.StoreProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".storeactivity.StoreHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SubscribeNewStoreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SubscriptionPlanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.serviceActivity.ServiceDetailsPendingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.OrderDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RateUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AddAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.OrderPlacedSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ProductDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AllProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ServiceRequestSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ConfirmServiceActtivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.BookServiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.StoreDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AllStoresActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.VerifyOtpActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.MobileLoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.SignupScreenActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.LoginScreenActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.serviceActivity.ServiceDetailsAcceptActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.serviceActivity.ServiceDetailsRejectActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.serviceActivity.ServiceDetailsCompleteActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SplashScreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

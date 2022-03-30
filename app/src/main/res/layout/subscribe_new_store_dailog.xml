@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_476sdp"
+    android:layout_gravity="center"
+    android:layout_marginHorizontal="@dimen/_15sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_345sdp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_20sdp"
+        android:layout_centerInParent="true"
+  >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerInParent="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/subscribesucces" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/mulish_regular"
+                    android:text="Subscribed Successfully"
+                    android:textColor="@color/black_b"
+                    android:textFontWeight="400"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/_18sdp"
+                    android:layout_marginTop="@dimen/_40sdp" />
+
+                <Button
+                    android:id="@+id/btnDone"
+                    android:layout_width="@dimen/_127sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:text="Done"
+                    android:textAllCaps="false"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:textFontWeight="700"
+                    android:textSize="@dimen/_15sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:background="@drawable/btn_backg"
+                    android:textColor="@color/black_c"/>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

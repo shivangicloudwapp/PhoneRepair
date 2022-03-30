@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.BookServiceActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_28sdp"
+            android:layout_marginHorizontal="@dimen/_15sdp">
+
+            <ImageView
+                android:id="@+id/ivBackBookSer"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_vector__40_" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/mulish_extrabold"
+                android:text="Book Service"
+                android:textColor="@color/black_b"
+                android:textFontWeight="800"
+                android:textSize="@dimen/_18sdp" />
+
+            <ImageView
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_group__22_" />
+
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/line1"
+            android:layout_marginTop="@dimen/_10sdp"/>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_23sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="6dp"
+                android:layout_marginBottom="@dimen/_56sdp"
+                android:paddingBottom="@dimen/_20sdp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_marginHorizontal="@dimen/_16sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="@dimen/_16sdp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_15sdp"
+                        android:fontFamily="@font/mulish_semibold"
+                        android:textFontWeight="600"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:textColor="@color/txt_clr2"
+                        android:text="Pick your Repair Service"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/_20sdp">
+
+                            <ImageView
+                                android:id="@+id/ivBattery"
+                                android:layout_width="@dimen/_24sdp"
+                                android:layout_height="@dimen/_24sdp"
+                                android:src="@drawable/charging" />
+
+                            <TextView
+                                android:layout_toRightOf="@+id/ivBattery"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Battery"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/_9sdp"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:textFontWeight="600"/>
+
+                            <CheckBox
+                                android:layout_alignParentEnd="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="@dimen/_12sdp"/>
+
+
+                        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/doted_line"
+                            android:layout_marginTop="@dimen/_22sdp"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/_20sdp">
+
+                            <ImageView
+                                android:id="@+id/ivScreen"
+                                android:layout_width="@dimen/_24sdp"
+                                android:layout_height="@dimen/_24sdp"
+                                android:src="@drawable/smartphone" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/_9sdp"
+                                android:layout_toRightOf="@+id/ivScreen"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:text="Battery"
+                                android:textColor="@color/black"
+                                android:textFontWeight="600"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <CheckBox
+                                android:layout_alignParentEnd="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="@dimen/_12sdp"/>
+
+
+                        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/doted_line"
+                            android:layout_marginTop="@dimen/_22sdp"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/_20sdp">
+
+                            <ImageView
+                                android:id="@+id/ivMic"
+                                android:layout_width="@dimen/_24sdp"
+                                android:layout_height="@dimen/_24sdp"
+                                android:src="@drawable/mic" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/_9sdp"
+                                android:layout_toRightOf="@+id/ivMic"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:text="Battery"
+                                android:textColor="@color/black"
+                                android:textFontWeight="600"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <CheckBox
+                                android:layout_alignParentEnd="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="@dimen/_12sdp"/>
+
+
+                        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/doted_line"
+                            android:layout_marginTop="@dimen/_22sdp"/>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/_20sdp">
+
+                            <ImageView
+                                android:id="@+id/ivAux"
+                                android:layout_width="@dimen/_26sdp"
+                                android:layout_height="@dimen/_26sdp"
+                                android:src="@drawable/auxiliary_cable" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/_9sdp"
+                                android:layout_toRightOf="@+id/ivAux"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:text="Battery"
+                                android:textColor="@color/black"
+                                android:textFontWeight="600"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <CheckBox
+                                android:layout_alignParentEnd="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="@dimen/_12sdp"/>
+
+
+                        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/doted_line"
+                            android:layout_marginTop="@dimen/_22sdp"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_9sdp"
+                        android:layout_toRightOf="@+id/ivMic"
+                        android:fontFamily="@font/mulish_semibold"
+                        android:text="Details"
+                        android:textColor="@color/black"
+                        android:textFontWeight="600"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <EditText
+                        android:id="@+id/etDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:background="@drawable/line_bac"
+                        android:layout_marginTop="@dimen/_11sdp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_9sdp"
+                        android:layout_toRightOf="@+id/ivMic"
+                        android:fontFamily="@font/mulish_semibold"
+                        android:text="Upload Pictures"
+                        android:textColor="@color/black"
+                        android:textFontWeight="600"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_80sdp"
+                        android:layout_marginTop="@dimen/_11sdp"
+                        android:background="@drawable/line_bac">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_centerInParent="true">
+                            <ImageView
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:src="@drawable/vector13" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:src="@drawable/vector14"
+                                android:layout_marginHorizontal="@dimen/_12sdp"/>
+                            <ImageView
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:src="@drawable/vector13"/>
+
+                        </LinearLayout>
+
+
+
+
+
+
+
+
+
+                    </RelativeLayout>
+
+
+
+                    <Button
+                        android:id="@+id/btnSubmit"
+                        android:layout_width="@dimen/_230sdp"
+                        android:layout_height="@dimen/_54sdp"
+                        android:background="@drawable/btn_backg"
+                        android:text="Submit"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/_15sdp"
+                        android:textColor="@color/black_c"
+                        android:textAlignment="center"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_36sdp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:layout_marginBottom="@dimen/_40sdp"
+                        />
+
+
+                </LinearLayout>
+
+
+
+
+
+
+
+
+            </androidx.cardview.widget.CardView>
+
+        </ScrollView>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

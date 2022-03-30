@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">PhoneRepair</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="enter_the_four_digit_code_we_sent_to_you_62_23723782738"><font color='#868889' fontFamily='mulish_black' weight='700'>Enter the four digit code we sent to you</font><font color='#000000' fontFamily='mulish_semibold' weight='600'> +62 23723782738</font></string>
+    <string name="resend_otp_00_28"><font color='#868889' fontFamily='mulish_black' weight='600'>Resend OTP</font> <font color='#C6FF00' fontFamily='mulish_semibold' weight='600'>00:28</font></string>
+    <string name="our_exclusive_stores">Our Exclusive Stores</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_all_product">AllProductActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="iphone_13_pro_max_n_x1"><font color='#3D3E3E' fontFamily='mulish_bold' textSize="@dimen/_10sdp" weight='700'>Iphone 13 pro max</font> <font color='#3D3E3E' fontFamily='mulish_light' textSize="@dimen/_10sdp" weight='300'>\n X1</font></string>
+    <string name="apple_watch_series_5_nx1"><font color='#3D3E3E' fontFamily='mulish_bold' textSize="@dimen/_10sdp" weight='700'>Apple Watch Series 5</font><font color='#3D3E3E' fontFamily='mulish_light' textSize="@dimen/_10sdp" weight='300'>\nX1</font></string>
+    <string name="apple_earpod_n_x1"><font color='#3D3E3E' fontFamily='mulish_bold' textSize="@dimen/_10sdp" weight='700'>Apple Earpod </font><font color='#3D3E3E' fontFamily='mulish_light' textSize="@dimen/_10sdp" weight='300'>\n X1</font></string>
+
+
+</resources>

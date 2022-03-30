@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".storeactivity.StoreProfileActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginHorizontal="@dimen/_15sdp">
+
+        <ImageView
+            android:id="@+id/ivBackProfile"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_vector__40_" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/mulish_extrabold"
+            android:text="Profile"
+            android:textColor="@color/black_b"
+            android:textFontWeight="800"
+            android:textSize="@dimen/_18sdp" />
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line1"
+        android:layout_marginTop="@dimen/_10sdp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_23sdp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/mulish_semibold"
+                android:text="Store Name"
+                android:textColor="@color/black_b"
+                android:textFontWeight="600"
+                android:textSize="@dimen/_15sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:text="The Apple Store"
+                android:fontFamily="@font/poppins_light"
+                android:textFontWeight="300"
+                android:textSize="@dimen/_12sdp"
+                android:padding="@dimen/_8sdp"
+                android:textColor="@color/black_b"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/edittxt_bac"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/mulish_semibold"
+                android:text="Registration No"
+                android:textColor="@color/black_b"
+                android:textFontWeight="600"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:textSize="@dimen/_15sdp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:text="JFKS27372839"
+                android:fontFamily="@font/poppins_light"
+                android:textFontWeight="300"
+                android:textSize="@dimen/_12sdp"
+                android:padding="@dimen/_8sdp"
+                android:textColor="@color/black_b"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/edittxt_bac"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/mulish_semibold"
+                android:text="Address"
+                android:textColor="@color/black_b"
+                android:textFontWeight="600"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:textSize="@dimen/_15sdp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New Door No. A4-72 Ground Floor c21 Mall,\n
+Los Angeles, California"
+                android:fontFamily="@font/poppins_light"
+                android:textFontWeight="300"
+                android:textSize="@dimen/_12sdp"
+                android:padding="@dimen/_8sdp"
+                android:textColor="@color/black_b"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/edittxt_bac"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/mulish_semibold"
+                android:text="About Store"
+                android:textColor="@color/black_b"
+                android:textFontWeight="600"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:textSize="@dimen/_15sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:text="The Mobile Store currently is covering and \n has more than 700+ outlets in different major\n cities in different states across India. Today you will virtually find no person who is not using the mobile phone for their work or for personal use. No matter whether you are college students, salesman, a storekeeper,\nor a pilot a mobile phone is a must for all."
+                android:fontFamily="@font/mulish_light"
+                android:textFontWeight="300"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/black_b"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="start"
+                android:padding="@dimen/_8sdp"
+                android:background="@drawable/edittxt_bac"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/mulish_semibold"
+                android:text="Store Image"
+                android:textColor="@color/black_b"
+                android:textFontWeight="600"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:textSize="@dimen/_15sdp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginTop="@dimen/_11sdp"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:background="@drawable/line_bac">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_centerInParent="true">
+                    <ImageView
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/vector13" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/vector14"
+                        android:layout_marginHorizontal="@dimen/_12sdp"/>
+                    <ImageView
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/vector13"/>
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/mulish_semibold"
+                    android:text="Upload Image"
+                    android:textColor="@color/txt_clr4"
+                    android:textFontWeight="600"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textSize="@dimen/_15sdp" />
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <RelativeLayout
+                    android:layout_width="@dimen/_53sdp"
+                    android:layout_height="@dimen/_53sdp"
+                    android:layout_marginTop="@dimen/_9sdp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img5" />
+
+                </RelativeLayout>
+
+
+
+
+                <ImageView
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:src="@drawable/ic_vector__65_"
+                    android:padding="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_42sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="@drawable/white_circle_bac"/>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/mulish_semibold"
+                android:text="Upload SSM Image"
+                android:textColor="@color/black_b"
+                android:textFontWeight="600"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:textSize="@dimen/_15sdp" />
+            <LinearLayout
+                android:id="@+id/llUploadSms"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginTop="@dimen/_11sdp"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:background="@drawable/line_bac">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_centerInParent="true">
+                    <ImageView
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/vector13" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/vector14"
+                        android:layout_marginHorizontal="@dimen/_12sdp"/>
+                    <ImageView
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/vector13"/>
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/mulish_semibold"
+                    android:text="Upload SSM Image"
+                    android:textColor="@color/txt_clr4"
+                    android:textFontWeight="600"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textSize="@dimen/_15sdp" />
+
+
+
+
+
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="@dimen/_210sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center_horizontal"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:fontFamily="@font/raleway_bold"
+                android:textFontWeight="700"
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:background="@drawable/btn_backg"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:textColor="@color/black_c"/>
+
+
+        </LinearLayout>
+
+
+
+
+
+    </ScrollView>
+
+
+</LinearLayout>

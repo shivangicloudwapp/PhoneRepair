@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/ivorder"
+            android:layout_width="@dimen/_22sdp"
+            android:layout_height="@dimen/_22sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_6sdp"
+            android:src="@drawable/greenright" />
+
+        <LinearLayout
+            android:layout_toRightOf="@+id/ivorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/_10sdp">
+            <TextView
+                android:id="@+id/tvWith"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Withdrawal"
+                android:textSize="@dimen/_15sdp"
+                android:textColor="@color/black_b"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textFontWeight="700"
+                android:fontFamily="@font/mulish_bold" />
+
+            <TextView
+                android:id="@+id/tvMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Debit"
+                android:textSize="@dimen/_8sdp"
+                android:textColor="@color/black_b"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textFontWeight="400"
+                android:fontFamily="@font/mulish_regular" />
+
+            <TextView
+                android:id="@+id/tvTimeDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:fontFamily="@font/mulish_regular"
+                android:text="Date: Jan 02, 2022 | 21:09"
+                android:textColor="@color/black_b"
+                android:textFontWeight="400"
+                android:textSize="@dimen/_8sdp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tvRm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:fontFamily="@font/mulish_bold"
+            android:text="RM60.00"
+            android:textColor="@color/black"
+            android:textFontWeight="700"
+            android:textSize="@dimen/_15sdp" />
+
+    </RelativeLayout>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#DDDDDD"
+        android:layout_marginTop="@dimen/_14sdp"/>
+
+
+</LinearLayout>

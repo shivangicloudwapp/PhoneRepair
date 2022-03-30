@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fillViewport="true"
+    android:background="@color/white"
+    tools:context=".activity.SignupScreenActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_32sdp">
+
+                <ImageView
+                    android:id="@+id/ivBackSignUp"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:src="@drawable/ic_vector__40_" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/mulish_extrabold"
+                    android:text="Create Your Account"
+                    android:textColor="@color/black_b"
+                    android:textFontWeight="800"
+                    android:textSize="@dimen/_18sdp" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/line1"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:textColor="@color/black_a"
+                android:fontFamily="@font/mulish_semibold"
+                android:textFontWeight="600"
+                android:text="Please enter your personal details, worry not, they are  safe with us"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_19sdp">
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:backgroundTint="@color/gray_a"
+                    android:fontFamily="@font/mulish_regular"
+                    android:hint="@string/name"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:textFontWeight="400"
+                    android:textColorHint="@color/black_a"
+                    android:textSize="@dimen/_16sdp" />
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:backgroundTint="@color/gray_a"
+                    android:fontFamily="@font/mulish_regular"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:hint="@string/email_address"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:textFontWeight="400"
+                    android:textColorHint="@color/black_a"
+                    android:textSize="@dimen/_16sdp" />
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:backgroundTint="@color/gray_a"
+                    android:drawableRight="@drawable/ic_group_7"
+                    android:fontFamily="@font/mulish_regular"
+                    android:hint="Password"
+                    android:imeOptions="actionNext"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:inputType="textPassword"
+                    android:maxLength="6"
+                    android:textFontWeight="400"
+                    android:maxLines="1"
+                    android:textColorHint="@color/black_a"
+                    android:textSize="@dimen/_14sdp" />
+                <EditText
+                    android:id="@+id/etConfPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:backgroundTint="@color/gray_a"
+                    android:drawableRight="@drawable/ic_group_7"
+                    android:fontFamily="@font/mulish_regular"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:maxLength="6"
+                    android:textFontWeight="400"
+                    android:imeOptions="actionDone"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:maxLines="1"
+                    android:textColorHint="@color/black_a"
+                    android:textSize="@dimen/_16sdp" />
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_alignParentBottom="true">
+            <Button
+                android:id="@+id/btnSignUp"
+                android:layout_width="@dimen/_230sdp"
+                android:layout_height="@dimen/_54sdp"
+                android:background="@drawable/btn_backg"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/_15sdp"
+                android:textColor="@color/black_c"
+                android:text="SignUp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/raleway_bold"
+                android:textFontWeight="700"
+                android:layout_marginHorizontal="@dimen/_12sdp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/_16sdp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Don't have an Account ?"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="normal"
+                    android:layout_gravity="end"
+                    android:textColor="@color/gray_b"
+                    android:fontFamily="@font/mulish_light"
+                    android:textFontWeight="300"/>
+
+                <TextView
+                    android:id="@+id/tvLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="normal"
+                    android:layout_gravity="end"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/mulish_bold"
+                    android:textFontWeight="700"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+
+</ScrollView>

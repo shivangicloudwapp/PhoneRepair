@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.serviceActivity.ServiceDetailsRejectActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginHorizontal="@dimen/_15sdp">
+
+        <ImageView
+            android:id="@+id/ivBackReject"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_vector__40_" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/mulish_extrabold"
+            android:text="Service Details"
+            android:textColor="@color/black_b"
+            android:textFontWeight="800"
+            android:textSize="@dimen/_18sdp" />
+
+
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line1"
+        android:layout_marginTop="@dimen/_10sdp"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_23sdp"
+                android:background="@drawable/linear_top_radius"
+                android:paddingBottom="@dimen/_20sdp"
+                android:elevation="@dimen/_4sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginHorizontal="@dimen/_9sdp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:textFontWeight="600"
+                                    android:textColor="@color/black_b"
+                                    android:text="Services -"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_13sdp"
+                                    android:fontFamily="@font/mulish_light"
+                                    android:textFontWeight="600"
+                                    android:textColor="@color/black_b"
+                                    android:text="#CUEP8383832"/>
+
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:textFontWeight="600"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentRight="true"
+                                android:textColor="@color/rejectedclr"
+                                android:text="Rejected"/>
+
+
+                        </RelativeLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/_10sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_6sdp"
+                                    android:layout_height="@dimen/_6sdp"
+                                    android:src="@drawable/ic_ellipse_45"
+                                    android:layout_gravity="center_vertical"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:fontFamily="@font/mulish_light"
+                                    android:textFontWeight="300"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/_6sdp"
+                                    android:textColor="@color/txt_clr"
+                                    android:text="Screen  Replacment"/>
+
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/_10sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_6sdp"
+                                    android:layout_height="@dimen/_6sdp"
+                                    android:src="@drawable/ic_ellipse_45"
+                                    android:layout_gravity="center_vertical"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:fontFamily="@font/mulish_light"
+                                    android:textFontWeight="300"
+                                    android:layout_marginStart="@dimen/_6sdp"
+                                    android:textColor="@color/txt_clr"
+                                    android:text="Battery"
+                                    android:layout_gravity="center_vertical"/>
+
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/_10sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_6sdp"
+                                    android:layout_height="@dimen/_6sdp"
+                                    android:src="@drawable/ic_ellipse_45"
+                                    android:layout_gravity="center_vertical"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:fontFamily="@font/mulish_light"
+                                    android:textFontWeight="300"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/_6sdp"
+                                    android:textColor="@color/txt_clr"
+                                    android:text="Aux Socket"/>
+
+
+                            </LinearLayout>
+
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_2sdp"
+                        android:layout_marginTop="@dimen/_11sdp"
+                        android:background="@drawable/doted_line"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginHorizontal="@dimen/_9sdp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_15sdp"
+                            android:fontFamily="@font/mulish_semibold"
+                            android:textFontWeight="600"
+                            android:layout_marginTop="@dimen/_14sdp"
+                            android:textColor="@color/txt_clr"
+                            android:text="Description"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_10sdp"
+                            android:fontFamily="@font/mulish_light"
+                            android:textFontWeight="200"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:textColor="@color/item_unsclr"
+                            android:text="The Mobile Store currently is covering and has more than 700+ outlets in different major cities"/>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:layout_marginHorizontal="@dimen/_9sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_15sdp"
+                            android:fontFamily="@font/mulish_semibold"
+                            android:textFontWeight="600"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:textColor="@color/txt_clr"
+                            android:text="Images"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_60sdp"
+                                android:src="@drawable/pic1"/>
+
+                            <ImageView
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_60sdp"
+                                android:src="@drawable/pic2"
+                                android:layout_marginStart="@dimen/_11sdp"/>
+
+
+
+                        </LinearLayout></LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_2sdp"
+                            android:layout_marginTop="@dimen/_19sdp"
+                            android:background="@drawable/doted_line"/>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <Button
+                                android:id="@+id/btnReorder"
+                                android:layout_width="@dimen/_130sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:background="@drawable/accept_btn_bac"
+                                android:text="Reorder"
+                                android:textSize="@dimen/_15sdp"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:layout_gravity="center_horizontal"
+                                android:textAlignment="center"
+                                android:layout_marginTop="@dimen/_13sdp"
+                                android:fontFamily="@font/raleway_bold"
+                                android:layout_weight="700" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_16sdp"
+                                android:background="@drawable/doted_line"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/doted_line"
+                                android:layout_marginTop="@dimen/_16sdp"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginHorizontal="@dimen/_9sdp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:textFontWeight="600"
+                                    android:textColor="@color/txt_clr"
+                                    android:text="Address"
+                                    android:layout_marginTop="@dimen/_19sdp"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/_13sdp">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_14sdp"
+                                        android:layout_height="@dimen/_14sdp"
+                                        android:src="@drawable/ic_group_866"
+                                        android:layout_marginTop="@dimen/_8sdp"/>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_marginTop="@dimen/_4sdp"
+                                        android:layout_marginStart="@dimen/_11sdp">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/_16sdp"
+                                            android:fontFamily="@font/mulish_regular"
+                                            android:textFontWeight="400"
+                                            android:textColor="@color/black_b"
+                                            android:text="Other"/>
+
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/_10sdp"
+                                            android:fontFamily="@font/mulish_light"
+                                            android:textFontWeight="300"
+                                            android:layout_marginTop="@dimen/_10sdp"
+                                            android:textColor="@color/item_unsclr"
+                                            android:text="New Door No. A4-72 Ground Floor c21 Mall,\nLosngeles, California"/>
+
+
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_2sdp"
+                                    android:layout_marginTop="@dimen/_19sdp"
+                                    android:layout_marginBottom="@dimen/_26sdp"
+                                    android:background="@drawable/doted_line"/>
+
+
+                            </LinearLayout>
+
+
+
+
+
+                        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+</LinearLayout>

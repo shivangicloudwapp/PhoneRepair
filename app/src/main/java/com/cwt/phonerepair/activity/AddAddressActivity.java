@@ -27,6 +27,15 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
         btnSubmit.setOnClickListener(this);
     }
 
+
+
+
+
+
+
+
+
+
     @Override
     public void onClick(View v) {
         if (v==btnSubmit){

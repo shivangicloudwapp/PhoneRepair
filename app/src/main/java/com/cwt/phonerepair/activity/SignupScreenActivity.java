@@ -24,7 +24,7 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_signup_screen);
         etName=findViewById(R.id.etName);
         etEmail=findViewById(R.id.etEmail);
-        etPassword=findViewById(R.id.etName);
+        etPassword=findViewById(R.id.etPassword);
         etConfPass=findViewById(R.id.etConPass);
         btnSignUp=findViewById(R.id.btnSignUp);
         tvLogin=findViewById(R.id.tvLogin);

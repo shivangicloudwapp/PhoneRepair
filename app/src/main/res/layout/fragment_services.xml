@@ -29,11 +29,12 @@
         android:id="@+id/tlServices"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
+        app:tabIndicatorColor="@color/black_b"
         app:tabIndicatorHeight="@dimen/_2sdp"
         app:tabMode="fixed"
-        app:tabTextAppearance="@style/MyCustomTextAppearance"
-        app:tabIndicatorColor="@color/black_b" />
+        app:tabTextColor="@color/black_b"
+        android:textAlignment="center"
+        app:tabTextAppearance="@style/MyCustomTextAppearance" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -11,7 +11,7 @@ import com.cwt.phonerepair.R;
 
 public class StoreHomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    LinearLayout llStoreProfile,llWallet;
+    LinearLayout llStoreProfile,llWallet,llProOder,llServiceOrder,llProductMgmt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,15 @@ public class StoreHomeActivity extends AppCompatActivity implements View.OnClick
 
         llStoreProfile=findViewById(R.id.llStoreProfile);
         llWallet=findViewById(R.id.llWallet);
+        llServiceOrder=findViewById(R.id.llServiceOrder);
+        llProOder=findViewById(R.id.llProOder);
+        llProductMgmt=findViewById(R.id.llProductMgmt);
+
         llStoreProfile.setOnClickListener(this);
         llWallet.setOnClickListener(this);
+        llServiceOrder.setOnClickListener(this);
+        llProOder.setOnClickListener(this);
+        llProductMgmt.setOnClickListener(this);
     }
 
 
@@ -45,9 +52,26 @@ public class StoreHomeActivity extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.llWallet:
-                Intent intent1 =new Intent(StoreHomeActivity.this, StoreWalletActivity.class);
-                startActivity(intent1);
+                Intent intent2 =new Intent(StoreHomeActivity.this, StoreWalletActivity.class);
+                startActivity(intent2);
                 break;
+
+            case R.id.llServiceOrder:
+                Intent intent3 =new Intent(StoreHomeActivity.this, StoreServiceOrderActivity.class);
+                startActivity(intent3);
+                break;
+
+            case R.id.llProOder:
+                Intent intent4 =new Intent(StoreHomeActivity.this, StoreProductOrdersActvity.class);
+                startActivity(intent4);
+                break;
+
+            case R.id.llProductMgmt:
+                Intent intent5 =new Intent(StoreHomeActivity.this, ProductManagementActivity.class);
+                startActivity(intent5);
+                break;
+
+
             default:
         }
 

@@ -1,4 +1,4 @@
-package com.cwt.phonerepair.activity.fragment;
+package com.cwt.phonerepair.fragment;
 
 import android.os.Bundle;
 

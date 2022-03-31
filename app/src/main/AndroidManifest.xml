@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.cwt.phonerepair">
 
     <application
@@ -10,99 +11,129 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoneRepair">
         <activity
+            android:name=".storeactivity.AddProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".storeactivity.ProductManagementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".storeactivity.StoreProductOrderDetails"
+            android:exported="true" />
+        <activity
+            android:name=".storesservicedetails.StoreServiceDetailsCompleteActivity"
+            android:exported="true" />
+        <activity
+            android:name=".storesservicedetails.StoreServiceDetailsAcceptActivity"
+            android:exported="true" />
+        <activity
+            android:name=".storesservicedetails.StoreServiceDetailsRejectedActivity"
+            android:exported="true" />
+        <activity
+            android:name=".storesservicedetails.StoreServiceDetailsPendingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".storeactivity.StoreServiceOrderActivity"
+            android:exported="true" />
+        <activity
             android:name=".storeactivity.StoreWalletActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".storeactivity.StoreProfileActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".storeactivity.StoreHomeActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.SubscribeNewStoreActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.SubscriptionPlanActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.serviceActivity.ServiceDetailsPendingActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.OrderDetailsActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.RateUsActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.AddAddressActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.ProfileActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.OrderPlacedSuccessActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.CartActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.ProductDetailsActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.AllProductActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.ServiceRequestSuccessActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.AddressActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.ConfirmServiceActtivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.BookServiceActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.StoreDetailsActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.AllStoresActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.DashboardActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.VerifyOtpActivity"
-            android:exported="false"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.MobileLoginActivity"
-            android:exported="false"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.SignupScreenActivity"
-            android:exported="false"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.LoginScreenActivity"
-            android:exported="false"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.serviceActivity.ServiceDetailsAcceptActivity"
-            android:exported="false"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.serviceActivity.ServiceDetailsRejectActivity"
-            android:exported="false"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".storeactivity.StoreProductOrdersActvity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+
+
         <activity
             android:name=".activity.serviceActivity.ServiceDetailsCompleteActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
+            android:exported="true"/>
+
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.SplashScreenActivity"
             android:exported="true">

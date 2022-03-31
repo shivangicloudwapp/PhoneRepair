@@ -126,8 +126,8 @@
                         </RelativeLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/doted_line"
+                            android:layout_height="2dp"
+                            android:background="@drawable/line1"
                             android:layout_marginTop="@dimen/_22sdp"/>
 
                         <RelativeLayout
@@ -149,7 +149,7 @@
                                 android:layout_marginLeft="@dimen/_9sdp"
                                 android:layout_toRightOf="@+id/ivScreen"
                                 android:fontFamily="@font/mulish_semibold"
-                                android:text="Battery"
+                                android:text="screen"
                                 android:textColor="@color/black"
                                 android:textFontWeight="600"
                                 android:textSize="@dimen/_12sdp" />
@@ -165,8 +165,8 @@
                         </RelativeLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/doted_line"
+                            android:layout_height="2dp"
+                            android:background="@drawable/line1"
                             android:layout_marginTop="@dimen/_22sdp"/>
 
                         <RelativeLayout
@@ -188,7 +188,7 @@
                                 android:layout_marginLeft="@dimen/_9sdp"
                                 android:layout_toRightOf="@+id/ivMic"
                                 android:fontFamily="@font/mulish_semibold"
-                                android:text="Battery"
+                                android:text="mic"
                                 android:textColor="@color/black"
                                 android:textFontWeight="600"
                                 android:textSize="@dimen/_12sdp" />
@@ -226,7 +226,7 @@
                                 android:layout_marginLeft="@dimen/_9sdp"
                                 android:layout_toRightOf="@+id/ivAux"
                                 android:fontFamily="@font/mulish_semibold"
-                                android:text="Battery"
+                                android:text="Aux"
                                 android:textColor="@color/black"
                                 android:textFontWeight="600"
                                 android:textSize="@dimen/_12sdp" />
@@ -242,8 +242,8 @@
                         </RelativeLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/doted_line"
+                            android:layout_height="2dp"
+                            android:background="@drawable/line1"
                             android:layout_marginTop="@dimen/_22sdp"/>
 
                     </LinearLayout>
@@ -266,6 +266,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_100sdp"
                         android:background="@drawable/line_bac"
+                        android:gravity="start"
+                        android:padding="@dimen/_4sdp"
                         android:layout_marginTop="@dimen/_11sdp"/>
 
                     <TextView

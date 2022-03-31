@@ -6,110 +6,68 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.serviceActivity.ServiceDetailsAcceptActivity">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_28sdp"
-        android:layout_marginHorizontal="@dimen/_15sdp">
-
-        <ImageView
-            android:id="@+id/ivBackAccept"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_vector__40_" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/mulish_extrabold"
-            android:text="Service Details"
-            android:textColor="@color/black_b"
-            android:textFontWeight="800"
-            android:textSize="@dimen/_18sdp" />
-
-
-
-    </RelativeLayout>
-
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:src="@drawable/line1"
-        android:layout_marginTop="@dimen/_10sdp"/>
-
-
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/llUnPaid"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:fillViewport="true">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="@dimen/_28sdp"
+            android:layout_marginHorizontal="@dimen/_15sdp">
+
+            <ImageView
+                android:id="@+id/ivBackServDetailPen1"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_vector__40_" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/mulish_extrabold"
+                android:text="Service Details"
+                android:textColor="@color/black_b"
+                android:textFontWeight="800"
+                android:textSize="@dimen/_18sdp" />
+
+
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/line1"
+            android:layout_marginTop="@dimen/_10sdp"/>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:fillViewport="true">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_23sdp"
-                android:background="@drawable/linear_top_radius"
-                android:paddingBottom="@dimen/_20sdp"
-                android:elevation="@dimen/_4sdp"
-                android:layout_marginHorizontal="@dimen/_16sdp">
+                android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/cvPaynow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/_23sdp"
+                    android:background="@drawable/linear_top_radius"
+                    android:paddingBottom="@dimen/_20sdp"
+                    android:elevation="@dimen/_4sdp"
                     android:layout_marginHorizontal="@dimen/_16sdp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/_15sdp"
-                                android:fontFamily="@font/mulish_semibold"
-                                android:textFontWeight="600"
-                                android:textColor="@color/black_b"
-                                android:text="Services -"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/_13sdp"
-                                android:fontFamily="@font/mulish_light"
-                                android:textFontWeight="600"
-                                android:textColor="@color/black_b"
-                                android:text="#CUEP8383832"/>
-
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:fontFamily="@font/mulish_semibold"
-                            android:text="Accepted"
-                            android:textColor="@color/acceptclr"
-                            android:textFontWeight="600"
-                            android:textSize="@dimen/_12sdp" />
-
-
-                    </RelativeLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -117,77 +75,140 @@
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/_10sdp">
+                            android:orientation="vertical"
+                            android:layout_marginHorizontal="@dimen/_9sdp">
 
-                            <ImageView
-                                android:layout_width="@dimen/_6sdp"
-                                android:layout_height="@dimen/_6sdp"
-                                android:src="@drawable/ic_ellipse_45"
-                                android:layout_gravity="center_vertical"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <RelativeLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/_15sdp"
-                                android:fontFamily="@font/mulish_light"
-                                android:textFontWeight="300"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/_6sdp"
-                                android:textColor="@color/txt_clr"
-                                android:text="Screen  Replacment"/>
+                                android:layout_marginTop="@dimen/_10sdp">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:fontFamily="@font/mulish_semibold"
+                                        android:textFontWeight="600"
+                                        android:textColor="@color/black_b"
+                                        android:text="Services -"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/_13sdp"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:textFontWeight="600"
+                                        android:textColor="@color/black_b"
+                                        android:text="#CUEP8383832"/>
 
 
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/_10sdp">
+                                </LinearLayout>
 
-                            <ImageView
-                                android:layout_width="@dimen/_6sdp"
-                                android:layout_height="@dimen/_6sdp"
-                                android:src="@drawable/ic_ellipse_45"
-                                android:layout_gravity="center_vertical"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:text="Completed"
+                                    android:textColor="@color/compltclr"
+                                    android:textFontWeight="600"
+                                    android:textSize="@dimen/_12sdp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
+
+                            </RelativeLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/_15sdp"
-                                android:fontFamily="@font/mulish_light"
-                                android:textFontWeight="300"
-                                android:layout_marginStart="@dimen/_6sdp"
-                                android:textColor="@color/txt_clr"
-                                android:text="Battery"
-                                android:layout_gravity="center_vertical"/>
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_6sdp"
+                                        android:layout_height="@dimen/_6sdp"
+                                        android:src="@drawable/ic_ellipse_45"
+                                        android:layout_gravity="center_vertical"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:textFontWeight="300"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_6sdp"
+                                        android:textColor="@color/txt_clr"
+                                        android:text="Screen  Replacment"/>
 
 
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/_10sdp">
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/_10sdp">
 
-                            <ImageView
-                                android:layout_width="@dimen/_6sdp"
-                                android:layout_height="@dimen/_6sdp"
-                                android:src="@drawable/ic_ellipse_45"
-                                android:layout_gravity="center_vertical"/>
+                                    <ImageView
+                                        android:layout_width="@dimen/_6sdp"
+                                        android:layout_height="@dimen/_6sdp"
+                                        android:src="@drawable/ic_ellipse_45"
+                                        android:layout_gravity="center_vertical"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/_15sdp"
-                                android:fontFamily="@font/mulish_light"
-                                android:textFontWeight="300"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="@dimen/_6sdp"
-                                android:textColor="@color/txt_clr"
-                                android:text="Aux Socket"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:textFontWeight="300"
+                                        android:layout_marginStart="@dimen/_6sdp"
+                                        android:textColor="@color/txt_clr"
+                                        android:text="Battery"
+                                        android:layout_gravity="center_vertical"/>
+
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_6sdp"
+                                        android:layout_height="@dimen/_6sdp"
+                                        android:src="@drawable/ic_ellipse_45"
+                                        android:layout_gravity="center_vertical"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:textFontWeight="300"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_6sdp"
+                                        android:textColor="@color/txt_clr"
+                                        android:text="Aux Socket"/>
+
+
+                                </LinearLayout>
+
+
+
+                            </LinearLayout>
+
 
 
                         </LinearLayout>
@@ -200,72 +221,79 @@
 
 
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_15sdp"
-                            android:fontFamily="@font/mulish_semibold"
-                            android:textFontWeight="600"
-                            android:layout_marginTop="@dimen/_14sdp"
-                            android:textColor="@color/txt_clr"
-                            android:text="Description"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_10sdp"
-                            android:fontFamily="@font/mulish_light"
-                            android:textFontWeight="200"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:textColor="@color/item_unsclr"
-                            android:text="The Mobile Store currently is covering and has more than 700+ outlets in different major cities"/>
-
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginTop="@dimen/_6sdp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_15sdp"
-                            android:fontFamily="@font/mulish_semibold"
-                            android:textFontWeight="600"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:textColor="@color/txt_clr"
-                            android:text="Images"/>
-
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/_10sdp">
+                            android:orientation="vertical"
+                            android:layout_marginHorizontal="@dimen/_9sdp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_15sdp"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:textFontWeight="600"
+                                android:layout_marginTop="@dimen/_14sdp"
+                                android:textColor="@color/txt_clr"
+                                android:text="Description"/>
 
-                            <ImageView
-                                android:layout_width="@dimen/_60sdp"
-                                android:layout_height="@dimen/_60sdp"
-                                android:src="@drawable/pic1"/>
-
-                            <ImageView
-                                android:layout_width="@dimen/_60sdp"
-                                android:layout_height="@dimen/_60sdp"
-                                android:src="@drawable/pic2"
-                                android:layout_marginStart="@dimen/_11sdp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_10sdp"
+                                android:fontFamily="@font/mulish_light"
+                                android:textFontWeight="200"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:textColor="@color/item_unsclr"
+                                android:text="The Mobile Store currently is covering and has more than 700+ outlets in different major cities"/>
 
 
 
                         </LinearLayout>
+
+
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginHorizontal="@dimen/_9sdp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_15sdp"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:textFontWeight="600"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:textColor="@color/txt_clr"
+                                android:text="Images"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/_10sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_60sdp"
+                                    android:layout_height="@dimen/_60sdp"
+                                    android:src="@drawable/pic1"/>
+
+                                <ImageView
+                                    android:layout_width="@dimen/_60sdp"
+                                    android:layout_height="@dimen/_60sdp"
+                                    android:src="@drawable/pic2"
+                                    android:layout_marginStart="@dimen/_11sdp"/>
+
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_2sdp"
@@ -280,43 +308,173 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:layout_marginTop="@dimen/_11sdp">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mulish_semibold"
-                                android:text="Price Summary"
-                                android:textSize="@dimen/_15sdp"
-                                android:textColor="@color/txt_clr"
-                                android:textFontWeight="600"/>
 
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:layout_marginTop="@dimen/_10sdp">
 
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginHorizontal="@dimen/_9sdp">
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/mulish_semibold"
+                                        android:text="Price Summary"
+                                        android:textColor="@color/txt_clr"
+                                        android:textFontWeight="600"
+                                        android:textSize="@dimen/_15sdp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:fontFamily="@font/mulish_semibold"
+                                        android:text="Unpaid"
+                                        android:layout_marginEnd="@dimen/_16sdp"
+                                        android:textColor="@color/unPaid"
+                                        android:textFontWeight="600"
+                                        android:textSize="@dimen/_12sdp" />
+                                </RelativeLayout>
+
+
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:text="Total Amount"
+                                        android:textColor="@color/txt_clr"
+                                        android:textFontWeight="300"
+                                        android:textSize="@dimen/_15sdp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:fontFamily="@font/mulish_bold"
+                                        android:text="RM40.00"
+                                        android:textColor="@color/txt_clr"
+                                        android:textFontWeight="700"
+                                        android:textSize="@dimen/_15sdp" />
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:text="Additional Amount"
+                                        android:textColor="@color/txt_clr"
+                                        android:textFontWeight="300"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:textStyle="normal" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:fontFamily="@font/mulish_bold"
+                                        android:text="RM10.00"
+                                        android:textColor="@color/txt_clr"
+                                        android:textFontWeight="700"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:textStyle="normal" />
+                                </RelativeLayout>
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:text="Grand Total"
+                                        android:textColor="@color/txt_clr"
+                                        android:textFontWeight="300"
+                                        android:textSize="@dimen/_15sdp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:fontFamily="@font/mulish_bold"
+                                        android:text="RM50.00"
+                                        android:textColor="@color/txt_clr"
+                                        android:textFontWeight="700"
+                                        android:textSize="@dimen/_15sdp" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_2sdp"
+                                android:background="@drawable/doted_line"
+                                android:layout_marginTop="@dimen/_14sdp"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginHorizontal="@dimen/_9sdp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:textFontWeight="600"
+                                    android:layout_marginTop="@dimen/_14sdp"
+                                    android:textColor="@color/txt_clr"
+                                    android:text="Remark"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_10sdp"
                                     android:fontFamily="@font/mulish_light"
-                                    android:text="Total Amount"
-                                    android:textColor="@color/txt_clr"
-                                    android:textFontWeight="300"
-                                    android:textSize="@dimen/_15sdp" />
+                                    android:textFontWeight="200"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:textColor="@color/item_unsclr"
+                                    android:text="primary allocation: is indicated by writing in capital letters
+secondary allocation: is indicated by small letters (see example below)
+exclusive or shared utilization: is within the responsibility of administrations"/>
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_centerVertical="true"
-                                    android:fontFamily="@font/mulish_bold"
-                                    android:text="RM40.00"
-                                    android:textColor="@color/txt_clr"
-                                    android:textFontWeight="700"
-                                    android:textSize="@dimen/_15sdp" />
-                            </RelativeLayout>
+                            </LinearLayout>
+
+
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_2sdp"
@@ -324,10 +482,13 @@
                                 android:layout_marginTop="@dimen/_14sdp"/>
 
 
+
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:layout_marginHorizontal="@dimen/_9sdp">
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -386,9 +547,639 @@
                                 </LinearLayout>
 
 
+
+
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_19sdp"
+                                android:background="@drawable/doted_line"/>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginTop="@dimen/_15sdp"
+                                android:layout_marginHorizontal="@dimen/_9sdp"
+                                android:layout_marginBottom="@dimen/_16sdp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:textFontWeight="600"
+                                    android:textColor="@color/txt_clr"
+                                    android:textStyle="normal"
+                                    android:text="Service provider Details"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:textFontWeight="300"
+                                    android:textColor="@color/black"
+                                    android:textStyle="normal"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:text="The Apple Store"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:textFontWeight="300"
+                                    android:textColor="@color/black"
+                                    android:textStyle="normal"
+                                    android:text="+64 - 98345783457"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:textFontWeight="300"
+                                    android:textColor="@color/black"
+                                    android:textStyle="normal"
+                                    android:text="New Door No. A4-72 Ground Floor c21 Mall,
+Los Angeles, California"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_2sdp"
+                                android:background="@drawable/doted_line"/>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_horizontal"
+                                android:layout_marginBottom="@dimen/_16sdp"
+                                android:layout_marginTop="@dimen/_15sdp">
+
+                                <RelativeLayout
+                                    android:id="@+id/rlchatPayNow"
+                                    android:layout_width="@dimen/_61sdp"
+                                    android:layout_height="@dimen/_54sdp"
+                                    android:background="@drawable/btn_backg">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_24sdp"
+                                        android:layout_height="@dimen/_24sdp"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/ic_vector__62_" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:id="@+id/rlCallPaynow"
+                                    android:layout_width="@dimen/_61sdp"
+                                    android:layout_height="@dimen/_54sdp"
+                                    android:layout_marginLeft="@dimen/_54sdp"
+                                    android:background="@drawable/btn_backg">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_24sdp"
+                                        android:layout_height="@dimen/_24sdp"
+                                        android:src="@drawable/ic_vector__63_"
+                                        android:layout_centerInParent="true"/>
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <Button
+                                android:id="@+id/btnPayNow"
+                                android:layout_width="@dimen/_200sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:background="@drawable/btn_backg"
+                                android:text="Pay Now"
+                                android:fontFamily="@font/mulish_bold"
+                                android:textFontWeight="700"
+                                android:textSize="@dimen/_15sdp"
+                                android:layout_gravity="center_horizontal"
+                                android:textAllCaps="false"
+                                android:layout_marginBottom="@dimen/_12sdp" />
+
+
+
+
+
+
+
+
+                        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/llPaid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_28sdp"
+            android:layout_marginHorizontal="@dimen/_15sdp">
+
+            <ImageView
+                android:id="@+id/ivBackAccept"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_vector__40_" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/mulish_extrabold"
+                android:text="Service Details"
+                android:textColor="@color/black_b"
+                android:textFontWeight="800"
+                android:textSize="@dimen/_18sdp" />
+
+
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/line1"
+            android:layout_marginTop="@dimen/_10sdp"/>
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/cvRateService"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_23sdp"
+                    android:background="@drawable/linear_top_radius"
+                    android:paddingBottom="@dimen/_20sdp"
+                    android:elevation="@dimen/_2sdp"
+                    android:layout_marginHorizontal="@dimen/_15sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginHorizontal="@dimen/_9sdp">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp">
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:fontFamily="@font/mulish_semibold"
+                                        android:textFontWeight="600"
+                                        android:textColor="@color/black_b"
+                                        android:text="Services -"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/_13sdp"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:textFontWeight="600"
+                                        android:textColor="@color/black_b"
+                                        android:text="#CUEP8383832"/>
+
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:text="Accepted"
+                                    android:textColor="#2797C2"
+                                    android:textFontWeight="600"
+                                    android:textSize="@dimen/_12sdp" />
+
+
+                            </RelativeLayout>
+
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_6sdp"
+                                        android:layout_height="@dimen/_6sdp"
+                                        android:src="@drawable/ic_ellipse_45"
+                                        android:layout_gravity="center_vertical"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:textFontWeight="300"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_6sdp"
+                                        android:textColor="@color/txt_clr"
+                                        android:text="Screen  Replacment"/>
+
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_6sdp"
+                                        android:layout_height="@dimen/_6sdp"
+                                        android:src="@drawable/ic_ellipse_45"
+                                        android:layout_gravity="center_vertical"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:textFontWeight="300"
+                                        android:layout_marginStart="@dimen/_6sdp"
+                                        android:textColor="@color/txt_clr"
+                                        android:text="Battery"
+                                        android:layout_gravity="center_vertical"/>
+
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_6sdp"
+                                        android:layout_height="@dimen/_6sdp"
+                                        android:src="@drawable/ic_ellipse_45"
+                                        android:layout_gravity="center_vertical"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:textFontWeight="300"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_6sdp"
+                                        android:textColor="@color/txt_clr"
+                                        android:text="Aux Socket"/>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_2sdp"
+                            android:layout_marginTop="@dimen/_11sdp"
+                            android:background="@drawable/doted_line"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginHorizontal="@dimen/_9sdp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_15sdp"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:textFontWeight="600"
+                                android:layout_marginTop="@dimen/_14sdp"
+                                android:textColor="@color/txt_clr"
+                                android:text="Description"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_10sdp"
+                                android:fontFamily="@font/mulish_light"
+                                android:textFontWeight="200"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:textColor="@color/item_unsclr"
+                                android:text="primary allocation: is indicated by writing in capital letters
+secondary allocation: is indicated by small letters (see example below)
+exclusive or shared utilization: is within the responsibility of administrations"/>
+
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="@dimen/_6sdp"
+                            android:layout_marginHorizontal="@dimen/_9sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_15sdp"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:textFontWeight="600"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:textColor="@color/txt_clr"
+                                android:text="Images"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/_10sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_60sdp"
+                                    android:layout_height="@dimen/_60sdp"
+                                    android:src="@drawable/pic1"/>
+
+                                <ImageView
+                                    android:layout_width="@dimen/_60sdp"
+                                    android:layout_height="@dimen/_60sdp"
+                                    android:src="@drawable/pic2"
+                                    android:layout_marginStart="@dimen/_11sdp"/>
+
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_2sdp"
+                            android:layout_marginTop="@dimen/_11sdp"
+                            android:background="@drawable/doted_line"/>
+
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="@dimen/_11sdp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginLeft="@dimen/_9sdp">
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/mulish_semibold"
+                                        android:text="Price Summary"
+                                        android:textColor="@color/txt_clr"
+                                        android:textFontWeight="600"
+                                        android:textSize="@dimen/_15sdp" />
+
+                                </RelativeLayout>
+
+
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginHorizontal="@dimen/_8sdp"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:text="Total Amount"
+                                        android:textColor="@color/txt_clr"
+                                        android:textFontWeight="300"
+                                        android:textSize="@dimen/_15sdp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:fontFamily="@font/mulish_bold"
+                                        android:text="RM40.00"
+                                        android:textColor="@color/txt_clr"
+                                        android:textFontWeight="700"
+                                        android:textSize="@dimen/_15sdp" />
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_2sdp"
+                                android:background="@drawable/doted_line"
+                                android:layout_marginTop="@dimen/_14sdp"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginLeft="@dimen/_9sdp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:textFontWeight="600"
+                                    android:layout_marginTop="@dimen/_14sdp"
+                                    android:textColor="@color/txt_clr"
+                                    android:text="Remark"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_10sdp"
+                                    android:fontFamily="@font/mulish_light"
+                                    android:textFontWeight="200"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:textColor="@color/item_unsclr"
+                                    android:text="primary allocation: is indicated by writing in capital letters
+secondary allocation: is indicated by small letters (see example below)
+exclusive or shared utilization: is within the responsibility of administrations"/>
+
+                            </LinearLayout>
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_2sdp"
+                                android:background="@drawable/doted_line"
+                                android:layout_marginTop="@dimen/_14sdp"/>
+
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:textFontWeight="600"
+                                    android:textColor="@color/txt_clr"
+                                    android:text="Address"
+                                    android:layout_marginLeft="@dimen/_9sdp"
+                                    android:layout_marginTop="@dimen/_19sdp"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginLeft="@dimen/_9sdp"
+                                    android:layout_marginTop="@dimen/_13sdp">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_14sdp"
+                                        android:layout_height="@dimen/_14sdp"
+                                        android:src="@drawable/ic_group_866"
+                                        android:layout_marginTop="@dimen/_8sdp"/>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_marginTop="@dimen/_4sdp"
+                                        android:layout_marginStart="@dimen/_11sdp">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/_16sdp"
+                                            android:fontFamily="@font/mulish_regular"
+                                            android:textFontWeight="400"
+                                            android:textColor="@color/black_b"
+                                            android:text="Other"/>
+
+
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="@dimen/_10sdp"
+                                            android:fontFamily="@font/mulish_light"
+                                            android:textFontWeight="300"
+                                            android:layout_marginTop="@dimen/_10sdp"
+                                            android:textColor="@color/item_unsclr"
+                                            android:text="New Door No. A4-72 Ground Floor c21 Mall,\nLosngeles, California"/>
+
+
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
                                     android:layout_marginTop="@dimen/_19sdp"
                                     android:background="@drawable/doted_line"/>
 
@@ -397,6 +1188,7 @@
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
                                     android:layout_marginTop="@dimen/_15sdp"
+                                    android:layout_marginLeft="@dimen/_9sdp"
                                     android:layout_marginBottom="@dimen/_16sdp">
 
                                     <TextView
@@ -447,41 +1239,42 @@ Los Angeles, California"/>
                                     android:background="@drawable/doted_line"/>
 
 
-                             <LinearLayout
-                                 android:layout_width="match_parent"
-                                 android:layout_height="wrap_content"
-                                 android:orientation="horizontal"
-                                 android:gravity="center_horizontal"
-                                 android:layout_marginBottom="@dimen/_16sdp"
-                                 android:layout_marginTop="@dimen/_15sdp">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_horizontal"
+                                    android:layout_marginBottom="@dimen/_16sdp"
+                                    android:layout_marginTop="@dimen/_15sdp">
 
-                                 <RelativeLayout
-                                     android:id="@+id/rlchat"
-                                     android:layout_width="@dimen/_61sdp"
-                                     android:layout_height="@dimen/_54sdp"
-                                     android:background="@drawable/btn_backg">
+                                    <RelativeLayout
+                                        android:id="@+id/rlchatRateService"
+                                        android:layout_width="@dimen/_36sdp"
+                                        android:layout_height="@dimen/_36sdp"
+                                        android:background="@drawable/btn_backg">
 
-                                     <ImageView
-                                         android:layout_width="@dimen/_24sdp"
-                                         android:layout_height="@dimen/_24sdp"
-                                         android:layout_centerInParent="true"
-                                         android:src="@drawable/ic_vector__62_" />
-                                 </RelativeLayout>
+                                        <ImageView
+                                            android:layout_width="@dimen/_18sdp"
+                                            android:layout_height="@dimen/_18sdp"
+                                            android:layout_centerInParent="true"
+                                            android:src="@drawable/ic_vector__62_" />
+                                    </RelativeLayout>
 
-                                 <RelativeLayout
-                                     android:id="@+id/rlCall"
-                                     android:layout_width="@dimen/_61sdp"
-                                     android:layout_height="@dimen/_54sdp"
-                                     android:layout_marginLeft="@dimen/_54sdp"
-                                     android:background="@drawable/btn_backg">
+                                    <RelativeLayout
+                                        android:id="@+id/rlCallRateService"
+                                        android:layout_width="@dimen/_36sdp"
+                                        android:layout_height="@dimen/_36sdp"
+                                        android:layout_marginLeft="@dimen/_54sdp"
+                                        android:background="@drawable/btn_backg">
 
-                                     <ImageView
-                                         android:layout_width="@dimen/_24sdp"
-                                         android:layout_height="@dimen/_24sdp"
-                                         android:src="@drawable/ic_vector__63_"
-                                         android:layout_centerInParent="true"/>
-                                 </RelativeLayout>
-                             </LinearLayout>
+                                        <ImageView
+                                            android:layout_width="@dimen/_18sdp"
+                                            android:layout_height="@dimen/_18sdp"
+                                            android:layout_centerInParent="true"
+                                            android:src="@drawable/ic_vector__63_" />
+                                    </RelativeLayout>
+                                </LinearLayout>
+
 
 
                             </LinearLayout>
@@ -498,21 +1291,25 @@ Los Angeles, California"/>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -520,15 +1317,13 @@ Los Angeles, California"/>
 
                 </LinearLayout>
 
-
-
-
-
             </LinearLayout>
 
-        </LinearLayout>
+        </ScrollView>
 
-    </ScrollView>
 
+
+
+    </LinearLayout>
 
 </LinearLayout>

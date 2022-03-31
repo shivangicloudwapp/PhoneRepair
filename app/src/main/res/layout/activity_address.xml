@@ -139,7 +139,7 @@ Losngeles, California"/>
                     android:layout_marginTop="@dimen/_10sdp">
                     <Button
                         android:layout_width="@dimen/_62sdp"
-                        android:layout_height="@dimen/_16sdp"
+                        android:layout_height="@dimen/_18sdp"
                         android:background="@drawable/edit_btn_bac"
                         android:text="Edit"
                         android:textSize="@dimen/_8sdp"
@@ -150,7 +150,7 @@ Losngeles, California"/>
 
                     <Button
                         android:layout_width="@dimen/_62sdp"
-                        android:layout_height="@dimen/_16sdp"
+                        android:layout_height="@dimen/_18sdp"
                         android:background="@drawable/delete_btn_bac"
                         android:text="Delete"
                         android:textSize="@dimen/_8sdp"

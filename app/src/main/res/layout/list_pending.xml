@@ -14,7 +14,7 @@
         android:layout_height="@dimen/_74sdp"
         android:layout_margin="5dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="1dp">
+        app:cardElevation=".5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -69,11 +69,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_18sdp"
                 android:fontFamily="@font/mulish_semibold"
                 android:text="Pending"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:textColor="@color/pendingclr"
                 android:textFontWeight="600"
                 android:textSize="@dimen/_12sdp" />

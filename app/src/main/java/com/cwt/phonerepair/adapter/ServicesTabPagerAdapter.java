@@ -42,7 +42,6 @@ public class ServicesTabPagerAdapter extends FragmentPagerAdapter {
                 return new RejectedFragment();
             case 2:
                 return new AcceptedFragment();
-
             case 3:
                 return new CompletedFragment();
             default:

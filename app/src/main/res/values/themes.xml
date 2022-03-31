@@ -44,6 +44,8 @@
         <item name="boxStrokeWidth">1dp</item>
     </style>
 
-
+    <style name="MyRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="colorAccent">#E3FF80</item>
+    </style>
 
 </resources>

@@ -40,7 +40,7 @@
                     android:text="Create Your Account"
                     android:textColor="@color/black_b"
                     android:textFontWeight="800"
-                    android:textSize="@dimen/_18sdp" />
+                    android:textSize="18dp" />
 
 
             </RelativeLayout>
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_12sdp"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="12dp"
                 android:layout_marginVertical="@dimen/_10sdp"
                 android:textColor="@color/black_a"
                 android:fontFamily="@font/mulish_semibold"
@@ -81,7 +81,7 @@
                     android:maxLines="1"
                     android:textFontWeight="400"
                     android:textColorHint="@color/black_a"
-                    android:textSize="@dimen/_16sdp" />
+                    android:textSize="16dp" />
                 <EditText
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
@@ -96,41 +96,108 @@
                     android:maxLines="1"
                     android:textFontWeight="400"
                     android:textColorHint="@color/black_a"
-                    android:textSize="@dimen/_16sdp" />
-                <EditText
-                    android:id="@+id/etPassword"
+                    android:textSize="16dp" />
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_14sdp"
-                    android:backgroundTint="@color/gray_a"
-                    android:drawableRight="@drawable/ic_group_7"
-                    android:fontFamily="@font/mulish_regular"
-                    android:hint="Password"
-                    android:imeOptions="actionNext"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:inputType="textPassword"
-                    android:maxLength="6"
-                    android:textFontWeight="400"
-                    android:maxLines="1"
-                    android:textColorHint="@color/black_a"
-                    android:textSize="@dimen/_14sdp" />
-                <EditText
-                    android:id="@+id/etConfPass"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="@dimen/_22sdp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <EditText
+                            android:id="@+id/etPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/gray_a"
+                            android:fontFamily="@font/mulish_regular"
+                            android:hint="@string/password"
+                            android:inputType="textEmailAddress"
+                            android:background="@null"
+                            android:textFontWeight="400"
+                            android:layout_weight="1"
+                            android:maxLength="6"
+                            android:imeOptions="actionNext"
+                            android:paddingBottom="@dimen/_12sdp"
+                            android:textColorHint="@color/black_a"
+                            android:textSize="16dp"
+                            />
+
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/ivShowHidePass1"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_a"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_14sdp"
-                    android:backgroundTint="@color/gray_a"
-                    android:drawableRight="@drawable/ic_group_7"
-                    android:fontFamily="@font/mulish_regular"
-                    android:hint="Confirm Password"
-                    android:inputType="textPassword"
-                    android:maxLength="6"
-                    android:textFontWeight="400"
-                    android:imeOptions="actionDone"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:maxLines="1"
-                    android:textColorHint="@color/black_a"
-                    android:textSize="@dimen/_16sdp" />
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="@dimen/_22sdp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <EditText
+                            android:id="@+id/etConPass"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/gray_a"
+                            android:fontFamily="@font/mulish_regular"
+                            android:hint="Confirm Password"
+                            android:inputType="textEmailAddress"
+                            android:background="@null"
+                            android:textFontWeight="400"
+                            android:layout_weight="1"
+                            android:maxLength="6"
+                            android:imeOptions="actionNext"
+                            android:paddingBottom="@dimen/_12sdp"
+                            android:textColorHint="@color/black_a"
+                            android:textSize="16dp"
+                            />
+
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/ivShowHidePass2"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_a"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
 
 
             </LinearLayout>
@@ -149,11 +216,11 @@
             android:layout_alignParentBottom="true">
             <Button
                 android:id="@+id/btnSignUp"
-                android:layout_width="@dimen/_230sdp"
-                android:layout_height="@dimen/_54sdp"
+                android:layout_width="230dp"
+                android:layout_height="54dp"
                 android:background="@drawable/btn_backg"
                 android:layout_gravity="center_horizontal"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="15dp"
                 android:textColor="@color/black_c"
                 android:text="SignUp"
                 android:textAllCaps="false"
@@ -174,7 +241,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Don't have an Account ?"
-                    android:textSize="@dimen/_14sdp"
+                    android:textSize="18dp"
                     android:textStyle="normal"
                     android:layout_gravity="end"
                     android:textColor="@color/gray_b"
@@ -186,7 +253,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Login"
-                    android:textSize="@dimen/_14sdp"
+                    android:textSize="18dp"
                     android:textStyle="normal"
                     android:layout_gravity="end"
                     android:textColor="@color/black"

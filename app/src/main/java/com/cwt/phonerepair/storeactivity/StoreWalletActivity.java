@@ -7,8 +7,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.adapter.ServicesTabPagerAdapter;
-import com.cwt.phonerepair.adapter.WalletTabPgerAdapter;
+import com.cwt.phonerepair.storeadapter.WalletTabPgerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class StoreWalletActivity extends AppCompatActivity {

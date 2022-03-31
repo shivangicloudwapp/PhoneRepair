@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".storeactivity.StoreServiceOrderActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginHorizontal="@dimen/_15sdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/mulish_extrabold"
+            android:text="Service Orders"
+            android:textColor="@color/black_b"
+            android:textFontWeight="800"
+            android:textSize="@dimen/_18sdp" />
+
+
+
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line1"
+        android:layout_marginTop="@dimen/_10sdp"/>
+
+
+
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tlServiceOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="@color/black_b"
+        app:tabIndicatorHeight="@dimen/_2sdp"
+        app:tabMode="fixed"
+        app:tabTextColor="@color/black_b"
+        android:textAlignment="center"
+        app:tabTextAppearance="@style/MyCustomTextAppearance" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@drawable/line1"
+        android:layout_marginHorizontal="@dimen/_14sdp"/>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpServiceOrder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+
+</LinearLayout>

@@ -34,7 +34,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
         if (v==ivBackCart){
           onBackPressed();
         }
-        if (v==btnOrderNow){
+        else if (v==btnOrderNow){
             Intent intent =new Intent(CartActivity.this, OrderPlacedSuccessActivity.class);
             startActivity(intent);
         }

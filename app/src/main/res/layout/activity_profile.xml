@@ -42,21 +42,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <EditText
-            android:id="@+id/etPhone"
+
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_20sdp"
-            android:hint="+61 878 7764 2922"
-            android:textColorHint="@color/black_a"
-            android:background="@null"
-            android:textSize="@dimen/_16sdp"
-            android:fontFamily="@font/mulish_regular"
-            android:textFontWeight="400"
-            android:singleLine="true"
-            android:inputType="number"
-            android:maxLength="10"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_26sdp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/etPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:fontFamily="@font/mulish_regular"
+                android:text="+61 878 7764 2922"
+                android:textColor="@color/black_a"
+                android:textFontWeight="400"
+                android:textSize="@dimen/_16sdp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/mulish_extrabold"
+                android:text="Change"
+                android:textColor="#C6FF00"
+                android:textFontWeight="700"
+                android:textSize="@dimen/_16sdp" />
+
+
+        </RelativeLayout>
 
         <ImageView
             android:layout_width="match_parent"
@@ -65,19 +83,16 @@
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_14sdp"/>
 
-        <EditText
+        <TextView
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_20sdp"
-            android:hint="Jhon Deo"
-            android:textColorHint="@color/black_a"
+            android:text="Jhon Deo"
+            android:textColor="@color/black_a"
             android:background="@null"
             android:textSize="@dimen/_16sdp"
             android:fontFamily="@font/mulish_regular"
             android:textFontWeight="400"
-            android:singleLine="true"
-            android:inputType="text"
-            android:maxLength="16"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_26sdp" />
 
@@ -87,19 +102,16 @@
             android:src="@drawable/line1"
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_14sdp"/>
-        <EditText
+        <TextView
             android:id="@+id/etMail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_20sdp"
-            android:hint="JhonDeo212@gmail.com"
-            android:textColorHint="@color/black_a"
+            android:text="JhonDeo212@gmail.com"
+            android:textColor="@color/black_a"
             android:background="@null"
             android:textSize="@dimen/_16sdp"
             android:fontFamily="@font/mulish_regular"
             android:textFontWeight="400"
-            android:singleLine="true"
-            android:inputType="textEmailAddress"
-            android:maxLength="16"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_26sdp" />
 

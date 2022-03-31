@@ -26,12 +26,18 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/mulish_extrabold"
-            android:text="All Products"
+            android:text="All Product"
             android:textColor="@color/black_b"
             android:textFontWeight="800"
             android:textSize="@dimen/_18sdp" />
 
-
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_group__22_" />
 
     </RelativeLayout>
 
@@ -46,7 +52,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAllPro"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_15sdp" />
 
 </LinearLayout>

@@ -20,6 +20,9 @@
     <string name="iphone_13_pro_max_n_x1"><font color='#3D3E3E' fontFamily='mulish_bold' textSize="@dimen/_10sdp" weight='700'>Iphone 13 pro max</font> <font color='#3D3E3E' fontFamily='mulish_light' textSize="@dimen/_10sdp" weight='300'>\n X1</font></string>
     <string name="apple_watch_series_5_nx1"><font color='#3D3E3E' fontFamily='mulish_bold' textSize="@dimen/_10sdp" weight='700'>Apple Watch Series 5</font><font color='#3D3E3E' fontFamily='mulish_light' textSize="@dimen/_10sdp" weight='300'>\nX1</font></string>
     <string name="apple_earpod_n_x1"><font color='#3D3E3E' fontFamily='mulish_bold' textSize="@dimen/_10sdp" weight='700'>Apple Earpod </font><font color='#3D3E3E' fontFamily='mulish_light' textSize="@dimen/_10sdp" weight='300'>\n X1</font></string>
+    <string name="title_activity_product_order">ProductOrderActivity</string>
+    <string name="delete"><font color='#D80000' fontFamily='mulish_semibold' textSize="@dimen/_15sdp" weight='600'>Delete</font></string>
+    <string name="edit"><font color='#239BC6' fontFamily='mulish_semibold' textSize="@dimen/_15sdp" weight='600'>Edit</font></string>
 
 
 </resources>

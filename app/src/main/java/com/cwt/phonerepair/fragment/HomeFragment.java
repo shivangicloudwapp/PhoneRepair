@@ -43,16 +43,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View view= inflater.inflate(R.layout.fragment_home, container, false);
 
         initView(view);
-        modelArrayList=new ArrayList<>() ;
-        modelArrayList.add(new OurExclusiveStoreModel("The Apple Store","New Door No. A4-72 Ground Floor c21 Mall",R.drawable.img_2));
-        modelArrayList.add(new OurExclusiveStoreModel("Dong Mobile Store","New Door No. A4-72 First Floor c21 Mall",R.drawable.img_2));
-        modelArrayList.add(new OurExclusiveStoreModel("The Apple Store","New Door No. A4-72 Ground Floor c21 Mall",R.drawable.img_2));
-        modelArrayList.add(new OurExclusiveStoreModel("Dong Mobile Store","New Door No. A4-72 First Floor c21 Mall",R.drawable.img_2));
 
-        OurExclusiveStoreAdapter exclusiveStoreAdapter=new OurExclusiveStoreAdapter(modelArrayList,getContext());
-        rvourExcluStore.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        rvourExcluStore.setAdapter(exclusiveStoreAdapter);
-        rvourExcluStore.setHasFixedSize(true);
         return view;
 
     }
@@ -67,6 +58,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         tvSeeAll.setOnClickListener(this);
         btnBookNow.setOnClickListener(this);
+
+
+        modelArrayList=new ArrayList<>() ;
+        modelArrayList.add(new OurExclusiveStoreModel("The Apple Store","New Door No. A4-72 Ground Floor c21 Mall",R.drawable.img_2));
+        modelArrayList.add(new OurExclusiveStoreModel("Dong Mobile Store","New Door No. A4-72 First Floor c21 Mall",R.drawable.img_2));
+        modelArrayList.add(new OurExclusiveStoreModel("The Apple Store","New Door No. A4-72 Ground Floor c21 Mall",R.drawable.img_2));
+        modelArrayList.add(new OurExclusiveStoreModel("Dong Mobile Store","New Door No. A4-72 First Floor c21 Mall",R.drawable.img_2));
+
+        OurExclusiveStoreAdapter exclusiveStoreAdapter=new OurExclusiveStoreAdapter(modelArrayList,getContext());
+        rvourExcluStore.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        rvourExcluStore.setAdapter(exclusiveStoreAdapter);
+        rvourExcluStore.setHasFixedSize(true);
     }
 
     @Override

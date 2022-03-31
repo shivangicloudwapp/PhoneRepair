@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".storeactivity.StoreProductOrderDetails">
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginHorizontal="@dimen/_15sdp">
+
+        <ImageView
+            android:id="@+id/ivBackOrder"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_vector__40_" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/mulish_extrabold"
+            android:text="Order Details"
+            android:textColor="@color/black_b"
+            android:textFontWeight="800"
+            android:textSize="@dimen/_18sdp" />
+
+
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line1"
+        android:layout_marginTop="@dimen/_10sdp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_23sdp"
+                android:background="@drawable/linear_top_radius"
+                android:layout_marginHorizontal="@dimen/_16sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginHorizontal="@dimen/_9sdp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:textFontWeight="600"
+                                    android:textColor="@color/black_b"
+                                    android:text="Order No -"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_13sdp"
+                                    android:fontFamily="@font/mulish_light"
+                                    android:textFontWeight="600"
+                                    android:textColor="@color/black_b"
+                                    android:text="#CUEP8383832"/>
+
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:text="Order"
+                                android:layout_marginEnd="@dimen/_12sdp"
+                                android:textColor="@color/txt_orange"
+                                android:textFontWeight="600"
+                                android:textSize="@dimen/_12sdp" />
+
+
+                        </RelativeLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_6sdp"
+                                        android:layout_height="@dimen/_6sdp"
+                                        android:src="@drawable/ic_ellipse_45"
+                                        android:layout_gravity="center_vertical"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:textFontWeight="300"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_6sdp"
+                                        android:textColor="@color/txt_clr"
+                                        android:text="@string/iphone_13_pro_max_n_x1"/>
+
+
+                                </LinearLayout>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:textFontWeight="700"
+                                    android:layout_marginStart="@dimen/_6sdp"
+                                    android:textColor="@color/txt_clr"
+                                    android:text="RM499"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_gravity="center_vertical"/>
+
+                            </RelativeLayout>
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_6sdp"
+                                        android:layout_height="@dimen/_6sdp"
+                                        android:src="@drawable/ic_ellipse_45"
+                                        android:layout_gravity="center_vertical"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:textFontWeight="300"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_6sdp"
+                                        android:textColor="@color/txt_clr"
+                                        android:text="@string/apple_earpod_n_x1"/>
+
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/_6sdp"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:text="RM400"
+                                    android:textColor="@color/txt_clr"
+                                    android:textFontWeight="700"
+                                    android:textSize="@dimen/_15sdp" />
+
+                            </RelativeLayout>
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginTop="@dimen/_10sdp">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_6sdp"
+                                        android:layout_height="@dimen/_6sdp"
+                                        android:src="@drawable/ic_ellipse_45"
+                                        android:layout_gravity="center_vertical"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:fontFamily="@font/mulish_light"
+                                        android:textFontWeight="300"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_6sdp"
+                                        android:textColor="@color/txt_clr"
+                                        android:text="@string/apple_watch_series_5_nx1"/>
+
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/_6sdp"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:text="RM99"
+                                    android:textColor="@color/txt_clr"
+                                    android:textFontWeight="700"
+                                    android:textSize="@dimen/_15sdp" />
+
+                            </RelativeLayout>
+
+
+
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_2sdp"
+                        android:layout_marginTop="@dimen/_11sdp"
+                        android:background="@drawable/doted_line"/>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginHorizontal="@dimen/_9sdp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/mulish_semibold"
+                            android:text="Price Summary"
+                            android:textSize="@dimen/_15sdp"
+                            android:textColor="@color/txt_clr"
+                            android:textFontWeight="600"/>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/mulish_light"
+                                android:text="Total Amount"
+                                android:textColor="@color/txt_clr"
+                                android:textFontWeight="300"
+                                android:textSize="@dimen/_15sdp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:fontFamily="@font/mulish_bold"
+                                android:text="RM40.00"
+                                android:textColor="@color/txt_clr"
+                                android:textFontWeight="700"
+                                android:textSize="@dimen/_15sdp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_2sdp"
+                        android:background="@drawable/doted_line"
+                        android:layout_marginTop="@dimen/_14sdp"/>
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginHorizontal="@dimen/_9sdp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_15sdp"
+                            android:fontFamily="@font/mulish_semibold"
+                            android:textFontWeight="600"
+                            android:textColor="@color/txt_clr"
+                            android:text="Address"
+                            android:layout_marginTop="@dimen/_19sdp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/_13sdp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_14sdp"
+                                android:layout_height="@dimen/_14sdp"
+                                android:src="@drawable/ic_group_866"
+                                android:layout_marginTop="@dimen/_8sdp"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginStart="@dimen/_11sdp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_16sdp"
+                                    android:fontFamily="@font/mulish_regular"
+                                    android:textFontWeight="400"
+                                    android:textColor="@color/black_b"
+                                    android:text="Other"/>
+
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_10sdp"
+                                    android:fontFamily="@font/mulish_light"
+                                    android:textFontWeight="300"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:textColor="@color/item_unsclr"
+                                    android:text="New Door No. A4-72 Ground Floor c21 Mall,\nLosngeles, California"/>
+
+
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_19sdp"
+                        android:background="@drawable/doted_line"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="@dimen/_13sdp"
+                            android:layout_marginHorizontal="@dimen/_9sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:text="Store Details"
+                                android:textColor="@color/txt_clr"
+                                android:textFontWeight="600"
+                                android:textSize="@dimen/_15sdp"
+                                android:textStyle="normal" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@font/poppins_light"
+                                android:textFontWeight="300"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:text="The Apple Store"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@font/poppins_light"
+                                android:textFontWeight="300"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:text="+64 - 98345783457"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@font/poppins_light"
+                                android:textFontWeight="300"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:text="New Door No. A4-72 Ground Floor c21 Mall,
+Los Angeles, California"/>
+
+
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_2sdp"
+                            android:background="@drawable/doted_line" />
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_15sdp"
+                                android:layout_marginTop="@dimen/_6sdp"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_36sdp"
+                                    android:layout_height="@dimen/_36sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/profile" />
+
+                                <TextView
+                                    android:id="@+id/tvName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:fontFamily="@font/mulish_regular"
+                                    android:text="Jhon Deo"
+                                    android:textColor="#646E77"
+                                    android:textFontWeight="300"
+                                    android:textSize="15dp" />
+
+
+                            </LinearLayout>
+
+
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_2sdp"
+                            android:background="@drawable/doted_line"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_30sdp"/>
+
+
+
+                    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

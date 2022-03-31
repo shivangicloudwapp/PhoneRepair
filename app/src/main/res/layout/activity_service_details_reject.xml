@@ -58,8 +58,8 @@
                 android:layout_marginTop="@dimen/_23sdp"
                 android:background="@drawable/linear_top_radius"
                 android:paddingBottom="@dimen/_20sdp"
-                android:elevation="@dimen/_4sdp"
-                android:layout_marginHorizontal="@dimen/_16sdp">
+                android:elevation="@dimen/_2sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -233,7 +233,9 @@
                             android:textFontWeight="200"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:textColor="@color/item_unsclr"
-                            android:text="The Mobile Store currently is covering and has more than 700+ outlets in different major cities"/>
+                            android:text="primary allocation: is indicated by writing in capital letters
+secondary allocation: is indicated by small letters (see example below)
+exclusive or shared utilization: is within the responsibility of administrations"/>
 
 
 

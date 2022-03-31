@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:id="@+id/llUnPaid"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -339,9 +339,9 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
                                     android:layout_centerVertical="true"
+                                    android:layout_marginEnd="@dimen/_20sdp"
                                     android:fontFamily="@font/mulish_semibold"
                                     android:text="Unpaid"
-                                    android:layout_marginEnd="@dimen/_16sdp"
                                     android:textColor="@color/unPaid"
                                     android:textFontWeight="600"
                                     android:textSize="@dimen/_12sdp" />
@@ -353,7 +353,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:layout_marginLeft="@dimen/_8sdp"
+                                android:layout_marginHorizontal="@dimen/_8sdp"
                                 android:layout_marginTop="@dimen/_10sdp">
 
 
@@ -381,7 +381,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:layout_marginLeft="@dimen/_8sdp"
+                                android:layout_marginHorizontal="@dimen/_8sdp"
                                 android:layout_marginTop="@dimen/_10sdp">
 
 
@@ -411,7 +411,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:layout_marginLeft="@dimen/_8sdp"
+                                android:layout_marginHorizontal="@dimen/_8sdp"
                                 android:layout_marginTop="@dimen/_10sdp">
 
 
@@ -623,27 +623,27 @@ Los Angeles, California"/>
 
                                 <RelativeLayout
                                     android:id="@+id/rlchatPayNow"
-                                    android:layout_width="@dimen/_61sdp"
-                                    android:layout_height="@dimen/_54sdp"
+                                    android:layout_width="@dimen/_36sdp"
+                                    android:layout_height="@dimen/_36sdp"
                                     android:background="@drawable/btn_backg">
 
                                     <ImageView
-                                        android:layout_width="@dimen/_24sdp"
-                                        android:layout_height="@dimen/_24sdp"
+                                        android:layout_width="@dimen/_18sdp"
+                                        android:layout_height="@dimen/_18sdp"
                                         android:layout_centerInParent="true"
                                         android:src="@drawable/ic_vector__62_" />
                                 </RelativeLayout>
 
                                 <RelativeLayout
                                     android:id="@+id/rlCallPaynow"
-                                    android:layout_width="@dimen/_61sdp"
-                                    android:layout_height="@dimen/_54sdp"
+                                    android:layout_width="@dimen/_36sdp"
+                                    android:layout_height="@dimen/_36sdp"
                                     android:layout_marginLeft="@dimen/_54sdp"
                                     android:background="@drawable/btn_backg">
 
                                     <ImageView
-                                        android:layout_width="@dimen/_24sdp"
-                                        android:layout_height="@dimen/_24sdp"
+                                        android:layout_width="@dimen/_18sdp"
+                                        android:layout_height="@dimen/_18sdp"
                                         android:src="@drawable/ic_vector__63_"
                                         android:layout_centerInParent="true"/>
                                 </RelativeLayout>
@@ -713,6 +713,7 @@ Los Angeles, California"/>
 
     <LinearLayout
         android:id="@+id/llPaid"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -770,8 +771,8 @@ Los Angeles, California"/>
                 android:layout_marginTop="@dimen/_23sdp"
                 android:background="@drawable/linear_top_radius"
                 android:paddingBottom="@dimen/_20sdp"
-                android:elevation="@dimen/_4sdp"
-                android:layout_marginHorizontal="@dimen/_16sdp">
+                android:elevation="@dimen/_2sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -945,7 +946,9 @@ Los Angeles, California"/>
                             android:textFontWeight="200"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:textColor="@color/item_unsclr"
-                            android:text="The Mobile Store currently is covering and has more than 700+ outlets in different major cities"/>
+                            android:text="primary allocation: is indicated by writing in capital letters
+secondary allocation: is indicated by small letters (see example below)
+exclusive or shared utilization: is within the responsibility of administrations"/>
 
 
 
@@ -1032,7 +1035,7 @@ Los Angeles, California"/>
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentRight="true"
                                         android:layout_centerVertical="true"
-                                        android:layout_marginEnd="@dimen/_16sdp"
+                                        android:layout_marginEnd="@dimen/_26sdp"
                                         android:fontFamily="@font/mulish_semibold"
                                         android:text="paid"
                                         android:textColor="@color/compltclr"
@@ -1046,7 +1049,7 @@ Los Angeles, California"/>
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
-                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:layout_marginHorizontal="@dimen/_8sdp"
                                     android:layout_marginTop="@dimen/_10sdp">
 
 
@@ -1074,7 +1077,7 @@ Los Angeles, California"/>
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
-                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:layout_marginHorizontal="@dimen/_8sdp"
                                     android:layout_marginTop="@dimen/_10sdp">
 
 
@@ -1104,7 +1107,7 @@ Los Angeles, California"/>
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
-                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:layout_marginHorizontal="@dimen/_8sdp"
                                     android:layout_marginTop="@dimen/_10sdp">
 
 
@@ -1317,27 +1320,27 @@ Los Angeles, California"/>
 
                                     <RelativeLayout
                                         android:id="@+id/rlchatRateService"
-                                        android:layout_width="@dimen/_61sdp"
-                                        android:layout_height="@dimen/_54sdp"
+                                        android:layout_width="@dimen/_36sdp"
+                                        android:layout_height="@dimen/_36sdp"
                                         android:background="@drawable/btn_backg">
 
                                         <ImageView
-                                            android:layout_width="@dimen/_24sdp"
-                                            android:layout_height="@dimen/_24sdp"
+                                            android:layout_width="@dimen/_18sdp"
+                                            android:layout_height="@dimen/_18sdp"
                                             android:layout_centerInParent="true"
                                             android:src="@drawable/ic_vector__62_" />
                                     </RelativeLayout>
 
                                     <RelativeLayout
                                         android:id="@+id/rlCallRateService"
-                                        android:layout_width="@dimen/_61sdp"
-                                        android:layout_height="@dimen/_54sdp"
+                                        android:layout_width="@dimen/_36sdp"
+                                        android:layout_height="@dimen/_36sdp"
                                         android:layout_marginLeft="@dimen/_54sdp"
                                         android:background="@drawable/btn_backg">
 
                                         <ImageView
-                                            android:layout_width="@dimen/_24sdp"
-                                            android:layout_height="@dimen/_24sdp"
+                                            android:layout_width="@dimen/_18sdp"
+                                            android:layout_height="@dimen/_18sdp"
                                             android:src="@drawable/ic_vector__63_"
                                             android:layout_centerInParent="true"/>
                                     </RelativeLayout>

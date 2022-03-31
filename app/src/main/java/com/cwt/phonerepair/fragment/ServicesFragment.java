@@ -21,7 +21,7 @@ import com.google.android.material.tabs.TabLayout;
 public class ServicesFragment extends Fragment {
 TabLayout tlServices;
 ViewPager vpService;
-ServicesTabPagerAdapter servicesTabPagerAdapter;
+
 
 
 
@@ -29,6 +29,15 @@ ServicesTabPagerAdapter servicesTabPagerAdapter;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_services, container, false);
+
+        initView(view);
+
+        return view;
+
+
+    }
+
+    private void initView(View view) {
 
         vpService = view.findViewById(R.id.vpService);
         tlServices = view.findViewById(R.id.tlServices);
@@ -60,9 +69,6 @@ ServicesTabPagerAdapter servicesTabPagerAdapter;
 
             }
         });
-
-        return view;
-
 
     }
 }

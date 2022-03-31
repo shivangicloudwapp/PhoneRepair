@@ -1,4 +1,4 @@
-package com.cwt.phonerepair.activity.fragment;
+package com.cwt.phonerepair.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,9 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.activity.walletadapter.TransactionAdapter;
-import com.cwt.phonerepair.adapter.OrderAdapter;
-import com.cwt.phonerepair.modelclass.OrderModel;
+import com.cwt.phonerepair.storeadapter.WalletTransactionAdapter;
 import com.cwt.phonerepair.modelclass.TransactionModel;
 
 import java.util.ArrayList;
@@ -47,7 +45,7 @@ public class WalletTransactionFragment extends Fragment {
             modelArrayList.add(new TransactionModel("Withdrawal", "Debit", "18-02-2021  12:24PM","RM150"));
 
 
-        TransactionAdapter orderAdapter = new TransactionAdapter(modelArrayList, context);
+        WalletTransactionAdapter orderAdapter = new WalletTransactionAdapter(modelArrayList, context);
         rvWith.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         rvWith.setAdapter(orderAdapter);
         rvWith.setHasFixedSize(true);

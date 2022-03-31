@@ -68,7 +68,7 @@
                         android:textColor="@color/black_b"
                         android:textFontWeight="600"
                         android:layout_marginHorizontal="@dimen/_12sdp"
-                        android:textSize="@dimen/_29sdp" />
+                        android:textSize="30dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -78,7 +78,7 @@
                         android:text="Phone Number"
                         android:textColor="@color/black_a"
                         android:textFontWeight="400"
-                        android:textSize="@dimen/_14sdp" />
+                        android:textSize="14dp" />
 
 
 
@@ -94,19 +94,20 @@
                         android:inputType="number"
                         android:maxLength="10"
                         android:maxLines="1"
+                        android:padding="11dp"
                         android:textColorHint="@color/black_a"
                         android:textFontWeight="400"
-                        android:textSize="@dimen/_14sdp" />
+                        android:textSize="14dp" />
 
 
 
                     <Button
                         android:id="@+id/btnSendOtp"
-                        android:layout_width="@dimen/_230sdp"
-                        android:layout_height="@dimen/_54sdp"
+                        android:layout_width="230dp"
+                        android:layout_height="54dp"
                         android:background="@drawable/btn_backg"
                         android:layout_gravity="center_horizontal"
-                        android:textSize="@dimen/_15sdp"
+                        android:textSize="15dp"
                         android:textColor="@color/black_c"
                         android:text="Send OTP"
                         android:textAllCaps="false"

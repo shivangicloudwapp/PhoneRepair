@@ -1,7 +1,6 @@
-package com.cwt.phonerepair.activity.walletadapter;
+package com.cwt.phonerepair.storeadapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,24 +9,20 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.activity.serviceActivity.ServiceDetailsAcceptActivity;
-import com.cwt.phonerepair.adapter.AcceptedAdapter;
-import com.cwt.phonerepair.modelclass.PendingModel;
 import com.cwt.phonerepair.modelclass.TransactionModel;
 
 import java.util.ArrayList;
 
-public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder> {
+public class WalletTransactionAdapter extends RecyclerView.Adapter<WalletTransactionAdapter.ViewHolder> {
 
     Context context;
 
     ArrayList<TransactionModel> modelList;
 
-    public TransactionAdapter(ArrayList<TransactionModel> modelList, Context context) {
+    public WalletTransactionAdapter(ArrayList<TransactionModel> modelList, Context context) {
         this.context = context;
         this.modelList = modelList;
     }
@@ -35,16 +30,16 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     @NonNull
     @Override
-    public TransactionAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public WalletTransactionAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
         View listItem = layoutInflater.inflate(R.layout.list_transaction, viewGroup, false);
-        TransactionAdapter.ViewHolder viewHolder = new TransactionAdapter.ViewHolder(listItem);
+        WalletTransactionAdapter.ViewHolder viewHolder = new WalletTransactionAdapter.ViewHolder(listItem);
         return viewHolder;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onBindViewHolder(@NonNull TransactionAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull WalletTransactionAdapter.ViewHolder holder, int position) {
         TransactionModel model = modelList.get(position);
         holder.tvWith.setText(model.getTvWith());
         holder.tvMonth.setText(model.getTvMonth());

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_382sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_marginHorizontal="@dimen/_28sdp">
+
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_345sdp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_20sdp"
+        android:layout_centerInParent="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="@dimen/_9sdp"
+            android:layout_marginTop="@dimen/_11sdp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mulish_semibold"
+                android:text="Enter Additional Amount"
+                android:textSize="@dimen/_15sdp"
+                android:textColor="@color/txt_clr"
+                android:textFontWeight="600"
+                android:layout_marginStart="@dimen/_21sdp"/>
+
+            <EditText
+                android:id="@+id/etAdditionalAmount"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_36sdp"
+                android:fontFamily="@font/mulish_light"
+                android:textFontWeight="300"
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_21sdp"
+                android:textColorHint="@color/textclr"
+                android:layout_marginEnd="@dimen/_38sdp"
+                android:padding="@dimen/_8sdp"
+                android:inputType="text"
+                android:singleLine="true"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/edittxt_bac"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mulish_semibold"
+                android:text="Remark"
+                android:textSize="@dimen/_15sdp"
+                android:textColor="@color/txt_clr"
+                android:textFontWeight="600"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_21sdp"/>
+
+            <EditText
+                android:id="@+id/etRemark"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_142sdp"
+                android:fontFamily="@font/mulish_light"
+                android:textFontWeight="300"
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_21sdp"
+                android:textColorHint="@color/textclr"
+                android:layout_marginEnd="@dimen/_38sdp"
+                android:padding="@dimen/_8sdp"
+                android:inputType="text"
+                android:singleLine="true"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/edittxt_bac"/>
+            <Button
+                android:id="@+id/btnSub"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_32sdp"
+                android:background="@drawable/btn_backg"
+                android:text="Submit"
+                android:textSize="15dp"
+                android:textAllCaps="false"
+                android:textColor="#181818"
+                android:paddingHorizontal="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:fontFamily="@font/raleway_medium"
+                android:layout_weight="700" />
+
+
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+</RelativeLayout>

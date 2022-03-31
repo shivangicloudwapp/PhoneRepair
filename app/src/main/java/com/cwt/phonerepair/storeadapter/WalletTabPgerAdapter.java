@@ -1,4 +1,4 @@
-package com.cwt.phonerepair.adapter;
+package com.cwt.phonerepair.storeadapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,12 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.cwt.phonerepair.activity.fragment.WalletTransactionFragment;
-import com.cwt.phonerepair.activity.fragment.WalletWithdrawalFragment;
-import com.cwt.phonerepair.servicesfragment.AcceptedFragment;
-import com.cwt.phonerepair.servicesfragment.CompletedFragment;
-import com.cwt.phonerepair.servicesfragment.PendingFragment;
-import com.cwt.phonerepair.servicesfragment.RejectedFragment;
+import com.cwt.phonerepair.fragment.WalletTransactionFragment;
+import com.cwt.phonerepair.fragment.WalletWithdrawalFragment;
 
 public class WalletTabPgerAdapter extends FragmentPagerAdapter {
 

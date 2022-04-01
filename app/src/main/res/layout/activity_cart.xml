@@ -10,13 +10,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginTop="28dp"
         android:layout_marginHorizontal="@dimen/_15sdp">
 
         <ImageView
             android:id="@+id/ivBackCart"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_vector__40_" />
 
@@ -28,7 +28,7 @@
             android:text="Cart"
             android:textColor="@color/black_b"
             android:textFontWeight="800"
-            android:textSize="@dimen/_18sdp" />
+            android:textSize="18sp" />
 
 
 
@@ -73,7 +73,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="18dp"
+                            android:textSize="18sp"
                             android:fontFamily="@font/mulish_semibold"
                             android:textFontWeight="600"
                             android:layout_marginTop="@dimen/_10sdp"
@@ -99,15 +99,15 @@
                                     android:orientation="horizontal"
                                     android:layout_centerVertical="true">
                                     <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_6sdp"
+                                        android:layout_width="6dp"
+                                        android:layout_height="6dp"
                                         android:src="@drawable/ic_ellipse_45"
                                         android:layout_gravity="center_vertical"/>
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="15dp"
+                                        android:textSize="15sp"
                                         android:fontFamily="@font/mulish_light"
                                         android:textFontWeight="300"
                                         android:layout_gravity="center_vertical"
@@ -117,40 +117,41 @@
                                 </LinearLayout>
 
 
-
                                 <LinearLayout
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_30sdp"
+                                    android:layout_width="131dp"
+                                    android:layout_height="35dp"
+                                    android:layout_alignParentRight="true"
                                     android:layout_marginStart="@dimen/_24sdp"
                                     android:background="@drawable/counter_back"
-                                    android:layout_alignParentRight="true"
                                     android:weightSum="3">
 
                                     <ImageView
-                                        android:layout_width="@dimen/_7sdp"
-                                        android:layout_height="@dimen/_2sdp"
-                                        android:layout_weight="1"
+                                        android:layout_width="7dp"
+                                        android:layout_height="2dp"
                                         android:layout_gravity="center_vertical"
-                                        android:src="@drawable/ic_title"/>
+                                        android:layout_weight="1"
+                                        android:src="@drawable/ic_title" />
+
                                     <TextView
                                         android:layout_width="wrap_content"
-                                        android:layout_height="@dimen/_25sdp"
+                                        android:layout_height="28dp"
+                                        android:layout_gravity="center_vertical"
                                         android:layout_weight="1"
-                                        android:text="1"
-                                        android:gravity="center_horizontal"
-                                        android:textSize="@dimen/_18sdp"
-                                        android:textFontWeight="400"
-                                        android:textColor="@color/black"
                                         android:background="@color/green"
                                         android:fontFamily="@font/mulish_regular"
-                                        android:layout_gravity="center_vertical"
-                                        android:src="@drawable/ic_title__2_"/>
+                                        android:gravity="center_horizontal"
+                                        android:src="@drawable/ic_title__2_"
+                                        android:text="1"
+                                        android:textColor="@color/black"
+                                        android:textFontWeight="400"
+                                        android:textSize="18sp" />
+
                                     <ImageView
-                                        android:layout_width="@dimen/_10sdp"
-                                        android:layout_height="@dimen/_10sdp"
-                                        android:layout_weight="1"
+                                        android:layout_width="7dp"
+                                        android:layout_height="10dp"
                                         android:layout_gravity="center_vertical"
-                                        android:src="@drawable/ic_title__2_"/>
+                                        android:layout_weight="1"
+                                        android:src="@drawable/ic_title__2_" />
 
 
                                 </LinearLayout>
@@ -169,15 +170,15 @@
                                     android:orientation="horizontal"
                                     android:layout_centerVertical="true">
                                     <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_6sdp"
+                                        android:layout_width="6dp"
+                                        android:layout_height="6dp"
                                         android:src="@drawable/ic_ellipse_45"
                                         android:layout_gravity="center_vertical"/>
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="15dp"
+                                        android:textSize="15sp"
                                         android:fontFamily="@font/mulish_light"
                                         android:textFontWeight="300"
                                         android:layout_gravity="center_vertical"
@@ -189,41 +190,44 @@
 
 
                                 <LinearLayout
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_30sdp"
+                                    android:layout_width="131dp"
+                                    android:layout_height="35dp"
+                                    android:layout_alignParentRight="true"
                                     android:layout_marginStart="@dimen/_24sdp"
                                     android:background="@drawable/counter_back"
-                                    android:layout_alignParentRight="true"
                                     android:weightSum="3">
 
                                     <ImageView
-                                        android:layout_width="@dimen/_7sdp"
-                                        android:layout_height="@dimen/_2sdp"
-                                        android:layout_weight="1"
+                                        android:layout_width="7dp"
+                                        android:layout_height="2dp"
                                         android:layout_gravity="center_vertical"
-                                        android:src="@drawable/ic_title"/>
+                                        android:layout_weight="1"
+                                        android:src="@drawable/ic_title" />
+
                                     <TextView
                                         android:layout_width="wrap_content"
-                                        android:layout_height="@dimen/_25sdp"
+                                        android:layout_height="28dp"
+                                        android:layout_gravity="center_vertical"
                                         android:layout_weight="1"
-                                        android:text="1"
-                                        android:gravity="center_horizontal"
-                                        android:textSize="@dimen/_18sdp"
-                                        android:textFontWeight="400"
-                                        android:textColor="@color/black"
                                         android:background="@color/green"
                                         android:fontFamily="@font/mulish_regular"
-                                        android:layout_gravity="center_vertical"
-                                        android:src="@drawable/ic_title__2_"/>
+                                        android:gravity="center_horizontal"
+                                        android:src="@drawable/ic_title__2_"
+                                        android:text="1"
+                                        android:textColor="@color/black"
+                                        android:textFontWeight="400"
+                                        android:textSize="18sp" />
+
                                     <ImageView
-                                        android:layout_width="@dimen/_10sdp"
-                                        android:layout_height="@dimen/_10sdp"
-                                        android:layout_weight="1"
+                                        android:layout_width="7dp"
+                                        android:layout_height="10dp"
                                         android:layout_gravity="center_vertical"
-                                        android:src="@drawable/ic_title__2_"/>
+                                        android:layout_weight="1"
+                                        android:src="@drawable/ic_title__2_" />
 
 
                                 </LinearLayout>
+
 
                             </RelativeLayout>
                             <RelativeLayout
@@ -239,15 +243,15 @@
                                     android:orientation="horizontal"
                                     android:layout_centerVertical="true">
                                     <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_6sdp"
+                                        android:layout_width="6dp"
+                                        android:layout_height="6dp"
                                         android:src="@drawable/ic_ellipse_45"
                                         android:layout_gravity="center_vertical"/>
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="15dp"
+                                        android:textSize="15sp"
                                         android:fontFamily="@font/mulish_light"
                                         android:textFontWeight="300"
                                         android:layout_gravity="center_vertical"
@@ -259,38 +263,40 @@
 
 
                                 <LinearLayout
-                                    android:layout_width="@dimen/_100sdp"
-                                    android:layout_height="@dimen/_30sdp"
+                                    android:layout_width="131dp"
+                                    android:layout_height="35dp"
+                                    android:layout_alignParentRight="true"
                                     android:layout_marginStart="@dimen/_24sdp"
                                     android:background="@drawable/counter_back"
-                                    android:layout_alignParentRight="true"
                                     android:weightSum="3">
 
                                     <ImageView
-                                        android:layout_width="@dimen/_7sdp"
-                                        android:layout_height="@dimen/_2sdp"
-                                        android:layout_weight="1"
+                                        android:layout_width="7dp"
+                                        android:layout_height="2dp"
                                         android:layout_gravity="center_vertical"
-                                        android:src="@drawable/ic_title"/>
+                                        android:layout_weight="1"
+                                        android:src="@drawable/ic_title" />
+
                                     <TextView
                                         android:layout_width="wrap_content"
-                                        android:layout_height="@dimen/_25sdp"
+                                        android:layout_height="28dp"
+                                        android:layout_gravity="center_vertical"
                                         android:layout_weight="1"
-                                        android:text="1"
-                                        android:gravity="center_horizontal"
-                                        android:textSize="@dimen/_18sdp"
-                                        android:textFontWeight="400"
-                                        android:textColor="@color/black"
                                         android:background="@color/green"
                                         android:fontFamily="@font/mulish_regular"
-                                        android:layout_gravity="center_vertical"
-                                        android:src="@drawable/ic_title__2_"/>
+                                        android:gravity="center_horizontal"
+                                        android:src="@drawable/ic_title__2_"
+                                        android:text="1"
+                                        android:textColor="@color/black"
+                                        android:textFontWeight="400"
+                                        android:textSize="18sp" />
+
                                     <ImageView
-                                        android:layout_width="@dimen/_10sdp"
-                                        android:layout_height="@dimen/_10sdp"
-                                        android:layout_weight="1"
+                                        android:layout_width="7dp"
+                                        android:layout_height="10dp"
                                         android:layout_gravity="center_vertical"
-                                        android:src="@drawable/ic_title__2_"/>
+                                        android:layout_weight="1"
+                                        android:src="@drawable/ic_title__2_" />
 
 
                                 </LinearLayout>
@@ -324,7 +330,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15dp"
+                                android:textSize="15sp"
                                 android:fontFamily="@font/mulish_semibold"
                                 android:textFontWeight="600"
                                 android:layout_marginTop="@dimen/_10sdp"
@@ -345,7 +351,7 @@
                                     android:text="Total Amount"
                                     android:textColor="@color/txt_clr"
                                     android:textFontWeight="600"
-                                    android:textSize="15dp" />
+                                    android:textSize="15sp" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -356,7 +362,7 @@
                                     android:text="RM998.00"
                                     android:textColor="@color/txt_clr"
                                     android:textFontWeight="600"
-                                    android:textSize="15dp" />
+                                    android:textSize="15sp" />
 
 
                             </RelativeLayout>
@@ -387,18 +393,19 @@
                                     android:text="Address"
                                     android:textColor="@color/txt_clr"
                                     android:textFontWeight="600"
-                                    android:textSize="15dp" />
+                                    android:textSize="15sp" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
-                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="16dp"
                                     android:fontFamily="@font/mulish_semibold"
-                                    android:text="RM998.00"
+                                    android:text="Change"
+                                    android:layout_centerVertical="true"
                                     android:textColor="@color/red"
                                     android:textFontWeight="700"
-                                    android:textSize="10dp" />
+                                    android:textSize="10sp" />
 
 
                             </RelativeLayout>
@@ -424,7 +431,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="18dp"
+                                        android:textSize="18sp"
                                         android:fontFamily="@font/mulish_regular"
                                         android:textFontWeight="400"
                                         android:textColor="@color/black_b"
@@ -433,7 +440,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="12dp"
+                                        android:textSize="12sp"
                                         android:fontFamily="@font/mulish_light"
                                         android:textFontWeight="300"
                                         android:layout_marginTop="@dimen/_10sdp"
@@ -458,8 +465,8 @@
 
                         <Button
                             android:id="@+id/btnOrderNow"
-                            android:layout_width="@dimen/_200sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_width="230dp"
+                            android:layout_height="54dp"
                             android:text="Order Now"
                             android:fontFamily="@font/mulish_bold"
                             android:textAllCaps="false"
@@ -468,7 +475,7 @@
                             android:layout_marginBottom="@dimen/_12sdp"
                             android:layout_marginTop="@dimen/_30sdp"
                             android:background="@drawable/btn_backg"
-                            android:textSize="15dp"
+                            android:textSize="15sp"
                             android:textFontWeight="700"/>
 
 

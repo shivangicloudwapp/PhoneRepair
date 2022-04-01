@@ -3,33 +3,44 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/accept_btn_bac.xml" value="0.2645" />
         <entry key="app/src/main/res/drawable/border_fill_grey.xml" value="0.2215" />
         <entry key="app/src/main/res/drawable/bottom_nav_item.xml" value="0.2215" />
         <entry key="app/src/main/res/drawable/btn2_radius_backg.xml" value="0.2215" />
         <entry key="app/src/main/res/drawable/btn_backg.xml" value="0.2215" />
         <entry key="app/src/main/res/drawable/doted_line.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/edit_btn_bac.xml" value="0.177" />
         <entry key="app/src/main/res/drawable/edittxt_bac.xml" value="0.2215" />
         <entry key="app/src/main/res/drawable/gradient_btn.xml" value="0.1745" />
         <entry key="app/src/main/res/drawable/ic_baseline_visibility_off_24.xml" value="0.215" />
+        <entry key="app/src/main/res/drawable/ic_group_7.xml" value="0.177" />
         <entry key="app/src/main/res/drawable/pending_btn.xml" value="0.2215" />
-        <entry key="app/src/main/res/layout/activity_add_product.xml" value="0.37395833333333334" />
+        <entry key="app/src/main/res/drawable/reject_btn_bac.xml" value="0.2645" />
+        <entry key="app/src/main/res/layout/activity_add_address.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_add_product.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_address.xml" value="0.3880208333333333" />
         <entry key="app/src/main/res/layout/activity_all_product.xml" value="0.3880208333333333" />
         <entry key="app/src/main/res/layout/activity_all_stores.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/activity_book_service.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_cart.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_confirm_service_acttivity.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.2129115006412997" />
         <entry key="app/src/main/res/layout/activity_login_screen.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2129115006412997" />
         <entry key="app/src/main/res/layout/activity_mobile_login.xml" value="0.3171875" />
-        <entry key="app/src/main/res/layout/activity_order_details.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_product_details.xml" value="0.3880208333333333" />
+        <entry key="app/src/main/res/layout/activity_order_details.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_order_placed_success.xml" value="0.2129115006412997" />
+        <entry key="app/src/main/res/layout/activity_product_details.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_product_management.xml" value="0.3880208333333333" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/activity_rate_us.xml" value="0.3171875" />
-        <entry key="app/src/main/res/layout/activity_service_details_accept.xml" value="0.3880208333333333" />
-        <entry key="app/src/main/res/layout/activity_service_details_complete.xml" value="0.3880208333333333" />
-        <entry key="app/src/main/res/layout/activity_service_details_pending.xml" value="0.3880208333333333" />
+        <entry key="app/src/main/res/layout/activity_service_details_accept.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_service_details_complete.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_service_details_pending.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_service_details_reject.xml" value="0.3171875" />
+        <entry key="app/src/main/res/layout/activity_service_request_placed.xml" value="0.2129115006412997" />
         <entry key="app/src/main/res/layout/activity_signup_screen.xml" value="0.3015625" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.26036767849508335" />
         <entry key="app/src/main/res/layout/activity_store_details.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/activity_store_home.xml" value="0.3880208333333333" />
         <entry key="app/src/main/res/layout/activity_store_orders_actvity.xml" value="0.3880208333333333" />
@@ -62,6 +73,7 @@
         <entry key="app/src/main/res/layout/list_product_management.xml" value="0.3880208333333333" />
         <entry key="app/src/main/res/layout/list_rejected.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/list_transaction.xml" value="0.3880208333333333" />
+        <entry key="app/src/main/res/layout/popup_progressbar.xml" value="0.25951261222744765" />
         <entry key="app/src/main/res/layout/store_service_list_accepted.xml" value="0.3880208333333333" />
         <entry key="app/src/main/res/layout/store_service_list_complete.xml" value="0.3880208333333333" />
         <entry key="app/src/main/res/layout/store_service_list_pending.xml" value="0.3880208333333333" />

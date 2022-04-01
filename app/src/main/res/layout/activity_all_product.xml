@@ -11,13 +11,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginTop="28dp"
         android:layout_marginHorizontal="@dimen/_15sdp">
 
         <ImageView
             android:id="@+id/ivBackAllPro"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_vector__40_" />
 
@@ -29,12 +29,12 @@
             android:text="All Product"
             android:textColor="@color/black_b"
             android:textFontWeight="800"
-            android:textSize="@dimen/_18sdp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/iv"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_group__22_" />
@@ -54,6 +54,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_15sdp" />
+        android:layout_marginTop="15dp" />
 
 </LinearLayout>

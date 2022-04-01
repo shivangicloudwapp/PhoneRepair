@@ -36,7 +36,7 @@ public class OrderFragment extends Fragment {
 
         rvOrder = view.findViewById(R.id.rvOrder);
 
-
+             context=getActivity();
         modelArrayList = new ArrayList<>();
 
         for (int i=0;i<=9;i++){

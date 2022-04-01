@@ -17,11 +17,12 @@ import com.cwt.phonerepair.adapter.ProdcutAdapter;
 import com.cwt.phonerepair.adapter.StoreDetailsViewPagerAdapter;
 import com.cwt.phonerepair.modelclass.ProductModel;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
+import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
 
 import java.util.ArrayList;
 
 public class StoreDetailsActivity extends AppCompatActivity implements View.OnClickListener {
-    DotsIndicator dotsIndicator;
+    SpringDotsIndicator dotsIndicator;
     TextView tvSeeAll;
 
     ViewPager view_pager;
@@ -37,8 +38,8 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_details);
 
-        dotsIndicator = (DotsIndicator) findViewById(R.id.dots_indicator);
-        view_pager = (ViewPager) findViewById(R.id.view_pager);
+        dotsIndicator =  findViewById(R.id.dots_indicator);
+        view_pager =  findViewById(R.id.view_pager);
         rv_Prodcut=findViewById(R.id.rv_Prodcut);
         ivBackStoreDetail=findViewById(R.id.ivBackStoreDetail);
         tvSeeAll=findViewById(R.id.tvSeeAll);

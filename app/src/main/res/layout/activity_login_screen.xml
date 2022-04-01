@@ -19,12 +19,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/line1"
-            android:layout_marginTop="@dimen/_44sdp"/>
+            android:layout_marginTop="74dp"/>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/img"
-            android:layout_marginTop="@dimen/_29sdp"/>
+            android:layout_marginTop="34dp"/>
 
 
         <LinearLayout
@@ -43,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_16sdp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="30sp"
                     android:fontFamily="@font/mulish_extrabold"
                     android:text="Login"
                     android:textColor="@color/black_b"
@@ -75,15 +75,14 @@
                             android:layout_marginTop="@dimen/_33sdp"
                             android:paddingBottom="@dimen/_12sdp"
                             android:textColorHint="@color/black_a"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
                             />
 
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/gray_a"
-                        />
+                        android:background="@color/gray_a" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -101,32 +100,27 @@
                             android:id="@+id/etPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/gray_a"
                             android:fontFamily="@font/mulish_regular"
                             android:hint="@string/password"
-                            android:inputType="textEmailAddress"
+                            android:inputType="textPassword"
                             android:background="@null"
                             android:textFontWeight="400"
                             android:layout_weight="1"
-                            android:maxLength="6"
-                            android:imeOptions="actionNext"
-                            android:paddingBottom="@dimen/_12sdp"
+                            android:imeOptions="actionDone"
                             android:textColorHint="@color/black_a"
-                            android:textSize="14dp"
+                            android:textSize="14sp"
+                            android:layout_gravity="center"
+                            android:includeFontPadding="false"
                             />
 
 
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:id="@+id/ivShowHidePass"
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center" />
-
-                        </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/ivShowHidePass"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_baseline_visibility_off_24"
+                            />
 
                     </LinearLayout>
                     <LinearLayout
@@ -150,7 +144,7 @@
                     android:layout_marginTop="@dimen/_15sdp"
                     android:textFontWeight="400"
                     android:textColor="@color/black_a"
-                    android:textSize="@dimen/_14sdp"
+                    android:textSize="14sp"
                     android:textStyle="normal" />
 
                 <Button
@@ -160,7 +154,7 @@
                     android:background="@drawable/btn_backg"
                     android:layout_marginTop="36dp"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:textColor="@color/black_c"
                     android:text="Login"
                     android:textAllCaps="false"
@@ -179,7 +173,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Don't have an Account ?"
-                        android:textSize="14dp"
+                        android:textSize="18sp"
                         android:textStyle="normal"
                         android:layout_gravity="end"
                         android:textColor="@color/gray_b"
@@ -191,7 +185,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" SignUp"
-                        android:textSize="14dp"
+                        android:textSize="18sp"
                         android:textStyle="normal"
                         android:layout_gravity="end"
                         android:textColor="@color/black"

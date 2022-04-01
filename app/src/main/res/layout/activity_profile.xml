@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:textFontWeight="800"
                 android:fontFamily="@font/mulish_extrabold"
-                android:textSize="@dimen/_18sdp"
+                android:textSize="18sp"
                 android:text="Profile"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_20sdp"
@@ -30,8 +30,8 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
+        android:layout_width="104dp"
+        android:layout_height="104dp"
         android:src="@drawable/profile"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="-30dp"/>
@@ -60,7 +60,7 @@
                 android:text="+61 878 7764 2922"
                 android:textColor="@color/black_a"
                 android:textFontWeight="400"
-                android:textSize="@dimen/_16sdp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
                 android:text="Change"
                 android:textColor="#C6FF00"
                 android:textFontWeight="700"
-                android:textSize="@dimen/_16sdp" />
+                android:textSize="16sp" />
 
 
         </RelativeLayout>
@@ -90,7 +90,7 @@
             android:text="Jhon Deo"
             android:textColor="@color/black_a"
             android:background="@null"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="16sp"
             android:fontFamily="@font/mulish_regular"
             android:textFontWeight="400"
             android:layout_marginStart="@dimen/_10sdp"
@@ -109,7 +109,7 @@
             android:text="JhonDeo212@gmail.com"
             android:textColor="@color/black_a"
             android:background="@null"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="16sp"
             android:fontFamily="@font/mulish_regular"
             android:textFontWeight="400"
             android:layout_marginStart="@dimen/_10sdp"
@@ -123,13 +123,13 @@
             android:layout_marginTop="@dimen/_14sdp"/>
 
         <Button
-            android:id="@+id/btnSubmit"
-            android:layout_width="@dimen/_231sdp"
-            android:layout_height="@dimen/_54sdp"
+            android:id="@+id/btnSave"
+            android:layout_width="231dp"
+            android:layout_height="54dp"
             android:background="@drawable/btn_backg"
             android:text="Save"
             android:textAllCaps="false"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="15sp"
             android:textColor="@color/black_c"
             android:textFontWeight="700"
             android:textAlignment="center"

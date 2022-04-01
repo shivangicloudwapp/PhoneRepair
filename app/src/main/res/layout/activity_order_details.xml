@@ -11,13 +11,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginTop="28dp"
         android:layout_marginHorizontal="@dimen/_15sdp">
 
         <ImageView
             android:id="@+id/ivBackOrder"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_vector__40_" />
 
@@ -29,7 +29,7 @@
             android:text="Order Details"
             android:textColor="@color/black_b"
             android:textFontWeight="800"
-            android:textSize="@dimen/_18sdp" />
+            android:textSize="18sp" />
 
 
 
@@ -54,9 +54,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_23sdp"
+                android:layout_marginTop="23dp"
                android:background="@drawable/linear_top_radius"
-                android:layout_marginHorizontal="@dimen/_16sdp">
+                android:layout_marginHorizontal="14dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -67,7 +67,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginStart="@dimen/_9sdp">
+                        android:layout_marginStart="9dp">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="@dimen/_15sdp"
+                                    android:textSize="15sp"
                                     android:fontFamily="@font/mulish_semibold"
                                     android:textFontWeight="600"
                                     android:textColor="@color/black_b"
@@ -88,7 +88,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="@dimen/_13sdp"
+                                    android:textSize="13sp"
                                     android:fontFamily="@font/mulish_light"
                                     android:textFontWeight="600"
                                     android:textColor="@color/black_b"
@@ -107,7 +107,7 @@
                                 android:text="Ordered"
                                 android:textColor="@color/txt_orange"
                                 android:textFontWeight="600"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="12sp" />
 
 
                         </RelativeLayout>
@@ -128,15 +128,15 @@
                                     android:layout_marginTop="@dimen/_10sdp">
 
                                     <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_6sdp"
+                                        android:layout_width="6dp"
+                                        android:layout_height="6dp"
                                         android:src="@drawable/ic_ellipse_45"
                                         android:layout_gravity="center_vertical"/>
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/_15sdp"
+                                        android:textSize="15sp"
                                         android:fontFamily="@font/mulish_light"
                                         android:textFontWeight="300"
                                         android:layout_gravity="center_vertical"
@@ -159,7 +159,7 @@
                                     android:text="RM499"
                                     android:textColor="@color/txt_clr"
                                     android:textFontWeight="700"
-                                    android:textSize="@dimen/_15sdp" />
+                                    android:textSize="15sp" />
 
                             </RelativeLayout>
                             <RelativeLayout
@@ -172,21 +172,21 @@
                                     android:layout_marginTop="@dimen/_10sdp">
 
                                     <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_6sdp"
+                                        android:layout_width="6dp"
+                                        android:layout_height="6dp"
                                         android:src="@drawable/ic_ellipse_45"
                                         android:layout_gravity="center_vertical"/>
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/_15sdp"
+                                        android:textSize="15sp"
                                         android:fontFamily="@font/mulish_light"
                                         android:textFontWeight="300"
                                         android:layout_gravity="center_vertical"
                                         android:layout_marginStart="@dimen/_6sdp"
                                         android:textColor="@color/txt_clr"
-                                        android:text="@string/apple_earpod_n_x1"/>
+                                        android:text="@string/iphone_13_pro_max_n_x1"/>
 
 
                                 </LinearLayout>
@@ -198,14 +198,15 @@
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginStart="@dimen/_6sdp"
-                                    android:fontFamily="@font/mulish_semibold"
-                                    android:text="RM400"
                                     android:layout_marginEnd="@dimen/_8sdp"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:text="RM499"
                                     android:textColor="@color/txt_clr"
                                     android:textFontWeight="700"
-                                    android:textSize="@dimen/_15sdp" />
+                                    android:textSize="15sp" />
 
                             </RelativeLayout>
+
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
@@ -216,21 +217,21 @@
                                     android:layout_marginTop="@dimen/_10sdp">
 
                                     <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_6sdp"
+                                        android:layout_width="6dp"
+                                        android:layout_height="6dp"
                                         android:src="@drawable/ic_ellipse_45"
                                         android:layout_gravity="center_vertical"/>
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/_15sdp"
+                                        android:textSize="15sp"
                                         android:fontFamily="@font/mulish_light"
                                         android:textFontWeight="300"
                                         android:layout_gravity="center_vertical"
                                         android:layout_marginStart="@dimen/_6sdp"
                                         android:textColor="@color/txt_clr"
-                                        android:text="@string/apple_watch_series_5_nx1"/>
+                                        android:text="@string/iphone_13_pro_max_n_x1"/>
 
 
                                 </LinearLayout>
@@ -242,17 +243,14 @@
                                     android:layout_centerVertical="true"
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginStart="@dimen/_6sdp"
-                                    android:fontFamily="@font/mulish_semibold"
-                                    android:text="RM99"
                                     android:layout_marginEnd="@dimen/_8sdp"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:text="RM499"
                                     android:textColor="@color/txt_clr"
                                     android:textFontWeight="700"
-                                    android:textSize="@dimen/_15sdp" />
+                                    android:textSize="15sp" />
 
                             </RelativeLayout>
-
-
-
 
 
                         </LinearLayout>
@@ -272,13 +270,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
+                                android:layout_marginTop="19dp"
                                 android:layout_marginStart="@dimen/_9sdp">
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/mulish_semibold"
                                     android:text="Price Summary"
-                                    android:textSize="@dimen/_15sdp"
+                                    android:textSize="15sp"
                                     android:textColor="@color/txt_clr"
                                     android:textFontWeight="600"/>
 
@@ -287,7 +286,7 @@
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
                                     android:layout_marginLeft="@dimen/_10sdp"
-                                    android:layout_marginTop="@dimen/_10sdp">
+                                    android:layout_marginTop="10dp">
 
 
                                     <TextView
@@ -297,7 +296,7 @@
                                         android:text="Total Amount"
                                         android:textColor="@color/txt_clr"
                                         android:textFontWeight="300"
-                                        android:textSize="@dimen/_15sdp" />
+                                        android:textSize="15sp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -309,7 +308,7 @@
                                         android:layout_marginEnd="@dimen/_8sdp"
                                         android:textColor="@color/txt_clr"
                                         android:textFontWeight="700"
-                                        android:textSize="@dimen/_15sdp" />
+                                        android:textSize="15sp" />
                                 </RelativeLayout>
                             </LinearLayout>
 
@@ -330,7 +329,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/_15sdp"
+                                        android:textSize="15sp"
                                         android:fontFamily="@font/mulish_semibold"
                                         android:textFontWeight="600"
                                         android:textColor="@color/txt_clr"
@@ -344,8 +343,8 @@
                                         android:layout_marginTop="@dimen/_13sdp">
 
                                         <ImageView
-                                            android:layout_width="@dimen/_14sdp"
-                                            android:layout_height="@dimen/_14sdp"
+                                            android:layout_width="18dp"
+                                            android:layout_height="20dp"
                                             android:src="@drawable/ic_group_866"
                                             android:layout_marginTop="@dimen/_8sdp"/>
 
@@ -358,7 +357,7 @@
                                             <TextView
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:textSize="@dimen/_16sdp"
+                                                android:textSize="18sp"
                                                 android:fontFamily="@font/mulish_regular"
                                                 android:textFontWeight="400"
                                                 android:textColor="@color/black_b"
@@ -369,7 +368,7 @@
                                             <TextView
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:textSize="@dimen/_12sdp"
+                                                android:textSize="12sp"
                                                 android:fontFamily="@font/mulish_light"
                                                 android:textFontWeight="300"
                                                 android:layout_marginTop="@dimen/_10sdp"
@@ -412,23 +411,23 @@
                                 android:text="Store Details"
                                 android:textColor="@color/txt_clr"
                                 android:textFontWeight="600"
-                                android:textSize="@dimen/_15sdp"
+                                android:textSize="15sp"
                                 android:textStyle="normal" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/_12sdp"
+                                android:layout_marginTop="10dp"
                                 android:fontFamily="@font/poppins_light"
-                                android:textFontWeight="300"
+                                android:text="The Apple Store"
                                 android:textColor="@color/black"
-                                android:textStyle="normal"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:text="The Apple Store"/>
+                                android:textFontWeight="300"
+                                android:textSize="12sp"
+                                android:textStyle="normal" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/_12sdp"
+                                android:textSize="12sp"
                                 android:fontFamily="@font/poppins_light"
                                 android:textFontWeight="300"
                                 android:textColor="@color/black"
@@ -437,7 +436,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/_12sdp"
+                                android:textSize="12sp"
                                 android:fontFamily="@font/poppins_light"
                                 android:textFontWeight="300"
                                 android:textColor="@color/black"

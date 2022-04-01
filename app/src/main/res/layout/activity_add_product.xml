@@ -11,13 +11,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginTop="28dp"
         android:layout_marginHorizontal="@dimen/_15sdp">
 
         <ImageView
             android:id="@+id/ivBackAllPro"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_vector__40_" />
 
@@ -29,7 +29,7 @@
             android:text="Add Product"
             android:textColor="@color/black_b"
             android:textFontWeight="800"
-            android:textSize="@dimen/_18sdp" />
+            android:textSize="18sp" />
 
 
 
@@ -61,7 +61,7 @@
             android:textColor="@color/black_b"
             android:textFontWeight="600"
             android:layout_marginTop="@dimen/_14sdp"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_80sdp"
@@ -102,7 +102,7 @@
                 android:textFontWeight="600"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="15sp" />
 
 
 
@@ -194,15 +194,15 @@
             android:text="Description"
             android:textColor="@color/black_b"
             android:textFontWeight="600"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_100sdp"
+            android:layout_height="100dp"
             android:text="The Mobile Store currently is covering and \n has more than 700+ outlets in different major\n cities in different states across India. Today you will virtually find no person who is not using the mobile phone for their work or for personal use. No matter whether you are college students, salesman, a storekeeper,\nor a pilot a mobile phone is a must for all."
             android:fontFamily="@font/mulish_light"
             android:textFontWeight="300"
-            android:textSize="12dp"
+            android:textSize="12sp"
             android:textColor="@color/black_b"
             android:layout_marginTop="@dimen/_15sdp"
             android:gravity="start"
@@ -213,7 +213,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
 
 
             <TextView
@@ -224,15 +225,15 @@
                 android:text="Price"
                 android:textColor="@color/black_b"
                 android:textFontWeight="600"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_height="40dp"
                 android:text="$499"
                 android:fontFamily="@font/poppins_light"
                 android:textFontWeight="300"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 android:padding="@dimen/_8sdp"
                 android:textColor="@color/black_b"
                 android:layout_marginTop="@dimen/_15sdp"
@@ -243,15 +244,14 @@
 
             <Button
                 android:id="@+id/btnAddBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_36sdp"
+                android:layout_width="230dp"
+                android:layout_height="54dp"
                 android:textAllCaps="false"
                 android:text="Add Product"
                 android:layout_gravity="center_horizontal"
-                android:paddingHorizontal="46dp"
                 android:background="@drawable/btn_backg"
                 android:textColor="#181818"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:layout_marginBottom="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_30sdp"
                 />

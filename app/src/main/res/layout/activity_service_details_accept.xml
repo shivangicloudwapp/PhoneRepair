@@ -719,13 +719,13 @@ Los Angeles, California"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_28sdp"
+            android:layout_marginTop="28dp"
             android:layout_marginHorizontal="@dimen/_15sdp">
 
             <ImageView
                 android:id="@+id/ivBackAccept"
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_vector__40_" />
 
@@ -737,7 +737,7 @@ Los Angeles, California"/>
                 android:text="Service Details"
                 android:textColor="@color/black_b"
                 android:textFontWeight="800"
-                android:textSize="@dimen/_18sdp" />
+                android:textSize="18sp" />
 
 
 
@@ -766,7 +766,7 @@ Los Angeles, California"/>
                     android:id="@+id/cvRateService"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_23sdp"
+                    android:layout_marginTop="23dp"
                     android:background="@drawable/linear_top_radius"
                     android:paddingBottom="@dimen/_20sdp"
                     android:elevation="@dimen/_2sdp"
@@ -794,19 +794,19 @@ Los Angeles, California"/>
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/_15sdp"
+                                        android:textSize="15sp"
                                         android:fontFamily="@font/mulish_semibold"
                                         android:textFontWeight="600"
                                         android:textColor="@color/black_b"
-                                        android:text="Services -"/>
+                                        android:text="Services No -"/>
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/_13sdp"
+                                        android:textSize="15sp"
                                         android:fontFamily="@font/mulish_light"
                                         android:textFontWeight="600"
                                         android:textColor="@color/black_b"
-                                        android:text="#CUEP8383832"/>
+                                        android:text=" #CUEP8383832"/>
 
 
                                 </LinearLayout>
@@ -819,6 +819,7 @@ Los Angeles, California"/>
                                     android:fontFamily="@font/mulish_semibold"
                                     android:text="Accepted"
                                     android:textColor="#2797C2"
+                                    android:layout_marginEnd="8dp"
                                     android:textFontWeight="600"
                                     android:textSize="@dimen/_12sdp" />
 
@@ -840,15 +841,15 @@ Los Angeles, California"/>
                                     android:layout_marginTop="@dimen/_10sdp">
 
                                     <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_6sdp"
+                                        android:layout_width="6sp"
+                                        android:layout_height="6sp"
                                         android:src="@drawable/ic_ellipse_45"
                                         android:layout_gravity="center_vertical"/>
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/_15sdp"
+                                        android:textSize="15sp"
                                         android:fontFamily="@font/mulish_light"
                                         android:textFontWeight="300"
                                         android:layout_gravity="center_vertical"
@@ -865,24 +866,25 @@ Los Angeles, California"/>
                                     android:layout_marginTop="@dimen/_10sdp">
 
                                     <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_6sdp"
+                                        android:layout_width="6sp"
+                                        android:layout_height="6sp"
                                         android:src="@drawable/ic_ellipse_45"
                                         android:layout_gravity="center_vertical"/>
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/_15sdp"
+                                        android:textSize="15sp"
                                         android:fontFamily="@font/mulish_light"
                                         android:textFontWeight="300"
+                                        android:layout_gravity="center_vertical"
                                         android:layout_marginStart="@dimen/_6sdp"
                                         android:textColor="@color/txt_clr"
-                                        android:text="Battery"
-                                        android:layout_gravity="center_vertical"/>
+                                        android:text="Battery"/>
 
 
                                 </LinearLayout>
+
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -890,15 +892,15 @@ Los Angeles, California"/>
                                     android:layout_marginTop="@dimen/_10sdp">
 
                                     <ImageView
-                                        android:layout_width="@dimen/_6sdp"
-                                        android:layout_height="@dimen/_6sdp"
+                                        android:layout_width="6sp"
+                                        android:layout_height="6sp"
                                         android:src="@drawable/ic_ellipse_45"
                                         android:layout_gravity="center_vertical"/>
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/_15sdp"
+                                        android:textSize="15sp"
                                         android:fontFamily="@font/mulish_light"
                                         android:textFontWeight="300"
                                         android:layout_gravity="center_vertical"
@@ -908,6 +910,7 @@ Los Angeles, California"/>
 
 
                                 </LinearLayout>
+
 
                             </LinearLayout>
                         </LinearLayout>
@@ -929,7 +932,7 @@ Los Angeles, California"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/_15sdp"
+                                android:textSize="15sp"
                                 android:fontFamily="@font/mulish_semibold"
                                 android:textFontWeight="600"
                                 android:layout_marginTop="@dimen/_14sdp"
@@ -939,9 +942,9 @@ Los Angeles, California"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/_10sdp"
+                                android:textSize="10sp"
                                 android:fontFamily="@font/mulish_light"
-                                android:textFontWeight="200"
+                                android:textFontWeight="300"
                                 android:layout_marginTop="@dimen/_10sdp"
                                 android:textColor="@color/item_unsclr"
                                 android:text="primary allocation: is indicated by writing in capital letters
@@ -962,7 +965,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/_15sdp"
+                                android:textSize="15sp"
                                 android:fontFamily="@font/mulish_semibold"
                                 android:textFontWeight="600"
                                 android:layout_marginTop="@dimen/_10sdp"
@@ -976,13 +979,13 @@ exclusive or shared utilization: is within the responsibility of administrations
                                 android:layout_marginTop="@dimen/_10sdp">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_60sdp"
-                                    android:layout_height="@dimen/_60sdp"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
                                     android:src="@drawable/pic1"/>
 
                                 <ImageView
-                                    android:layout_width="@dimen/_60sdp"
-                                    android:layout_height="@dimen/_60sdp"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
                                     android:src="@drawable/pic2"
                                     android:layout_marginStart="@dimen/_11sdp"/>
 
@@ -1026,7 +1029,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                         android:text="Price Summary"
                                         android:textColor="@color/txt_clr"
                                         android:textFontWeight="600"
-                                        android:textSize="@dimen/_15sdp" />
+                                        android:textSize="15sp" />
 
                                 </RelativeLayout>
 
@@ -1047,7 +1050,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                         android:text="Total Amount"
                                         android:textColor="@color/txt_clr"
                                         android:textFontWeight="300"
-                                        android:textSize="@dimen/_15sdp" />
+                                        android:textSize="15sp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -1058,7 +1061,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                         android:text="RM40.00"
                                         android:textColor="@color/txt_clr"
                                         android:textFontWeight="700"
-                                        android:textSize="@dimen/_15sdp" />
+                                        android:textSize="15sp" />
                                 </RelativeLayout>
 
                             </LinearLayout>
@@ -1081,17 +1084,17 @@ exclusive or shared utilization: is within the responsibility of administrations
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="@dimen/_15sdp"
+                                    android:textSize="15sp"
                                     android:fontFamily="@font/mulish_semibold"
                                     android:textFontWeight="600"
-                                    android:layout_marginTop="@dimen/_14sdp"
+                                    android:layout_marginTop="14sp"
                                     android:textColor="@color/txt_clr"
                                     android:text="Remark"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="@dimen/_10sdp"
+                                    android:textSize="10sp"
                                     android:fontFamily="@font/mulish_light"
                                     android:textFontWeight="200"
                                     android:layout_marginTop="@dimen/_10sdp"
@@ -1117,16 +1120,17 @@ exclusive or shared utilization: is within the responsibility of administrations
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="@dimen/_15sdp"
-                                    android:fontFamily="@font/mulish_semibold"
-                                    android:textFontWeight="600"
-                                    android:textColor="@color/txt_clr"
-                                    android:text="Address"
                                     android:layout_marginLeft="@dimen/_9sdp"
-                                    android:layout_marginTop="@dimen/_19sdp"/>
+                                    android:layout_marginTop="@dimen/_19sdp"
+                                    android:fontFamily="@font/mulish_semibold"
+                                    android:text="Address"
+                                    android:textColor="@color/txt_clr"
+                                    android:textFontWeight="600"
+                                    android:textSize="15sp" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -1136,8 +1140,8 @@ exclusive or shared utilization: is within the responsibility of administrations
                                     android:layout_marginTop="@dimen/_13sdp">
 
                                     <ImageView
-                                        android:layout_width="@dimen/_14sdp"
-                                        android:layout_height="@dimen/_14sdp"
+                                        android:layout_width="18dp"
+                                        android:layout_height="18dp"
                                         android:src="@drawable/ic_group_866"
                                         android:layout_marginTop="@dimen/_8sdp"/>
 
@@ -1150,7 +1154,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:textSize="@dimen/_16sdp"
+                                            android:textSize="18sp"
                                             android:fontFamily="@font/mulish_regular"
                                             android:textFontWeight="400"
                                             android:textColor="@color/black_b"
@@ -1161,7 +1165,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:textSize="@dimen/_10sdp"
+                                            android:textSize="12sp"
                                             android:fontFamily="@font/mulish_light"
                                             android:textFontWeight="300"
                                             android:layout_marginTop="@dimen/_10sdp"
@@ -1194,7 +1198,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/_15sdp"
+                                        android:textSize="15sp"
                                         android:fontFamily="@font/mulish_semibold"
                                         android:textFontWeight="600"
                                         android:textColor="@color/txt_clr"
@@ -1204,7 +1208,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/_12sdp"
+                                        android:textSize="12sp"
                                         android:fontFamily="@font/poppins_light"
                                         android:textFontWeight="300"
                                         android:textColor="@color/black"
@@ -1214,7 +1218,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/_12sdp"
+                                        android:textSize="12sp"
                                         android:fontFamily="@font/poppins_light"
                                         android:textFontWeight="300"
                                         android:textColor="@color/black"
@@ -1223,7 +1227,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/_12sdp"
+                                        android:textSize="12sp"
                                         android:fontFamily="@font/poppins_light"
                                         android:textFontWeight="300"
                                         android:textColor="@color/black"
@@ -1249,27 +1253,27 @@ Los Angeles, California"/>
 
                                     <RelativeLayout
                                         android:id="@+id/rlchatRateService"
-                                        android:layout_width="@dimen/_36sdp"
-                                        android:layout_height="@dimen/_36sdp"
+                                        android:layout_width="61dp"
+                                        android:layout_height="54dp"
                                         android:background="@drawable/btn_backg">
 
                                         <ImageView
-                                            android:layout_width="@dimen/_18sdp"
-                                            android:layout_height="@dimen/_18sdp"
+                                            android:layout_width="25dp"
+                                            android:layout_height="24dp"
                                             android:layout_centerInParent="true"
                                             android:src="@drawable/ic_vector__62_" />
                                     </RelativeLayout>
 
                                     <RelativeLayout
-                                        android:id="@+id/rlCallRateService"
-                                        android:layout_width="@dimen/_36sdp"
-                                        android:layout_height="@dimen/_36sdp"
-                                        android:layout_marginLeft="@dimen/_54sdp"
+                                        android:id="@+id/rlcallService"
+                                        android:layout_width="61dp"
+                                        android:layout_height="54dp"
+                                        android:layout_marginLeft="63dp"
                                         android:background="@drawable/btn_backg">
 
                                         <ImageView
-                                            android:layout_width="@dimen/_18sdp"
-                                            android:layout_height="@dimen/_18sdp"
+                                            android:layout_width="25dp"
+                                            android:layout_height="24dp"
                                             android:layout_centerInParent="true"
                                             android:src="@drawable/ic_vector__63_" />
                                     </RelativeLayout>

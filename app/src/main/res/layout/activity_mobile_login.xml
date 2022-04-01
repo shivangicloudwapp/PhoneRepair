@@ -20,12 +20,12 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_12sdp">
+                android:layout_margin="12dp">
 
                 <ImageView
                     android:id="@+id/ivBackSignUp"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_vector__40_" />
 
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/line1"
-                android:layout_marginVertical="@dimen/_8sdp"/>
+                android:layout_marginVertical="14dp"/>
 
 
             <LinearLayout
@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginVertical="@dimen/_14sdp"
+                    android:layout_marginTop="29dp"
                     android:src="@drawable/img" />
 
                 <LinearLayout
@@ -61,14 +61,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_39sdp"
+                        android:layout_marginTop="40dp"
                         android:fontFamily="@font/mulish_extrabold"
                         android:text="Enter Phone
                           Number"
                         android:textColor="@color/black_b"
                         android:textFontWeight="600"
                         android:layout_marginHorizontal="@dimen/_12sdp"
-                        android:textSize="30dp" />
+                        android:textSize="30sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -78,7 +78,7 @@
                         android:text="Phone Number"
                         android:textColor="@color/black_a"
                         android:textFontWeight="400"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
 
 
@@ -86,18 +86,17 @@
                         android:id="@+id/etPhoneNum"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_12sdp"
-                        android:layout_marginVertical="@dimen/_8sdp"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginVertical="8dp"
                         android:backgroundTint="@color/gray_a"
                         android:fontFamily="@font/mulish_regular"
                         android:hint="+62 5254346545"
                         android:inputType="number"
-                        android:maxLength="10"
                         android:maxLines="1"
                         android:padding="11dp"
                         android:textColorHint="@color/black_a"
                         android:textFontWeight="400"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
 
 
@@ -107,7 +106,7 @@
                         android:layout_height="54dp"
                         android:background="@drawable/btn_backg"
                         android:layout_gravity="center_horizontal"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:textColor="@color/black_c"
                         android:text="Send OTP"
                         android:textAllCaps="false"

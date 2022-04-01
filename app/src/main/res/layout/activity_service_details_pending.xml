@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginTop="28dp"
         android:layout_marginHorizontal="@dimen/_15sdp">
 
         <ImageView
@@ -28,7 +28,7 @@
             android:text="Service Details"
             android:textColor="@color/black_b"
             android:textFontWeight="800"
-            android:textSize="@dimen/_18sdp" />
+            android:textSize="18sp" />
 
 
 
@@ -55,7 +55,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_23sdp"
+                android:layout_marginTop="23dp"
                 android:background="@drawable/linear_top_radius"
                 android:paddingBottom="@dimen/_20sdp"
                 android:elevation="@dimen/_2sdp"
@@ -70,11 +70,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginHorizontal="@dimen/_9sdp" >
+                        android:layout_marginHorizontal="@dimen/_9sdp">
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp">
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -83,19 +85,20 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="@dimen/_15sdp"
                                     android:fontFamily="@font/mulish_semibold"
-                                    android:textFontWeight="600"
+                                    android:text="Services No -"
                                     android:textColor="@color/black_b"
-                                    android:text="Services -"/>
+                                    android:textFontWeight="600"
+                                    android:textSize="15sp" />
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="@dimen/_13sdp"
                                     android:fontFamily="@font/mulish_light"
-                                    android:textFontWeight="600"
+                                    android:text=" #CUEP8383832"
                                     android:textColor="@color/black_b"
-                                    android:text="#CUEP8383832"/>
+                                    android:textFontWeight="600"
+                                    android:textSize="15sp" />
 
 
                             </LinearLayout>
@@ -103,13 +106,14 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/_12sdp"
-                                android:fontFamily="@font/mulish_semibold"
-                                android:textFontWeight="600"
-                                android:layout_centerVertical="true"
                                 android:layout_alignParentRight="true"
-                                android:textColor="@color/pendingclr"
-                                android:text="Pending"/>
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="9dp"
+                                android:fontFamily="@font/mulish_semibold"
+                                android:text="Pending"
+                                android:textColor="@color/txt_orange"
+                                android:textFontWeight="600"
+                                android:textSize="12sp" />
 
 
                         </RelativeLayout>
@@ -127,15 +131,15 @@
                                 android:layout_marginTop="@dimen/_10sdp">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_6sdp"
-                                    android:layout_height="@dimen/_6sdp"
+                                    android:layout_width="6dp"
+                                    android:layout_height="6dp"
                                     android:src="@drawable/ic_ellipse_45"
                                     android:layout_gravity="center_vertical"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="@dimen/_15sdp"
+                                    android:textSize="15sp"
                                     android:fontFamily="@font/mulish_light"
                                     android:textFontWeight="300"
                                     android:layout_gravity="center_vertical"
@@ -152,24 +156,25 @@
                                 android:layout_marginTop="@dimen/_10sdp">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_6sdp"
-                                    android:layout_height="@dimen/_6sdp"
+                                    android:layout_width="6dp"
+                                    android:layout_height="6dp"
                                     android:src="@drawable/ic_ellipse_45"
                                     android:layout_gravity="center_vertical"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="@dimen/_15sdp"
+                                    android:textSize="15sp"
                                     android:fontFamily="@font/mulish_light"
                                     android:textFontWeight="300"
+                                    android:layout_gravity="center_vertical"
                                     android:layout_marginStart="@dimen/_6sdp"
                                     android:textColor="@color/txt_clr"
-                                    android:text="Battery"
-                                    android:layout_gravity="center_vertical"/>
+                                    android:text="Battery"/>
 
 
                             </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -177,15 +182,15 @@
                                 android:layout_marginTop="@dimen/_10sdp">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_6sdp"
-                                    android:layout_height="@dimen/_6sdp"
+                                    android:layout_width="6dp"
+                                    android:layout_height="6dp"
                                     android:src="@drawable/ic_ellipse_45"
                                     android:layout_gravity="center_vertical"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="@dimen/_15sdp"
+                                    android:textSize="15sp"
                                     android:fontFamily="@font/mulish_light"
                                     android:textFontWeight="300"
                                     android:layout_gravity="center_vertical"
@@ -200,6 +205,9 @@
 
 
                         </LinearLayout>
+
+
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -207,7 +215,6 @@
                         android:layout_height="@dimen/_2sdp"
                         android:layout_marginTop="@dimen/_11sdp"
                         android:background="@drawable/doted_line"/>
-
 
 
 
@@ -219,7 +226,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_15sdp"
+                            android:textSize="15sp"
                             android:fontFamily="@font/mulish_semibold"
                             android:textFontWeight="600"
                             android:layout_marginTop="@dimen/_14sdp"
@@ -229,18 +236,19 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="10sp"
                             android:fontFamily="@font/mulish_light"
                             android:textFontWeight="200"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:textColor="@color/item_unsclr"
-                            android:text="primary allocation: is indicated by writing in capital letters
+                            android:text="Tprimary allocation: is indicated by writing in capital letters
 secondary allocation: is indicated by small letters (see example below)
 exclusive or shared utilization: is within the responsibility of administrations"/>
 
 
 
                     </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -249,16 +257,16 @@ exclusive or shared utilization: is within the responsibility of administrations
                         android:layout_marginTop="@dimen/_6sdp">
 
 
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:layout_marginHorizontal="@dimen/_9sdp">
-
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/_15sdp"
+                                android:textSize="15sp"
                                 android:fontFamily="@font/mulish_semibold"
                                 android:textFontWeight="600"
                                 android:layout_marginTop="@dimen/_10sdp"
@@ -272,8 +280,8 @@ exclusive or shared utilization: is within the responsibility of administrations
                                 android:layout_marginTop="@dimen/_10sdp">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_60sdp"
-                                    android:layout_height="@dimen/_60sdp"
+                                    android:layout_width="75dp"
+                                    android:layout_height="80dp"
                                     android:src="@drawable/pic1"/>
 
                                 <ImageView
@@ -285,7 +293,9 @@ exclusive or shared utilization: is within the responsibility of administrations
 
 
                             </LinearLayout>
+
                         </LinearLayout>
+
 
 
 
@@ -311,7 +321,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/mulish_semibold"
                                 android:text="Price Summary"
-                                android:textSize="@dimen/_15sdp"
+                                android:textSize="15sp"
                                 android:textColor="@color/txt_clr"
                                 android:textFontWeight="600"/>
 
@@ -330,7 +340,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                     android:text="Total Amount"
                                     android:textColor="@color/txt_clr"
                                     android:textFontWeight="300"
-                                    android:textSize="@dimen/_15sdp" />
+                                    android:textSize="15sp" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -341,7 +351,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                     android:text="RM40.00"
                                     android:textColor="@color/txt_clr"
                                     android:textFontWeight="700"
-                                    android:textSize="@dimen/_15sdp" />
+                                    android:textSize="15sp" />
                             </RelativeLayout>
 
                         </LinearLayout>
@@ -363,7 +373,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="@dimen/_15sdp"
+                                    android:textSize="15sp"
                                     android:fontFamily="@font/mulish_semibold"
                                     android:textFontWeight="600"
                                     android:textColor="@color/txt_clr"
@@ -377,8 +387,8 @@ exclusive or shared utilization: is within the responsibility of administrations
                                     android:layout_marginTop="@dimen/_13sdp">
 
                                     <ImageView
-                                        android:layout_width="@dimen/_14sdp"
-                                        android:layout_height="@dimen/_14sdp"
+                                        android:layout_width="14dp"
+                                        android:layout_height="20dp"
                                         android:src="@drawable/ic_group_866"
                                         android:layout_marginTop="@dimen/_8sdp"/>
 
@@ -391,7 +401,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:textSize="@dimen/_16sdp"
+                                            android:textSize="18sp"
                                             android:fontFamily="@font/mulish_regular"
                                             android:textFontWeight="400"
                                             android:textColor="@color/black_b"
@@ -402,7 +412,7 @@ exclusive or shared utilization: is within the responsibility of administrations
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:textSize="@dimen/_10sdp"
+                                            android:textSize="12sp"
                                             android:fontFamily="@font/mulish_light"
                                             android:textFontWeight="300"
                                             android:layout_marginTop="@dimen/_10sdp"
@@ -433,11 +443,11 @@ exclusive or shared utilization: is within the responsibility of administrations
                                     android:layout_marginBottom="@dimen/_16sdp">
                                     <Button
                                         android:id="@+id/btnAccept"
-                                        android:layout_width="@dimen/_90sdp"
-                                        android:layout_height="@dimen/_30sdp"
+                                        android:layout_width="95dp"
+                                        android:layout_height="34dp"
                                         android:background="@drawable/accept_btn_bac"
                                         android:text="Accept"
-                                        android:textSize="15dp"
+                                        android:textSize="15sp"
                                         android:textAllCaps="false"
                                         android:textColor="@color/white"
                                         android:textAlignment="center"
@@ -447,11 +457,11 @@ exclusive or shared utilization: is within the responsibility of administrations
 
                                     <Button
                                         android:id="@+id/btnReject"
-                                        android:layout_width="@dimen/_90sdp"
-                                        android:layout_height="@dimen/_30sdp"
+                                        android:layout_width="95dp"
+                                        android:layout_height="34dp"
                                         android:background="@drawable/reject_btn_bac"
                                         android:text="Reject"
-                                        android:textSize="15dp"
+                                        android:textSize="15sp"
                                         android:textAllCaps="false"
                                         android:layout_marginLeft="@dimen/_26sdp"
                                         android:textColor="@color/white"

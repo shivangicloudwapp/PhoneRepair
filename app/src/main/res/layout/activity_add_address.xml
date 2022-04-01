@@ -12,13 +12,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginTop="28dp"
         android:layout_marginHorizontal="@dimen/_15sdp">
 
         <ImageView
             android:id="@+id/ivBackAddAddress"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_vector__40_" />
 
@@ -30,7 +30,7 @@
             android:text=" Add Address"
             android:textColor="@color/black_b"
             android:textFontWeight="800"
-            android:textSize="@dimen/_18sdp" />
+            android:textSize="18sp" />
 
 
 
@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/line1"
-        android:layout_marginTop="@dimen/_10sdp"/>
+        android:layout_marginTop="10dp"/>
 
 
 
@@ -54,13 +54,13 @@
             android:orientation="vertical"
             android:paddingBottom="@dimen/_80sdp">
 
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginHorizontal="@dimen/_16sdp"
-                app:cardElevation="@dimen/_2sdp"
-                app:cardCornerRadius="@dimen/_9sdp"
+                android:elevation="4dp"
+                android:background="@drawable/linear_top_radius"
                 android:layout_marginBottom="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_20sdp">
 
@@ -75,7 +75,7 @@
                         android:hint="Enter Flat No / Office / Floor"
                         android:textColorHint="@color/black_a"
                         android:background="@null"
-                        android:textSize="@dimen/_16sdp"
+                        android:textSize="16sp"
                         android:fontFamily="@font/mulish_regular"
                         android:textFontWeight="400"
                         android:singleLine="true"
@@ -98,7 +98,7 @@
                         android:hint="Landmark (optional)"
                         android:textColorHint="@color/black_a"
                         android:background="@null"
-                        android:textSize="@dimen/_16sdp"
+                        android:textSize="16sp"
                         android:fontFamily="@font/mulish_regular"
                         android:textFontWeight="400"
                         android:singleLine="true"
@@ -120,7 +120,7 @@
                         android:hint="Alternate Number (optional)"
                         android:textColorHint="@color/black_a"
                         android:background="@null"
-                        android:textSize="@dimen/_16sdp"
+                        android:textSize="16sp"
                         android:fontFamily="@font/mulish_regular"
                         android:textFontWeight="400"
                         android:singleLine="true"
@@ -142,7 +142,7 @@
                         android:hint="Name"
                         android:textColorHint="@color/black_a"
                         android:background="@null"
-                        android:textSize="@dimen/_16sdp"
+                        android:textSize="16sp"
                         android:fontFamily="@font/mulish_regular"
                         android:textFontWeight="400"
                         android:singleLine="true"
@@ -164,7 +164,7 @@
                         android:hint="Contact Number"
                         android:textColorHint="@color/black_a"
                         android:background="@null"
-                        android:textSize="@dimen/_16sdp"
+                        android:textSize="16sp"
                         android:fontFamily="@font/mulish_regular"
                         android:textFontWeight="400"
                         android:singleLine="true"
@@ -185,7 +185,7 @@
                         android:layout_height="wrap_content"
                         android:text="Save as"
                         android:textColor="@color/black_a"
-                        android:textSize="@dimen/_16sdp"
+                        android:textSize="16sp"
                         android:fontFamily="@font/mulish_regular"
                         android:textFontWeight="400"
                         android:layout_marginStart="@dimen/_10sdp"
@@ -195,7 +195,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="@dimen/_14sdp"
+                        android:layout_marginTop="14dp"
                         android:layout_marginStart="@dimen/_10sdp">
 
                         <ImageView
@@ -224,18 +224,18 @@
 
                     <Button
                         android:id="@+id/btnSubmit"
-                        android:layout_width="@dimen/_231sdp"
-                        android:layout_height="@dimen/_54sdp"
+                        android:layout_width="230dp"
+                        android:layout_height="54dp"
                         android:background="@drawable/btn_backg"
                         android:text="Submit"
                         android:textAllCaps="false"
-                        android:textSize="@dimen/_15sdp"
+                        android:textSize="15sp"
                         android:textColor="@color/black_c"
                         android:textFontWeight="700"
                         android:textAlignment="center"
-                        android:layout_marginBottom="@dimen/_16sdp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/_46sdp"
+                        android:layout_marginTop="46dp"
+                        android:layout_marginBottom="2dp"
                         android:fontFamily="@font/raleway_bold" />
 
 
@@ -244,7 +244,7 @@
                 </LinearLayout>
 
 
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

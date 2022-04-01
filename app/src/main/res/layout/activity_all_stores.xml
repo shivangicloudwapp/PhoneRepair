@@ -10,13 +10,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginTop="28dp"
         android:layout_marginHorizontal="@dimen/_15sdp">
 
         <ImageView
             android:id="@+id/ivBackAllStores"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_vector__40_" />
 
@@ -26,16 +26,16 @@
             android:layout_centerInParent="true"
             android:fontFamily="@font/mulish_extrabold"
             android:text="All Stores"
-            android:layout_centerVertical="true"
             android:textColor="@color/black_b"
             android:textFontWeight="800"
-            android:textSize="@dimen/_18sdp" />
+            android:textSize="18sp" />
+
         <ImageView
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
-            android:layout_centerVertical="true"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_group__22_"/>
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_group__22_" />
 
     </RelativeLayout>
 
@@ -49,6 +49,6 @@
         android:id="@+id/rvAllStores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_16sdp"/>
+        android:layout_marginHorizontal="15dp"/>
 
 </LinearLayout>

@@ -20,7 +20,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginTop="18dp">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -32,19 +33,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_10sdp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_centerVertical="true">
 
                         <TextView
                             android:id="@+id/tvCode"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginTop="@dimen/_4sdp"
                             android:fontFamily="@font/mulish_semibold"
                             android:text="Service No - #CUEP8383832"
                             android:textColor="@color/txt_clr2"
                             android:textFontWeight="600"
-                            android:textSize="@dimen/_12sdp" />
+
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/tvDate"
@@ -56,17 +58,16 @@
                             android:text="18-02-2021"
                             android:textColor="@color/dark2"
                             android:textFontWeight="400"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
 
                     <Button
                         android:id="@+id/btnReject"
-                        android:layout_width="@dimen/_55sdp"
-                        android:layout_height="@dimen/_20sdp"
+                        android:layout_width="55dp"
+                        android:layout_height="20dp"
                         android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginEnd="@dimen/_18sdp"
                         android:background="@drawable/pending_btn"
@@ -74,10 +75,9 @@
                         android:fontFamily="@font/mulish_regular"
                         android:text="Rejected"
                         android:textAllCaps="false"
-                        android:layout_marginBottom="@dimen/_4sdp"
                         android:textColor="@color/white"
                         android:textFontWeight="400"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="8sp" />
 
                 </RelativeLayout>
 
@@ -100,8 +100,8 @@
                 android:layout_marginBottom="@dimen/_6sdp">
                 <ImageView
                     android:id="@+id/userImg"
-                    android:layout_width="@dimen/_36sdp"
-                    android:layout_height="@dimen/_36sdp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     android:src="@drawable/profile"
                     android:layout_gravity="center_vertical"/>
 
@@ -110,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jhon Deo"
-                    android:textSize="@dimen/_15sdp"
+                    android:textSize="15sp"
                     android:textColor="#646E77"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:textFontWeight="300"

@@ -39,19 +39,19 @@
                     android:textColor="@color/black_b"
                     android:textFontWeight="400"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="@dimen/_18sdp"
+                    android:textSize="18sp"
                     android:layout_marginTop="@dimen/_40sdp" />
 
                 <Button
                     android:id="@+id/btnDone"
-                    android:layout_width="@dimen/_127sdp"
-                    android:layout_height="@dimen/_30sdp"
+                    android:layout_width="127dp"
+                    android:layout_height="30dp"
                     android:text="Done"
                     android:textAllCaps="false"
                     android:layout_marginBottom="@dimen/_15sdp"
                     android:fontFamily="@font/raleway_bold"
                     android:textFontWeight="700"
-                    android:textSize="@dimen/_15sdp"
+                    android:textSize="15sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/_40sdp"
                     android:background="@drawable/btn_backg"

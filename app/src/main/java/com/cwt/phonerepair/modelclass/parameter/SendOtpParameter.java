@@ -12,13 +12,13 @@ public class SendOtpParameter {
         this.number = number;
     }
 
-    @SerializedName("User_id")
+    @SerializedName("user_id")
     @Expose
     private Integer userId;
     @SerializedName("country_code")
     @Expose
     private String countryCode;
-    @SerializedName("Number")
+    @SerializedName("number")
     @Expose
     private String number;
 
@@ -45,5 +45,4 @@ public class SendOtpParameter {
     public void setNumber(String number) {
         this.number = number;
     }
-
 }

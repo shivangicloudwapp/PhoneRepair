@@ -802,7 +802,7 @@ Los Angeles, California"/>
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="15sp"
+                                        android:textSize="13sp"
                                         android:fontFamily="@font/mulish_light"
                                         android:textFontWeight="600"
                                         android:textColor="@color/black_b"
@@ -819,7 +819,6 @@ Los Angeles, California"/>
                                     android:fontFamily="@font/mulish_semibold"
                                     android:text="Accepted"
                                     android:textColor="#2797C2"
-                                    android:layout_marginEnd="8dp"
                                     android:textFontWeight="600"
                                     android:textSize="@dimen/_12sdp" />
 

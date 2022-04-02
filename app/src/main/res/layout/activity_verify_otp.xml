@@ -87,10 +87,10 @@
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         app:height="40dp"
-                        app:width="60dp"
+                        app:width="46dp"
                         app:bar_enabled="true"
                         app:bar_height="2dp"
-                        app:length="4"
+                        app:length="6"
                         android:layout_marginHorizontal="@dimen/_15sdp"
                         app:bar_active_color="@color/black_a"
                         app:bar_inactive_color="@color/otp_dash"
@@ -113,14 +113,24 @@
                             android:textFontWeight="600"
                             android:textSize="16sp" />
 
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                        </LinearLayout>
+
                         <TextView
+                            android:id="@+id/tvPhoneNumber"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/_15sdp"
                             android:layout_marginVertical="@dimen/_10sdp"
                             android:text="@string/enter_the_four_digit_code_we_sent_to_you_62_23723782738"
                             android:textFontWeight="600"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:fontFamily="@font/mulish_semibold"
+                            android:layout_weight="600"
+                            android:textColor="@color/black"/>
 
 
                     </LinearLayout>

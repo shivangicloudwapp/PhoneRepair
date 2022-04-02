@@ -17,7 +17,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="382dp"
                 android:background="@drawable/rectangle"
                 android:orientation="vertical">
 
@@ -37,8 +37,8 @@
 
                         <ImageView
                             android:id="@+id/ivLocation"
-                            android:layout_width="@dimen/_22sdp"
-                            android:layout_height="@dimen/_22sdp"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_group__19_" />
 
@@ -60,7 +60,7 @@
                                 android:text="Āzenes iela 22A, Kurzemes Rīga, LV-1048, Latvia"
                                 android:textColor="@color/textClr"
                                 android:textFontWeight="400"
-                                android:textSize="@dimen/_11sdp"
+                                android:textSize="@dimen/_8sdp"
                                 tools:ignore="Suspicious0dp" />
 
                             <ImageView
@@ -79,42 +79,58 @@
 
                             <ImageView
                                 android:id="@+id/tvCart"
-                                android:layout_width="@dimen/_22sdp"
-                                android:layout_height="@dimen/_22sdp"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
                                 android:layout_marginRight="@dimen/_11sdp"
                                 android:src="@drawable/ic_group__22_" />
 
                             <ImageView
                                 android:id="@+id/tvNotification"
-                                android:layout_width="@dimen/_22sdp"
-                                android:layout_height="@dimen/_22sdp"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
                                 android:src="@drawable/ic_vector__43_" />
 
                         </LinearLayout>
 
                     </RelativeLayout>
 
-                    <EditText
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_43sdp"
-                        android:layout_marginHorizontal="@dimen/_16sdp"
-                        android:layout_marginTop="@dimen/_24sdp"
-                        android:layout_weight="400"
-                        android:background="@drawable/rectangle26"
-                        android:drawableStart="@drawable/ic_vector__48_"
-                        android:drawablePadding="@dimen/_10sdp"
-                        android:fontFamily="@font/mulish_regular"
-                        android:hint="What you want Repair?"
-                        android:paddingStart="@dimen/_10sdp"
-                        android:textSize="@dimen/_12sdp" />
+                        android:layout_height="46dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/all_white_corners_radius">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="400"
+                            android:background="@null"
+                            android:paddingHorizontal="@dimen/_6sdp"
+                            android:drawableStart="@drawable/ic_vector__48_"
+                            android:fontFamily="@font/mulish_regular"
+                            android:hint="What you want Repair?"
+                            android:textSize="12sp"
+                            android:drawablePadding="@dimen/_6sdp"/>
 
 
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvBanner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginHorizontal="@dimen/_12sdp"/>
+
+<!--
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_160sdp"
+                        android:layout_height="173dp"
                         android:layout_marginHorizontal="@dimen/_12sdp"
                         android:layout_marginVertical="@dimen/_8sdp"
-                        android:background="@drawable/img_1" />
+                        android:background="@drawable/img_1" />-->
 
 
                 </LinearLayout>
@@ -123,11 +139,11 @@
             </LinearLayout>
 
 
-            <LinearLayout
+   <!--         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_160sdp"
+                android:layout_height="173dp"
                 android:layout_marginHorizontal="@dimen/_12sdp"
-                android:layout_marginTop="-14dp"
+                android:layout_marginTop="-56dp"
                 android:orientation="vertical"
                 android:background="@drawable/group1042" >
 
@@ -135,7 +151,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_20sdp"
+                    android:textSize="20sp"
                     android:textFontWeight="400"
                     android:layout_marginTop="@dimen/_14sdp"
                     android:layout_marginStart="@dimen/_9sdp"
@@ -145,38 +161,38 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_13sdp"
-                        android:textFontWeight="700"
-                        android:layout_marginTop="@dimen/_38sdp"
                         android:layout_marginStart="@dimen/_9sdp"
+                        android:layout_marginTop="32dp"
                         android:fontFamily="@font/mulish_regular"
-                        android:text="Mobile Repair\nExpert"/>
+                        android:text="Mobile Repair\nExpert"
+                        android:textColor="@color/white"
+                        android:textFontWeight="700"
+                        android:textSize="13sp" />
 
                     <Button
                         android:id="@+id/btnBookNow"
-                        android:layout_width="@dimen/_120sdp"
-                        android:layout_height="@dimen/_26sdp"
+                        android:layout_width="143dp"
+                        android:layout_height="30dp"
                         android:layout_alignParentRight="true"
-                        android:layout_marginStart="@dimen/_6sdp"
-                        android:layout_marginTop="@dimen/_50sdp"
-                        android:layout_marginEnd="@dimen/_9sdp"
+                        android:layout_marginTop="36dp"
+                        android:layout_marginEnd="@dimen/_12sdp"
                         android:background="@drawable/gradient_btn"
                         android:fontFamily="@font/mulish_semibold"
                         android:text="Book Now"
                         android:textAllCaps="false"
                         android:textColor="@color/black_b"
                         android:textFontWeight="600"
-                        android:textSize="@dimen/_15sdp" />
+                        android:textSize="15sp" />
                 </RelativeLayout>
 
 
 
 
-            </LinearLayout>
+            </LinearLayout>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -192,19 +208,19 @@
                     android:text="@string/our_exclusive_stores"
                     android:textColor="@color/txt_clr"
                     android:textFontWeight="500"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tvSeeAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/_14sdp"
+                    android:layout_marginRight="@dimen/_16sdp"
                     android:fontFamily="@font/mulish_regular"
                     android:text="See All"
                     android:textColor="@color/txt_clr"
                     android:textFontWeight="400"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="12sp" />
 
             </RelativeLayout>
 
@@ -213,7 +229,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:layout_marginHorizontal="@dimen/_20sdp"/>
+                android:layout_marginHorizontal="@dimen/_12sdp"/>
         </LinearLayout>
 
     </ScrollView>

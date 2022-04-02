@@ -2,8 +2,10 @@ package com.cwt.phonerepair.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -11,8 +13,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
+import com.cwt.phonerepair.Server.ApiUtils;
+import com.cwt.phonerepair.modelclass.parameter.LoginParameter;
+import com.cwt.phonerepair.modelclass.response.LoginResponse;
+import com.cwt.phonerepair.utils.Customprogress;
+import com.cwt.phonerepair.utils.SessionManager;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginScreenActivity extends AppCompatActivity implements View.OnClickListener {
 Button btnLogin;
@@ -20,7 +33,9 @@ TextView tvSignup;
 
 EditText etEmail,etPassword;
 ImageView ivShowHidePass;
-
+    JsonPlaceHolderApi jsonPlaceHolderApi;
+    SessionManager sessionManager;
+Context context;
 
     boolean is_click=true;
     @Override
@@ -37,6 +52,10 @@ ImageView ivShowHidePass;
     }
 
     private void intView() {
+        context= LoginScreenActivity.this;
+        jsonPlaceHolderApi = ApiUtils.getAPIService();
+        sessionManager = new SessionManager(context);
+
         btnLogin=findViewById(R.id.btnLogin);
         tvSignup=findViewById(R.id.tvSignup);
         etEmail=findViewById(R.id.etEmail);
@@ -53,9 +72,33 @@ ImageView ivShowHidePass;
     public void onClick(View v) {
 
         switch(v.getId()){
+
+
             case R.id.btnLogin:
-                Intent intent =new Intent(LoginScreenActivity.this,MobileLoginActivity.class);
-                startActivity(intent);
+                String email=etEmail.getText().toString().trim();
+                String pass=etPassword.getText().toString().trim();
+
+                if (TextUtils.isEmpty(email)){
+                    etEmail.setError("Please Enter a Email Address");
+                    etEmail.requestFocus();
+                    return;
+                }
+
+                else if (TextUtils.isEmpty(pass)) {
+                    etPassword.setError("Enter a password");
+                    etPassword.requestFocus();
+                    return;
+                }
+
+                else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    etEmail.setError("Enter a valid Email address");
+                    etEmail.requestFocus();
+                    return;
+                }
+
+                    Login();
+
+
                 break;
 
             case R.id.tvSignup:
@@ -77,6 +120,8 @@ ImageView ivShowHidePass;
                 }
 
                 break;
+            default:
+                break;
 
         }
 
@@ -85,8 +130,43 @@ ImageView ivShowHidePass;
 
     }
 
+    private void Login() {
 
+        Customprogress.showPopupProgressSpinner(context,true);
+        LoginParameter loginParameter= new LoginParameter(etEmail.getText().toString(),etPassword.getText().toString());
+        Call<LoginResponse>call=jsonPlaceHolderApi.Login(loginParameter);
 
+        call.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                if (response.isSuccessful()){
+                    if (response.body().getStatus()){
+
+                        sessionManager.setSavedToken(response.body().getData().getToken());
+                        sessionManager.setLogin(true);
+                  Intent intent =new Intent(LoginScreenActivity.this,DashboardActivity.class);
+                startActivity(intent);
+                finish();
+                    }
+
+                    else {
+                        Toast.makeText(LoginScreenActivity.this, "faild...."+response.body().getMassage(), Toast.LENGTH_SHORT).show();
+
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Customprogress.showPopupProgressSpinner(context, false);
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+    }
 
 
 }

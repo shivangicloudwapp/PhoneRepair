@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/ivorder"
-            android:layout_width="@dimen/_22sdp"
-            android:layout_height="@dimen/_22sdp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/_6sdp"
             android:src="@drawable/greenright" />
@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Withdrawal"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="15sp"
                 android:textColor="@color/black_b"
                 android:layout_marginTop="@dimen/_4sdp"
                 android:layout_marginStart="@dimen/_5sdp"
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Debit"
-                android:textSize="@dimen/_8sdp"
+                android:textSize="8sp"
                 android:textColor="@color/black_b"
                 android:layout_marginTop="@dimen/_4sdp"
                 android:layout_marginStart="@dimen/_5sdp"
@@ -60,7 +60,7 @@
                 android:text="Date: Jan 02, 2022 | 21:09"
                 android:textColor="@color/black_b"
                 android:textFontWeight="400"
-                android:textSize="@dimen/_8sdp" />
+                android:textSize="8sp" />
 
         </LinearLayout>
 
@@ -77,7 +77,7 @@
             android:text="RM60.00"
             android:textColor="@color/black"
             android:textFontWeight="700"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="15sp" />
 
     </RelativeLayout>
     

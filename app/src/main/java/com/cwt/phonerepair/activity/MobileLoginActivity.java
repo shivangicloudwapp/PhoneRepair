@@ -31,6 +31,7 @@ public class MobileLoginActivity extends AppCompatActivity implements View.OnCli
     ImageView ivBackSignUp;
 Context context;
     JsonPlaceHolderApi jsonPlaceHolderApi;
+    String PhoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,20 +60,21 @@ Context context;
             case R.id.btnSendOtp:
                 String phoneNum = etPhoneNum.getText().toString().trim();
 
-                if (phoneNum.isEmpty()||!etPhoneNum.getText().toString().matches(phoneNum)){
-                    etPhoneNum.setError("Please enter valid 10 digit phone number");
+                if (phoneNum.isEmpty()){
+                    etPhoneNum.setError("Please enter phone number");
                     etPhoneNum.requestFocus();
                     return;
                 }
 
-
-
+                else if (phoneNum.length()<9) {
+                    etPhoneNum.setError("Enter enter valid 10 digit phone number");
+                }
+                else{
                     sendOtp();
-
-
-
+                }
 
                 break;
+
 
             case R.id.ivBackSignUp:
                 onBackPressed();
@@ -86,7 +88,7 @@ Context context;
     private void sendOtp() {
         Customprogress.showPopupProgressSpinner(context,true);
 
-        SendOtpParameter sendOtpParameter= new SendOtpParameter(2,"3",etPhoneNum.getText().toString());
+        SendOtpParameter sendOtpParameter= new SendOtpParameter(4,"3",etPhoneNum.getText().toString());
         Call<SendOtpResponse>call = jsonPlaceHolderApi.SendOtp(sendOtpParameter);
         call.enqueue(new Callback<SendOtpResponse>() {
             @Override
@@ -95,7 +97,10 @@ Context context;
                 if (response.isSuccessful()){
 
                     if (response.body().getStatus()){
+
+                        PhoneNumber=etPhoneNum.getText().toString();
                         Intent intent =new Intent(MobileLoginActivity.this,VerifyOtpActivity.class);
+                        intent.putExtra("phone_num",PhoneNumber);
                        startActivity(intent);
                        finish();
 

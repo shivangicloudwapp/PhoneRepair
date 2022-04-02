@@ -11,11 +11,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.activity.StoreDetailsActivity;
-import com.cwt.phonerepair.modelclass.OurExclusiveStoreModel;
+import com.cwt.phonerepair.modelclass.response.HomeStoreModel;
 
 import java.util.ArrayList;
 
@@ -23,9 +26,9 @@ public class OurExclusiveStoreAdapter extends RecyclerView.Adapter<OurExclusiveS
 
      Context context;
 
-     ArrayList<OurExclusiveStoreModel> modelList;
+     ArrayList<HomeStoreModel> modelList;
 
-    public OurExclusiveStoreAdapter(ArrayList<OurExclusiveStoreModel> modelList, Context context) {
+    public OurExclusiveStoreAdapter(ArrayList<HomeStoreModel> modelList, Context context) {
         this.context = context;
         this.modelList = modelList;
     }
@@ -43,12 +46,22 @@ public class OurExclusiveStoreAdapter extends RecyclerView.Adapter<OurExclusiveS
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        OurExclusiveStoreModel model = modelList.get(position);
-        holder.tvStoreName.setText(model.getTvStoreName());
-        holder.tvAddress.setText(model.getTvAddress());
-        holder.ivStoreimg.setImageResource(model.getIvStoreimg());
+        HomeStoreModel model = modelList.get(position);
+        holder.tvStoreName.setText(model.getStoreName());
+        holder.tvAddress.setText(model.getAddress());
 
-        holder.tvSeedetail.setOnClickListener(new View.OnClickListener() {
+
+
+        Glide.with(context).load("https://cloudwapptechnologies.com/MJ/fixstore"+model.getStoreImage())
+                .thumbnail(0.5f)
+                .placeholder(R.drawable.group1042)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.ivStoreimg);
+
+
+
+
+        holder.cvSeeDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), StoreDetailsActivity.class);
@@ -66,6 +79,7 @@ public class OurExclusiveStoreAdapter extends RecyclerView.Adapter<OurExclusiveS
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvStoreName,tvAddress,tvSeedetail;
         ImageView ivStoreimg;
+        CardView cvSeeDetails;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -73,6 +87,7 @@ public class OurExclusiveStoreAdapter extends RecyclerView.Adapter<OurExclusiveS
             tvAddress = itemView.findViewById(R.id.tvAddress);
             ivStoreimg = itemView.findViewById(R.id.ivStoreimg);
             tvSeedetail = itemView.findViewById(R.id.tvSeedetail);
+            cvSeeDetails = itemView.findViewById(R.id.cvSeeDetails);
 
 
 

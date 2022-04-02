@@ -19,11 +19,11 @@
 
             <ImageView
                 android:id="@+id/ivorder"
-                android:layout_width="@dimen/_46sdp"
-                android:layout_height="@dimen/_46sdp"
-                android:src="@drawable/group951"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/_6sdp"
-                android:layout_gravity="center_vertical"/>
+                android:src="@drawable/group951" />
 
             <LinearLayout
                 android:layout_toRightOf="@+id/ivorder"
@@ -36,7 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4 Items"
-                    android:textSize="@dimen/_14sdp"
+                    android:textSize="14sp"
                     android:textColor="@color/txt_clr1"
                     android:textFontWeight="600"
                     android:layout_marginStart="@dimen/_5sdp"
@@ -46,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="#CUEP8383832"
-                    android:textSize="@dimen/_12sdp"
+                    android:textSize="12sp"
                     android:textColor="@color/txt_clr2"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:layout_marginStart="@dimen/_5sdp"
@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="18-02-2021  12:24PM"
-                    android:textSize="@dimen/_8sdp"
+                    android:textSize="8sp"
                     android:textColor="@color/txt_clr3"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:layout_marginStart="@dimen/_5sdp"
@@ -80,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ordered"
-                    android:textSize="@dimen/_12sdp"
+                    android:textSize="12sp"
                     android:textColor="@color/txt_orange"
                     android:textFontWeight="600"
                     android:layout_marginStart="@dimen/_5sdp"
@@ -91,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="RM400"
-                    android:textSize="@dimen/_15sdp"
+                    android:textSize="15sp"
                     android:textColor="@color/txt_clr"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:layout_marginStart="@dimen/_5sdp"

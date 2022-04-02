@@ -92,32 +92,32 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
                     etName.requestFocus();
                     return;
                 }
-                if (email.isEmpty()) {
+                else if (email.isEmpty()) {
                     etEmail.setError("Enter an email address");
                     etEmail.requestFocus();
                     return;
                 }
 
-                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+               else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     etEmail.setError("Enter a valid email address");
                     etEmail.requestFocus();
                     return;
                 }
 
-                if (password.isEmpty()) {
+                else if (password.isEmpty()) {
                     etPassword.setError("Enter a password");
                     etPassword.requestFocus();
                     return;
                 }
 
-                if (password.length() < 8) {
+            /*   else if (password.length() < 8) {
 
                     etPassword.setError("Password Length Must be 8 Digits");
                     etPassword.requestFocus();
                     return;
 
-                }
-                if (confirmpass.isEmpty()) {
+                }*/
+               else if (confirmpass.isEmpty()) {
                     etConfPass.setError("Enter a  Confirm password");
                     etConfPass.requestFocus();
                     return; }
@@ -126,11 +126,12 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
                     etConfPass.setError("Enter a Correct password");
                     etConfPass.requestFocus();
                     return;            }
-
+                {
                 signup();
 
-            /*Intent intent =new Intent(SignupScreenActivity.this,MobileLoginActivity.class);
-            startActivity(intent);*/
+            }
+
+
             /* if (Constants.isInternetConnected(context)) {
 
             } else {
@@ -141,8 +142,7 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
               signup();
             } else {
                 Utility.showErrorMessage(getString(R.string.checkinternetconnection), context);
-            }
-*/
+            }*/
                 break;
             case R.id.ivBackSignUp:
                 onBackPressed();
@@ -206,6 +206,10 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
                     if (response.body().getStatus()) {
                         Intent intent =new Intent(SignupScreenActivity.this,MobileLoginActivity.class);
                         Log.e("response.....",response.body().getData().toString());
+
+                        /*
+                        intent.putExtra("",);
+                        intent.putExtra("",);*/
                         startActivity(intent);
                           finish();
                     } else {

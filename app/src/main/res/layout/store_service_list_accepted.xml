@@ -40,7 +40,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Service No - #CUEP8383832"
-                            android:textSize="@dimen/_12sdp"
+                            android:textSize="12sp"
                             android:textColor="@color/txt_clr2"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:textFontWeight="600"
@@ -51,7 +51,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="18-02-2021"
-                            android:textSize="@dimen/_12sdp"
+                            android:textSize="12sp"
                             android:textColor="@color/dark2"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginStart="@dimen/_5sdp"
@@ -73,8 +73,8 @@
                         android:layout_centerVertical="true">
                         <Button
                             android:id="@+id/btnComplete"
-                            android:layout_width="@dimen/_55sdp"
-                            android:layout_height="@dimen/_20sdp"
+                            android:layout_width="55dp"
+                            android:layout_height="20dp"
                             android:background="@drawable/pending_btn"
                             android:fontFamily="@font/mulish_regular"
                             android:text="Accepeted"
@@ -83,14 +83,14 @@
                             android:textColor="@color/white"
                             android:layout_gravity="center_horizontal"
                             android:textFontWeight="400"
-                            android:textSize="@dimen/_8sdp" />
+                            android:textSize="8sp" />
 
                         <TextView
                             android:id="@+id/tvRm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="RM23.00"
-                            android:textSize="15dp"
+                            android:textSize="15sp"
                             android:layout_marginTop="10dp"
                             android:textColor="@color/txt_clr"
                             android:textFontWeight="700"
@@ -121,8 +121,8 @@
                 android:layout_marginBottom="@dimen/_6sdp">
                 <ImageView
                     android:id="@+id/userImg"
-                    android:layout_width="@dimen/_36sdp"
-                    android:layout_height="@dimen/_36sdp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     android:src="@drawable/profile"
                     android:layout_gravity="center_vertical"/>
 
@@ -131,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jhon Deo"
-                    android:textSize="@dimen/_15sdp"
+                    android:textSize="15sp"
                     android:textColor="#646E77"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:textFontWeight="300"

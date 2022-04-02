@@ -13,11 +13,11 @@
         android:layout_height="wrap_content"
         android:text="Services"
         android:textColor="@color/black_b"
-        android:textSize="@dimen/_18sdp"
+        android:textSize="18sp"
         android:fontFamily="@font/mulish_extrabold"
         android:textFontWeight="800"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/_30sdp"/>
+        android:layout_marginTop="28dp"/>
 
     <ImageView
         android:layout_width="match_parent"

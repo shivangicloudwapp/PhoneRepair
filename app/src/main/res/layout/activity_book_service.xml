@@ -106,23 +106,24 @@
                                 android:src="@drawable/charging" />
 
                             <TextView
-                                android:layout_toRightOf="@+id/ivBattery"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Battery"
-                                android:textColor="@color/black"
-                                android:textSize="12sp"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="@dimen/_9sdp"
+                                android:layout_toRightOf="@+id/ivBattery"
                                 android:fontFamily="@font/mulish_semibold"
-                                android:textFontWeight="600"/>
+                                android:text="Battery"
+                                android:textColor="@color/black"
+                                android:textFontWeight="600"
+                                android:textSize="12sp" />
 
                             <CheckBox
-                                android:layout_alignParentEnd="true"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
-                                android:layout_marginRight="@dimen/_12sdp"/>
+                                android:checked="true"
+                                android:layout_marginRight="@dimen/_12sdp" />
 
 
                         </RelativeLayout>

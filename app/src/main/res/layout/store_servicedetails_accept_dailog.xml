@@ -26,15 +26,15 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/mulish_semibold"
                 android:text="Enter Additional Amount"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="15sp"
                 android:textColor="@color/txt_clr"
                 android:textFontWeight="600"
                 android:layout_marginStart="@dimen/_21sdp"/>
 
             <EditText
                 android:id="@+id/etAdditionalAmount"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_36sdp"
+                android:layout_width="267dp"
+                android:layout_height="48dp"
                 android:fontFamily="@font/mulish_light"
                 android:textFontWeight="300"
                 android:textSize="@dimen/_15sdp"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/mulish_semibold"
                 android:text="Remark"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="15sp"
                 android:textColor="@color/txt_clr"
                 android:textFontWeight="600"
                 android:layout_marginTop="@dimen/_20sdp"
@@ -61,8 +61,8 @@
 
             <EditText
                 android:id="@+id/etRemark"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_142sdp"
+                android:layout_width="267dp"
+                android:layout_height="142dp"
                 android:fontFamily="@font/mulish_light"
                 android:textFontWeight="300"
                 android:textSize="@dimen/_15sdp"
@@ -76,11 +76,11 @@
                 android:background="@drawable/edittxt_bac"/>
             <Button
                 android:id="@+id/btnSub"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_32sdp"
+                android:layout_width="155dp"
+                android:layout_height="36dp"
                 android:background="@drawable/btn_backg"
                 android:text="Submit"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:textAllCaps="false"
                 android:textColor="#181818"
                 android:paddingHorizontal="@dimen/_40sdp"

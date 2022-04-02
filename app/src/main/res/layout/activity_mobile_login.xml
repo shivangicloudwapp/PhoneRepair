@@ -92,8 +92,8 @@
                         android:fontFamily="@font/mulish_regular"
                         android:hint="+62 5254346545"
                         android:inputType="number"
-                        android:maxLines="1"
                         android:padding="11dp"
+                        android:maxLength="10"
                         android:textColorHint="@color/black_a"
                         android:textFontWeight="400"
                         android:textSize="14sp" />

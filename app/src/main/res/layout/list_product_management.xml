@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="@dimen/_12sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
@@ -14,9 +13,9 @@
             app:cardBackgroundColor="@android:color/white"
             app:cardCornerRadius="8dp"
             app:cardElevation="1dp"
-            android:layout_width="@dimen/_140sdp"
-            android:layout_height="@dimen/_140sdp"
-            android:layout_marginTop="@dimen/_42sdp"
+            android:layout_width="157dp"
+            android:layout_height="155dp"
+            android:layout_marginTop="@dimen/_53sdp"
             android:layout_marginBottom="@dimen/_8sdp">
 
             <LinearLayout
@@ -28,15 +27,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:layout_marginTop="@dimen/_90sdp"
+                    android:layout_marginTop="90dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_weight="2">
+                        android:layout_weight="2"
+                        android:layout_marginStart="12dp">
 
 
                         <TextView
@@ -48,7 +47,7 @@
                             android:text="Iphone 13"
                             android:textColor="@color/textclr"
                             android:textFontWeight="400"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="12sp" />
 
 
                         <TextView
@@ -61,7 +60,7 @@
                             android:text="RM400"
                             android:textColor="@color/blackd"
                             android:textFontWeight="600"
-                            android:textSize="@dimen/_14sdp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
 
 
@@ -70,7 +69,6 @@
                         android:id="@+id/menu"
                         android:layout_width="26dp"
                         android:layout_height="26dp"
-                        android:layout_marginTop="@dimen/_10sdp"
                        android:src="@drawable/menu"/>
 
 
@@ -87,15 +85,15 @@
 
 
     </RelativeLayout>
+
     <ImageView
         android:id="@+id/ivProdcut"
-        android:layout_width="@dimen/_140sdp"
-        android:layout_height="@dimen/_110sdp"
-        android:src="@drawable/iphone1"
-        android:contentDescription="@null"
+        android:layout_width="141dp"
+        android:layout_height="149dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        />
+        android:contentDescription="@null"
+        android:src="@drawable/iphone1" />
 
 
 </RelativeLayout>

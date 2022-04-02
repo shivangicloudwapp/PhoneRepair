@@ -14,10 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.activity.AllStoresActivity;
 import com.cwt.phonerepair.activity.StoreDetailsActivity;
-import com.cwt.phonerepair.modelclass.OurExclusiveStoreModel;
+import com.cwt.phonerepair.modelclass.response.AllStoreModel;
+import com.cwt.phonerepair.modelclass.response.HomeStoreModel;
 
 import java.util.ArrayList;
 
@@ -25,10 +27,10 @@ public class AllStoresAdapter extends RecyclerView.Adapter<AllStoresAdapter.View
 
     Context context;
 
-    ArrayList<OurExclusiveStoreModel> modelList;
+    ArrayList<AllStoreModel> modelList;
     private ViewHolder holder;
 
-    public AllStoresAdapter(ArrayList<OurExclusiveStoreModel> modelList, Context context) {
+    public AllStoresAdapter(ArrayList<AllStoreModel> modelList, Context context) {
         this.context = context;
         this.modelList = modelList;
     }
@@ -46,10 +48,17 @@ public class AllStoresAdapter extends RecyclerView.Adapter<AllStoresAdapter.View
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull AllStoresAdapter.ViewHolder holder, int position) {
-        OurExclusiveStoreModel model = modelList.get(position);
-        holder.tvStoreName.setText(model.getTvStoreName());
-        holder.tvAddress.setText(model.getTvAddress());
-        holder.ivStoreimg.setImageResource(model.getIvStoreimg());
+        AllStoreModel model = modelList.get(position);
+        holder.tvStoreName.setText(model.getStoreName());
+        holder.tvAddress.setText(model.getAddress());
+
+        Glide.with(context).load("https://cloudwapptechnologies.com/MJ/fixstore"+model.getStoreImage())
+                .thumbnail(0.5f)
+                .placeholder(R.drawable.group1042)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.ivStoreimg);
+
+
 
         holder.btnSeedetail.setOnClickListener(new View.OnClickListener() {
             @Override

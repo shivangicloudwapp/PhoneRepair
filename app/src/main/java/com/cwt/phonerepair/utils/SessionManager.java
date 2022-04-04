@@ -17,6 +17,7 @@ public class SessionManager {
     private static final String KEY_FIRST_NAME = "firstname";
     private static final String KEY_LAST_NAME = "lastname";
     private static final String KEY_USER_Email = "userEmail";
+    private static final String KEY_USER_MOBILE = "userMobile";
     private static final String KEY_USER_ID = "userid";
     private static final String KEY_TOKEN = "token";
     private static final String KEY_IS_LOGGED_IN = "IS_LOGGED_IN";
@@ -27,6 +28,19 @@ public class SessionManager {
         editor = pref.edit();
     }
 
+
+
+    //save user email to SharedPref
+    public void setSavedMobile(String userMobile) {
+        editor.putString(KEY_USER_MOBILE, userMobile);
+        editor.commit();
+    }
+
+    //retrieve email frome pref
+    public String getSavedMobile() {
+        return pref.getString(KEY_USER_MOBILE, "");
+
+    } //save user email to SharedPref
 
     //save user email to SharedPref
     public void setSavedUserId(String userId) {

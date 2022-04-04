@@ -27,6 +27,8 @@ import com.cwt.phonerepair.Utility;
 import com.cwt.phonerepair.modelclass.parameter.SignupParameter;
 import com.cwt.phonerepair.modelclass.response.SignupResponse;
 import com.cwt.phonerepair.utils.Customprogress;
+import com.cwt.phonerepair.utils.SessionManager;
+import com.cwt.phonerepair.utils.Utils;
 
 import butterknife.internal.Constants;
 import retrofit2.Call;
@@ -35,14 +37,16 @@ import retrofit2.Response;
 
 public class SignupScreenActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText etName,etEmail,etPassword,etConfPass;
-   Button btnSignUp;
-   TextView tvLogin;
-   ImageView ivBackSignUp,ivShowHidePass,ivShowConHidePass;
-    JsonPlaceHolderApi  jsonPlaceHolderApi;
+    EditText etName, etEmail, etPassword, etConfPass;
+    Button btnSignUp;
+    TextView tvLogin;
+    ImageView ivBackSignUp, ivShowHidePass, ivShowConHidePass;
+    JsonPlaceHolderApi jsonPlaceHolderApi;
     Context context;
+    SessionManager sessionManager;
+    String name, email, password, confirmpass;
+    boolean is_click = true;
 
-    boolean is_click=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,15 +61,19 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
     private void InitView() {
         context = SignupScreenActivity.this;
         jsonPlaceHolderApi = ApiUtils.getAPIService();
-        etName=findViewById(R.id.etName);
-        etEmail=findViewById(R.id.etEmail);
-        etPassword=findViewById(R.id.etPassword);
-        etConfPass=findViewById(R.id.etConPass);
-        btnSignUp=findViewById(R.id.btnSignUp);
-        tvLogin=findViewById(R.id.tvLogin);
-        ivBackSignUp=findViewById(R.id.ivBackSignUp);
-        ivShowHidePass=findViewById(R.id.ivShowHidePass);
-        ivShowConHidePass=findViewById(R.id.ivShowConHidePass);
+        sessionManager = new SessionManager(context);
+
+
+        etName = findViewById(R.id.etName);
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword);
+        etConfPass = findViewById(R.id.etConPass);
+        btnSignUp = findViewById(R.id.btnSignUp);
+        tvLogin = findViewById(R.id.tvLogin);
+        ivBackSignUp = findViewById(R.id.ivBackSignUp);
+        ivShowHidePass = findViewById(R.id.ivShowHidePass);
+        ivShowConHidePass = findViewById(R.id.ivShowConHidePass);
+
 
         tvLogin.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
@@ -77,34 +85,30 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.tvLogin:
-                Intent intent =new Intent(SignupScreenActivity.this,LoginScreenActivity.class);
+                Intent intent = new Intent(SignupScreenActivity.this, LoginScreenActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btnSignUp:
-                String name = etName.getText().toString().trim();
-                String email = etEmail.getText().toString().trim();
-                String password = etPassword.getText().toString().trim();
-                String confirmpass = etConfPass.getText().toString().trim();
-                if (name.isEmpty()){
+
+                name = etName.getText().toString().trim();
+                email = etEmail.getText().toString().trim();
+                password = etPassword.getText().toString().trim();
+                confirmpass = etConfPass.getText().toString().trim();
+                if (name.isEmpty()) {
                     etName.setError("Enter an email address");
                     etName.requestFocus();
                     return;
-                }
-                else if (email.isEmpty()) {
+                } else if (email.isEmpty()) {
                     etEmail.setError("Enter an email address");
                     etEmail.requestFocus();
                     return;
-                }
-
-               else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     etEmail.setError("Enter a valid email address");
                     etEmail.requestFocus();
                     return;
-                }
-
-                else if (password.isEmpty()) {
+                } else if (password.isEmpty()) {
                     etPassword.setError("Enter a password");
                     etPassword.requestFocus();
                     return;
@@ -117,45 +121,37 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
                     return;
 
                 }*/
-               else if (confirmpass.isEmpty()) {
+                else if (confirmpass.isEmpty()) {
                     etConfPass.setError("Enter a  Confirm password");
                     etConfPass.requestFocus();
-                    return; }
-
-                else if(!password.equals(confirmpass)){
+                    return;
+                } else if (!password.equals(confirmpass)) {
                     etConfPass.setError("Enter a Correct password");
                     etConfPass.requestFocus();
-                    return;            }
-                {
-                signup();
+                    return;
+                }
+            {
 
             }
-
-
-            /* if (Constants.isInternetConnected(context)) {
+            if (Utils.checkConnection(context)) {
+                signup();
 
             } else {
-                Toast.makeText(context, getResources().getString(R.string.no_internet_connection), Toast.LENGTH_SHORT).show();
-            }*/
-            /*if (Utility.CheckNetwork(SignupScreenActivity.this)) {
+                Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+            }
 
-              signup();
-            } else {
-                Utility.showErrorMessage(getString(R.string.checkinternetconnection), context);
-            }*/
-                break;
+            break;
             case R.id.ivBackSignUp:
                 onBackPressed();
                 break;
 
 
             case R.id.ivShowHidePass:
-                if (is_click){
+                if (is_click) {
                     is_click = false;
                     ivShowHidePass.setImageDrawable(getResources().getDrawable(R.drawable.ic_eye_show_grey));
                     etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }
-                else {
+                } else {
                     is_click = true;
                     ivShowHidePass.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_visibility_off_24));
                     etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -164,12 +160,11 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
                 break;
 
             case R.id.ivShowConHidePass:
-                if (is_click){
+                if (is_click) {
                     is_click = false;
                     ivShowConHidePass.setImageDrawable(getResources().getDrawable(R.drawable.ic_eye_show_grey));
                     etConfPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }
-                else {
+                } else {
                     is_click = true;
                     ivShowConHidePass.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_visibility_off_24));
                     etConfPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -177,15 +172,11 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
                 break;
 
 
-
-
-
             default:
                 break;
 
 
         }
-
 
 
     }
@@ -196,7 +187,7 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
         String android_id = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
 
         Customprogress.showPopupProgressSpinner(context, true);
-        SignupParameter signupParameter = new SignupParameter(etName.getText().toString().trim(),etEmail.getText().toString(),etPassword.getText().toString(),android_id,"fcmtoken");
+        SignupParameter signupParameter = new SignupParameter(etName.getText().toString().trim(), etEmail.getText().toString(), etPassword.getText().toString(), android_id, "fcmtoken");
         Call<SignupResponse> call = jsonPlaceHolderApi.Signup(signupParameter);
         call.enqueue(new Callback<SignupResponse>() {
             @Override
@@ -204,18 +195,20 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
                 Customprogress.showPopupProgressSpinner(context, false);
                 if (response.isSuccessful()) {
                     if (response.body().getStatus()) {
-                        Intent intent =new Intent(SignupScreenActivity.this,MobileLoginActivity.class);
-                        Log.e("response.....",response.body().getData().toString());
+                        Intent intent = new Intent(SignupScreenActivity.this, MobileLoginActivity.class);
 
-                        /*
-                        intent.putExtra("",);
-                        intent.putExtra("",);*/
+                        sessionManager.setSavedEmail(email);
+                        sessionManager.setSavedUserName(name);
+
+                        Log.e("response.....", response.body().getData().toString());
                         startActivity(intent);
-                          finish();
-                    } else {
-                        Toast.makeText(SignupScreenActivity.this, "faild...."+response.body().getMassage(), Toast.LENGTH_SHORT).show();
+
                     }
+                    finish();
+                } else {
+                    Toast.makeText(SignupScreenActivity.this, "faild...." + response.body().getMassage(), Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override

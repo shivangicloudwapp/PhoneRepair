@@ -7,26 +7,36 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.adapter.ProdcutAdapter;
-import com.cwt.phonerepair.adapter.StoreDetailsViewPagerAdapter;
+import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.adapter.SubscriptionAdapter;
-import com.cwt.phonerepair.modelclass.ProductModel;
-import com.cwt.phonerepair.modelclass.SubscriptionModel;
+import com.cwt.phonerepair.modelclass.response.SubscriptionPlanModel;
+import com.cwt.phonerepair.modelclass.response.SubscriptionPlanResponse;
+import com.cwt.phonerepair.utils.Customprogress;
+import com.cwt.phonerepair.utils.SessionManager;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class SubscriptionPlanActivity extends AppCompatActivity implements View.OnClickListener {
 
-    StoreDetailsViewPagerAdapter adapter;
 
     RecyclerView rvSubPlan;
     Context context;
-    ArrayList<SubscriptionModel> modelArrayList;
+    ArrayList<SubscriptionPlanModel> modelArrayList;
     ImageView ivBackSubPlan;
+
+    JsonPlaceHolderApi jsonPlaceHolderApi;
+    SessionManager sessionManager;
+
+
 
 
     @Override
@@ -39,35 +49,61 @@ public class SubscriptionPlanActivity extends AppCompatActivity implements View.
 
     private void initView() {
 
-        context=getApplicationContext();
+        context=SubscriptionPlanActivity.this;
+        jsonPlaceHolderApi= ApiUtils.getAPIService();
+        sessionManager= new SessionManager(this);
+        modelArrayList= new ArrayList<>();
+
         rvSubPlan=findViewById(R.id.rvSubPlan);
         ivBackSubPlan=findViewById(R.id.ivBackSubPlan);
 
         ivBackSubPlan.setOnClickListener(this);
 
+        subscriptionPlan();
 
 
-        modelArrayList=new ArrayList<>() ;
+    }
 
-        modelArrayList.add(new SubscriptionModel("Silver ","3 Months","Post 3 Items"));
-        modelArrayList.add(new SubscriptionModel("Bronze ","6 Months","Post 5 Items"));
-        modelArrayList.add(new SubscriptionModel("Gold ","12 Months","Post 10 Items"));
-        modelArrayList.add(new SubscriptionModel("Silver ","3 Months","Post 3 Items"));
-        modelArrayList.add(new SubscriptionModel("Gold ","12 Months","Post 10 Items"));
+    private void subscriptionPlan() {
+        Customprogress.showPopupProgressSpinner(context,true);
+        Call<SubscriptionPlanResponse>call=jsonPlaceHolderApi.SubScriptionPlan("Bearer "+sessionManager.getSavedToken());
+        call.enqueue(new Callback<SubscriptionPlanResponse>() {
+            @Override
+            public void onResponse(Call<SubscriptionPlanResponse> call, Response<SubscriptionPlanResponse> response) {
 
+                if (response.isSuccessful()){
+                    Customprogress.showPopupProgressSpinner(context, false);
 
-        SubscriptionAdapter adapter=new SubscriptionAdapter(modelArrayList,this);
-        rvSubPlan.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-        rvSubPlan.setAdapter(adapter);
-        rvSubPlan.setHasFixedSize(true);
+                    if (response.body().getStatus()){
+                        modelArrayList= (ArrayList<SubscriptionPlanModel>) response.body().getData();
+                        SubscriptionAdapter adapter = new SubscriptionAdapter( modelArrayList,context);
+                        rvSubPlan.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+                        rvSubPlan.setAdapter( adapter);
+                        rvSubPlan.setHasFixedSize(true);
+
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<SubscriptionPlanResponse> call, Throwable t) {
+                Customprogress.showPopupProgressSpinner(context, false);
+                Toast.makeText(SubscriptionPlanActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
 
     }
 
     @Override
     public void onClick(View view) {
-        if (view==ivBackSubPlan){
-            onBackPressed();
+
+        switch(view.getId()){
+            case R.id.ivBackSubPlan:
+                onBackPressed();
         }
+
 
 
 

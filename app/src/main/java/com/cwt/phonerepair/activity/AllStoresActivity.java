@@ -43,25 +43,6 @@ public class AllStoresActivity extends AppCompatActivity implements View.OnClick
 
 
 
-/*
-
-        modelArrayList=new ArrayList<>() ;
-
-        modelArrayList.add(new OurExclusiveStoreModel("The Apple Store","New Door No. A4-72 Ground Floor c21 Mall",R.drawable.store1));
-        modelArrayList.add(new OurExclusiveStoreModel("Dong Mobile Store","New Door No. A4-72 First Floor c21 Mall",R.drawable.store2));
-        modelArrayList.add(new OurExclusiveStoreModel("No One Mobile Store","New Door No. A4-72 Ground Floor c21 Mall",R.drawable.store3));
-        modelArrayList.add(new OurExclusiveStoreModel("Dong Mobile Store","New Door No. A4-72 First Floor c21 Mall",R.drawable.store4));
-        modelArrayList.add(new OurExclusiveStoreModel("Dong Mobile Store","New Door No. A4-72 First Floor c21 Mall",R.drawable.store4));
-        modelArrayList.add(new OurExclusiveStoreModel("Dong Mobile Store","New Door No. A4-72 First Floor c21 Mall",R.drawable.store2));
-
-
-
-        AllStoresAdapter allStoresAdapter=new AllStoresAdapter(modelArrayList,this);
-        rvAllStores.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-        rvAllStores.setAdapter(allStoresAdapter);
-        rvAllStores.setHasFixedSize(true);
-*/
-
 
     }
 

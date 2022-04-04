@@ -125,7 +125,7 @@
                         android:textFontWeight="400"
                         android:singleLine="true"
                         android:inputType="text"
-                        android:maxLength="16"
+                        android:maxLength="10"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_26sdp" />
 
@@ -169,7 +169,29 @@
                         android:textFontWeight="400"
                         android:singleLine="true"
                         android:inputType="number"
-                        android:maxLength="16"
+                        android:maxLength="10"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_26sdp" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/line1"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_14sdp"/>
+
+                    <EditText
+                        android:id="@+id/etAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_20sdp"
+                        android:hint="Address"
+                        android:textColorHint="@color/black_a"
+                        android:background="@null"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/mulish_regular"
+                        android:textFontWeight="400"
+                        android:singleLine="true"
+                        android:inputType="text"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_26sdp" />
 
@@ -198,25 +220,89 @@
                         android:layout_marginTop="14dp"
                         android:layout_marginStart="@dimen/_10sdp">
 
-                        <ImageView
-                            android:layout_width="@dimen/_46sdp"
-                            android:layout_height="@dimen/_46sdp"
-                            android:background="@drawable/white_circle_bac"
-                            android:src="@drawable/ic_vector__60_"
-                            android:padding="@dimen/_14sdp"/>
-                        <ImageView
-                            android:layout_width="@dimen/_46sdp"
-                            android:layout_height="@dimen/_46sdp"
-                            android:background="@drawable/white_circle_bac"
-                            android:src="@drawable/ic_vector__61_"
-                            android:padding="@dimen/_14sdp"
-                            android:layout_marginHorizontal="@dimen/_11sdp"/>
-                        <ImageView
-                            android:layout_width="@dimen/_46sdp"
-                            android:layout_height="@dimen/_46sdp"
-                            android:background="@drawable/white_circle_bac"
-                            android:src="@drawable/ic_group_797"
-                            android:padding="@dimen/_14sdp"/>
+
+                        <LinearLayout
+                            android:id="@+id/llHome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="@dimen/_46sdp"
+                                android:layout_height="@dimen/_46sdp"
+                                android:background="@drawable/white_circle_bac"
+                                android:src="@drawable/ic_vector__60_"
+                                android:padding="@dimen/_14sdp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Home"
+                                android:textSize="12sp"
+                                android:textFontWeight="300"
+                                android:layout_marginTop="4dp"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/mulish_light"
+                                android:textColor="#252837"/>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/llWork"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/ivWork"
+                                android:layout_width="@dimen/_46sdp"
+                                android:layout_height="@dimen/_46sdp"
+                                android:background="@drawable/white_circle_bac"
+                                android:src="@drawable/ic_vector__61_"
+                                android:padding="@dimen/_14sdp"
+                                android:layout_marginHorizontal="@dimen/_11sdp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Work"
+                                android:textSize="12sp"
+                                android:textFontWeight="300"
+                                android:layout_marginTop="4dp"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/mulish_light"
+                                android:textColor="#252837"/>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/llOther"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/ivOther"
+                                android:layout_width="@dimen/_46sdp"
+                                android:layout_height="@dimen/_46sdp"
+                                android:background="@drawable/white_circle_bac"
+                                android:src="@drawable/ic_group_797"
+                                android:padding="@dimen/_14sdp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Other"
+                                android:textSize="12sp"
+                                android:textFontWeight="300"
+                                android:layout_marginTop="4dp"
+                                android:layout_gravity="center_horizontal"
+                                android:fontFamily="@font/mulish_light"
+                                android:textColor="#252837"/>
+                        </LinearLayout>
+
+
+
 
 
                     </LinearLayout>
@@ -235,7 +321,7 @@
                         android:textAlignment="center"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="46dp"
-                        android:layout_marginBottom="2dp"
+                        android:layout_marginBottom="20dp"
                         android:fontFamily="@font/raleway_bold" />
 
 

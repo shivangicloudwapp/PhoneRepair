@@ -1,5 +1,6 @@
 package com.cwt.phonerepair.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -11,13 +12,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.activity.SubscribeNewStoreActivity;
-import com.cwt.phonerepair.activity.serviceActivity.ServiceDetailsPendingActivity;
-import com.cwt.phonerepair.modelclass.PendingModel;
-import com.cwt.phonerepair.modelclass.SubscriptionModel;
+import com.cwt.phonerepair.modelclass.response.SubscriptionPlanModel;
 
 import java.util.ArrayList;
 
@@ -25,9 +25,10 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
 
     Context context;
 
-    ArrayList<SubscriptionModel> modelList;
+    ArrayList<SubscriptionPlanModel> modelList;
+    int previousPosition = 0;
 
-    public SubscriptionAdapter(ArrayList<SubscriptionModel> modelList, Context context) {
+    public SubscriptionAdapter(ArrayList<SubscriptionPlanModel> modelList, Context context) {
         this.context = context;
         this.modelList = modelList;
     }
@@ -44,21 +45,35 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onBindViewHolder(@NonNull SubscriptionAdapter.ViewHolder holder, int position) {
-        SubscriptionModel model = modelList.get(position);
-       /* holder.tvPlanName.setText(model.getTvPlanName());
-        holder.tvMonth.setText(model.getTvMonth());
-        holder.tvPostItem.setText(model.getTvPostItem());
-*/
-        holder.llSubscribePlan.setOnClickListener(new View.OnClickListener() {
+    public void onBindViewHolder(@NonNull SubscriptionAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        SubscriptionPlanModel model = modelList.get(position);
+        holder.tvPlanName.setText(model.getTitle());
+        holder.tvMonth.setText(model.getDuration());
+        holder.tvPostItem.setText(model.getItems());
+        holder.tvPrice.setText(model.getPrice());
+
+        holder.llSubscriptionPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                 previousPosition = position;
+                   notifyDataSetChanged();
 
-                Intent intent = new Intent(context, SubscribeNewStoreActivity.class);
-                context.startActivity(intent);
+                //holder.llSubscriptionPlan.setBackgroundResource(R.drawable.linear_layout_black_border);
+
 
             }
         });
+                if(position==previousPosition){
+                    holder.llSubscriptionPlan.setBackgroundDrawable(context.getDrawable(R.drawable.linear_layout_black_border));
+
+                       Intent intent = new Intent(context, SubscribeNewStoreActivity.class);
+                context.startActivity(intent);
+                }
+                else
+                {
+                    holder.llSubscriptionPlan.setBackgroundDrawable(context.getDrawable(R.drawable.line_bac));
+
+                }
 
     }
 
@@ -69,15 +84,17 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvPlanName,tvMonth,tvPostItem;
+        TextView tvPlanName,tvMonth,tvPostItem,tvPrice;
 
-        LinearLayout llSubscribePlan;
+        LinearLayout llSubscriptionPlan;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvPlanName = itemView.findViewById(R.id.tvPlanName);
             tvMonth = itemView.findViewById(R.id.tvMonth);
-            llSubscribePlan = itemView.findViewById(R.id.llSubscribePlan);
+            tvPostItem = itemView.findViewById(R.id.tvMonth);
+            tvPrice = itemView.findViewById(R.id.tvPrice);
+            llSubscriptionPlan = itemView.findViewById(R.id.llSubscriptionPlan);
 
         }
     }

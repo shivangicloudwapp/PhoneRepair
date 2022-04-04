@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     RecyclerView rvourExcluStore,rvBanner;
     Context context;
     ArrayList<HomeStoreModel> modelArrayList;
-    ArrayList<HomeBannerModel> bannerList;
+        ArrayList<HomeBannerModel> bannerList;
   Button btnBookNow;
   TextView tvSeeAll;
   JsonPlaceHolderApi jsonPlaceHolderApi;
@@ -87,11 +87,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         call.enqueue(new Callback<HomeResponse>() {
             @Override
             public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
-               Customprogress.showPopupProgressSpinner(context, false);
                 if (response.isSuccessful()) {
+                    Customprogress.showPopupProgressSpinner(context, false);
+
                     if (response.body().getStatus()) {
-
-
                         bannerList= (ArrayList<HomeBannerModel>) response.body().getData().getBanner();
                         BannerAdapter adapter = new BannerAdapter( bannerList,context);
                         rvBanner.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));

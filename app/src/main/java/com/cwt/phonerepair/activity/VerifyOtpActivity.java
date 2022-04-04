@@ -22,6 +22,7 @@ import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.modelclass.parameter.VerifyOtpParameter;
 import com.cwt.phonerepair.modelclass.response.VerifyOtpResponse;
 import com.cwt.phonerepair.utils.Customprogress;
+import com.cwt.phonerepair.utils.SessionManager;
 
 import in.aabhasjindal.otptextview.OtpTextView;
 import retrofit2.Call;
@@ -38,6 +39,7 @@ public class VerifyOtpActivity extends AppCompatActivity implements View.OnClick
     String otp;
 Context context;
     JsonPlaceHolderApi jsonPlaceHolderApi;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +48,14 @@ Context context;
 
         initView();
 
-        Intent intent=getIntent();
+       /* Intent intent=getIntent();
         phone_num=intent.getStringExtra("phone_num");
 
+        spannBuilder();*/
+
+/*
+         sessionManager.getSavedMobile();*/
         spannBuilder();
-
-
-
-
 
     }
 
@@ -64,7 +66,7 @@ Context context;
         strSpan.setSpan(new ForegroundColorSpan(Color.parseColor("#868889")), 0, strclr.length(), 0);
         builder.append(strSpan);
 
-        String phonnum = phone_num;
+        String phonnum = sessionManager.getSavedMobile();
         SpannableString phoneSpan= new SpannableString(phonnum);
         phoneSpan.setSpan(new ForegroundColorSpan(Color.parseColor("#000000")), 0, phonnum.length(), 0);
         builder.append(phoneSpan);
@@ -77,6 +79,7 @@ Context context;
     private void initView() {
         jsonPlaceHolderApi= ApiUtils.getAPIService();
         context=VerifyOtpActivity.this;
+        sessionManager= new SessionManager(context);
 
         ivBackVerifyotp= findViewById(R.id.ivBackVerifyotp);
         btnVerifyOtp= findViewById(R.id.btnVerifyOtp);

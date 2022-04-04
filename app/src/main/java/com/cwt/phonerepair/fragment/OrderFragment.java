@@ -10,13 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.adapter.AllStoresAdapter;
 import com.cwt.phonerepair.adapter.OrderAdapter;
 import com.cwt.phonerepair.modelclass.OrderModel;
-import com.cwt.phonerepair.modelclass.OurExclusiveStoreModel;
 
 import java.util.ArrayList;
 

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.modelclass.parameter.SendOtpParameter;
 import com.cwt.phonerepair.modelclass.response.SendOtpResponse;
 import com.cwt.phonerepair.utils.Customprogress;
+import com.cwt.phonerepair.utils.SessionManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +33,8 @@ public class MobileLoginActivity extends AppCompatActivity implements View.OnCli
     ImageView ivBackSignUp;
 Context context;
     JsonPlaceHolderApi jsonPlaceHolderApi;
-    String PhoneNumber;
+    String PhoneNumber,name,email;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +43,20 @@ Context context;
 
         initView();
 
+        Intent intent=getIntent();
+        name=intent.getStringExtra("name");
+        email=intent.getStringExtra("email");
+        Log.e(name,"");
+        Log.e(email,"");
+
+
 
     }
 
     private void initView() {
         context=MobileLoginActivity.this;
         jsonPlaceHolderApi = ApiUtils.getAPIService();
+        sessionManager=new SessionManager(context);
         etPhoneNum = findViewById(R.id.etPhoneNum);
         btnSendOtp = findViewById(R.id.btnSendOtp);
         ivBackSignUp = findViewById(R.id.ivBackSignUp);
@@ -100,7 +111,8 @@ Context context;
 
                         PhoneNumber=etPhoneNum.getText().toString();
                         Intent intent =new Intent(MobileLoginActivity.this,VerifyOtpActivity.class);
-                        intent.putExtra("phone_num",PhoneNumber);
+                        sessionManager.setSavedMobile(PhoneNumber);
+                      //  intent.putExtra("phone_num",PhoneNumber);
                        startActivity(intent);
                        finish();
 

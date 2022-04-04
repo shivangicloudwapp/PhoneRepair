@@ -32,7 +32,6 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     }
 
     private void initView() {
-
         btnSave=findViewById(R.id.btnSave);
         ivBackSubNewstore=findViewById(R.id.ivBackSubNewstore);
         btnSave.setOnClickListener(this);

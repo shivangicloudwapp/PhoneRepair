@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_9sdp"
+        android:elevation="2dp"
+        android:background="@drawable/line_bac"
+        android:layout_marginBottom="8dp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_13sdp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_group_866" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_11sdp">
+                <TextView
+                    android:id="@+id/tvType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/mulish_regular"
+                    android:textFontWeight="400"
+                    android:textColor="@color/black_b"
+                    android:text="Other"/>
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/mulish_light"
+                    android:textFontWeight="300"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:textColor="@color/item_unsclr"
+                    android:text="Robert"/>
+
+
+                <TextView
+                    android:id="@+id/tvPhoneNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/mulish_light"
+                    android:textFontWeight="300"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:textColor="@color/item_unsclr"
+                    android:text="+64 - 98345783457"/>
+
+
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/mulish_light"
+                    android:textFontWeight="300"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textColor="@color/item_unsclr"
+                    android:text="New Door No. A4-72 Ground Floor c21 Mall,\nLosngeles, California"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/_18sdp"
+                    android:layout_marginTop="@dimen/_10sdp">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:background="@drawable/edit_btn_bac"
+                        android:text="Edit"
+                        android:textSize="8sp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/mulish_semibold"
+                        android:layout_weight="600" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:background="@drawable/delete_btn_bac"
+                        android:text="Delete"
+                        android:textSize="8sp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="@dimen/_11sdp"
+                        android:fontFamily="@font/mulish_semibold"
+                        android:layout_weight="600" />
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

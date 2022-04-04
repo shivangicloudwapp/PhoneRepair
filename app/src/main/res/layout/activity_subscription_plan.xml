@@ -66,6 +66,19 @@
             android:layout_marginTop="@dimen/_26sdp"/>
 
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Buy Membership"
+            android:textAllCaps="false"
+            android:fontFamily="@font/raleway_bold"
+            android:layout_weight="700"
+            android:layout_marginTop="@dimen/_26sdp"
+            android:layout_marginBottom="@dimen/_26sdp"
+            android:layout_marginHorizontal="@dimen/_56sdp"
+            android:background="@drawable/btn_backg"/>
+
+
 
 
 

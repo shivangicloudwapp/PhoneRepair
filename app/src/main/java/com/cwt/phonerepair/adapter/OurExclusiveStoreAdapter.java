@@ -17,8 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.cwt.phonerepair.R;
+import com.cwt.phonerepair.Server.Allurls;
 import com.cwt.phonerepair.activity.StoreDetailsActivity;
 import com.cwt.phonerepair.modelclass.response.HomeStoreModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -51,11 +53,8 @@ public class OurExclusiveStoreAdapter extends RecyclerView.Adapter<OurExclusiveS
         holder.tvAddress.setText(model.getAddress());
 
 
-
-        Glide.with(context).load("https://cloudwapptechnologies.com/MJ/fixstore"+model.getStoreImage())
-                .thumbnail(0.5f)
+        Picasso.with(context).load(Allurls.ImageUrl).fit().centerCrop()
                 .placeholder(R.drawable.group1042)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.ivStoreimg);
 
 

@@ -61,120 +61,13 @@
         android:background="@drawable/white_btn_radius_back"
         android:elevation="@dimen/_2sdp"/>
 
-    <androidx.cardview.widget.CardView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGetAddress"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_160sdp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_18sdp"
-        app:cardCornerRadius="@dimen/_9sdp"
-        app:cardElevation="@dimen/_2sdp"
-        android:layout_marginBottom="@dimen/_12sdp">
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="@dimen/_18sdp"
-            android:layout_marginTop="@dimen/_13sdp">
-
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_group_866"
-                android:layout_marginTop="@dimen/_8sdp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginStart="@dimen/_11sdp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/mulish_regular"
-                    android:textFontWeight="400"
-                    android:textColor="@color/black_b"
-                    android:text="Other"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/mulish_light"
-                    android:textFontWeight="300"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:textColor="@color/item_unsclr"
-                    android:text="Robert"/>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/mulish_light"
-                    android:textFontWeight="300"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:textColor="@color/item_unsclr"
-                    android:text="+64 - 98345783457"/>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/mulish_light"
-                    android:textFontWeight="300"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:textColor="@color/item_unsclr"
-                    android:text="New Door No. A4-72 Ground Floor c21 Mall,\n
-Losngeles, California"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_10sdp">
-                    <Button
-                        android:layout_width="62dp"
-                        android:layout_height="16dp"
-                        android:background="@drawable/edit_btn_bac"
-                        android:text="Edit"
-                        android:textSize="8sp"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/mulish_semibold"
-                        android:layout_weight="600" />
-
-                    <Button
-                        android:layout_width="62dp"
-                        android:layout_height="16dp"
-                        android:background="@drawable/delete_btn_bac"
-                        android:text="Delete"
-                        android:textSize="8sp"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:layout_marginLeft="@dimen/_11sdp"
-                        android:fontFamily="@font/mulish_semibold"
-                        android:layout_weight="600" />
-                </LinearLayout>
-
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
-
-
-
-
-    </androidx.cardview.widget.CardView>
+        android:layout_marginTop="@dimen/_18sdp"/>
 
 </LinearLayout>
 

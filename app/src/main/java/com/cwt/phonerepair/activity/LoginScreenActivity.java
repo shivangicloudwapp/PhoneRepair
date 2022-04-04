@@ -22,6 +22,7 @@ import com.cwt.phonerepair.modelclass.parameter.LoginParameter;
 import com.cwt.phonerepair.modelclass.response.LoginResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
+import com.cwt.phonerepair.utils.Utils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -96,7 +97,15 @@ Context context;
                     return;
                 }
 
+                if (Utils.checkConnection(context)) {
+
                     Login();
+
+                } else {
+                    Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+
+
 
 
                 break;

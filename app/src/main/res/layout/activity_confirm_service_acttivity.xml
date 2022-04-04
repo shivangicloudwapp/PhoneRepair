@@ -213,8 +213,8 @@
                         android:layout_marginTop="@dimen/_6sdp">
 
                         <ImageView
-                            android:layout_width="60sp"
-                            android:layout_height="60sp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:src="@drawable/pic1"/>
 
                         <ImageView

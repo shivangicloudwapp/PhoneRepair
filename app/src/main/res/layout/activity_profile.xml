@@ -29,7 +29,8 @@
 
     </LinearLayout>
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivProfile"
         android:layout_width="104dp"
         android:layout_height="104dp"
         android:src="@drawable/profile"
@@ -51,7 +52,7 @@
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_10sdp">
 
-            <TextView
+            <EditText
                 android:id="@+id/etPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,6 +64,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/tvChange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -84,7 +86,7 @@
             android:layout_marginTop="@dimen/_14sdp"/>
 
         <TextView
-            android:id="@+id/etName"
+            android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_20sdp"
             android:text="Jhon Deo"
@@ -103,7 +105,7 @@
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_14sdp"/>
         <TextView
-            android:id="@+id/etMail"
+            android:id="@+id/tvEmail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_20sdp"
             android:text="JhonDeo212@gmail.com"

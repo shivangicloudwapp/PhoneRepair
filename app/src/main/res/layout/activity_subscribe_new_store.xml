@@ -59,16 +59,19 @@
                 android:textFontWeight="600"
                 android:textSize="15sp" />
 
-            <TextView
+            <EditText
+                android:id="@+id/etStoreName"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:text="The Apple Store"
+                android:hint="The Apple Store"
                 android:fontFamily="@font/poppins_light"
                 android:textFontWeight="300"
                 android:textSize="12sp"
                 android:padding="@dimen/_8sdp"
                 android:textColor="@color/black_b"
                 android:layout_marginTop="@dimen/_15sdp"
+                android:imeOptions="actionNext"
+                android:textColorHint="@color/black_b"
                 android:background="@drawable/edittxt_bac"/>
 
 
@@ -84,16 +87,20 @@
                 android:layout_marginTop="@dimen/_14sdp"
                 android:textSize="15sp" />
 
-            <TextView
+            <EditText
+                android:id="@+id/etRegistrationNumber"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:text="JFKS27372839"
+                android:hint="JFKS27372839"
                 android:fontFamily="@font/poppins_light"
                 android:textFontWeight="300"
                 android:textSize="12sp"
                 android:padding="@dimen/_8sdp"
                 android:textColor="@color/black_b"
                 android:layout_marginTop="@dimen/_15sdp"
+                android:imeOptions="actionNext"
+                android:textColorHint="@color/black_b"
+                android:includeFontPadding="false"
                 android:background="@drawable/edittxt_bac"/>
 
 
@@ -108,15 +115,17 @@
                 android:layout_marginTop="@dimen/_14sdp"
                 android:textSize="15dp" />
 
-            <TextView
+            <EditText
+                android:id="@+id/etAddress"
                 android:layout_width="match_parent"
                 android:layout_height="63dp"
-                android:text="New Door No. A4-72 Ground Floor c21 Mall,\n
-Los Angeles, California"
+                android:text="New Door No. A4-72 Ground Floor c21 Mall,\nLos Angeles, California"
                 android:fontFamily="@font/poppins_light"
                 android:textFontWeight="300"
                 android:textSize="12sp"
                 android:padding="@dimen/_8sdp"
+                android:imeOptions="actionNext"
+                android:textColorHint="@color/black_b"
                 android:textColor="@color/black_b"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:background="@drawable/edittxt_bac"/>
@@ -132,7 +141,8 @@ Los Angeles, California"
                 android:layout_marginTop="@dimen/_14sdp"
                 android:textSize="15sp" />
 
-            <TextView
+            <EditText
+                android:id="@+id/etAboutStore"
                 android:layout_width="match_parent"
                 android:layout_height="156dp"
                 android:text="The Mobile Store currently is covering and \n has more than 700+ outlets in different major\n cities in different states across India. Today you will virtually find no person who is not using the mobile phone for their work or for personal use. No matter whether you are college students, salesman, a storekeeper,\nor a pilot a mobile phone is a must for all."
@@ -143,6 +153,8 @@ Los Angeles, California"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:gravity="start"
                 android:padding="@dimen/_8sdp"
+                android:imeOptions="actionDone"
+                android:textColorHint="@color/black_b"
                 android:background="@drawable/edittxt_bac"/>
 
             <TextView
@@ -156,6 +168,7 @@ Los Angeles, California"
                 android:layout_marginTop="@dimen/_14sdp"
                 android:textSize="15sp" />
             <LinearLayout
+                android:id="@+id/llStoreImg"
                 android:layout_width="match_parent"
                 android:layout_height="94dp"
                 android:layout_marginTop="@dimen/_11sdp"
@@ -206,37 +219,17 @@ Los Angeles, California"
             </LinearLayout>
 
 
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-
-                <RelativeLayout
-                    android:layout_width="53dp"
-                    android:layout_height="53dp"
-                    android:layout_marginTop="@dimen/_9sdp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/img5" />
-
-                </RelativeLayout>
+            <GridView
+                android:id="@+id/gridViewImageStore"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:numColumns="3"
+                android:layout_marginTop="@dimen/_11sdp"
+                android:layout_weight="1"/>
 
 
 
 
-                <ImageView
-                    android:layout_width="@dimen/_16sdp"
-                    android:layout_height="@dimen/_16sdp"
-                    android:src="@drawable/ic_vector__65_"
-                    android:padding="@dimen/_4sdp"
-                    android:layout_marginLeft="36dp"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:background="@drawable/white_circle_bac"/>
-            </RelativeLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -249,6 +242,7 @@ Los Angeles, California"
                 android:textSize="15sp" />
 
             <LinearLayout
+                android:id="@+id/llSsmImg"
                 android:layout_width="match_parent"
                 android:layout_height="94dp"
                 android:layout_marginTop="@dimen/_11sdp"
@@ -299,35 +293,50 @@ Los Angeles, California"
             </LinearLayout>
 
 
-            <!--    <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+
+            <GridView
+                android:id="@+id/gridViewSsmImage"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:numColumns="3"
+                android:layout_marginTop="@dimen/_11sdp"
+                android:layout_weight="1"/>
+
+            <!--
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
 
-                    <RelativeLayout
-                        android:layout_width="@dimen/_69sdp"
-                        android:layout_height="@dimen/_53sdp"
-                        android:layout_marginTop="@dimen/_9sdp">
+                            <RelativeLayout
+                                android:layout_width="53dp"
+                                android:layout_height="53dp"
+                                android:layout_marginTop="@dimen/_9sdp">
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/newid" />
+                                <ImageView
+                                    android:id="@+id/ivSsmImg"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/img5" />
 
-                    </RelativeLayout>
+                            </RelativeLayout>
 
 
-                    <ImageView
-                        android:layout_width="@dimen/_16sdp"
-                        android:layout_height="@dimen/_16sdp"
-                        android:layout_marginLeft="@dimen/_54sdp"
-                        android:layout_marginTop="@dimen/_2sdp"
-                        android:background="@drawable/white_circle_bac"
-                        android:padding="@dimen/_4sdp"
-                        android:src="@drawable/ic_vector__65_" />
-                </RelativeLayout>
-    -->
+                            <ImageView
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:layout_marginLeft="36dp"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:background="@drawable/white_circle_bac"
+                                android:padding="@dimen/_4sdp"
+                                android:src="@drawable/ic_vector__65_" />
+                        </RelativeLayout>
+
+
+            -->
+
 
 
             <Button

@@ -18,6 +18,7 @@ import com.cwt.phonerepair.modelclass.response.AllStoreModel;
 import com.cwt.phonerepair.modelclass.response.AllStoresResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
+import com.cwt.phonerepair.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -55,9 +56,12 @@ public class AllStoresActivity extends AppCompatActivity implements View.OnClick
         ivBackAllStores=findViewById(R.id.ivBackAllStores);
 
         ivBackAllStores.setOnClickListener(this);
+        if (Utils.checkConnection(context)) {
+            allStores();
 
-        allStores();
-
+        } else {
+            Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+        }
 
     }
 

@@ -155,16 +155,11 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
                     if (Utils.checkConnection(context)) {
 
                         addAddress();
-
-
                     } else {
                         Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
                     }
 
                 }
-
-
-
 
 
 

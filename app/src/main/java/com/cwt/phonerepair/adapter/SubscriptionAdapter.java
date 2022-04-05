@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cwt.phonerepair.Interface.GetSubscriptionData;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.activity.SubscribeNewStoreActivity;
 import com.cwt.phonerepair.modelclass.response.SubscriptionPlanModel;
@@ -27,11 +28,22 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
 
     ArrayList<SubscriptionPlanModel> modelList;
     int previousPosition = 0;
+    GetSubscriptionData myAdapterListener;
 
-    public SubscriptionAdapter(ArrayList<SubscriptionPlanModel> modelList, Context context) {
+    public SubscriptionAdapter(ArrayList<SubscriptionPlanModel> modelList, Context context, GetSubscriptionData myAdapterListener) {
         this.context = context;
         this.modelList = modelList;
+        this.myAdapterListener = myAdapterListener;
     }
+
+
+
+    public interface MyAdapterListener {
+        void onContainerClick(); // please provide 2 parameter that will help you more for manipulation like shown below
+ void onContainerClick(View view, int position);
+    }
+
+
 
 
     @NonNull
@@ -52,28 +64,55 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
         holder.tvPostItem.setText(model.getItems());
         holder.tvPrice.setText(model.getPrice());
 
+
+
         holder.llSubscriptionPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                  previousPosition = position;
                    notifyDataSetChanged();
 
-                //holder.llSubscriptionPlan.setBackgroundResource(R.drawable.linear_layout_black_border);
 
 
             }
         });
                 if(position==previousPosition){
                     holder.llSubscriptionPlan.setBackgroundDrawable(context.getDrawable(R.drawable.linear_layout_black_border));
-
-                       Intent intent = new Intent(context, SubscribeNewStoreActivity.class);
-                context.startActivity(intent);
                 }
-                else
-                {
+                else {
                     holder.llSubscriptionPlan.setBackgroundDrawable(context.getDrawable(R.drawable.line_bac));
 
+
                 }
+
+        /*holder.llContainer.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                int id = v.getId();
+
+                if (id == R.id.llContainer) {
+                    previousPosition = position;
+                    myAdapterListener.getsubscriptiondata(modelList.get(position));
+                    notifyDataSetChanged();
+
+
+                }
+            }
+
+        });
+
+
+        if(position==previousPosition){
+            holder.llContainer.setBackgroundDrawable(context.getDrawable(R.drawable.linear_layout_black_border));
+        }
+        else
+        {
+            holder.llContainer.setBackgroundDrawable(context.getDrawable(R.drawable.line_bac));
+
+        }
+*/
+
 
     }
 
@@ -84,7 +123,7 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvPlanName,tvMonth,tvPostItem,tvPrice;
+        TextView tvPlanName, tvMonth, tvPostItem, tvPrice;
 
         LinearLayout llSubscriptionPlan;
 
@@ -96,7 +135,11 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
             tvPrice = itemView.findViewById(R.id.tvPrice);
             llSubscriptionPlan = itemView.findViewById(R.id.llSubscriptionPlan);
 
+
+
         }
+
+
     }
 
 }

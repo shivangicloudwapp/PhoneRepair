@@ -25,6 +25,7 @@ import com.cwt.phonerepair.modelclass.response.HomeBannerModel;
 import com.cwt.phonerepair.modelclass.response.HomeResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
+import com.cwt.phonerepair.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -72,8 +73,12 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
         ivBackAddress.setOnClickListener(this);
 
 
-        getAddress();
+        if (Utils.checkConnection(context)) {
+            getAddress();
 
+        } else {
+            Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+        }
 
 
     }

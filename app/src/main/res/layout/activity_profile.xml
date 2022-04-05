@@ -85,8 +85,8 @@
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_14sdp"/>
 
-        <TextView
-            android:id="@+id/tvName"
+        <EditText
+            android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_20sdp"
             android:text="Jhon Deo"
@@ -104,8 +104,8 @@
             android:src="@drawable/line1"
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_14sdp"/>
-        <TextView
-            android:id="@+id/tvEmail"
+        <EditText
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_20sdp"
             android:text="JhonDeo212@gmail.com"

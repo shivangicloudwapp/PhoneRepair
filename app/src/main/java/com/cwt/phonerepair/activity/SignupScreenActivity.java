@@ -130,15 +130,16 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
                     etConfPass.requestFocus();
                     return;
                 }
-            {
 
-            }
-            if (Utils.checkConnection(context)) {
-                signup();
+            else{
+                    if (Utils.checkConnection(context)) {
+                        signup();
 
-            } else {
-                Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
-            }
+                    } else {
+                        Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
 
             break;
             case R.id.ivBackSignUp:

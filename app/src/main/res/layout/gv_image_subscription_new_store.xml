@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <RelativeLayout
+                    android:layout_width="@dimen/_53sdp"
+                    android:layout_height="@dimen/_53sdp"
+                    android:layout_marginTop="@dimen/_9sdp">
+
+                    <ImageView
+                        android:id="@+id/ivStoreImg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img5" />
+
+                </RelativeLayout>
+
+
+
+
+                <ImageView
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:src="@drawable/ic_vector__65_"
+                    android:padding="@dimen/_4sdp"
+                    android:layout_marginLeft="52dp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/white_circle_bac"/>
+            </RelativeLayout>
+
+
+
+</RelativeLayout>

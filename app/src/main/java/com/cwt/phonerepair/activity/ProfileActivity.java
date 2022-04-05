@@ -30,6 +30,7 @@ import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.modelclass.response.UpdateProfileResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
+import com.cwt.phonerepair.utils.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -53,9 +54,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     Context context;
     JsonPlaceHolderApi jsonPlaceHolderApi;
 
-    TextView tvName,tvEmail,tvChange;
+    TextView tvChange;
     String UserName,Email,Phone;
-    EditText etPhone;
+    EditText etPhone,etEmail,etName;
 
     Button btnSave;
 
@@ -136,10 +137,9 @@ String picturePath;
         sessionManager= new SessionManager(context);
         jsonPlaceHolderApi= ApiUtils.getAPIService();
 
-        tvName=findViewById(R.id.tvName);
-        tvEmail=findViewById(R.id.tvEmail);
-        tvChange=findViewById(R.id.tvChange);
         etPhone=findViewById(R.id.etPhone);
+        etName=findViewById(R.id.etName);
+        etEmail=findViewById(R.id.etEmail);
         ivProfile=findViewById(R.id.ivProfile);
         btnSave=findViewById(R.id.btnSave);
 
@@ -147,8 +147,8 @@ String picturePath;
        Email= sessionManager.getSavedEmail();
        Phone= sessionManager.getSavedMobile();
 
-       tvEmail.setText(Email);
-        tvName.setText(UserName);
+        etEmail.setText(Email);
+        etName.setText(UserName);
         etPhone.setText(Phone);
 
 
@@ -227,7 +227,15 @@ String picturePath;
 
             case R.id.btnSave:
 
-                updateProfile();
+
+                if (Utils.checkConnection(context)) {
+
+                    updateProfile();
+                } else {
+                    Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+
+
 
 
                 break;
@@ -249,7 +257,7 @@ String picturePath;
         Customprogress.showPopupProgressSpinner(context,true);
 
         HashMap<String, RequestBody> data = new HashMap<>();
-        data.put("name", createRequestBody(tvName.getText().toString()));
+        data.put("name", createRequestBody(etName.getText().toString()));
         MultipartBody.Part image = null;
        String pathMain=picturePath;
 

@@ -23,6 +23,7 @@ import com.cwt.phonerepair.modelclass.parameter.VerifyOtpParameter;
 import com.cwt.phonerepair.modelclass.response.VerifyOtpResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
+import com.cwt.phonerepair.utils.Utils;
 
 import in.aabhasjindal.otptextview.OtpTextView;
 import retrofit2.Call;
@@ -110,9 +111,16 @@ Context context;
                     Toast.makeText(context, "Please Enter 4 digits of Otp", Toast.LENGTH_SHORT).show();
 
                 }
-              else{
-                  verifyOtp();
+
+                else{
+                    if (Utils.checkConnection(context)) {
+
+                        verifyOtp();
+                    } else {
+                        Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
 
                 break;
             default:

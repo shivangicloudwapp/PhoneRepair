@@ -26,6 +26,7 @@ import com.cwt.phonerepair.modelclass.response.HomeStoreModel;
 import com.cwt.phonerepair.modelclass.response.HomeResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
+import com.cwt.phonerepair.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -74,7 +75,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         bannerList=new ArrayList<>();
 
 
-        stores();
+
+        if (Utils.checkConnection(context)) {
+            stores();
+
+        } else {
+            Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+        }
 
 
     }

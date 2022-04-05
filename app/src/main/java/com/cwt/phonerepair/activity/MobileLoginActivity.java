@@ -19,6 +19,7 @@ import com.cwt.phonerepair.modelclass.parameter.SendOtpParameter;
 import com.cwt.phonerepair.modelclass.response.SendOtpResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
+import com.cwt.phonerepair.utils.Utils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,8 +81,11 @@ Context context;
                 else if (phoneNum.length()<9) {
                     etPhoneNum.setError("Enter enter valid 10 digit phone number");
                 }
-                else{
+                if (Utils.checkConnection(context)) {
+
                     sendOtp();
+                } else {
+                    Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
                 }
 
                 break;

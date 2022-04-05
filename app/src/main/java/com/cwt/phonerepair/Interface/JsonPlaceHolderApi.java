@@ -6,6 +6,7 @@ import com.cwt.phonerepair.modelclass.parameter.AddAddressParameter;
 import com.cwt.phonerepair.modelclass.parameter.LoginParameter;
 import com.cwt.phonerepair.modelclass.parameter.SendOtpParameter;
 import com.cwt.phonerepair.modelclass.parameter.SignupParameter;
+import com.cwt.phonerepair.modelclass.parameter.StoreDetailsParameter;
 import com.cwt.phonerepair.modelclass.parameter.VerifyOtpParameter;
 import com.cwt.phonerepair.modelclass.response.AddAddressResponse;
 import com.cwt.phonerepair.modelclass.response.AllStoresResponse;
@@ -14,10 +15,13 @@ import com.cwt.phonerepair.modelclass.response.HomeResponse;
 import com.cwt.phonerepair.modelclass.response.LoginResponse;
 import com.cwt.phonerepair.modelclass.response.SendOtpResponse;
 import com.cwt.phonerepair.modelclass.response.SignupResponse;
+import com.cwt.phonerepair.modelclass.response.StoreDetailsResponse;
 import com.cwt.phonerepair.modelclass.response.SubscriptionPlanResponse;
+import com.cwt.phonerepair.modelclass.response.SubscriptionStoreResponse;
 import com.cwt.phonerepair.modelclass.response.UpdateProfileResponse;
 import com.cwt.phonerepair.modelclass.response.VerifyOtpResponse;
 
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -82,4 +86,43 @@ public interface JsonPlaceHolderApi {
 
     @POST("user/subscription-plan")
     Call<SubscriptionPlanResponse> SubScriptionPlan(@Header("Authorization") String header );
+
+
+
+    @Multipart
+    @POST("user/subscription-store")
+    Call<SubscriptionStoreResponse> SubscriptionStore(@Header("Authorization") String header,
+                                                      @PartMap Map<String,RequestBody>data,
+                                                      @Part List<MultipartBody.Part> plan_image,
+                                                      @Part List<MultipartBody.Part> store_image);
+
+
+    @POST("user/store-detail")
+    Call<StoreDetailsResponse> StoreDetails(@Body StoreDetailsParameter parameter,
+                                        @Header("Authorization") String header );
+
+
+
 }
+
+
+
+
+
+
+
+/*
+plan_title:testing title,
+        plan_image:[]
+        plan_duration:one year,
+        plan_items:testing item,
+        plan_price:500
+        start_date:2-2-22,
+        end_date:8-2-22,
+        registration_no:5,
+        address:11, bhawarkua,
+        about_store:test aboutstore,
+        plan_id:1
+        store_name:test name
+        store_image:[]
+*/

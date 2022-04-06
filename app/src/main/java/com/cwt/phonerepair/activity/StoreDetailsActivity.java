@@ -56,6 +56,10 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
 
 
 
+
+
+
+
         modelArrayList=new ArrayList<>() ;
 
         modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.iphone1));

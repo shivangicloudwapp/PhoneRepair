@@ -8,53 +8,104 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.adapter.ProdcutAdapter;
+import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.modelclass.ProductModel;
+import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel;
+import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementResponse;
+import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsProductModel;
 import com.cwt.phonerepair.storeadapter.ProductManagementAdapter;
+import com.cwt.phonerepair.utils.Customprogress;
+import com.cwt.phonerepair.utils.SessionManager;
+import com.cwt.phonerepair.utils.Utils;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProductManagementActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     RecyclerView rvAllPro;
     Context context;
-    ArrayList<ProductModel> modelArrayList;
+    ArrayList<ProductManagementModel> modelArrayList;
     ImageView ivBackAllPro;
+    JsonPlaceHolderApi jsonPlaceHolderApi;
+    SessionManager sessionManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_management);
 
-        context=this;
-
-        rvAllPro=findViewById(R.id.rvAllPro);
-        ivBackAllPro=findViewById(R.id.ivBackAllPro);
+        initView();
 
 
-        ivBackAllPro.setOnClickListener(this);
 
+    }
 
-        modelArrayList=new ArrayList<>() ;
+    private void productManagement() {
+        Customprogress.showPopupProgressSpinner(context,true);
+        Call<ProductManagementResponse>call=jsonPlaceHolderApi.ProductManagement("Bearer "+sessionManager.getSavedToken());
+        call.enqueue(new Callback<ProductManagementResponse>() {
+            @Override
+            public void onResponse(Call<ProductManagementResponse> call, Response<ProductManagementResponse> response) {
+                Customprogress.showPopupProgressSpinner(context,false);
 
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.iphone1));
-        modelArrayList.add(new ProductModel("Iphone X","RM999",R.drawable.phone3));
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.watch));
-        modelArrayList.add(new ProductModel("Iphone X","RM999",R.drawable.watch3));
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.bluetooth));
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.iphone1));
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.watch));
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.phone3));
+                if (response.isSuccessful()){
 
+                    if (response.body().getStatus()){
 
-        ProductManagementAdapter adapter=new ProductManagementAdapter(modelArrayList,this);
-        rvAllPro.setLayoutManager(new GridLayoutManager(this, 2));
+                        modelArrayList= (ArrayList<ProductManagementModel>) response.body().getData().getProduct();
+
+            ProductManagementAdapter adapter=new ProductManagementAdapter(modelArrayList,ProductManagementActivity.this);
+        rvAllPro.setLayoutManager(new GridLayoutManager(ProductManagementActivity.this, 2));
         rvAllPro.setAdapter(adapter);
         rvAllPro.setHasFixedSize(true);
 
+                     }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ProductManagementResponse> call, Throwable t) {
+                Customprogress.showPopupProgressSpinner(context,true);
+
+            }
+        });
+
+
+
+
+
+    }
+
+    private void initView() {
+
+        context=this;
+        modelArrayList=new ArrayList<>();
+        jsonPlaceHolderApi= ApiUtils.getAPIService();
+
+        sessionManager=new SessionManager(context);
+
+        rvAllPro=findViewById(R.id.rvAllPro);
+        ivBackAllPro=findViewById(R.id.ivBackAllPro);
+        ivBackAllPro.setOnClickListener(this);
+
+        if (Utils.checkConnection(context)) {
+            productManagement();
+
+        } else {
+            Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+        }
 
     }
 

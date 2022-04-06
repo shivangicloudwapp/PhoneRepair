@@ -48,19 +48,21 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         btnAddtocart=findViewById(R.id.btnAddtocart);
         ivBackProDetail=findViewById(R.id.ivBackProDetail);
         tvSeeAll=findViewById(R.id.tvSeeAll);
+/*
 
 
-        adapter=new StoreDetailsViewPagerAdapter(this);
+        adapter=new StoreDetailsViewPagerAdapter(this,modelArrayList);
         view_pager.setAdapter(adapter);
         dotsIndicator.setViewPager(view_pager);
 
         ivBackProDetail.setOnClickListener(this);
         tvSeeAll.setOnClickListener(this);
         btnAddtocart.setOnClickListener(this);
+*/
 
 
 
-        modelArrayList=new ArrayList<>() ;
+    /*    modelArrayList=new ArrayList<>() ;
 
         modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.iphone1));
         modelArrayList.add(new ProductModel("Iphone X","RM999",R.drawable.iphone2));
@@ -69,12 +71,12 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.iphone1));
 
 
-        ProdcutAdapter adapter=new ProdcutAdapter(modelArrayList,this);
+         ProdcutAdapter adapter=new ProdcutAdapter(modelArrayList,this);
         rv_Prodcut.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         rv_Prodcut.setAdapter(adapter);
         rv_Prodcut.setHasFixedSize(true);
 
-
+*/
 
     }
 

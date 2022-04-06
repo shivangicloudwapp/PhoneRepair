@@ -16,7 +16,7 @@ import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.modelclass.parameter.SendOtpParameter;
-import com.cwt.phonerepair.modelclass.response.SendOtpResponse;
+import com.cwt.phonerepair.modelclass.response.sendOtp.SendOtpResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
 import com.cwt.phonerepair.utils.Utils;
@@ -116,7 +116,6 @@ Context context;
                         PhoneNumber=etPhoneNum.getText().toString();
                         Intent intent =new Intent(MobileLoginActivity.this,VerifyOtpActivity.class);
                         sessionManager.setSavedMobile(PhoneNumber);
-                      //  intent.putExtra("phone_num",PhoneNumber);
                        startActivity(intent);
                        finish();
 

@@ -1,6 +1,6 @@
 package com.cwt.phonerepair.Interface;
 
-import com.cwt.phonerepair.modelclass.response.SubscriptionPlanModel;
+import com.cwt.phonerepair.modelclass.response.subscriptionPlan.SubscriptionPlanModel;
 
 public interface GetSubscriptionData {
 

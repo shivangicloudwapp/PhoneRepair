@@ -45,13 +45,14 @@
                             android:layout_alignParentBottom="true"
                             android:fontFamily="@font/mulish_regular"
                             android:text="Iphone 13"
+                            android:singleLine="true"
                             android:textColor="@color/textclr"
                             android:textFontWeight="400"
                             android:textSize="12sp" />
 
 
                         <TextView
-                            android:id="@+id/tvProductId"
+                            android:id="@+id/tvProductPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -89,10 +90,11 @@
     <ImageView
         android:id="@+id/ivProdcut"
         android:layout_width="141dp"
-        android:layout_height="149dp"
+        android:layout_height="130dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:contentDescription="@null"
+        android:scaleType="fitXY"
         android:src="@drawable/iphone1" />
 
 

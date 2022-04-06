@@ -15,11 +15,10 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.activity.AllProductActivity;
+import com.cwt.phonerepair.Server.Allurls;
 import com.cwt.phonerepair.activity.ProductDetailsActivity;
-import com.cwt.phonerepair.activity.StoreDetailsActivity;
-import com.cwt.phonerepair.modelclass.PendingModel;
-import com.cwt.phonerepair.modelclass.ProductModel;
+import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsProductModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -27,9 +26,9 @@ public class ProdcutAdapter extends RecyclerView.Adapter<ProdcutAdapter.ViewHold
 
     Context context;
 
-    ArrayList<ProductModel> modelList;
+    ArrayList<StoreDetailsProductModel> modelList;
 
-    public ProdcutAdapter(ArrayList<ProductModel> modelList, Context context) {
+    public ProdcutAdapter(ArrayList<StoreDetailsProductModel> modelList, Context context) {
         this.context = context;
         this.modelList = modelList;
     }
@@ -56,10 +55,19 @@ public class ProdcutAdapter extends RecyclerView.Adapter<ProdcutAdapter.ViewHold
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull ProdcutAdapter.ViewHolder holder, int position) {
-        ProductModel model = modelList.get(position);
-        holder.tvProductName.setText(model.getTvProductName());
-        holder.tvProductId.setText(model.getTvProductId());
-        holder.ivProdcut.setImageResource(model.getIvProdcut());
+        StoreDetailsProductModel model = modelList.get(position);
+
+        System.out.println("title....."+modelList.get(position).getTitle());
+       holder.tvProductName.setText(model.getTitle());
+        System.out.println("price....."+modelList.get(position).getPrice());
+
+        holder.tvProductPrice.setText(Integer.toString(model.getPrice()));
+
+        Picasso.with(context).load(Allurls.ImageUrl+model.getProductImage())
+                .placeholder(R.drawable.group1042)
+                .into(holder.ivProdcut);
+
+
 
     }
 
@@ -70,7 +78,7 @@ public class ProdcutAdapter extends RecyclerView.Adapter<ProdcutAdapter.ViewHold
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvProductName,tvProductId;
+        TextView tvProductName,tvProductPrice;
 
         ImageView ivProdcut;
 
@@ -79,7 +87,7 @@ public class ProdcutAdapter extends RecyclerView.Adapter<ProdcutAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvProductName = itemView.findViewById(R.id.tvProductName);
-            tvProductId = itemView.findViewById(R.id.tvProductId);
+            tvProductPrice = itemView.findViewById(R.id.tvProductPrice);
             ivProdcut = itemView.findViewById(R.id.ivProdcut);
             rlProduct = itemView.findViewById(R.id.rlProduct);
 

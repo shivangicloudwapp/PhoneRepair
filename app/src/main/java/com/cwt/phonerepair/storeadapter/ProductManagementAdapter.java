@@ -18,10 +18,11 @@ import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.activity.ProductDetailsActivity;
-import com.cwt.phonerepair.adapter.ProdcutAdapter;
+import com.cwt.phonerepair.Server.Allurls;
 import com.cwt.phonerepair.modelclass.ProductModel;
+import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel;
 import com.cwt.phonerepair.storeactivity.AddProductActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -29,9 +30,9 @@ public class ProductManagementAdapter extends RecyclerView.Adapter<ProductManage
 
     Context context;
 
-    ArrayList<ProductModel> modelList;
+    ArrayList<ProductManagementModel> modelList;
 
-    public ProductManagementAdapter(ArrayList<ProductModel> modelList, Context context) {
+    public ProductManagementAdapter(ArrayList<ProductManagementModel> modelList, Context context) {
         this.context = context;
         this.modelList = modelList;
     }
@@ -58,10 +59,13 @@ public class ProductManagementAdapter extends RecyclerView.Adapter<ProductManage
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull ProductManagementAdapter.ViewHolder holder, int position) {
-        ProductModel model = modelList.get(position);
-        holder.tvProductName.setText(model.getTvProductName());
-        holder.tvProductId.setText(model.getTvProductId());
-        holder.ivProdcut.setImageResource(model.getIvProdcut());
+        ProductManagementModel model = modelList.get(position);
+        holder.tvProductName.setText(model.getTitle());
+        holder.tvProductPrice.setText(Integer.toString(model.getPrice()));
+
+        Picasso.with(context).load(Allurls.ImageUrl+model.getProductImage()).fit().centerCrop()
+                .placeholder(R.drawable.group1042)
+                .into(holder.ivProdcut);
 
         holder.menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +97,7 @@ public class ProductManagementAdapter extends RecyclerView.Adapter<ProductManage
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvProductName,tvProductId;
+        TextView tvProductName,tvProductPrice;
 
         ImageView ivProdcut,menu;
 
@@ -102,7 +106,7 @@ public class ProductManagementAdapter extends RecyclerView.Adapter<ProductManage
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvProductName = itemView.findViewById(R.id.tvProductName);
-            tvProductId = itemView.findViewById(R.id.tvProductId);
+            tvProductPrice = itemView.findViewById(R.id.tvProductPrice);
             ivProdcut = itemView.findViewById(R.id.ivProdcut);
             rlProduct = itemView.findViewById(R.id.rlProduct);
             menu = itemView.findViewById(R.id.menu);

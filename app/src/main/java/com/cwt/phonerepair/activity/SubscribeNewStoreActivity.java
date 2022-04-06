@@ -1,23 +1,16 @@
 package com.cwt.phonerepair.activity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.Manifest;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,7 +20,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -38,14 +30,10 @@ import android.widget.Toast;
 import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
-import com.cwt.phonerepair.adapter.SubscriptionAdapter;
-import com.cwt.phonerepair.modelclass.response.SubscriptionPlanModel;
-import com.cwt.phonerepair.modelclass.response.SubscriptionStoreResponse;
-import com.cwt.phonerepair.modelclass.response.UpdateProfileResponse;
+import com.cwt.phonerepair.modelclass.response.sbscriptionstore.SubscriptionStoreResponse;
+import com.cwt.phonerepair.modelclass.response.subscriptionPlan.SubscriptionPlanModel;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.gson.Gson;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -74,7 +62,6 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     String picturePath;
     String SetImage = "StoreImg";
 
-
     private Button btn;
     int PICK_IMAGE_MULTIPLE = 1;
     int PICK_IMAGE_MULTIPLE_SSM = 2;
@@ -84,10 +71,6 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     private GalleryAdapter galleryAdapter;
 
     ArrayList<Uri> mArrayUri;
-
-
-    int position = 0;
-
 
     ArrayList<SubscriptionPlanModel> modelArrayList;
 
@@ -134,10 +117,14 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
             Intent intent = getIntent();
             if (intent != null) {
                 subscriptionPlanModelMain = (SubscriptionPlanModel) intent.getSerializableExtra("data");
-                price = subscriptionPlanModelMain.getPrice();
+
+
+                System.out.println(""+subscriptionPlanModelMain.getTitle());
+
                 title = subscriptionPlanModelMain.getTitle();
                 duration = subscriptionPlanModelMain.getDuration();
                 items = subscriptionPlanModelMain.getItems();
+                price = subscriptionPlanModelMain.getPrice();
                 startdate = "";
                 enddate = "";
                 planId = subscriptionPlanModelMain.getId().toString();
@@ -147,6 +134,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         }
     }
 
+/*
     private boolean checkAndRequestPermission(SubscribeNewStoreActivity subscribeNewStoreActivity) {
 
         int WExtstorePermission = ContextCompat.checkSelfPermission(context,
@@ -170,6 +158,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         return true;
 
     }
+*/
 
     private void initView() {
         context = SubscribeNewStoreActivity.this;
@@ -549,7 +538,6 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         Customprogress.showPopupProgressSpinner(context,true);
         HashMap<String, RequestBody> data = new HashMap<>();
 
-        System.out.println(subscriptionPlanModelMain.getTitle());
 
         data.put("plan_title", createRequestBody(subscriptionPlanModelMain.getTitle()));
         data.put("plan_duration", createRequestBody(subscriptionPlanModelMain.getDuration()));

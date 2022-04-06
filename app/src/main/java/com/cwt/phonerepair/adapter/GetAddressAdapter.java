@@ -9,13 +9,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.modelclass.response.AddAddressModel;
-import com.cwt.phonerepair.modelclass.response.GetAddressModel;
-import com.cwt.phonerepair.modelclass.response.HomeBannerModel;
+import com.cwt.phonerepair.modelclass.response.getAddress.GetAddressModel;
 
 import java.util.ArrayList;
 

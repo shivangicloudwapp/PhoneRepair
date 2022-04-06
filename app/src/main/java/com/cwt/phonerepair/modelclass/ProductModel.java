@@ -5,23 +5,24 @@ public class ProductModel {
     String tvProductName,tvProductId;
     int ivProdcut;
 
-    public ProductModel(String tvProductName, String tvProductId,int ivProdcut) {
+
+    public ProductModel(String tvProductName, String tvProductId, int ivProdcut) {
         this.tvProductName = tvProductName;
         this.tvProductId = tvProductId;
         this.ivProdcut = ivProdcut;
     }
 
+
     public String getTvProductName() {
         return tvProductName;
     }
 
-    public String getTvProductId() {
-        return tvProductId;
-    }
-
-
     public void setTvProductName(String tvProductName) {
         this.tvProductName = tvProductName;
+    }
+
+    public String getTvProductId() {
+        return tvProductId;
     }
 
     public void setTvProductId(String tvProductId) {

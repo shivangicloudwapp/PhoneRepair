@@ -63,6 +63,7 @@
             android:layout_marginTop="@dimen/_14sdp"
             android:textSize="15sp" />
         <LinearLayout
+            android:id="@+id/llProductImg"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_80sdp"
             android:layout_marginTop="@dimen/_11sdp"
@@ -116,6 +117,16 @@
 
 
 
+       <GridView
+            android:id="@+id/gridViewProduct"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:numColumns="3"
+            android:layout_marginTop="@dimen/_11sdp"
+            android:layout_weight="1"/>
+-->
+
+<!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -183,6 +194,7 @@
                     android:background="@drawable/white_circle_bac"/>
             </RelativeLayout>
         </LinearLayout>
+-->
 
 
         <TextView
@@ -196,13 +208,15 @@
             android:textFontWeight="600"
             android:textSize="15sp" />
 
-        <TextView
+        <EditText
+            android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="The Mobile Store currently is covering and \n has more than 700+ outlets in different major\n cities in different states across India. Today you will virtually find no person who is not using the mobile phone for their work or for personal use. No matter whether you are college students, salesman, a storekeeper,\nor a pilot a mobile phone is a must for all."
+            android:hint="The Mobile Store currently is covering and \n has more than 700+ outlets in different major\n cities in different states across India. Today you will virtually find no person who is not using the mobile phone for their work or for personal use. No matter whether you are college students, salesman, a storekeeper,\nor a pilot a mobile phone is a must for all."
             android:fontFamily="@font/mulish_light"
             android:textFontWeight="300"
             android:textSize="12sp"
+            android:textColorHint="@color/black_b"
             android:textColor="@color/black_b"
             android:layout_marginTop="@dimen/_15sdp"
             android:gravity="start"
@@ -227,16 +241,19 @@
                 android:textFontWeight="600"
                 android:textSize="15sp" />
 
-            <TextView
+            <EditText
+                android:id="@+id/etPrice"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="$499"
+                android:hint="$499"
                 android:fontFamily="@font/poppins_light"
                 android:textFontWeight="300"
                 android:textSize="12sp"
-                android:padding="@dimen/_8sdp"
+                android:textColorHint="@color/black_b"
                 android:textColor="@color/black_b"
                 android:layout_marginTop="@dimen/_15sdp"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/_8sdp"
                 android:background="@drawable/edittxt_bac"/>
 
 

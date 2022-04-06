@@ -20,7 +20,7 @@ import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.modelclass.parameter.VerifyOtpParameter;
-import com.cwt.phonerepair.modelclass.response.VerifyOtpResponse;
+import com.cwt.phonerepair.modelclass.verifyOtp.VerifyOtpResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
 import com.cwt.phonerepair.utils.Utils;

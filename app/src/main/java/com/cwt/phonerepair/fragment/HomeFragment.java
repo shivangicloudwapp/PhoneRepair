@@ -21,9 +21,9 @@ import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.activity.AllStoresActivity;
 import com.cwt.phonerepair.adapter.BannerAdapter;
 import com.cwt.phonerepair.adapter.OurExclusiveStoreAdapter;
-import com.cwt.phonerepair.modelclass.response.HomeBannerModel;
-import com.cwt.phonerepair.modelclass.response.HomeStoreModel;
-import com.cwt.phonerepair.modelclass.response.HomeResponse;
+import com.cwt.phonerepair.modelclass.response.home.HomeBannerModel;
+import com.cwt.phonerepair.modelclass.response.home.HomeResponse;
+import com.cwt.phonerepair.modelclass.response.home.HomeStoreModel;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
 import com.cwt.phonerepair.utils.Utils;
@@ -73,8 +73,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         tvSeeAll.setOnClickListener(this);
         modelArrayList=new ArrayList<>() ;
         bannerList=new ArrayList<>();
-
-
 
         if (Utils.checkConnection(context)) {
             stores();

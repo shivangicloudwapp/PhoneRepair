@@ -2,7 +2,6 @@ package com.cwt.phonerepair.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +11,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cwt.phonerepair.Interface.GetSubscriptionData;
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.activity.SubscribeNewStoreActivity;
-import com.cwt.phonerepair.modelclass.response.SubscriptionPlanModel;
+import com.cwt.phonerepair.modelclass.response.subscriptionPlan.SubscriptionPlanModel;
 
 import java.util.ArrayList;
 
@@ -72,12 +69,12 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
                  previousPosition = position;
                    notifyDataSetChanged();
 
-
-
             }
         });
                 if(position==previousPosition){
                     holder.llSubscriptionPlan.setBackgroundDrawable(context.getDrawable(R.drawable.linear_layout_black_border));
+
+                    myAdapterListener.getsubscriptiondata(modelList.get(position));
                 }
                 else {
                     holder.llSubscriptionPlan.setBackgroundDrawable(context.getDrawable(R.drawable.line_bac));
@@ -112,7 +109,6 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
 
         }
 */
-
 
     }
 

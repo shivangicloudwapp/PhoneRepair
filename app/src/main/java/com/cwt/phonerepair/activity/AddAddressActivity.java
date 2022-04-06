@@ -1,7 +1,5 @@
 package com.cwt.phonerepair.activity;
 
-import static androidx.constraintlayout.motion.widget.Debug.getLocation;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -20,16 +18,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.modelclass.parameter.AddAddressParameter;
-import com.cwt.phonerepair.modelclass.parameter.LoginParameter;
-import com.cwt.phonerepair.modelclass.response.AddAddressResponse;
-import com.cwt.phonerepair.modelclass.response.LoginResponse;
+import com.cwt.phonerepair.modelclass.response.addAddress.AddAddressResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
 import com.cwt.phonerepair.utils.Utils;
@@ -234,7 +229,6 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
         Customprogress.showPopupProgressSpinner(context,true);
         AddAddressParameter parameter= new AddAddressParameter(flatNum,landmark,alternateNum,name,contactNum,Type,latitude,longitude,address);
         Call<AddAddressResponse>call=jsonPlaceHolderApi.AddAddress(parameter,"Bearer "+sessionManager.getSavedToken());
-
         call.enqueue(new Callback<AddAddressResponse>() {
             @Override
             public void onResponse(Call<AddAddressResponse> call, Response<AddAddressResponse> response) {

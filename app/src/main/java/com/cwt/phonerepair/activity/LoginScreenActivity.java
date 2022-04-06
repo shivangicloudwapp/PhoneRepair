@@ -19,7 +19,7 @@ import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.modelclass.parameter.LoginParameter;
-import com.cwt.phonerepair.modelclass.response.LoginResponse;
+import com.cwt.phonerepair.modelclass.response.login.LoginResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
 import com.cwt.phonerepair.utils.Utils;
@@ -149,6 +149,8 @@ Context context;
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful()){
+                    Customprogress.showPopupProgressSpinner(context, false);
+
                     if (response.body().getStatus()){
 
                         sessionManager.setSavedToken(response.body().getData().getToken());

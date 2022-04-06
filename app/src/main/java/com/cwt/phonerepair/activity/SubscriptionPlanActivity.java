@@ -1,14 +1,12 @@
 package com.cwt.phonerepair.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.arch.core.internal.SafeIterableMap;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,8 +17,8 @@ import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.adapter.SubscriptionAdapter;
-import com.cwt.phonerepair.modelclass.response.SubscriptionPlanModel;
-import com.cwt.phonerepair.modelclass.response.SubscriptionPlanResponse;
+import com.cwt.phonerepair.modelclass.response.subscriptionPlan.SubscriptionPlanModel;
+import com.cwt.phonerepair.modelclass.response.subscriptionPlan.SubscriptionPlanResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
 import com.cwt.phonerepair.utils.Utils;
@@ -96,6 +94,8 @@ Button btnBuyMembership;
                         SubscriptionAdapter adapter = new SubscriptionAdapter( modelArrayList,context, new GetSubscriptionData() {
                             @Override
                             public void getsubscriptiondata(SubscriptionPlanModel subscriptionPlanModel) {
+
+                                System.out.println("plan....."+subscriptionPlanModel.getTitle());
                                 subscriptionPlanModelMain=subscriptionPlanModel;
 
                             }
@@ -134,11 +134,20 @@ Button btnBuyMembership;
                 onBackPressed();
       break;
             case R.id.btnBuyMembership:
+
+                if (subscriptionPlanModelMain==null){
+                    Toast.makeText(context, "Please Select Subscription Plan", Toast.LENGTH_SHORT).show();
+                }
+
+                else{
+
+                    Intent intent = new Intent(SubscriptionPlanActivity.this, SubscribeNewStoreActivity.class);
+                    intent.putExtra("data", (Serializable) subscriptionPlanModelMain);
+                    startActivity(intent);
+                }
+
 //                subscriptionPlan();
 
-                Intent intent = new Intent(SubscriptionPlanActivity.this, SubscribeNewStoreActivity.class);
-                intent.putExtra("data", (Serializable) subscriptionPlanModelMain);
-                startActivity(intent);
                 break;
 
             default:

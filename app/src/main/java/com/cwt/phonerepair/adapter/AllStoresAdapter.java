@@ -14,13 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.Allurls;
 import com.cwt.phonerepair.activity.StoreDetailsActivity;
-import com.cwt.phonerepair.modelclass.response.AllStoreModel;
-import com.cwt.phonerepair.modelclass.response.HomeStoreModel;
+import com.cwt.phonerepair.modelclass.response.allStores.AllStoreModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -57,7 +54,7 @@ public class AllStoresAdapter extends RecyclerView.Adapter<AllStoresAdapter.View
 
 
 
-        Picasso.with(context).load(Allurls.ImageUrl).fit().centerCrop()
+        Picasso.with(context).load(Allurls.ImageUrl+model.getStoreImage()).fit().centerCrop()
                 .placeholder(R.drawable.group1042)
                 .into(holder.ivStoreimg);
 

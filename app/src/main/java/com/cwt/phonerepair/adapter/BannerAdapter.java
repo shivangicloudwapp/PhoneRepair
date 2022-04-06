@@ -3,7 +3,6 @@ package com.cwt.phonerepair.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.Allurls;
 import com.cwt.phonerepair.activity.BookServiceActivity;
-import com.cwt.phonerepair.modelclass.response.HomeBannerModel;
+import com.cwt.phonerepair.modelclass.response.home.HomeBannerModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -51,8 +48,6 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ViewHolder
         HomeBannerModel model = modelList.get(position);
 
         System.out.println("image url >>>>>>"+Allurls.ImageUrl+model.getImage());
-
-
 
         Picasso.with(context).load(Allurls.ImageUrl).fit().centerCrop()
                 .placeholder(R.drawable.group1042)

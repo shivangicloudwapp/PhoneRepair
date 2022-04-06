@@ -27,7 +27,7 @@ import android.widget.Toast;
 import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
-import com.cwt.phonerepair.modelclass.response.UpdateProfileResponse;
+import com.cwt.phonerepair.modelclass.response.updateProfile.UpdateProfileResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
 import com.cwt.phonerepair.utils.Utils;
@@ -38,15 +38,12 @@ import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import okhttp3.Cookie;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -258,9 +255,10 @@ String picturePath;
 
         HashMap<String, RequestBody> data = new HashMap<>();
         data.put("name", createRequestBody(etName.getText().toString()));
+
+
         MultipartBody.Part image = null;
        String pathMain=picturePath;
-
         if (pathMain != null && !pathMain.equals("")) {
             File file = new File(pathMain);
             RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);

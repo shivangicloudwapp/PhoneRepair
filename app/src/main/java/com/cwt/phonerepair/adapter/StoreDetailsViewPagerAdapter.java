@@ -11,7 +11,11 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.cwt.phonerepair.R;
+import com.cwt.phonerepair.Server.Allurls;
+import com.cwt.phonerepair.modelclass.response.allStores.AllStoreModel;
+import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StoreDetailsViewPagerAdapter extends PagerAdapter {
@@ -19,16 +23,21 @@ public class StoreDetailsViewPagerAdapter extends PagerAdapter {
     private Context context;
     private LayoutInflater layoutInflater;
 
-    List<StoreDetailsViewPagerAdapter>list;
-    private Integer[] images={R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg};
+  //  List<StoreDetailsViewPagerAdapter>list;
 
-    public StoreDetailsViewPagerAdapter(Context context)
-    {
-        this.context=context;
+    ArrayList<AllStoreModel> models;
+
+    //private Integer[] images={R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg};
+
+
+    public StoreDetailsViewPagerAdapter(Context context, ArrayList<AllStoreModel> models) {
+        this.context = context;
+        this.models = models;
     }
+
     @Override
     public int getCount() {
-        return images.length;
+        return models.size();
     }
 
     @Override
@@ -42,9 +51,15 @@ public class StoreDetailsViewPagerAdapter extends PagerAdapter {
         layoutInflater=(LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE
         );
+
+        AllStoreModel detailsModel=models.get(position);
         View view =layoutInflater.inflate(R.layout.stores_image_slider,null);
         ImageView imageView=view.findViewById(R.id.image_view);
-        imageView.setImageResource(images[position]);
+
+        Picasso.with(context).load(Allurls.ImageUrl+detailsModel.getStoreImage()).fit().centerCrop()
+                .placeholder(R.drawable.group1042)
+                .into(imageView);
+
         ViewPager viewPager=(ViewPager) container;
         viewPager.addView(view,0);
         return view;

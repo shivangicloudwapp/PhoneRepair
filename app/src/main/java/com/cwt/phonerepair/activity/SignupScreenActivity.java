@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -23,14 +22,12 @@ import android.widget.Toast;
 import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
-import com.cwt.phonerepair.Utility;
 import com.cwt.phonerepair.modelclass.parameter.SignupParameter;
-import com.cwt.phonerepair.modelclass.response.SignupResponse;
+import com.cwt.phonerepair.modelclass.response.signup.SignupResponse;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
 import com.cwt.phonerepair.utils.Utils;
 
-import butterknife.internal.Constants;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,7 +41,7 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
     JsonPlaceHolderApi jsonPlaceHolderApi;
     Context context;
     SessionManager sessionManager;
-    String name, email, password, confirmpass;
+    String name, email, password, confirmpass,userId;
     boolean is_click = true;
 
     @Override
@@ -200,6 +197,7 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
 
                         sessionManager.setSavedEmail(email);
                         sessionManager.setSavedUserName(name);
+                        sessionManager.setSavedUserId(userId);
 
                         Log.e("response.....", response.body().getData().toString());
                         startActivity(intent);

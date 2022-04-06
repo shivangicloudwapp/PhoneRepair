@@ -5,89 +5,201 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
+import com.cwt.phonerepair.Server.Allurls;
+import com.cwt.phonerepair.Server.ApiUtils;
+import com.cwt.phonerepair.adapter.AllStoresAdapter;
 import com.cwt.phonerepair.adapter.ProdcutAdapter;
 import com.cwt.phonerepair.adapter.StoreDetailsViewPagerAdapter;
-import com.cwt.phonerepair.modelclass.ProductModel;
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
+import com.cwt.phonerepair.modelclass.parameter.StoreDetailsParameter;
+import com.cwt.phonerepair.modelclass.response.allStores.AllStoreModel;
+import com.cwt.phonerepair.modelclass.response.allStores.AllStoresResponse;
+import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsModel;
+import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsProductModel;
+import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsResponse;
+import com.cwt.phonerepair.utils.Customprogress;
+import com.cwt.phonerepair.utils.SessionManager;
+import com.cwt.phonerepair.utils.Utils;
+import com.squareup.picasso.Picasso;
 import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class StoreDetailsActivity extends AppCompatActivity implements View.OnClickListener {
     SpringDotsIndicator dotsIndicator;
-    TextView tvSeeAll;
-
+    TextView tvSeeAll,tvStoreDetails,tvAddress,tvStoreName;
     ViewPager view_pager;
     StoreDetailsViewPagerAdapter adapter;
-
     RecyclerView rv_Prodcut;
     Context context;
-    ArrayList<ProductModel> modelArrayList;
-    ImageView ivBackStoreDetail;
+    ArrayList<StoreDetailsProductModel> modelArrayList;
+    ImageView ivBackStoreDetail,ivStore;
+    List<StoreDetailsModel>storeDetailsModels;
+
+    ArrayList<AllStoreModel> storeArrayList;
+
+
+    JsonPlaceHolderApi jsonPlaceHolderApi;
+    SessionManager sessionManager;
+
+   // String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_details);
 
+        initView();
+
+        if (Utils.checkConnection(context)) {
+
+            allStores();
+          //  storeDetails();
+        } else {
+            Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+        }
+     //   userId=sessionManager.getSavedUserId();
+    }
+
+    private void allStores() {
+        Customprogress.showPopupProgressSpinner(context, true);
+        Call<AllStoresResponse> call = jsonPlaceHolderApi.AllStore("Bearer "+sessionManager.getSavedToken());
+        call.enqueue(new Callback<AllStoresResponse>() {
+            @Override
+            public void onResponse(Call<AllStoresResponse> call, Response<AllStoresResponse> response) {
+                Customprogress.showPopupProgressSpinner(context, false);
+                if (response.isSuccessful()) {
+
+
+
+                    if (response.body().getStatus()) {
+                        storeArrayList= (ArrayList<AllStoreModel>) response.body().getData().getStore();
+                        StoreDetailsViewPagerAdapter allStoresAdapter=new StoreDetailsViewPagerAdapter(StoreDetailsActivity.this,storeArrayList);
+                        view_pager.setAdapter(allStoresAdapter);
+                        dotsIndicator.setViewPager(view_pager);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AllStoresResponse> call, Throwable t) {
+                Customprogress.showPopupProgressSpinner(context, false);
+                Toast.makeText(StoreDetailsActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void storeDetails() {
+      //  Customprogress.showPopupProgressSpinner(context,true);
+        StoreDetailsParameter storeDetailsParameter= new StoreDetailsParameter();
+        storeDetailsParameter.setStoreId(9);
+        Call<StoreDetailsResponse> call=jsonPlaceHolderApi.StoreDetails(storeDetailsParameter,"Bearer "+sessionManager.getSavedToken());
+        call.enqueue(new Callback<StoreDetailsResponse>() {
+            @Override
+            public void onResponse(Call<StoreDetailsResponse> call, Response<StoreDetailsResponse> response) {
+                Customprogress.showPopupProgressSpinner(context, false);
+
+                if (response.isSuccessful()){
+                    if (response.body().getStatus()){
+                        Customprogress.showPopupProgressSpinner(context, false);
+                        Log.d("TAG","status"+response.body().getStatus());
+                        if(!response.body().getProduct().isEmpty()){
+                            modelArrayList= (ArrayList<StoreDetailsProductModel>) response.body().getProduct();
+
+                            ProdcutAdapter adapter=new ProdcutAdapter(modelArrayList,context);
+                            rv_Prodcut.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+                            rv_Prodcut.setAdapter(adapter);
+                            rv_Prodcut.setHasFixedSize(true);
+
+
+                            tvStoreName.setText(response.body().getData().getStore().getStoreName());
+                            tvStoreDetails.setText(response.body().getData().getStore().getAboutStore());
+                            tvAddress.setText(response.body().getData().getStore().getAddress());
+
+                          /* Picasso.with(context).load(Allurls.ImageUrl+response.body().getData().getStore().getAddress()).fit().centerCrop()
+                                    .placeholder(R.drawable.group1042)
+                                    .into(ivStore);
+
+*/
+                        }
+
+                    }else{
+                        Log.d("TAG","status>>>>"+response.body().getStatus());
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<StoreDetailsResponse> call, Throwable t) {
+                Customprogress.showPopupProgressSpinner(context, false);
+
+            }
+        });
+    }
+
+    @SuppressLint("WrongViewCast")
+    private void initView() {
+        jsonPlaceHolderApi= ApiUtils.getAPIService();
+        context=StoreDetailsActivity.this;
+        modelArrayList=new ArrayList<>() ;
+        storeDetailsModels=new ArrayList<>() ;
+        storeArrayList=new ArrayList<>() ;
+        sessionManager= new SessionManager(context);
+
         dotsIndicator =  findViewById(R.id.dots_indicator);
         view_pager =  findViewById(R.id.view_pager);
         rv_Prodcut=findViewById(R.id.rv_Prodcut);
         ivBackStoreDetail=findViewById(R.id.ivBackStoreDetail);
         tvSeeAll=findViewById(R.id.tvSeeAll);
+        tvStoreName=findViewById(R.id.tvStoreName);
+        tvAddress=findViewById(R.id.tvAddress);
+        tvStoreDetails=findViewById(R.id.tvStoreDetails);
+        tvStoreName=findViewById(R.id.tvStoreName);
+     //  ivStore=findViewById(R.id.ivStore);
 
-
-        adapter=new StoreDetailsViewPagerAdapter(this);
-        view_pager.setAdapter(adapter);
-        dotsIndicator.setViewPager(view_pager);
-
-           ivBackStoreDetail.setOnClickListener(this);
-
-
+        ivBackStoreDetail.setOnClickListener(this);
         tvSeeAll.setOnClickListener(this);
 
+        if (Utils.checkConnection(context)) {
 
-
-
-
-
-
-        modelArrayList=new ArrayList<>() ;
-
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.iphone1));
-        modelArrayList.add(new ProductModel("Iphone X","RM999",R.drawable.iphone2));
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.iphone1));
-        modelArrayList.add(new ProductModel("Iphone X","RM999",R.drawable.iphone2));
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.iphone1));
-
-
-        ProdcutAdapter adapter=new ProdcutAdapter(modelArrayList,this);
-        rv_Prodcut.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        rv_Prodcut.setAdapter(adapter);
-        rv_Prodcut.setHasFixedSize(true);
-
+           // allStores();
+             storeDetails();
+        } else {
+            Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+        }
 
 
     }
 
     @Override
     public void onClick(View v) {
-        if (v==ivBackStoreDetail){
-            onBackPressed();
-        }
 
-        else if (v==tvSeeAll){
+        switch (v.getId()){
+            case R.id.ivBackStoreDetail:
+                onBackPressed();
+                break;
 
-            Intent intent = new Intent(StoreDetailsActivity.this,AllProductActivity.class);
-            startActivity(intent);
+            case R.id.tvSeeAll:
+                Intent intent = new Intent(StoreDetailsActivity.this,AllProductActivity.class);
+                startActivity(intent);
+                break;
 
         }
 

@@ -94,7 +94,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
                 if (response.isSuccessful()) {
                     Customprogress.showPopupProgressSpinner(context, false);
-
                     if (response.body().getStatus()) {
                         bannerList= (ArrayList<HomeBannerModel>) response.body().getData().getBanner();
                         BannerAdapter adapter = new BannerAdapter( bannerList,context);
@@ -103,7 +102,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         rvourExcluStore.setHasFixedSize(true);
 
 
-                       modelArrayList= (ArrayList<HomeStoreModel>) response.body().getData().getStore();
+                        modelArrayList= (ArrayList<HomeStoreModel>) response.body().getData().getStore();
                         OurExclusiveStoreAdapter adapter1 = new OurExclusiveStoreAdapter(modelArrayList,context);
                         rvourExcluStore.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
                         rvourExcluStore.setAdapter( adapter1);

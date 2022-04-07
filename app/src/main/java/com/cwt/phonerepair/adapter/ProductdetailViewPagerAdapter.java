@@ -17,21 +17,20 @@ import com.cwt.phonerepair.modelclass.response.allStores.AllStoreModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class StoreDetailsViewPagerAdapter extends PagerAdapter {
+public class ProductdetailViewPagerAdapter extends PagerAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
 
-  //  List<StoreDetailsViewPagerAdapter>list;
+    //  List<StoreDetailsViewPagerAdapter>list;
 
     ArrayList<AllStoreModel> models;
     GetStoreId getStoreId;
     //private Integer[] images={R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg};
 
 
-    public StoreDetailsViewPagerAdapter(Context context, ArrayList<AllStoreModel> models) {
+    public ProductdetailViewPagerAdapter(Context context, ArrayList<AllStoreModel> models) {
         this.context = context;
         this.models = models;
         this.models = models;

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,8 +16,13 @@ import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.adapter.AllProductAdapter;
 import com.cwt.phonerepair.adapter.ProdcutAdapter;
+import com.cwt.phonerepair.modelclass.parameter.AddtoCartParameter;
+import com.cwt.phonerepair.modelclass.parameter.GetStoreAllProdcutParameter;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementResponse;
+import com.cwt.phonerepair.modelclass.response.getStoreallProdcut.GetStoreAllProdcutModel;
+import com.cwt.phonerepair.modelclass.response.getStoreallProdcut.GetStoreAllProductResponse;
+import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsProductModel;
 import com.cwt.phonerepair.storeactivity.ProductManagementActivity;
 import com.cwt.phonerepair.storeadapter.ProductManagementAdapter;
 import com.cwt.phonerepair.utils.Customprogress;
@@ -34,10 +40,13 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
     RecyclerView rvAllPro;
     Context context;
     ImageView ivBackAllPro;
-    ArrayList<ProductManagementModel> modelArrayList;
+    ArrayList<GetStoreAllProdcutModel> modelArrayList;
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
+    ArrayList<StoreDetailsProductModel> storeDetailsProductModels;
 
+    int storeId;
+    StoreDetailsProductModel storeDetailsProductModel;
 
 
     @Override
@@ -45,31 +54,32 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_product);
 
+        //getData();
 
     initView();
 
 
-      //  modelArrayList=new ArrayList<>() ;
-        /*modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.iphone1));
-        modelArrayList.add(new ProductModel("Iphone X","RM999",R.drawable.phone3));
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.watch));
-        modelArrayList.add(new ProductModel("Iphone X","RM999",R.drawable.watch3));
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.bluetooth));
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.iphone1));
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.watch));
-        modelArrayList.add(new ProductModel("Iphone 13","RM400",R.drawable.phone3));
-        ProdcutAdapter adapter=new ProdcutAdapter(modelArrayList,this);
-        rvAllPro.setLayoutManager(new GridLayoutManager(this, 2));
-        rvAllPro.setAdapter(adapter);
-        rvAllPro.setHasFixedSize(true);*/
 
 
     }
+
+    /*private void getData() {
+        try {
+            Intent intent = getIntent();
+            if (intent != null) {
+                storeId = intent.getIntExtra("store_id",0);
+                System.out.println("id>>>>> "+storeDetailsProductModel.getStoreId());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
 
     private void initView() {
 
         context=this;
         modelArrayList=new ArrayList<>();
+        storeDetailsProductModels=new ArrayList<>();
         jsonPlaceHolderApi= ApiUtils.getAPIService();
 
         sessionManager=new SessionManager(context);
@@ -89,19 +99,27 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
 
     private void AllProduct() {
 
+        // storeId= String.valueOf(((storeDetailsProductModel.getStoreId())));
+
 
         Customprogress.showPopupProgressSpinner(context,true);
-        Call<ProductManagementResponse> call=jsonPlaceHolderApi.ProductManagement("Bearer "+sessionManager.getSavedToken());
-        call.enqueue(new Callback<ProductManagementResponse>() {
+        GetStoreAllProdcutParameter add = new GetStoreAllProdcutParameter();
+        add.setStoreId(1);
+
+      //  System.out.println("Store...Id"+storeId);
+
+        Call<GetStoreAllProductResponse> call=jsonPlaceHolderApi.GetStoreAllProduct("Bearer "+sessionManager.getSavedToken(),add);
+        call.enqueue(new Callback<GetStoreAllProductResponse>() {
             @Override
-            public void onResponse(Call<ProductManagementResponse> call, Response<ProductManagementResponse> response) {
+            public void onResponse(Call<GetStoreAllProductResponse> call, Response<GetStoreAllProductResponse> response) {
                 Customprogress.showPopupProgressSpinner(context,false);
 
                 if (response.isSuccessful()){
 
                     if (response.body().getStatus()){
 
-                        modelArrayList= (ArrayList<ProductManagementModel>) response.body().getData().getProduct();
+                        modelArrayList= (ArrayList<GetStoreAllProdcutModel>) response.body().getData().getProduct();
+
 
                         AllProductAdapter adapter=new AllProductAdapter(modelArrayList, AllProductActivity.this);
                         rvAllPro.setLayoutManager(new GridLayoutManager(AllProductActivity.this, 2));
@@ -115,12 +133,11 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
             }
 
             @Override
-            public void onFailure(Call<ProductManagementResponse> call, Throwable t) {
-                Customprogress.showPopupProgressSpinner(context,true);
+            public void onFailure(Call<GetStoreAllProductResponse> call, Throwable t) {
+                Customprogress.showPopupProgressSpinner(context,false);
 
             }
         });
-
 
     }
 

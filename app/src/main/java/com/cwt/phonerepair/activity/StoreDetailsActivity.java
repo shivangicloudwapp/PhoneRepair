@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cwt.phonerepair.Interface.GetStoreId;
+import com.cwt.phonerepair.Interface.GetSubscriptionData;
 import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.Allurls;
@@ -22,18 +24,21 @@ import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.adapter.AllStoresAdapter;
 import com.cwt.phonerepair.adapter.ProdcutAdapter;
 import com.cwt.phonerepair.adapter.StoreDetailsViewPagerAdapter;
+import com.cwt.phonerepair.adapter.SubscriptionAdapter;
 import com.cwt.phonerepair.modelclass.parameter.StoreDetailsParameter;
 import com.cwt.phonerepair.modelclass.response.allStores.AllStoreModel;
 import com.cwt.phonerepair.modelclass.response.allStores.AllStoresResponse;
 import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsModel;
 import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsProductModel;
 import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsResponse;
+import com.cwt.phonerepair.modelclass.response.subscriptionPlan.SubscriptionPlanModel;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
 import com.cwt.phonerepair.utils.Utils;
 import com.squareup.picasso.Picasso;
 import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,34 +56,28 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
     ArrayList<StoreDetailsProductModel> modelArrayList;
     ImageView ivBackStoreDetail,ivStore;
     List<StoreDetailsModel>storeDetailsModels;
-
+    StoreDetailsModel storeDetailsModel;
     ArrayList<AllStoreModel> storeArrayList;
-
-
+    AllStoreModel allStoreModel;
+    int storeId;
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
 
    // String userId;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_details);
 
         initView();
-
         if (Utils.checkConnection(context)) {
-
             allStores();
-          //  storeDetails();
         } else {
             Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
         }
      //   userId=sessionManager.getSavedUserId();
     }
-
     private void allStores() {
-        Customprogress.showPopupProgressSpinner(context, true);
         Call<AllStoresResponse> call = jsonPlaceHolderApi.AllStore("Bearer "+sessionManager.getSavedToken());
         call.enqueue(new Callback<AllStoresResponse>() {
             @Override
@@ -86,12 +85,10 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
                 Customprogress.showPopupProgressSpinner(context, false);
                 if (response.isSuccessful()) {
 
-
-
                     if (response.body().getStatus()) {
                         storeArrayList= (ArrayList<AllStoreModel>) response.body().getData().getStore();
-                        StoreDetailsViewPagerAdapter allStoresAdapter=new StoreDetailsViewPagerAdapter(StoreDetailsActivity.this,storeArrayList);
-                        view_pager.setAdapter(allStoresAdapter);
+                       StoreDetailsViewPagerAdapter allStoresAdapter=new StoreDetailsViewPagerAdapter(StoreDetailsActivity.this,storeArrayList);
+                       view_pager.setAdapter(allStoresAdapter);
                         dotsIndicator.setViewPager(view_pager);
                     }
                 }
@@ -106,7 +103,8 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void storeDetails() {
-      //  Customprogress.showPopupProgressSpinner(context,true);
+
+       Customprogress.showPopupProgressSpinner(context,true);
         StoreDetailsParameter storeDetailsParameter= new StoreDetailsParameter();
         storeDetailsParameter.setStoreId(9);
         Call<StoreDetailsResponse> call=jsonPlaceHolderApi.StoreDetails(storeDetailsParameter,"Bearer "+sessionManager.getSavedToken());
@@ -121,22 +119,18 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
                         Log.d("TAG","status"+response.body().getStatus());
                         if(!response.body().getProduct().isEmpty()){
                             modelArrayList= (ArrayList<StoreDetailsProductModel>) response.body().getProduct();
-
                             ProdcutAdapter adapter=new ProdcutAdapter(modelArrayList,context);
+
+
                             rv_Prodcut.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
                             rv_Prodcut.setAdapter(adapter);
                             rv_Prodcut.setHasFixedSize(true);
-
 
                             tvStoreName.setText(response.body().getData().getStore().getStoreName());
                             tvStoreDetails.setText(response.body().getData().getStore().getAboutStore());
                             tvAddress.setText(response.body().getData().getStore().getAddress());
 
-                          /* Picasso.with(context).load(Allurls.ImageUrl+response.body().getData().getStore().getAddress()).fit().centerCrop()
-                                    .placeholder(R.drawable.group1042)
-                                    .into(ivStore);
 
-*/
                         }
 
                     }else{
@@ -159,10 +153,8 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
         jsonPlaceHolderApi= ApiUtils.getAPIService();
         context=StoreDetailsActivity.this;
         modelArrayList=new ArrayList<>() ;
-        storeDetailsModels=new ArrayList<>() ;
         storeArrayList=new ArrayList<>() ;
         sessionManager= new SessionManager(context);
-
         dotsIndicator =  findViewById(R.id.dots_indicator);
         view_pager =  findViewById(R.id.view_pager);
         rv_Prodcut=findViewById(R.id.rv_Prodcut);
@@ -173,10 +165,8 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
         tvStoreDetails=findViewById(R.id.tvStoreDetails);
         tvStoreName=findViewById(R.id.tvStoreName);
      //  ivStore=findViewById(R.id.ivStore);
-
         ivBackStoreDetail.setOnClickListener(this);
         tvSeeAll.setOnClickListener(this);
-
         if (Utils.checkConnection(context)) {
 
            // allStores();
@@ -197,7 +187,11 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
                 break;
 
             case R.id.tvSeeAll:
-                Intent intent = new Intent(StoreDetailsActivity.this,AllProductActivity.class);
+                Intent intent = new Intent(StoreDetailsActivity.this, AllProductActivity.class);
+         /*       intent.getSerializableExtra(storeDetailsModel.getId().toString());
+
+                System.out.println("id.....store///"+storeDetailsModel);
+*/
                 startActivity(intent);
                 break;
 

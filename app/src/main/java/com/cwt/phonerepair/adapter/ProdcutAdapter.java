@@ -41,13 +41,6 @@ public class ProdcutAdapter extends RecyclerView.Adapter<ProdcutAdapter.ViewHold
         View listItem = layoutInflater.inflate(R.layout.list_product, viewGroup, false);
         ProdcutAdapter.ViewHolder viewHolder = new ProdcutAdapter.ViewHolder(listItem);
 
-       viewHolder.rlProduct.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               Intent intent = new Intent(view.getContext(), ProductDetailsActivity.class);
-               context.startActivity(intent);
-           }
-       });
 
         return viewHolder;
     }
@@ -67,6 +60,13 @@ public class ProdcutAdapter extends RecyclerView.Adapter<ProdcutAdapter.ViewHold
                 .placeholder(R.drawable.group1042)
                 .into(holder.ivProdcut);
 
+        holder.rlProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ProductDetailsActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
 
     }

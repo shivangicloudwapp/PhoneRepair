@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.activity.serviceActivity.ServiceDetailsPendingActivity;
 import com.cwt.phonerepair.modelclass.PendingModel;
+import com.cwt.phonerepair.modelclass.service.ServicePendingModel;
 
 import java.util.ArrayList;
 
@@ -23,9 +24,9 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.ViewHold
 
     Context context;
 
-    ArrayList<PendingModel> modelList;
+    ArrayList<ServicePendingModel> modelList;
 
-    public PendingAdapter(ArrayList<PendingModel> modelList, Context context) {
+    public PendingAdapter(ArrayList<ServicePendingModel> modelList, Context context) {
         this.context = context;
         this.modelList = modelList;
     }
@@ -43,9 +44,9 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.ViewHold
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull PendingAdapter.ViewHolder holder, int position) {
-        PendingModel model = modelList.get(position);
-        holder.tvCode.setText(model.getTvCode());
-        holder.tvTimeDate.setText(model.getTvTimeDate());
+        ServicePendingModel model = modelList.get(position);
+        holder.tvCode.setText(model.getOrderId());
+        holder.tvTimeDate.setText(model.getCreatedAt());
 
         holder.llPending.setOnClickListener(new View.OnClickListener() {
             @Override

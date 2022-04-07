@@ -1,17 +1,15 @@
-package com.cwt.phonerepair.modelclass.response.storedetails;
+package com.cwt.phonerepair.modelclass.response.getStoreallProdcut;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class StoreDetailsProductModel {
-
+public class GetStoreAllProdcutModel  implements Serializable {
 
     @SerializedName("id")
     @Expose
     private Integer id;
-
     @SerializedName("user_id")
     @Expose
     private Integer userId;
@@ -20,13 +18,13 @@ public class StoreDetailsProductModel {
     @Expose
     private Integer storeId;
 
-    @SerializedName("product_image")
-    @Expose
-    private String productImage;
-
     @SerializedName("title")
     @Expose
     private String title;
+
+    @SerializedName("product_image")
+    @Expose
+    private String productImage;
 
     @SerializedName("discription")
     @Expose

@@ -3,6 +3,8 @@ package com.cwt.phonerepair.Interface;
 
 
 import com.cwt.phonerepair.modelclass.parameter.AddAddressParameter;
+import com.cwt.phonerepair.modelclass.parameter.AddtoCartParameter;
+import com.cwt.phonerepair.modelclass.parameter.GetStoreAllProdcutParameter;
 import com.cwt.phonerepair.modelclass.parameter.LoginParameter;
 import com.cwt.phonerepair.modelclass.parameter.SendOtpParameter;
 import com.cwt.phonerepair.modelclass.parameter.SignupParameter;
@@ -12,7 +14,9 @@ import com.cwt.phonerepair.modelclass.response.AddProduct.AddProductResponse;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementResponse;
 import com.cwt.phonerepair.modelclass.response.addAddress.AddAddressResponse;
 import com.cwt.phonerepair.modelclass.response.allStores.AllStoresResponse;
+import com.cwt.phonerepair.modelclass.response.cart.AddtoCartResponse;
 import com.cwt.phonerepair.modelclass.response.getAddress.GetAddressResponse;
+import com.cwt.phonerepair.modelclass.response.getStoreallProdcut.GetStoreAllProductResponse;
 import com.cwt.phonerepair.modelclass.response.home.HomeResponse;
 import com.cwt.phonerepair.modelclass.response.login.LoginResponse;
 import com.cwt.phonerepair.modelclass.response.sbscriptionstore.SubscriptionStoreResponse;
@@ -21,6 +25,8 @@ import com.cwt.phonerepair.modelclass.response.signup.SignupResponse;
 import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsResponse;
 import com.cwt.phonerepair.modelclass.response.subscriptionPlan.SubscriptionPlanResponse;
 import com.cwt.phonerepair.modelclass.response.updateProfile.UpdateProfileResponse;
+import com.cwt.phonerepair.modelclass.service.ServiceResponse;
+import com.cwt.phonerepair.modelclass.storeorder.StoreOrderResponse;
 import com.cwt.phonerepair.modelclass.verifyOtp.VerifyOtpResponse;
 
 import java.util.List;
@@ -106,8 +112,47 @@ public interface JsonPlaceHolderApi {
                                         @Part List<MultipartBody.Part> product_image);
 
 
+    @POST("user/services")
+    Call<ServiceResponse> Services(@Header("Authorization") String header);
+
+
+    @POST("user/store-order")
+    Call<StoreOrderResponse> StoreOrder(@Header("Authorization") String header );
+
+
+
+/*
+    @Multipart
+    @POST("User/userfeed_add")
+    Call<CommonResponse> addPost(@Header("authtoken") String authtoken,
+                                 @Part("user_id") RequestBody user_id,
+                                 @Part("description") RequestBody description,
+                                 @Part("location") RequestBody location,
+                                 @Part("location_lat") RequestBody location_lat,
+                                 @Part("location_long") RequestBody location_long,
+                                 @Part("post_time") RequestBody post_time,
+                                 @Part List<MultipartBody.Part> video);*/
+
+
     @POST("user/product-management")
     Call<ProductManagementResponse> ProductManagement(@Header("Authorization") String header );
+
+
+
+
+    @POST("user/getstore-allproduct")
+    Call<GetStoreAllProductResponse> GetStoreAllProduct(@Header("Authorization") String header,
+                                                        @Body GetStoreAllProdcutParameter parameter);
+
+
+
+
+
+
+   /* @POST("user/add-to-cart")
+    Call<AddtoCartResponse> AddtoCart(@Body AddtoCartParameter parameter,
+                                      @Header("Authorization") String header );
+*/
 
 
 

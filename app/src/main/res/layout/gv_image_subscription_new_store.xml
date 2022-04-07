@@ -27,6 +27,7 @@
 
 
                 <ImageView
+                    android:id="@+id/ivRemoveImg"
                     android:layout_width="@dimen/_16sdp"
                     android:layout_height="@dimen/_16sdp"
                     android:src="@drawable/ic_vector__65_"

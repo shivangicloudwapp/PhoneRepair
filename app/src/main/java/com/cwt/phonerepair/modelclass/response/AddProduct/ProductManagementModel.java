@@ -3,7 +3,9 @@ package com.cwt.phonerepair.modelclass.response.AddProduct;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ProductManagementModel {
+import java.io.Serializable;
+
+public class ProductManagementModel  implements Serializable {
 
     @SerializedName("id")
     @Expose

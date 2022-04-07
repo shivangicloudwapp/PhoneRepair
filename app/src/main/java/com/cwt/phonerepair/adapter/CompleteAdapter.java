@@ -17,6 +17,7 @@ import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.activity.serviceActivity.ServiceDetailsCompleteActivity;
 import com.cwt.phonerepair.activity.serviceActivity.ServiceDetailsRejectActivity;
 import com.cwt.phonerepair.modelclass.PendingModel;
+import com.cwt.phonerepair.modelclass.service.ServiceCompleteModel;
 
 import java.util.ArrayList;
 
@@ -24,9 +25,9 @@ public class CompleteAdapter extends RecyclerView.Adapter<CompleteAdapter.ViewHo
 
     Context context;
 
-    ArrayList<PendingModel> modelList;
+    ArrayList<ServiceCompleteModel> modelList;
 
-    public CompleteAdapter(ArrayList<PendingModel> modelList, Context context) {
+    public CompleteAdapter(ArrayList<ServiceCompleteModel> modelList, Context context) {
         this.context = context;
         this.modelList = modelList;
     }
@@ -44,9 +45,9 @@ public class CompleteAdapter extends RecyclerView.Adapter<CompleteAdapter.ViewHo
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull CompleteAdapter.ViewHolder holder, int position) {
-        PendingModel model = modelList.get(position);
-        holder.tvCode.setText(model.getTvCode());
-        holder.tvTimeDate.setText(model.getTvTimeDate());
+        ServiceCompleteModel model = modelList.get(position);
+        holder.tvCode.setText(model.getOrderId());
+        holder.tvTimeDate.setText(model.getCreatedAt());
 
         holder.cvComplete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +69,7 @@ public class CompleteAdapter extends RecyclerView.Adapter<CompleteAdapter.ViewHo
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvCode,tvTimeDate;
+        TextView tvCode,tvTimeDate,tvPrice;
         CardView cvComplete;
 
         public ViewHolder(@NonNull View itemView) {
@@ -76,6 +77,7 @@ public class CompleteAdapter extends RecyclerView.Adapter<CompleteAdapter.ViewHo
             tvCode = itemView.findViewById(R.id.tvCode);
             tvTimeDate = itemView.findViewById(R.id.tvTimeDate);
             cvComplete = itemView.findViewById(R.id.cvComplete);
+            tvPrice = itemView.findViewById(R.id.tvPrice);
 
 
 

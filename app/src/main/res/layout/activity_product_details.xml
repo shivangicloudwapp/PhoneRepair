@@ -68,6 +68,7 @@
                         android:layout_marginHorizontal="@dimen/_14sdp">
 
                         <TextView
+                            android:id="@+id/tvproductName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Iphone 13 Pro\nMax"
@@ -104,6 +105,7 @@
                             android:layout_marginTop="@dimen/_12sdp">
 
                             <TextView
+                                android:id="@+id/tvPrice"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="RM499"
@@ -125,6 +127,7 @@
                                 android:textColor="@color/txt_clr"/>
 
                             <TextView
+                                android:id="@+id/tvProductHighLight"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="The Mobile Store currently is covering and has more than 700+ outlets in different major cities in different states across India. Today you will virtually find no person who is not using the mobile phone for their work or for personal use. No matter whether you are college students, salesman, a storekeeper, or a pilot a mobile phone is a must for all."
@@ -170,12 +173,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="24dp" />
-
-
-
-
-
-
 
 
                         </LinearLayout>

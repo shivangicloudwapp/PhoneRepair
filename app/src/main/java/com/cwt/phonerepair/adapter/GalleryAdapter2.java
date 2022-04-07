@@ -1,6 +1,8 @@
-package com.cwt.phonerepair.activity;
+package com.cwt.phonerepair.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +14,13 @@ import com.cwt.phonerepair.R;
 
 import java.util.ArrayList;
 
-public class GalleryAdapter extends BaseAdapter {
+public class GalleryAdapter2 extends BaseAdapter {
     private Context ctx;
     private int pos;
     private LayoutInflater inflater;
     private ImageView ivGallery;
-    ArrayList<Uri> mArrayUri;
-    public GalleryAdapter(Context ctx, ArrayList<Uri> mArrayUri) {
+    ArrayList<String> mArrayUri;
+    public GalleryAdapter2(Context ctx, ArrayList<String> mArrayUri) {
 
         this.ctx = ctx;
         this.mArrayUri = mArrayUri;
@@ -50,7 +52,9 @@ public class GalleryAdapter extends BaseAdapter {
 
         ivGallery = (ImageView) itemView.findViewById(R.id.ivStoreImg);
 
-        ivGallery.setImageURI(mArrayUri.get(position));
+        //ivGallery.setImageURI(Uri.parse(mArrayUri.get(position)));
+        Bitmap bmp = BitmapFactory.decodeFile(mArrayUri.get(position));
+        ivGallery.setImageBitmap(bmp);
 
         return itemView;
     }

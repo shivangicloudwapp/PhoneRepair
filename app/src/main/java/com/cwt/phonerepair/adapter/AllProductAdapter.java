@@ -19,7 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.Allurls;
+import com.cwt.phonerepair.activity.ProductDetailsActivity;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel;
+import com.cwt.phonerepair.modelclass.response.getStoreallProdcut.GetStoreAllProdcutModel;
 import com.cwt.phonerepair.storeactivity.AddProductActivity;
 import com.cwt.phonerepair.storeadapter.ProductManagementAdapter;
 import com.squareup.picasso.Picasso;
@@ -30,9 +32,9 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.Vi
 
     Context context;
 
-    ArrayList<ProductManagementModel> modelList;
+    ArrayList<GetStoreAllProdcutModel> modelList;
 
-    public AllProductAdapter(ArrayList<ProductManagementModel> modelList, Context context) {
+    public AllProductAdapter(ArrayList<GetStoreAllProdcutModel> modelList, Context context) {
         this.context = context;
         this.modelList = modelList;
     }
@@ -48,7 +50,7 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.Vi
         viewHolder.rlProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), AddProductActivity.class);
+                Intent intent = new Intent(view.getContext(), ProductDetailsActivity.class);
                 context.startActivity(intent);
             }
         });
@@ -59,7 +61,7 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.Vi
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull AllProductAdapter.ViewHolder holder, int position) {
-        ProductManagementModel model = modelList.get(position);
+        GetStoreAllProdcutModel model = modelList.get(position);
         holder.tvProductName.setText(model.getTitle());
         holder.tvProductPrice.setText(Integer.toString(model.getPrice()));
 

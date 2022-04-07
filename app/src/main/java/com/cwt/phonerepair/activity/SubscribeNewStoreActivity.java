@@ -30,6 +30,8 @@ import android.widget.Toast;
 import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
+import com.cwt.phonerepair.adapter.GalleryAdapter;
+import com.cwt.phonerepair.adapter.SsmImageAdapter;
 import com.cwt.phonerepair.modelclass.response.sbscriptionstore.SubscriptionStoreResponse;
 import com.cwt.phonerepair.modelclass.response.subscriptionPlan.SubscriptionPlanModel;
 import com.cwt.phonerepair.utils.Customprogress;
@@ -68,8 +70,8 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     String imageEncoded;
     List<String> imagesEncodedList;
     private GridView gridViewImageStore,gridViewSsmImage;
-    private GalleryAdapter galleryAdapter;
-
+     GalleryAdapter galleryAdapter;
+SsmImageAdapter ssmImageAdapter;
     ArrayList<Uri> mArrayUri;
 
     ArrayList<SubscriptionPlanModel> modelArrayList;
@@ -117,10 +119,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
             Intent intent = getIntent();
             if (intent != null) {
                 subscriptionPlanModelMain = (SubscriptionPlanModel) intent.getSerializableExtra("data");
-
-
                 System.out.println(""+subscriptionPlanModelMain.getTitle());
-
                 title = subscriptionPlanModelMain.getTitle();
                 duration = subscriptionPlanModelMain.getDuration();
                 items = subscriptionPlanModelMain.getItems();
@@ -203,7 +202,6 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent,"Select Picture"), PICK_IMAGE_MULTIPLE);
-
                 //ChoosestoreImage(context);
                 break;
 
@@ -216,10 +214,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                 startActivityForResult(Intent.createChooser(intent1, "Select Picture"), PICK_IMAGE_MULTIPLE);
 
               //  ChooseSSmImage(context);
-
                 break;
-
-
             case R.id.ivBackSubNewstore:
                 onBackPressed();
                 break;
@@ -415,7 +410,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                     }
 
                     else if  (SetImage.equals("SsmImg")) {
-                        galleryAdapter = new GalleryAdapter(getApplicationContext(),mArrayUri);
+                        ssmImageAdapter = new SsmImageAdapter(getApplicationContext(),mArrayUri);
                         gridViewSsmImage.setAdapter(galleryAdapter);
                         gridViewSsmImage.setVerticalSpacing(gridViewSsmImage.getHorizontalSpacing());
                         ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewSsmImage
@@ -454,7 +449,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                             }
 
                             else if  (SetImage.equals("SsmImg")) {
-                                galleryAdapter = new GalleryAdapter(getApplicationContext(),mArrayUri);
+                                ssmImageAdapter = new SsmImageAdapter(getApplicationContext(),mArrayUri);
                                 gridViewSsmImage.setAdapter(galleryAdapter);
                                 gridViewSsmImage.setVerticalSpacing(gridViewSsmImage.getHorizontalSpacing());
                                 ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewSsmImage
@@ -551,16 +546,24 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         data.put("plan_id", createRequestBody(subscriptionPlanModelMain.getId().toString()));
         data.put("store_name", createRequestBody(etStoreName.getText().toString().trim()));
 
-        List<MultipartBody.Part> image = new ArrayList<>();
+        List<MultipartBody.Part> plan_image = new ArrayList<>();
 
         if (mArrayUri != null && !mArrayUri.equals("")) {
             File file = new File(String.valueOf(mArrayUri));
             RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-            image = Collections.singletonList(MultipartBody.Part.createFormData("image", file.getName(), requestFile));
+            plan_image = Collections.singletonList(MultipartBody.Part.createFormData("plan_image", file.getName(), requestFile));
+        }
+
+        List<MultipartBody.Part> store_image = new ArrayList<>();
+
+        if (mArrayUri != null && !mArrayUri.equals("")) {
+            File file = new File(String.valueOf(mArrayUri));
+            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+            store_image = Collections.singletonList(MultipartBody.Part.createFormData("store_image", file.getName(), requestFile));
         }
 
 
-        Call<SubscriptionStoreResponse>call=jsonPlaceHolderApi.SubscriptionStore("Bearer "+sessionManager.getSavedToken(),data,image,image);
+        Call<SubscriptionStoreResponse>call=jsonPlaceHolderApi.SubscriptionStore("Bearer "+sessionManager.getSavedToken(),data,plan_image,store_image);
         call.enqueue(new Callback<SubscriptionStoreResponse>() {
             @Override
             public void onResponse(Call<SubscriptionStoreResponse> call, Response<SubscriptionStoreResponse> response) {

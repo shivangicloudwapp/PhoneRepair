@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.activity.OrderDetailsActivity;
 import com.cwt.phonerepair.modelclass.OrderModel;
+import com.cwt.phonerepair.modelclass.storeorder.StoreOrderModel;
+import com.cwt.phonerepair.modelclass.storeorder.StoreOrderProduct;
 
 import java.util.ArrayList;
 
@@ -23,13 +25,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
     Context context;
 
-    ArrayList<OrderModel> modelList;
+    ArrayList<StoreOrderModel> modelList;
 
-    public OrderAdapter(ArrayList<OrderModel> modelList, Context context) {
+    public OrderAdapter(ArrayList<StoreOrderModel> modelList, Context context) {
         this.context = context;
         this.modelList = modelList;
     }
-
 
     @NonNull
     @Override
@@ -43,16 +44,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull OrderAdapter.ViewHolder holder, int position) {
-        OrderModel model = modelList.get(position);
-        holder.tvItemNum.setText(model.getTvItemNum());
-        holder.tvCode.setText(model.getTvCode());
-        holder.tvTimeDate.setText(model.getTvTimeDate());
-
-
+        StoreOrderModel model = modelList.get(position);
+        holder.tvItemNum.setText(model.getTotal());
+        holder.tvCode.setText(model.getOrderId());
+        holder.tvTimeDate.setText(model.getCreatedAt());
         holder.cvOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(view.getContext(), OrderDetailsActivity.class);
                 context.startActivity(intent);
 

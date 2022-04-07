@@ -88,8 +88,6 @@ Button btnBuyMembership;
 
                     if (response.body().getStatus()){
 
-
-
                         modelArrayList= (ArrayList<SubscriptionPlanModel>) response.body().getData();
                         SubscriptionAdapter adapter = new SubscriptionAdapter( modelArrayList,context, new GetSubscriptionData() {
                             @Override

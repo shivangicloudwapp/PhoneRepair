@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import com.cwt.phonerepair.modelclass.ProductModel;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementResponse;
 import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsProductModel;
+import com.cwt.phonerepair.modelclass.response.subscriptionPlan.SubscriptionPlanModel;
 import com.cwt.phonerepair.storeadapter.ProductManagementAdapter;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
@@ -38,7 +40,6 @@ public class ProductManagementActivity extends AppCompatActivity implements View
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,9 @@ public class ProductManagementActivity extends AppCompatActivity implements View
 
 
     }
+
+
+
 
     private void productManagement() {
         Customprogress.showPopupProgressSpinner(context,true);
@@ -64,7 +68,7 @@ public class ProductManagementActivity extends AppCompatActivity implements View
 
                         modelArrayList= (ArrayList<ProductManagementModel>) response.body().getData().getProduct();
 
-            ProductManagementAdapter adapter=new ProductManagementAdapter(modelArrayList,ProductManagementActivity.this);
+              ProductManagementAdapter adapter=new ProductManagementAdapter(modelArrayList,ProductManagementActivity.this);
         rvAllPro.setLayoutManager(new GridLayoutManager(ProductManagementActivity.this, 2));
         rvAllPro.setAdapter(adapter);
         rvAllPro.setHasFixedSize(true);
@@ -77,7 +81,7 @@ public class ProductManagementActivity extends AppCompatActivity implements View
 
             @Override
             public void onFailure(Call<ProductManagementResponse> call, Throwable t) {
-                Customprogress.showPopupProgressSpinner(context,true);
+                Customprogress.showPopupProgressSpinner(context,false);
 
             }
         });

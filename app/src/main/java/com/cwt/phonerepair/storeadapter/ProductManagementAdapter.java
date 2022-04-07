@@ -19,11 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.Allurls;
+import com.cwt.phonerepair.activity.SubscribeNewStoreActivity;
+import com.cwt.phonerepair.activity.SubscriptionPlanActivity;
 import com.cwt.phonerepair.modelclass.ProductModel;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel;
 import com.cwt.phonerepair.storeactivity.AddProductActivity;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ProductManagementAdapter extends RecyclerView.Adapter<ProductManagementAdapter.ViewHolder> {
@@ -45,13 +48,7 @@ public class ProductManagementAdapter extends RecyclerView.Adapter<ProductManage
         View listItem = layoutInflater.inflate(R.layout.list_product_management, viewGroup, false);
         ProductManagementAdapter.ViewHolder viewHolder = new ProductManagementAdapter.ViewHolder(listItem);
 
-        viewHolder.rlProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), AddProductActivity.class);
-                context.startActivity(intent);
-            }
-        });
+
 
         return viewHolder;
     }
@@ -66,6 +63,16 @@ public class ProductManagementAdapter extends RecyclerView.Adapter<ProductManage
         Picasso.with(context).load(Allurls.ImageUrl+model.getProductImage()).fit().centerCrop()
                 .placeholder(R.drawable.group1042)
                 .into(holder.ivProdcut);
+
+
+        holder.rlProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), AddProductActivity.class);
+                intent.putExtra("data", (Serializable) modelList.get(position));
+                context.startActivity(intent);
+            }
+        });
 
         holder.menu.setOnClickListener(new View.OnClickListener() {
             @Override

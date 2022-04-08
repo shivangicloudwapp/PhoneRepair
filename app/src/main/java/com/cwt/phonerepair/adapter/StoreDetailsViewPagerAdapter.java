@@ -58,7 +58,7 @@ public class StoreDetailsViewPagerAdapter extends PagerAdapter {
         View view =layoutInflater.inflate(R.layout.stores_image_slider,null);
         ImageView imageView=view.findViewById(R.id.image_view);
 
-        Picasso.with(context).load(Allurls.ImageUrl+detailsModel.getStoreImage()).fit().centerCrop()
+        Picasso.with(context).load(Allurls.ImageUrl+detailsModel.getStoreImage())
                 .placeholder(R.drawable.group1042)
                 .into(imageView);
 

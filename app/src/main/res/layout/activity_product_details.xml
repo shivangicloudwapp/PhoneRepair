@@ -79,7 +79,15 @@
                             android:textColor="@color/black"/>
 
 
-                        <androidx.viewpager.widget.ViewPager
+                        <ImageView
+                            android:id="@+id/image_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="173dp"
+                            android:scaleType="fitXY"/>
+
+
+
+                     <!--   <androidx.viewpager.widget.ViewPager
                             android:layout_width="match_parent"
                             android:layout_height="173dp"
                             android:id="@+id/view_pager"
@@ -96,7 +104,7 @@
                             app:selectedDotColor="@color/green"
                             app:progressMode="true"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="@dimen/_9sdp"/>
+                            android:layout_marginTop="@dimen/_9sdp"/>-->
 
                         <LinearLayout
                             android:layout_width="match_parent"

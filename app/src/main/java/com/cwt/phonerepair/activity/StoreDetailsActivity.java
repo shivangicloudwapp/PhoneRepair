@@ -28,6 +28,7 @@ import com.cwt.phonerepair.adapter.SubscriptionAdapter;
 import com.cwt.phonerepair.modelclass.parameter.StoreDetailsParameter;
 import com.cwt.phonerepair.modelclass.response.allStores.AllStoreModel;
 import com.cwt.phonerepair.modelclass.response.allStores.AllStoresResponse;
+import com.cwt.phonerepair.modelclass.response.home.HomeStoreModel;
 import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsModel;
 import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsProductModel;
 import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsResponse;
@@ -55,36 +56,55 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
     Context context;
     ArrayList<StoreDetailsProductModel> modelArrayList;
     ImageView ivBackStoreDetail,ivStore;
-    List<StoreDetailsModel>storeDetailsModels;
-    StoreDetailsModel storeDetailsModel;
+
+
     ArrayList<AllStoreModel> storeArrayList;
-    AllStoreModel allStoreModel;
     int storeId;
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
-
+    HomeStoreModel homeStoreModel;
+String Store_Id;
    // String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_details);
 
+
         initView();
-        if (Utils.checkConnection(context)) {
-            allStores();
-        } else {
-            Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
-        }
-     //   userId=sessionManager.getSavedUserId();
+
+
+        getData();
+
+        //   userId=sessionManager.getSavedUserId();
     }
+    private void getData() {
+        try {
+            Intent intent = getIntent();
+            if (intent != null) {
+
+                homeStoreModel = (HomeStoreModel) intent.getSerializableExtra("store_Id");
+
+
+                if (Utils.checkConnection(context)) {
+                    allStores();
+                    storeDetails();
+                } else {
+                    Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void allStores() {
         Call<AllStoresResponse> call = jsonPlaceHolderApi.AllStore("Bearer "+sessionManager.getSavedToken());
         call.enqueue(new Callback<AllStoresResponse>() {
             @Override
             public void onResponse(Call<AllStoresResponse> call, Response<AllStoresResponse> response) {
-                Customprogress.showPopupProgressSpinner(context, false);
                 if (response.isSuccessful()) {
-
                     if (response.body().getStatus()) {
                         storeArrayList= (ArrayList<AllStoreModel>) response.body().getData().getStore();
                        StoreDetailsViewPagerAdapter allStoresAdapter=new StoreDetailsViewPagerAdapter(StoreDetailsActivity.this,storeArrayList);
@@ -96,17 +116,18 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
 
             @Override
             public void onFailure(Call<AllStoresResponse> call, Throwable t) {
-                Customprogress.showPopupProgressSpinner(context, false);
                 Toast.makeText(StoreDetailsActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
 
     private void storeDetails() {
-
        Customprogress.showPopupProgressSpinner(context,true);
+
         StoreDetailsParameter storeDetailsParameter= new StoreDetailsParameter();
-        storeDetailsParameter.setStoreId(9);
+        storeDetailsParameter.setStoreId(homeStoreModel.getId());
+        System.out.println("storeId..on...storeDeails..."+homeStoreModel.getId());
+
         Call<StoreDetailsResponse> call=jsonPlaceHolderApi.StoreDetails(storeDetailsParameter,"Bearer "+sessionManager.getSavedToken());
         call.enqueue(new Callback<StoreDetailsResponse>() {
             @Override
@@ -119,8 +140,8 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
                         Log.d("TAG","status"+response.body().getStatus());
                         if(!response.body().getProduct().isEmpty()){
                             modelArrayList= (ArrayList<StoreDetailsProductModel>) response.body().getProduct();
-                            ProdcutAdapter adapter=new ProdcutAdapter(modelArrayList,context);
 
+                            ProdcutAdapter adapter=new ProdcutAdapter(modelArrayList,context);
 
                             rv_Prodcut.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
                             rv_Prodcut.setAdapter(adapter);
@@ -144,11 +165,12 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
             public void onFailure(Call<StoreDetailsResponse> call, Throwable t) {
                 Customprogress.showPopupProgressSpinner(context, false);
 
+                Toast.makeText(StoreDetailsActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
         });
     }
 
-    @SuppressLint("WrongViewCast")
     private void initView() {
         jsonPlaceHolderApi= ApiUtils.getAPIService();
         context=StoreDetailsActivity.this;
@@ -167,13 +189,7 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
      //  ivStore=findViewById(R.id.ivStore);
         ivBackStoreDetail.setOnClickListener(this);
         tvSeeAll.setOnClickListener(this);
-        if (Utils.checkConnection(context)) {
 
-           // allStores();
-             storeDetails();
-        } else {
-            Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
-        }
 
 
     }
@@ -188,10 +204,9 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
 
             case R.id.tvSeeAll:
                 Intent intent = new Intent(StoreDetailsActivity.this, AllProductActivity.class);
-         /*       intent.getSerializableExtra(storeDetailsModel.getId().toString());
+                intent.putExtra("store_Id", (Serializable) homeStoreModel);
+                System.out.println("storeId...seeAll..."+homeStoreModel.getId());
 
-                System.out.println("id.....store///"+storeDetailsModel);
-*/
                 startActivity(intent);
                 break;
 

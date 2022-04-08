@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cwt.phonerepair.Interface.GetHomeStoreId;
 import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
@@ -46,6 +47,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
   TextView tvSeeAll;
   JsonPlaceHolderApi jsonPlaceHolderApi;
   SessionManager sessionManager;
+    HomeStoreModel model;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +90,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private void stores() {
 
-
         Customprogress.showPopupProgressSpinner(context, true);
         Call<HomeResponse> call = jsonPlaceHolderApi.Home("Bearer "+sessionManager.getSavedToken());
         call.enqueue(new Callback<HomeResponse>() {
@@ -103,7 +106,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
 
                         modelArrayList= (ArrayList<HomeStoreModel>) response.body().getData().getStore();
-                        OurExclusiveStoreAdapter adapter1 = new OurExclusiveStoreAdapter(modelArrayList,context);
+                        OurExclusiveStoreAdapter adapter1 = new OurExclusiveStoreAdapter(modelArrayList, context/*, new GetHomeStoreId() {
+                            @Override
+                            public void getHomeStoreId(HomeStoreModel storeModel) {
+                                System.out.println("store....id..."+storeModel.getId());
+
+                                model=storeModel;
+
+                            }
+                        }*/);
                         rvourExcluStore.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
                         rvourExcluStore.setAdapter( adapter1);
                         rvourExcluStore.setHasFixedSize(true);

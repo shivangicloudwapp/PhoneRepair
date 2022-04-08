@@ -21,7 +21,7 @@
                 android:id="@+id/ivStoreimg"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_93sdp"
-                android:scaleType="centerCrop" />
+                android:scaleType="fitXY" />
 
             <TextView
                 android:id="@+id/tvStoreName"

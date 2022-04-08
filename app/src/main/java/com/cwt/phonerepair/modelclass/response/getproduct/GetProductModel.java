@@ -1,36 +1,36 @@
-package com.cwt.phonerepair.modelclass.response.storedetails;
+package com.cwt.phonerepair.modelclass.response.getproduct;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class StoreDetailsProductModel implements Serializable {
-
+public class GetProductModel  implements Serializable {
 
     @SerializedName("id")
     @Expose
     private Integer id;
-
     @SerializedName("user_id")
     @Expose
     private Integer userId;
+
 
     @SerializedName("store_id")
     @Expose
     private Integer storeId;
 
-    @SerializedName("product_image")
-    @Expose
-    private String productImage;
-
     @SerializedName("title")
     @Expose
     private String title;
 
-    @SerializedName("discription")
+
+    @SerializedName("product_image")
     @Expose
-    private String discription;
+    private String productImage;
+
+    @SerializedName("description")
+    @Expose
+    private String description;
     @SerializedName("price")
     @Expose
     private Integer price;
@@ -79,12 +79,12 @@ public class StoreDetailsProductModel implements Serializable {
         this.productImage = productImage;
     }
 
-    public String getDiscription() {
-        return discription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getPrice() {

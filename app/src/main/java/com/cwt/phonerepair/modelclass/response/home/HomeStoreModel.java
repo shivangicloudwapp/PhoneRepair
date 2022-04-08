@@ -3,7 +3,9 @@ package com.cwt.phonerepair.modelclass.response.home;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class HomeStoreModel {
+import java.io.Serializable;
+
+public class HomeStoreModel implements Serializable {
 
     public HomeStoreModel(Integer id, String storeName, String registrationNo, String address, String aboutStore, String storeImage, String createdAt, String updatedAt) {
         this.id = id;
@@ -15,7 +17,6 @@ public class HomeStoreModel {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-
     @SerializedName("id")
     @Expose
     private Integer id;

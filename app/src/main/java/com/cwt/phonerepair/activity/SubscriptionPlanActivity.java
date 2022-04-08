@@ -101,14 +101,6 @@ Button btnBuyMembership;
                         rvSubPlan.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
                         rvSubPlan.setAdapter( adapter);
                         rvSubPlan.setHasFixedSize(true);
-
-
-
-
-
-
-
-
                     }
                 }
 

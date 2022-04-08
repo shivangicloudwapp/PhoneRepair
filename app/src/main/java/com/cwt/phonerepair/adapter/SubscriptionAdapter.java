@@ -32,17 +32,6 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
         this.modelList = modelList;
         this.myAdapterListener = myAdapterListener;
     }
-
-
-
-    public interface MyAdapterListener {
-        void onContainerClick(); // please provide 2 parameter that will help you more for manipulation like shown below
- void onContainerClick(View view, int position);
-    }
-
-
-
-
     @NonNull
     @Override
     public SubscriptionAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -60,8 +49,6 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
         holder.tvMonth.setText(model.getDuration());
         holder.tvPostItem.setText(model.getItems());
         holder.tvPrice.setText(model.getPrice());
-
-
 
         holder.llSubscriptionPlan.setOnClickListener(new View.OnClickListener() {
             @Override

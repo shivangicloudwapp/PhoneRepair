@@ -1,5 +1,6 @@
 package com.cwt.phonerepair.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -14,12 +15,14 @@ import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cwt.phonerepair.Interface.GetHomeStoreId;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.Allurls;
 import com.cwt.phonerepair.activity.StoreDetailsActivity;
 import com.cwt.phonerepair.modelclass.response.home.HomeStoreModel;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class OurExclusiveStoreAdapter extends RecyclerView.Adapter<OurExclusiveStoreAdapter.ViewHolder> {
@@ -27,6 +30,7 @@ public class OurExclusiveStoreAdapter extends RecyclerView.Adapter<OurExclusiveS
      Context context;
 
      ArrayList<HomeStoreModel> modelList;
+
 
     public OurExclusiveStoreAdapter(ArrayList<HomeStoreModel> modelList, Context context) {
         this.context = context;
@@ -45,24 +49,24 @@ public class OurExclusiveStoreAdapter extends RecyclerView.Adapter<OurExclusiveS
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         HomeStoreModel model = modelList.get(position);
         holder.tvStoreName.setText(model.getStoreName());
         holder.tvAddress.setText(model.getAddress());
 
-
-        Picasso.with(context).load(Allurls.ImageUrl+model.getStoreImage()).fit().centerCrop()
-                .placeholder(R.drawable.group1042)
+        Picasso.with(context).load(Allurls.ImageUrl+model.getStoreImage())
                 .into(holder.ivStoreimg);
-
-
-
 
         holder.cvSeeDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), StoreDetailsActivity.class);
-                context.startActivity(intent);            }
+                intent.putExtra("store_Id",modelList.get(position));
+                System.out.println("storeId...home..."+modelList.get(position));
+
+             //   homeStoreId.getHomeStoreId(modelList.get(position));
+                context.startActivity(intent);
+            }
         });
 
     }

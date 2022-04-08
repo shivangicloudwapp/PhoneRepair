@@ -46,13 +46,10 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull BannerAdapter.ViewHolder holder, int position) {
         HomeBannerModel model = modelList.get(position);
-
         System.out.println("image url >>>>>>"+Allurls.ImageUrl+model.getImage());
 
-        Picasso.with(context).load(Allurls.ImageUrl).fit().centerCrop()
-                .placeholder(R.drawable.group1042)
+        Picasso.with(context).load(Allurls.ImageUrl+model.getImage())
                 .into(holder.ivBanner);
-
 
         holder.ivBanner.setOnClickListener(new View.OnClickListener() {
             @Override

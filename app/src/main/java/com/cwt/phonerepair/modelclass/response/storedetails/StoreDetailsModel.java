@@ -3,7 +3,9 @@ package com.cwt.phonerepair.modelclass.response.storedetails;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class StoreDetailsModel {
+import java.io.Serializable;
+
+public class StoreDetailsModel  implements Serializable {
 
     @SerializedName("id")
     @Expose

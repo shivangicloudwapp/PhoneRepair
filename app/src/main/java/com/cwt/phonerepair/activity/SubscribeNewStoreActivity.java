@@ -97,20 +97,6 @@ SsmImageAdapter ssmImageAdapter;
 
         getData();
 
-             /*  Intent intent = getIntent();
-        Bundle args = intent.getBundleExtra("BUNDLE");
-        ArrayList<SubscriptionPlanModel> object = new ArrayList<>();
-        args.getSerializable("PlanList");
-          price = object.get(0).getPrice();
-          title = object.get(1).getPrice();
-          duration = object.get(2).getPrice();
-        items = object.get(3).getPrice();
-        startdate = object.get(4).getPrice();
-        enddate = object.get(5).getPrice();
-        planId = object.get(6).getPrice();
-
-        Toast.makeText(this, "listData"+object, Toast.LENGTH_SHORT).show();
-        Log.d("kkkkk", String.valueOf(modelArrayList.size()));*/
 
     }
 

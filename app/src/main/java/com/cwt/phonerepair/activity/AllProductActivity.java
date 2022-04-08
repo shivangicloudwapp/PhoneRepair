@@ -22,6 +22,8 @@ import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementResponse;
 import com.cwt.phonerepair.modelclass.response.getStoreallProdcut.GetStoreAllProdcutModel;
 import com.cwt.phonerepair.modelclass.response.getStoreallProdcut.GetStoreAllProductResponse;
+import com.cwt.phonerepair.modelclass.response.home.HomeStoreModel;
+import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsModel;
 import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsProductModel;
 import com.cwt.phonerepair.storeactivity.ProductManagementActivity;
 import com.cwt.phonerepair.storeadapter.ProductManagementAdapter;
@@ -44,9 +46,9 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
     ArrayList<StoreDetailsProductModel> storeDetailsProductModels;
-
+    HomeStoreModel homeStoreModel;
     int storeId;
-    StoreDetailsProductModel storeDetailsProductModel;
+    StoreDetailsModel storeDetailsModel;
 
 
     @Override
@@ -54,26 +56,29 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_product);
 
-        //getData();
 
     initView();
-
-
-
+        getData();
 
     }
 
-    /*private void getData() {
+    private void getData() {
         try {
             Intent intent = getIntent();
             if (intent != null) {
-                storeId = intent.getIntExtra("store_id",0);
-                System.out.println("id>>>>> "+storeDetailsProductModel.getStoreId());
+                homeStoreModel = (HomeStoreModel) intent.getSerializableExtra("store_Id");
+                if (Utils.checkConnection(context)) {
+                    AllProduct();
+                } else {
+                    Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }*/
+    }
+
 
     private void initView() {
 
@@ -89,12 +94,7 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
         ivBackAllPro=findViewById(R.id.ivBackAllPro);
         ivBackAllPro.setOnClickListener(this);
 
-        if (Utils.checkConnection(context)) {
-            AllProduct();
 
-        } else {
-            Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void AllProduct() {
@@ -104,9 +104,9 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
 
         Customprogress.showPopupProgressSpinner(context,true);
         GetStoreAllProdcutParameter add = new GetStoreAllProdcutParameter();
-        add.setStoreId(1);
+        add.setStoreId(homeStoreModel.getId());
 
-      //  System.out.println("Store...Id"+storeId);
+        System.out.println("Store...Id...Product..all"+homeStoreModel.getId());
 
         Call<GetStoreAllProductResponse> call=jsonPlaceHolderApi.GetStoreAllProduct("Bearer "+sessionManager.getSavedToken(),add);
         call.enqueue(new Callback<GetStoreAllProductResponse>() {
@@ -119,8 +119,6 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
                     if (response.body().getStatus()){
 
                         modelArrayList= (ArrayList<GetStoreAllProdcutModel>) response.body().getData().getProduct();
-
-
                         AllProductAdapter adapter=new AllProductAdapter(modelArrayList, AllProductActivity.this);
                         rvAllPro.setLayoutManager(new GridLayoutManager(AllProductActivity.this, 2));
                         rvAllPro.setAdapter(adapter);
@@ -128,7 +126,6 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
 
                     }
                 }
-
 
             }
 

@@ -1,5 +1,6 @@
 package com.cwt.phonerepair.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -17,12 +18,15 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cwt.phonerepair.Interface.GetHomeStoreId;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.Allurls;
 import com.cwt.phonerepair.activity.ProductDetailsActivity;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel;
 import com.cwt.phonerepair.modelclass.response.getStoreallProdcut.GetStoreAllProdcutModel;
+import com.cwt.phonerepair.modelclass.response.home.HomeStoreModel;
 import com.cwt.phonerepair.storeactivity.AddProductActivity;
+import com.cwt.phonerepair.storeactivity.StoreHomeActivity;
 import com.cwt.phonerepair.storeadapter.ProductManagementAdapter;
 import com.squareup.picasso.Picasso;
 
@@ -34,9 +38,11 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.Vi
 
     ArrayList<GetStoreAllProdcutModel> modelList;
 
+
     public AllProductAdapter(ArrayList<GetStoreAllProdcutModel> modelList, Context context) {
         this.context = context;
         this.modelList = modelList;
+
     }
 
 
@@ -47,20 +53,13 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.Vi
         View listItem = layoutInflater.inflate(R.layout.all_product_list, viewGroup, false);
         AllProductAdapter.ViewHolder viewHolder = new AllProductAdapter.ViewHolder(listItem);
 
-        viewHolder.rlProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ProductDetailsActivity.class);
-                context.startActivity(intent);
-            }
-        });
 
         return viewHolder;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onBindViewHolder(@NonNull AllProductAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AllProductAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         GetStoreAllProdcutModel model = modelList.get(position);
         holder.tvProductName.setText(model.getTitle());
         holder.tvProductPrice.setText(Integer.toString(model.getPrice()));
@@ -70,10 +69,18 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.Vi
                 .into(holder.ivProdcut);
 
 
+        holder.rlProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ProductDetailsActivity.class);
+                intent.putExtra("product_id",modelList.get(position));
+                System.out.println("product_id....allProduct"+modelList.get(position));
+
+                context.startActivity(intent);
+            }
+        });
+
     }
-
-
-
 
     @Override
     public int getItemCount() {

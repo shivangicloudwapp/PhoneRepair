@@ -4,6 +4,7 @@ package com.cwt.phonerepair.Interface;
 
 import com.cwt.phonerepair.modelclass.parameter.AddAddressParameter;
 import com.cwt.phonerepair.modelclass.parameter.AddtoCartParameter;
+import com.cwt.phonerepair.modelclass.parameter.GetProductParameter;
 import com.cwt.phonerepair.modelclass.parameter.GetStoreAllProdcutParameter;
 import com.cwt.phonerepair.modelclass.parameter.LoginParameter;
 import com.cwt.phonerepair.modelclass.parameter.SendOtpParameter;
@@ -17,6 +18,7 @@ import com.cwt.phonerepair.modelclass.response.allStores.AllStoresResponse;
 import com.cwt.phonerepair.modelclass.response.cart.AddtoCartResponse;
 import com.cwt.phonerepair.modelclass.response.getAddress.GetAddressResponse;
 import com.cwt.phonerepair.modelclass.response.getStoreallProdcut.GetStoreAllProductResponse;
+import com.cwt.phonerepair.modelclass.response.getproduct.GetProductReponse;
 import com.cwt.phonerepair.modelclass.response.home.HomeResponse;
 import com.cwt.phonerepair.modelclass.response.login.LoginResponse;
 import com.cwt.phonerepair.modelclass.response.sbscriptionstore.SubscriptionStoreResponse;
@@ -120,6 +122,14 @@ public interface JsonPlaceHolderApi {
     Call<StoreOrderResponse> StoreOrder(@Header("Authorization") String header );
 
 
+    @POST("user/get-product")
+    Call<GetProductReponse> GetProduct(@Body GetProductParameter parameter,
+                                       @Header("Authorization") String header );
+
+
+
+
+
 
 /*
     @Multipart
@@ -149,10 +159,10 @@ public interface JsonPlaceHolderApi {
 
 
 
-   /* @POST("user/add-to-cart")
+    @POST("user/add-to-cart")
     Call<AddtoCartResponse> AddtoCart(@Body AddtoCartParameter parameter,
                                       @Header("Authorization") String header );
-*/
+
 
 
 

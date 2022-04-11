@@ -97,8 +97,6 @@
                         android:text="My Account"/>
                 </LinearLayout>
 
-
-
             </androidx.cardview.widget.CardView>
 
 
@@ -131,6 +129,7 @@
                     android:text="Profile"
                     android:textSize="@dimen/_15sdp"
                     android:textFontWeight="500"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:fontFamily="@font/mulish_medium"/>
 
@@ -162,6 +161,7 @@
                     android:text="Subscribe New Store"
                     android:textSize="@dimen/_15sdp"
                     android:textFontWeight="500"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:fontFamily="@font/mulish_medium"/>
 
@@ -192,6 +192,7 @@
                     android:layout_height="wrap_content"
                     android:text="Switch to Dealer"
                     android:textSize="@dimen/_15sdp"
+                    android:layout_gravity="center_vertical"
                     android:textFontWeight="500"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:fontFamily="@font/mulish_medium"/>
@@ -224,6 +225,7 @@
                     android:text="Terms &amp; Conditions"
                     android:textSize="@dimen/_15sdp"
                     android:textFontWeight="500"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:fontFamily="@font/mulish_medium"/>
 
@@ -255,6 +257,7 @@
                     android:text="Privacy Policy"
                     android:textSize="@dimen/_15sdp"
                     android:textFontWeight="500"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:fontFamily="@font/mulish_medium"/>
 
@@ -286,6 +289,7 @@
                     android:text="About Us"
                     android:textSize="@dimen/_15sdp"
                     android:textFontWeight="500"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:fontFamily="@font/mulish_medium"/>
 
@@ -316,6 +320,7 @@
                     android:text="Logout"
                     android:textSize="@dimen/_15sdp"
                     android:textFontWeight="500"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:fontFamily="@font/mulish_medium"/>
 

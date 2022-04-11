@@ -58,8 +58,8 @@
 
                 <Button
                     android:id="@+id/btnSeedetail"
-                    android:layout_width="90dp"
-                    android:layout_height="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
                     android:background="@drawable/btn2_radius_backg"
                     android:text="See Details"
                     android:textFontWeight="500"
@@ -68,6 +68,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:textSize="8sp"
+                    android:textColor="@color/black_b"
                     android:fontFamily="@font/mulish_semibold"/>
 
 

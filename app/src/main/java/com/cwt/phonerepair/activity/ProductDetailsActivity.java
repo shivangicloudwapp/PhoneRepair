@@ -39,6 +39,8 @@ import com.cwt.phonerepair.modelclass.response.getproduct.GetProductReponse;
 import com.cwt.phonerepair.modelclass.response.home.HomeStoreModel;
 import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsModel;
 import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsProductModel;
+import com.cwt.phonerepair.storeactivity.ProductManagementActivity;
+import com.cwt.phonerepair.storeadapter.ProductManagementAdapter;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
 import com.cwt.phonerepair.utils.Utils;
@@ -60,7 +62,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
     TextView tvSeeAll,tvproductName,tvPrice,tvProductHighLight;
     ViewPager view_pager;
     ProductdetailViewPagerAdapter productdetailViewPagerAdapter;
-
+    ArrayList <ProductManagementModel> productManagementModel;
     RecyclerView rv_Prodcut;
     Context context;
     GetStoreAllProdcutModel getProduct;
@@ -96,8 +98,8 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
                 System.out.println("product_id....productDetails"+getProduct);
 
                 if (Utils.checkConnection(context)) {
-                 //   GetProduct();
-                    allProdcuts();
+                    addToCart();
+                    //allProdcuts();
                 } else {
                     Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
                 }
@@ -108,66 +110,13 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         }
     }
 
-/*
-    private void GetProduct() {
-
-        Customprogress.showPopupProgressSpinner(context,true);
-        GetProductParameter add = new GetProductParameter();
-        add.setProductId(getProduct.getId());
-        System.out.println("product..details...Product Id"+getProduct.getId());
-
-        Call<GetProductReponse> call=jsonPlaceHolderApi.GetProduct(add,"Bearer "+sessionManager.getSavedToken());
-        call.enqueue(new Callback<GetProductReponse>() {
-            @Override
-            public void onResponse(Call<GetProductReponse> call, Response<GetProductReponse> response) {
-                Customprogress.showPopupProgressSpinner(context,false);
-
-                if (response.isSuccessful()){
-
-                    if (response.body().getStatus()){
-
-                         tvproductName.setText(response.body().getData().getProduct().getTitle());
-                          tvPrice.setText(response.body().getData().getProduct().getPrice());
-                          tvProductHighLight.setText(response.body().getData().getProduct().getDescription());
-
-                          Picasso.with(context).load(Allurls.ImageUrl+getProduct.getProductImage())
-                                .placeholder(R.drawable.group1042)
-                                .into(image_view);
-
-                        */
-/*modelArrayList= (ArrayList<>) response.body().getData().getProduct();
-                        AllProductAdapter adapter=new AllProductAdapter(modelArrayList, ProductDetailsActivity.this);
-                        rv_Prodcut.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-                        rv_Prodcut.setAdapter(adapter);
-                        rv_Prodcut.setHasFixedSize(true);*//*
-
-                    }
-
-                    else {
-
-                        Log.d("TAG","status>>>>"+response.body().getStatus());
-
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<GetProductReponse> call, Throwable t) {
-                Customprogress.showPopupProgressSpinner(context,true);
-                Toast.makeText(ProductDetailsActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-    }
-*/
-
     private void initView() {
 
         jsonPlaceHolderApi= ApiUtils.getAPIService();
         context=ProductDetailsActivity.this;
         getProductModelArrayList=new ArrayList<>() ;
         modelList=new ArrayList<>() ;
+        productManagementModel=new ArrayList<>();
         sessionManager= new SessionManager(context);
 
       /*  dotsIndicator = (DotsIndicator) findViewById(R.id.dots_indicator);
@@ -188,11 +137,21 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
 
     }
-/*
-    private void allProdcuts() {
+
+
+
+
+
+    private void addToCart()  {
+
+        // storeId= String.valueOf(((storeDetailsProductModel.getStoreId())));
 
         Customprogress.showPopupProgressSpinner(context,true);
         AddtoCartParameter add = new AddtoCartParameter();
+        add.setProductId(4);
+        add.setQty("");
+
+     //   System.out.println("Store...Id...Product..all"+homeStoreModel.getId());
 
         Call<AddtoCartResponse> call=jsonPlaceHolderApi.AddtoCart(add,"Bearer "+sessionManager.getSavedToken());
         call.enqueue(new Callback<AddtoCartResponse>() {
@@ -201,69 +160,17 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
                 Customprogress.showPopupProgressSpinner(context,false);
 
                 if (response.isSuccessful()){
-
                     if (response.body().getStatus()){
 
-                       AllProductAdapter adapter=new AllProductAdapter(modelList, ProductDetailsActivity.this);
-                        rv_Prodcut.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-                        rv_Prodcut.setAdapter(adapter);
-                        rv_Prodcut.setHasFixedSize(true);
-                    }
 
-                    else {
-
-                            Log.d("TAG","status>>>>"+response.body().getStatus());
 
                     }
                 }
+
             }
 
             @Override
             public void onFailure(Call<AddtoCartResponse> call, Throwable t) {
-                Customprogress.showPopupProgressSpinner(context,true);
-                Toast.makeText(ProductDetailsActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-
-
-    }*/
-
-    private void allProdcuts()  {
-
-        // storeId= String.valueOf(((storeDetailsProductModel.getStoreId())));
-
-        Customprogress.showPopupProgressSpinner(context,true);
-        GetStoreAllProdcutParameter add = new GetStoreAllProdcutParameter();
-        add.setStoreId(4);
-
-     //   System.out.println("Store...Id...Product..all"+homeStoreModel.getId());
-
-        Call<GetStoreAllProductResponse> call=jsonPlaceHolderApi.GetStoreAllProduct("Bearer "+sessionManager.getSavedToken(),add);
-        call.enqueue(new Callback<GetStoreAllProductResponse>() {
-            @Override
-            public void onResponse(Call<GetStoreAllProductResponse> call, Response<GetStoreAllProductResponse> response) {
-                Customprogress.showPopupProgressSpinner(context,false);
-
-                if (response.isSuccessful()){
-
-                    if (response.body().getStatus()){
-
-                        modelList= (ArrayList<GetStoreAllProdcutModel>) response.body().getData().getProduct();
-                        AllProductAdapter adapter=new AllProductAdapter(modelList, ProductDetailsActivity.this);
-                        rv_Prodcut.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-                        rv_Prodcut.setAdapter(adapter);
-                        rv_Prodcut.setHasFixedSize(true);
-
-                    }
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<GetStoreAllProductResponse> call, Throwable t) {
                 Customprogress.showPopupProgressSpinner(context,false);
 
             }
@@ -286,8 +193,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
             case R.id.btnAddtocart:
 
                 //AddToCart();
-
-
                 /*
                 Intent intent1 = new Intent(ProductDetailsActivity.this,CartActivity.class);
                 startActivity(intent1);*/

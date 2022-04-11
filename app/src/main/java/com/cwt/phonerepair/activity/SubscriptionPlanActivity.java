@@ -82,12 +82,9 @@ Button btnBuyMembership;
         call.enqueue(new Callback<SubscriptionPlanResponse>() {
             @Override
             public void onResponse(Call<SubscriptionPlanResponse> call, Response<SubscriptionPlanResponse> response) {
-
                 if (response.isSuccessful()){
                     Customprogress.showPopupProgressSpinner(context, false);
-
                     if (response.body().getStatus()){
-
                         modelArrayList= (ArrayList<SubscriptionPlanModel>) response.body().getData();
                         SubscriptionAdapter adapter = new SubscriptionAdapter( modelArrayList,context, new GetSubscriptionData() {
                             @Override
@@ -95,7 +92,6 @@ Button btnBuyMembership;
 
                                 System.out.println("plan....."+subscriptionPlanModel.getTitle());
                                 subscriptionPlanModelMain=subscriptionPlanModel;
-
                             }
                         });
                         rvSubPlan.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));

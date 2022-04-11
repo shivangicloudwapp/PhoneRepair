@@ -36,6 +36,7 @@ public class StoreServiceDetailsAcceptActivity extends AppCompatActivity impleme
         btnServicedone=findViewById(R.id.btnServicedone);
 
         btnServicedone.setOnClickListener(this);
+        ivBack.setOnClickListener(this);
     }
 
     @Override

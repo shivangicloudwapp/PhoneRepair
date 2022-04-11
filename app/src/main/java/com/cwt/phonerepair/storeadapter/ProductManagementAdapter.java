@@ -69,7 +69,7 @@ public class ProductManagementAdapter extends RecyclerView.Adapter<ProductManage
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), AddProductActivity.class);
-                intent.putExtra("data", (Serializable) modelList.get(position));
+                intent.putExtra("store_id", (Serializable) modelList.get(position));
                 context.startActivity(intent);
             }
         });

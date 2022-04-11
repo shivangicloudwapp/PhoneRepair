@@ -119,7 +119,7 @@
                 android:id="@+id/etAddress"
                 android:layout_width="match_parent"
                 android:layout_height="63dp"
-                android:text="New Door No. A4-72 Ground Floor c21 Mall,\nLos Angeles, California"
+                android:hint="New Door No. A4-72 Ground Floor c21 Mall,\nLos Angeles, California"
                 android:fontFamily="@font/poppins_light"
                 android:textFontWeight="300"
                 android:textSize="12sp"
@@ -145,7 +145,7 @@
                 android:id="@+id/etAboutStore"
                 android:layout_width="match_parent"
                 android:layout_height="156dp"
-                android:text="The Mobile Store currently is covering and \n has more than 700+ outlets in different major\n cities in different states across India. Today you will virtually find no person who is not using the mobile phone for their work or for personal use. No matter whether you are college students, salesman, a storekeeper,\nor a pilot a mobile phone is a must for all."
+                android:hint="The Mobile Store currently is covering and \n has more than 700+ outlets in different major\n cities in different states across India. Today you will virtually find no person who is not using the mobile phone for their work or for personal use. No matter whether you are college students, salesman, a storekeeper,\nor a pilot a mobile phone is a must for all."
                 android:fontFamily="@font/mulish_light"
                 android:textFontWeight="300"
                 android:textSize="12sp"
@@ -224,6 +224,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:numColumns="3"
+                android:scrollbars="none"
                 android:layout_marginTop="@dimen/_11sdp"
                 android:layout_weight="1"/>
 
@@ -300,15 +301,14 @@
                 android:layout_height="0dp"
                 android:numColumns="3"
                 android:layout_marginTop="@dimen/_11sdp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:scrollbars="none"/>
 
             <!--
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
-
-
                             <RelativeLayout
                                 android:layout_width="53dp"
                                 android:layout_height="53dp"

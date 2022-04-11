@@ -10,20 +10,24 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -34,18 +38,16 @@ import android.widget.Toast;
 import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
-import com.cwt.phonerepair.adapter.GalleryAdapter;
-import com.cwt.phonerepair.adapter.GalleryAdapter2;
+import com.cwt.phonerepair.activity.SubscribeNewStoreActivity;
+import com.cwt.phonerepair.adapter.StoreImageAddProductAdapter;
 import com.cwt.phonerepair.modelclass.response.AddProduct.AddProductResponse;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel;
 import com.cwt.phonerepair.utils.Customprogress;
-import com.cwt.phonerepair.utils.FilePath;
 import com.cwt.phonerepair.utils.SessionManager;
+import com.cwt.phonerepair.utils.Utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,24 +71,13 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     ImageView ivBackAllPro;
 
     Button btnAddBtn;
-
-    ArrayList<Uri> mArrayUri;
-    public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 101;
-
     Context context;
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
-    List<String> imagesEncodedList;
 
     ProductManagementModel productManagementModel;
-
-
     ArrayList<String> imageList;
-    int PICK_IMAGE_MULTIPLE = 1;
-
-    String imageEncoded;
-    String description, price;
-    GalleryAdapter2 galleryAdapter;
+    StoreImageAddProductAdapter storeImageAdapter;
 
 
     String imgDecodableString;
@@ -106,7 +97,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         try {
             Intent intent = getIntent();
             if (intent != null) {
-                productManagementModel = (ProductManagementModel) intent.getSerializableExtra("data");
+                productManagementModel = (ProductManagementModel) intent.getSerializableExtra("store_id");
 
 
             }
@@ -116,116 +107,6 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     }
 
 
-  /*  @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-
-        switch (requestCode) {
-            case REQUEST_ID_MULTIPLE_PERMISSIONS:
-                if (ContextCompat.checkSelfPermission(this,
-                        Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getApplicationContext(),
-                            "FlagUp Requires Access to Camara.", Toast.LENGTH_SHORT)
-                            .show();
-                } else if (ContextCompat.checkSelfPermission(this,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getApplicationContext(),
-                            "FlagUp Requires Access to Your Storage.",
-                            Toast.LENGTH_SHORT).show();
-                } *//*else if (SetImage.equals("StoreImg")) {
-                   // ChoosestoreImage(this);
-
-                } else {
-
-                    //ChooseSSmImage(this);
-                }*//*
-                break;
-        }
-
-
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        try {
-            if (requestCode == PICK_IMAGE_MULTIPLE && resultCode == RESULT_OK && null != data) {
-                String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                imagesEncodedList = new ArrayList<String>();
-                if (data.getData() != null) {
-
-                    Uri mImageUri = data.getData();
-
-                    // Get the cursor
-                    Cursor cursor = getContentResolver().query(mImageUri,
-                            filePathColumn, null, null, null);
-                    // Move to first row
-                    cursor.moveToFirst();
-
-                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                    imageEncoded = cursor.getString(columnIndex);
-                    cursor.close();
-
-                    ArrayList<Uri> mArrayUri = new ArrayList<>();
-                    mArrayUri.add(mImageUri);
-                    imageList.add(mImageUri.getPath());
-
-                    System.out.println("image....." + imageList);
-
-                    galleryAdapter = new GalleryAdapter(getApplicationContext(), mArrayUri);
-                    gridViewProduct.setAdapter(galleryAdapter);
-                    gridViewProduct.setVerticalSpacing(gridViewProduct.getHorizontalSpacing());
-                    ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewProduct
-                            .getLayoutParams();
-                    mlp.setMargins(0, gridViewProduct.getHorizontalSpacing(), 0, 0);
-
-                } else {
-                    if (data.getClipData() != null) {
-                        ClipData mClipData = data.getClipData();
-                        ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
-                        for (int i = 0; i < mClipData.getItemCount(); i++) {
-
-                            ClipData.Item item = mClipData.getItemAt(i);
-                            Uri uri = item.getUri();
-                            mArrayUri.add(uri);
-                            // Get the cursor
-                            Cursor cursor = getContentResolver().query(uri, filePathColumn, null, null, null);
-                            // Move to first row
-                            cursor.moveToFirst();
-
-                            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                            imageEncoded = cursor.getString(columnIndex);
-                            imagesEncodedList.add(imageEncoded);
-                            cursor.close();
-
-                            imageList.add(imageEncoded.toString());
-
-                            System.out.println("image....." + imageList);
-
-
-                            galleryAdapter = new GalleryAdapter(getApplicationContext(), mArrayUri);
-                            gridViewProduct.setAdapter(galleryAdapter);
-                            gridViewProduct.setVerticalSpacing(gridViewProduct.getHorizontalSpacing());
-                            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewProduct
-                                    .getLayoutParams();
-                            mlp.setMargins(0, gridViewProduct.getHorizontalSpacing(), 0, 0);
-
-
-                        }
-                        Log.v("LOG_TAG", "Selected Images" + mArrayUri.size());
-                    }
-                }
-            } else {
-                Toast.makeText(this, "You haven't picked Image",
-                        Toast.LENGTH_LONG).show();
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
-        }
-
-        super.onActivityResult(requestCode, resultCode, data);
-    }*/
 
 
     private void initView() {
@@ -259,7 +140,27 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
                 onBackPressed();
                 break;
             case R.id.btnAddBtn:
-                addProduct();
+
+
+                String price = etPrice.getText().toString();
+                String description = etDescription.getText().toString();
+
+                if (TextUtils.isEmpty(price)) {
+                    Toast.makeText(context, "Please Enter Price", Toast.LENGTH_SHORT).show();
+
+                } else if (TextUtils.isEmpty(description)) {
+                    Toast.makeText(context, "Please Enter description", Toast.LENGTH_SHORT).show();
+
+                }  else {
+
+                    if (Utils.checkConnection(context)) {
+
+                        addProduct();
+
+                    } else {
+                        Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+                }
                 break;
 
             case R.id.llProductImg:
@@ -278,17 +179,14 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
     }
 
-
-    private void addProduct() {
-
+    private void addProduct(){
         Customprogress.showPopupProgressSpinner(context, true);
-
         HashMap<String, RequestBody> data = new HashMap<>();
-        data.put("description", createRequestBody(etDescription.getText().toString().trim()));
+        data.put("discription", createRequestBody(etDescription.getText().toString().trim()));
         data.put("price", createRequestBody(etPrice.getText().toString().trim()));
-        data.put("store_id", createRequestBody(productManagementModel.getStoreId().toString()));
+        data.put("store_id", createRequestBody(String.valueOf(productManagementModel.getStoreId())));
+        System.out.println("store_id...."+productManagementModel.getStoreId().toString());
         data.put("title", createRequestBody(productManagementModel.getTitle()));
-
         List<MultipartBody.Part> productImage = new ArrayList<>();
         for (int i = 0; i < pictures.size(); i++) {
             File file = new File(pictures.get(i));
@@ -303,11 +201,10 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
                 Customprogress.showPopupProgressSpinner(context, false);
                 if (response.isSuccessful()) {
                     if (response.body().getStatus()) {
-                        Toast.makeText(AddProductActivity.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(AddProductActivity.this, ProductManagementActivity.class);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(AddProductActivity.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddProductActivity.this, " Product not add successfully" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -316,7 +213,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onFailure(Call<AddProductResponse> call, Throwable t) {
                 Customprogress.showPopupProgressSpinner(context, false);
-                Toast.makeText(AddProductActivity.this, "" + t.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddProductActivity.this, "Product Add successfully" + t.getMessage().toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -361,93 +258,65 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
             if (data.getData() != null) {
-
                 Uri selectedMediaUri = data.getData();
-                if (selectedMediaUri.toString().contains("image")) {
-                    Bitmap thumbnail = (BitmapFactory.decodeFile(FilePath.getPath(context, selectedMediaUri)));
-                    Bitmap bitmap = Bitmap.createScaledBitmap(thumbnail, 720, 1280, true);
-                    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                    thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-                    File destination = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
-                    FileOutputStream fo;
+                Bitmap bm=null;
+                if (data != null) {
                     try {
-                        destination.createNewFile();
-                        fo = new FileOutputStream(destination);
-                        fo.write(bytes.toByteArray());
-                        fo.close();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
+                        bm = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    Uri tempUri = getImageUri(context, thumbnail);
-                    System.out.println("data.getData() " + data.getData());
-                    imgDecodableString = getRealPathFromURI(tempUri);
-                    Log.e("GallerysingleImagePath", imgDecodableString);
-                    pictures.add(imgDecodableString);
-                   /* adapter = new CustomGrid(getActivity(), pictures);
-                    rv_selected_imagevideo.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();*/
-                    System.out.println("pictures >>>>"+pictures);
-                    galleryAdapter = new GalleryAdapter2(getApplicationContext(), pictures);
-                    galleryAdapter.notifyDataSetChanged();
-                    gridViewProduct.setAdapter(galleryAdapter);
-
-
                 }
+                BitmapDrawable d= new BitmapDrawable(bm);
+                int left =0;
+                int top = 0;
+                int right=40;
+                int bottom=40;
+                Rect r = new Rect(left,top,right,bottom);
+                d.setBounds(r);
+                Uri tempUri = getImageUri(context,bm);
+                System.out.println("data.getData() " + data.getData());
+//                encodeimg1 = getRealPathFromURI(tempUri);
+                imgDecodableString = getRealPathFromURI(tempUri);
+                Log.e("GallerysingleImagePath", imgDecodableString);
+                pictures.add(imgDecodableString);
+
+                System.out.println("pictures >>>>"+pictures);
+                storeImageAdapter = new StoreImageAddProductAdapter(getApplicationContext(), pictures);
+                storeImageAdapter.notifyDataSetChanged();
+                gridViewProduct.setAdapter(storeImageAdapter);
+
             } else {
                 if (data.getClipData() != null) {
-                    ClipData mClipData = data.getClipData();
-                    ArrayList<Uri> mArrayUri = new ArrayList<Uri>();
-                    for (int i = 0; i < mClipData.getItemCount(); i++) {
 
-                        ClipData.Item item = mClipData.getItemAt(i);
-                        Uri selectedMediaUri = item.getUri();
-                        mArrayUri.add(selectedMediaUri);
-                        if (selectedMediaUri.toString().contains("image")) {
-
-
-                            Bitmap thumbnail = (BitmapFactory.decodeFile(FilePath.getPath(context, selectedMediaUri)));
-
-                            Bitmap bitmap = Bitmap.createScaledBitmap(thumbnail, 720, 1280, true);
-                            Log.e("Picture", bitmap.toString());
-                            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                            thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-
-                            File destination = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis()+"" + ".jpg");
-
-                            FileOutputStream fo;
-                            try {
-                                destination.createNewFile();
-                                fo = new FileOutputStream(destination);
-                                fo.write(bytes.toByteArray());
-                                fo.close();
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            Uri tempUri = getImageUri(context, thumbnail);
-
-                            // CALL THIS METHOD TO GET THE ACTUAL PATH
-                            //   File finalFile = new File(getRealPathFromURI(tempUri));
-
-                            System.out.println("data.getData() " + data.getData());
-                            imgDecodableString = getRealPathFromURI(tempUri);
-                            Log.e("GalleryImagePath", imgDecodableString);
-                            pictures.add(imgDecodableString);
-                            System.out.println("pictures >>>>"+pictures);
-                            galleryAdapter = new GalleryAdapter2(getApplicationContext(), pictures);
-                            galleryAdapter.notifyDataSetChanged();
-                            gridViewProduct.setAdapter(galleryAdapter);
-
-
+                    Bitmap bm=null;
+                    if (data != null) {
+                        try {
+                            bm = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
                     }
+                    BitmapDrawable d= new BitmapDrawable(bm);
+                    int left =0;
+                    int top = 0;
+                    int right=40;
+                    int bottom=40;
+                    Rect r = new Rect(left,top,right,bottom);
+                    d.setBounds(r);
+                    Uri tempUri = getImageUri(context,bm);
+                    System.out.println("data.getData() " + data.getData());
+                    imgDecodableString = getRealPathFromURI(tempUri);
+                        Log.e("GalleryImagePath", imgDecodableString);
+                        pictures.add(imgDecodableString);
+                        System.out.println("pictures >>>>"+pictures);
+                    storeImageAdapter = new StoreImageAddProductAdapter(getApplicationContext(), pictures);
+                    storeImageAdapter.notifyDataSetChanged();
+                        gridViewProduct.setAdapter(storeImageAdapter);                    }
                 }
             }
 
-        }
+
 
     }
     public Uri getImageUri(Context inContext, Bitmap inImage) {
@@ -481,4 +350,93 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
     }
 
+
+
+    public class StoreImageAddProductAdapter extends BaseAdapter {
+        private Context ctx;
+        private int pos;
+        private LayoutInflater inflater;
+        private ImageView ivRemoveAddProduct,ivImgAddProduct;
+        ArrayList<String> mArrayUri;
+        public StoreImageAddProductAdapter(Context ctx, ArrayList<String> mArrayUri) {
+
+            this.ctx = ctx;
+            this.mArrayUri = mArrayUri;
+        }
+
+        @Override
+        public int getCount() {
+            return mArrayUri.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return mArrayUri.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            pos = position;
+            inflater = (LayoutInflater) ctx
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            View itemView = inflater.inflate(R.layout.gv_storeimage_addproduct, parent, false);
+
+            ivRemoveAddProduct = (ImageView) itemView.findViewById(R.id.ivRemoveAddProduct);
+            ivImgAddProduct = (ImageView) itemView.findViewById(R.id.ivImgAddProduct);
+
+            //ivGallery.setImageURI(Uri.parse(mArrayUri.get(position)));
+            Bitmap bmp = BitmapFactory.decodeFile(mArrayUri.get(position));
+            ivImgAddProduct.setImageBitmap(bmp);
+            ivRemoveAddProduct.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("position >>>>>>>>>>>" + position);
+                    mArrayUri.remove(position);
+                    System.out.println("web list >>>>>>>>>>>" + mArrayUri);
+                    // web.notifyAll();
+
+                    storeImageAdapter = new AddProductActivity.StoreImageAddProductAdapter( AddProductActivity.this,mArrayUri);
+                    gridViewProduct.setAdapter(storeImageAdapter);
+                    storeImageAdapter.notifyDataSetChanged();
+                }
+            });
+
+            return itemView;
+        }
+
+
+    }
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

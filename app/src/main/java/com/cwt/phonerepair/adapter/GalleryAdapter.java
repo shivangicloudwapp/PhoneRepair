@@ -1,6 +1,8 @@
 package com.cwt.phonerepair.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +20,8 @@ public class GalleryAdapter extends BaseAdapter {
     private int pos;
     private LayoutInflater inflater;
     private ImageView ivGallery,ivRemoveImg;
-    ArrayList<Uri> mArrayUri;
-    PredicateLayout predicate;
-    public GalleryAdapter(Context ctx, ArrayList<Uri> mArrayUri) {
-
+    ArrayList<String> mArrayUri;
+    public GalleryAdapter(Context ctx, ArrayList<String> mArrayUri) {
         this.ctx = ctx;
         this.mArrayUri = mArrayUri;
     }
@@ -53,19 +53,29 @@ public class GalleryAdapter extends BaseAdapter {
         ivGallery = (ImageView) itemView.findViewById(R.id.ivStoreImg);
         ivRemoveImg = (ImageView) itemView.findViewById(R.id.ivRemoveImg);
 
-        ivGallery.setImageURI(mArrayUri.get(position));
 
-        predicate=new PredicateLayout(ctx);
 
-        ivRemoveImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ivRemoveImg.setImageBitmap(null);
-                ivRemoveImg.setBackground(null);
-                ivGallery.setImageBitmap(null);
-                predicate.removeView(ivGallery);
-            }
-        });
+        //ivGallery.setImageURI(Uri.parse(mArrayUri.get(position)));
+        Bitmap bmp = BitmapFactory.decodeFile(mArrayUri.get(position));
+        ivGallery.setImageBitmap(bmp);
+
+
+             ivRemoveImg.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View view) {
+
+                 }
+             });
+
+        /*System.out.println("position >>>>>>>>>>>" + position);
+                    web.remove(position);
+                    System.out.println("web list >>>>>>>>>>>" + web);
+//                        web.notifyAll();
+
+                    adapter = new CustomGrid(getActivity(), web);
+                    rv_selected_imagevideo.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();*/
+
 
         return itemView;
     }

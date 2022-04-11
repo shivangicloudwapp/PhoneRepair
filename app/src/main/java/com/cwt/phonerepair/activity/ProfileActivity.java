@@ -139,6 +139,7 @@ String picturePath;
         etEmail=findViewById(R.id.etEmail);
         ivProfile=findViewById(R.id.ivProfile);
         btnSave=findViewById(R.id.btnSave);
+        tvChange=findViewById(R.id.tvChange);
 
        UserName= sessionManager.getSavedUserName();
        Email= sessionManager.getSavedEmail();

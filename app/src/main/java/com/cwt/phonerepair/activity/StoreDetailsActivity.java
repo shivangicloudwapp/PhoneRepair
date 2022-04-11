@@ -123,7 +123,6 @@ String Store_Id;
 
     private void storeDetails() {
        Customprogress.showPopupProgressSpinner(context,true);
-
         StoreDetailsParameter storeDetailsParameter= new StoreDetailsParameter();
         storeDetailsParameter.setStoreId(homeStoreModel.getId());
         System.out.println("storeId..on...storeDeails..."+homeStoreModel.getId());

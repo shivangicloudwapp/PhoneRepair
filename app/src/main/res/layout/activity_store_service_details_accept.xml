@@ -273,13 +273,13 @@
                                 android:layout_marginTop="@dimen/_10sdp">
 
                                 <ImageView
-                                    android:layout_width="@dimen/_60sdp"
-                                    android:layout_height="@dimen/_60sdp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:src="@drawable/pic1"/>
 
                                 <ImageView
-                                    android:layout_width="@dimen/_60sdp"
-                                    android:layout_height="@dimen/_60sdp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:src="@drawable/pic2"
                                     android:layout_marginStart="@dimen/_11sdp"/>
 
@@ -329,8 +329,8 @@
 
 
 
-                                <RelativeLayout
-                                    android:layout_width="wrap_content"
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
                                     android:layout_marginLeft="@dimen/_8sdp"
@@ -338,25 +338,28 @@
 
 
                                     <TextView
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/mulish_light"
                                         android:text="Total Amount"
                                         android:textColor="@color/txt_clr"
                                         android:textFontWeight="300"
+                                        android:layout_weight="40"
                                         android:textSize="@dimen/_15sdp" />
 
                                     <TextView
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_alignParentRight="true"
-                                        android:layout_centerVertical="true"
+                                        android:layout_marginEnd="16dp"
+                                        android:layout_weight="60"
                                         android:fontFamily="@font/mulish_bold"
-                                        android:text="RM40.00"
+                                        android:singleLine="true"
+                                        android:text="RM40.00 "
                                         android:textColor="@color/txt_clr"
                                         android:textFontWeight="700"
-                                        android:textSize="@dimen/_15sdp" />
-                                </RelativeLayout>
+                                        android:textSize="@dimen/_15sdp"
+                                        android:gravity="end"/>
+                                </LinearLayout>
 
                             </LinearLayout>
 

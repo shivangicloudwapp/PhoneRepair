@@ -14,13 +14,13 @@ import com.cwt.phonerepair.R;
 
 import java.util.ArrayList;
 
-public class GalleryAdapter2 extends BaseAdapter {
+public class StoreImageAddProductAdapter extends BaseAdapter {
     private Context ctx;
     private int pos;
     private LayoutInflater inflater;
     private ImageView ivGallery;
     ArrayList<String> mArrayUri;
-    public GalleryAdapter2(Context ctx, ArrayList<String> mArrayUri) {
+    public StoreImageAddProductAdapter(Context ctx, ArrayList<String> mArrayUri) {
 
         this.ctx = ctx;
         this.mArrayUri = mArrayUri;

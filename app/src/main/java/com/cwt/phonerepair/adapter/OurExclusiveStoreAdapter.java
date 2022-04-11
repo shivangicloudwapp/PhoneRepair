@@ -7,6 +7,7 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -69,6 +70,18 @@ public class OurExclusiveStoreAdapter extends RecyclerView.Adapter<OurExclusiveS
             }
         });
 
+        holder.btnSeedetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), StoreDetailsActivity.class);
+                intent.putExtra("store_Id",modelList.get(position));
+                System.out.println("storeId...home..."+modelList.get(position));
+
+                //   homeStoreId.getHomeStoreId(modelList.get(position));
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -78,8 +91,10 @@ public class OurExclusiveStoreAdapter extends RecyclerView.Adapter<OurExclusiveS
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvStoreName,tvAddress,tvSeedetail;
+        TextView tvStoreName,tvAddress;
         ImageView ivStoreimg;
+
+        Button btnSeedetail;
         CardView cvSeeDetails;
 
         public ViewHolder(@NonNull View itemView) {
@@ -87,7 +102,7 @@ public class OurExclusiveStoreAdapter extends RecyclerView.Adapter<OurExclusiveS
             tvStoreName = itemView.findViewById(R.id.tvStoreName);
             tvAddress = itemView.findViewById(R.id.tvAddress);
             ivStoreimg = itemView.findViewById(R.id.ivStoreimg);
-            tvSeedetail = itemView.findViewById(R.id.tvSeedetail);
+            btnSeedetail = itemView.findViewById(R.id.btnSeedetail);
             cvSeeDetails = itemView.findViewById(R.id.cvSeeDetails);
 
 

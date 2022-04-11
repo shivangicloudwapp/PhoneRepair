@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.cwt.phonerepair.Interface.GetStoreId;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.Allurls;
+import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel;
 import com.cwt.phonerepair.modelclass.response.allStores.AllStoreModel;
 import com.squareup.picasso.Picasso;
 
@@ -25,12 +26,12 @@ public class ProductdetailViewPagerAdapter extends PagerAdapter {
 
     //  List<StoreDetailsViewPagerAdapter>list;
 
-    ArrayList<AllStoreModel> models;
+    ArrayList<ProductManagementModel> models;
     GetStoreId getStoreId;
     //private Integer[] images={R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg};
 
 
-    public ProductdetailViewPagerAdapter(Context context, ArrayList<AllStoreModel> models) {
+    public ProductdetailViewPagerAdapter(Context context, ArrayList<ProductManagementModel> models) {
         this.context = context;
         this.models = models;
         this.models = models;
@@ -53,11 +54,11 @@ public class ProductdetailViewPagerAdapter extends PagerAdapter {
                 Context.LAYOUT_INFLATER_SERVICE
         );
 
-        AllStoreModel detailsModel=models.get(position);
+        ProductManagementModel detailsModel=models.get(position);
         View view =layoutInflater.inflate(R.layout.stores_image_slider,null);
         ImageView imageView=view.findViewById(R.id.image_view);
 
-        Picasso.with(context).load(Allurls.ImageUrl+detailsModel.getStoreImage()).fit().centerCrop()
+        Picasso.with(context).load(Allurls.ImageUrl+detailsModel.getProductImage())
                 .placeholder(R.drawable.group1042)
                 .into(imageView);
 

@@ -73,7 +73,7 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.Vi
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), ProductDetailsActivity.class);
-                intent.putExtra("product_id",modelList.get(position));
+                intent.putExtra("data",modelList.get(position));
                 System.out.println("product_id....allProduct"+modelList.get(position));
 
                 context.startActivity(intent);

@@ -42,9 +42,6 @@ public class AllStoresActivity extends AppCompatActivity implements View.OnClick
 
         initView();
 
-
-
-
     }
 
     private void initView() {

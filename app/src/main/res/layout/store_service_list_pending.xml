@@ -65,8 +65,8 @@
 
                     <Button
                         android:id="@+id/btnReject"
-                        android:layout_width="55dp"
-                        android:layout_height="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="26dp"
                         android:layout_alignParentRight="true"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginEnd="@dimen/_18sdp"
@@ -74,6 +74,7 @@
                         android:fontFamily="@font/mulish_regular"
                         android:text="Pending"
                         android:textAllCaps="false"
+                        android:includeFontPadding="false"
                         android:textColor="@color/white"
                         android:textFontWeight="400"
                         android:textSize="8sp" />

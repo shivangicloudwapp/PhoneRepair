@@ -38,6 +38,7 @@
     <color name="hint_clr">#7A7A7A</color>
     <color name="ratclr">#E3FF80</color>
     <color name="dark2">#646E77</color>
+    <color name="ratingColor">#E3FF80</color>
 
 
 </resources>

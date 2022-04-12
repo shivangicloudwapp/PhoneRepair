@@ -7,6 +7,7 @@ import com.cwt.phonerepair.modelclass.parameter.AddtoCartParameter;
 import com.cwt.phonerepair.modelclass.parameter.GetProductParameter;
 import com.cwt.phonerepair.modelclass.parameter.GetStoreAllProdcutParameter;
 import com.cwt.phonerepair.modelclass.parameter.LoginParameter;
+import com.cwt.phonerepair.modelclass.parameter.ReviewParameter;
 import com.cwt.phonerepair.modelclass.parameter.SendOtpParameter;
 import com.cwt.phonerepair.modelclass.parameter.SignupParameter;
 import com.cwt.phonerepair.modelclass.parameter.StoreDetailsParameter;
@@ -15,12 +16,14 @@ import com.cwt.phonerepair.modelclass.response.AddProduct.AddProductResponse;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementResponse;
 import com.cwt.phonerepair.modelclass.response.addAddress.AddAddressResponse;
 import com.cwt.phonerepair.modelclass.response.allStores.AllStoresResponse;
-import com.cwt.phonerepair.modelclass.response.cart.AddtoCartResponse;
+import com.cwt.phonerepair.modelclass.response.cart.addcart.AddtoCartResponse;
+import com.cwt.phonerepair.modelclass.response.cart.gettocart.GetToCartReponse;
 import com.cwt.phonerepair.modelclass.response.getAddress.GetAddressResponse;
 import com.cwt.phonerepair.modelclass.response.getStoreallProdcut.GetStoreAllProductResponse;
 import com.cwt.phonerepair.modelclass.response.getproduct.GetProductReponse;
 import com.cwt.phonerepair.modelclass.response.home.HomeResponse;
 import com.cwt.phonerepair.modelclass.response.login.LoginResponse;
+import com.cwt.phonerepair.modelclass.response.review.ReviewReponse;
 import com.cwt.phonerepair.modelclass.response.sbscriptionstore.SubscriptionStoreResponse;
 import com.cwt.phonerepair.modelclass.response.sendOtp.SendOtpResponse;
 import com.cwt.phonerepair.modelclass.response.signup.SignupResponse;
@@ -128,6 +131,14 @@ public interface JsonPlaceHolderApi {
 
 
 
+    @POST("user/review")
+    Call<ReviewReponse> Reviews(@Body ReviewParameter parameter,
+                                   @Header("Authorization") String header );
+
+
+
+    @POST("user/get-to-cart")
+    Call<GetToCartReponse> GetToCart(@Header("Authorization") String header );
 
 
 

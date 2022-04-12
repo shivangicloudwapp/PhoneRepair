@@ -1,7 +1,6 @@
 package com.cwt.phonerepair.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -9,7 +8,6 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,38 +16,26 @@ import android.widget.Toast;
 
 import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.Server.Allurls;
 import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.adapter.AllProductAdapter;
-import com.cwt.phonerepair.adapter.ProdcutAdapter;
 import com.cwt.phonerepair.adapter.ProductdetailViewPagerAdapter;
-import com.cwt.phonerepair.adapter.StoreDetailsViewPagerAdapter;
-import com.cwt.phonerepair.modelclass.ProductModel;
 import com.cwt.phonerepair.modelclass.parameter.AddtoCartParameter;
 import com.cwt.phonerepair.modelclass.parameter.GetProductParameter;
 import com.cwt.phonerepair.modelclass.parameter.GetStoreAllProdcutParameter;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel;
-import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementResponse;
-import com.cwt.phonerepair.modelclass.response.allStores.AllStoreModel;
-import com.cwt.phonerepair.modelclass.response.cart.AddtoCartResponse;
+import com.cwt.phonerepair.modelclass.response.cart.addcart.AddtoCartResponse;
 import com.cwt.phonerepair.modelclass.response.getStoreallProdcut.GetStoreAllProdcutModel;
 import com.cwt.phonerepair.modelclass.response.getStoreallProdcut.GetStoreAllProductResponse;
 import com.cwt.phonerepair.modelclass.response.getproduct.GetProductModel;
 import com.cwt.phonerepair.modelclass.response.getproduct.GetProductReponse;
 import com.cwt.phonerepair.modelclass.response.home.HomeStoreModel;
-import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsModel;
-import com.cwt.phonerepair.modelclass.response.storedetails.StoreDetailsProductModel;
-import com.cwt.phonerepair.storeactivity.ProductManagementActivity;
-import com.cwt.phonerepair.storeadapter.ProductManagementAdapter;
 import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
 import com.cwt.phonerepair.utils.Utils;
-import com.squareup.picasso.Picasso;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -57,36 +43,29 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProductDetailsActivity extends AppCompatActivity implements View.OnClickListener {
-
     DotsIndicator dotsIndicator;
     TextView tvSeeAll,tvproductName,tvPrice,tvProductHighLight;
     ViewPager view_pager;
-    ProductdetailViewPagerAdapter productdetailViewPagerAdapter;
     ArrayList <ProductManagementModel> productManagementModel;
-    RecyclerView rv_Prodcut;
+    RecyclerView rv_Prodcut,rvCustomerFeedback;
     Context context;
-    GetStoreAllProdcutModel getProduct;
+    GetStoreAllProdcutModel prodcutModel;
     ImageView ivBackProDetail,image_view;
     Button btnAddtocart;
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
-    StoreDetailsModel storeDetailsModel;
     ArrayList<GetProductModel>getProductModelArrayList;
-    ArrayList<GetStoreAllProdcutModel> modelList;
+    ArrayList<GetStoreAllProdcutModel> getStoreAllProdcutModels;
+    TextView tvCustomerFeedback;
+    HomeStoreModel homeStoreModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
-
         initView();
         getData();
-
-/*
-      adapter=new ProductdetailViewPagerAdapter(this,modelArrayList);
-        view_pager.setAdapter(adapter);
-        dotsIndicator.setViewPager(view_pager);
-*/
+        sessionManager.getSavedUserId();
     }
 
     private void getData() {
@@ -94,12 +73,14 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
             Intent intent = getIntent();
             if (intent != null) {
 
-                getProduct = (GetStoreAllProdcutModel) intent.getSerializableExtra("product_id");
-                System.out.println("product_id....productDetails"+getProduct);
+                prodcutModel = (GetStoreAllProdcutModel) intent.getSerializableExtra("data");
 
                 if (Utils.checkConnection(context)) {
-                    addToCart();
-                    //allProdcuts();
+
+                    productDetails();
+                   //addToCart();
+                    allProdcuts();
+
                 } else {
                     Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
                 }
@@ -115,13 +96,13 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         jsonPlaceHolderApi= ApiUtils.getAPIService();
         context=ProductDetailsActivity.this;
         getProductModelArrayList=new ArrayList<>() ;
-        modelList=new ArrayList<>() ;
+        getStoreAllProdcutModels=new ArrayList<>() ;
         productManagementModel=new ArrayList<>();
-        sessionManager= new SessionManager(context);
 
-      /*  dotsIndicator = (DotsIndicator) findViewById(R.id.dots_indicator);
+        sessionManager= new SessionManager(context);
+          dotsIndicator = (DotsIndicator) findViewById(R.id.dots_indicator);
         view_pager = (ViewPager) findViewById(R.id.view_pager);
-     */   rv_Prodcut=findViewById(R.id.rv_Prodcut);
+       rv_Prodcut=findViewById(R.id.rv_Prodcut);
         btnAddtocart=findViewById(R.id.btnAddtocart);
         ivBackProDetail=findViewById(R.id.ivBackProDetail);
         tvSeeAll=findViewById(R.id.tvSeeAll);
@@ -129,12 +110,43 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         tvPrice=findViewById(R.id.tvPrice);
         image_view=findViewById(R.id.image_view);
         tvProductHighLight=findViewById(R.id.tvProductHighLight);
+        rvCustomerFeedback=findViewById(R.id.rvCustomerFeedback);
+        tvCustomerFeedback=findViewById(R.id.tvCustomerFeedback);
 
 
         btnAddtocart.setOnClickListener(this);
         ivBackProDetail.setOnClickListener(this);
         tvSeeAll.setOnClickListener(this);
+        tvCustomerFeedback.setOnClickListener(this);
 
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.ivBackProDetail:
+                onBackPressed();
+                break;
+           /* case R.id.tvSeeAll:
+                Intent intent = new Intent(ProductDetailsActivity.this,AllProductActivity.class);
+                intent.putExtra("store_Id",homeStoreModel);
+                System.out.println("store_Id...seeAll..Product...."+homeStoreModel);
+                break;*/
+            case R.id.tvCustomerFeedback:
+                Intent intent1 = new Intent(ProductDetailsActivity.this,RateUsActivity.class);
+                intent1.putExtra("data",prodcutModel);
+                System.out.println("product_id...."+prodcutModel);
+                startActivity(intent1);
+                break;
+            case R.id.btnAddtocart:
+                addToCart();
+                /*
+                Intent intent1 = new Intent(ProductDetailsActivity.this,CartActivity.class);
+                startActivity(intent1);*/
+                break;
+
+        }
 
     }
 
@@ -142,16 +154,100 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
 
 
-    private void addToCart()  {
+    private void allProdcuts() {
 
-        // storeId= String.valueOf(((storeDetailsProductModel.getStoreId())));
+        Customprogress.showPopupProgressSpinner(context,true);
+        GetStoreAllProdcutParameter add = new GetStoreAllProdcutParameter();
+        add.setStoreId(prodcutModel.getStoreId());
+        System.out.println("Store...Id...Product..all"+prodcutModel.getStoreId());
+        Call<GetStoreAllProductResponse> call=jsonPlaceHolderApi.GetStoreAllProduct("Bearer "+sessionManager.getSavedToken(),add);
+        call.enqueue(new Callback<GetStoreAllProductResponse>() {
+            @Override
+            public void onResponse(Call<GetStoreAllProductResponse> call, Response<GetStoreAllProductResponse> response) {
+                Customprogress.showPopupProgressSpinner(context,false);
+
+                if (response.isSuccessful()){
+
+                    if (response.body().getStatus()){
+
+                        getStoreAllProdcutModels= (ArrayList<GetStoreAllProdcutModel>) response.body().getData().getProduct();
+                        AllProductAdapter adapter=new AllProductAdapter(getStoreAllProdcutModels, ProductDetailsActivity.this);
+                        rv_Prodcut.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+                        rv_Prodcut.setAdapter(adapter);
+                        rv_Prodcut.setHasFixedSize(true);
+
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<GetStoreAllProductResponse> call, Throwable t) {
+                Customprogress.showPopupProgressSpinner(context,false);
+
+            }
+        });
+
+    }
+
+    private void productDetails() {
+
+        GetProductParameter getProductParameter= new GetProductParameter();
+        getProductParameter.setProductId(prodcutModel.getId());
+
+        //   System.out.println("Store...Id...Product..all"+homeStoreModel.getId());
+
+        Call<GetProductReponse> call=jsonPlaceHolderApi.GetProduct(getProductParameter,"Bearer "+sessionManager.getSavedToken());
+        call.enqueue(new Callback<GetProductReponse>() {
+            @Override
+            public void onResponse(Call<GetProductReponse> call, Response<GetProductReponse> response) {
+                if (response.isSuccessful()){
+                    if (response.body().getStatus()){
+
+                        //     getProductModelArrayList=(ArrayList<GetProductModel>) response.body().getData().getProduct();
+
+
+
+                        tvproductName.setText(response.body().getData().getProduct().getTitle());
+                        tvPrice.setText(response.body().getData().getProduct().getPrice().toString());
+                        tvProductHighLight.setText(response.body().getData().getProduct().getDiscription());
+
+
+
+                        String image=response.body().getData().getProduct().getProductImage();
+                        List<String> result = Arrays.asList(image.split("\\s*,\\s*",4));
+
+                        System.out.println("productImg....."+result);
+
+                        ProductdetailViewPagerAdapter productdetailViewPagerAdapter=new ProductdetailViewPagerAdapter(ProductDetailsActivity.this,result);
+                        view_pager.setAdapter(productdetailViewPagerAdapter);
+                        dotsIndicator.setViewPager(view_pager);
+
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<GetProductReponse> call, Throwable t) {
+                Customprogress.showPopupProgressSpinner(context,false);
+
+            }
+        });
+
+
+
+    }
+
+    private void addToCart()  {
 
         Customprogress.showPopupProgressSpinner(context,true);
         AddtoCartParameter add = new AddtoCartParameter();
-        add.setProductId(4);
-        add.setQty("");
+        add.setProductId(prodcutModel.getId());
+        System.out.println("productId...forCart..."+prodcutModel.getId());
+        add.setQty("1");
 
-     //   System.out.println("Store...Id...Product..all"+homeStoreModel.getId());
+        //   System.out.println("Store...Id...Product..all"+homeStoreModel.getId());
 
         Call<AddtoCartResponse> call=jsonPlaceHolderApi.AddtoCart(add,"Bearer "+sessionManager.getSavedToken());
         call.enqueue(new Callback<AddtoCartResponse>() {
@@ -161,7 +257,8 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
                 if (response.isSuccessful()){
                     if (response.body().getStatus()){
-
+                        Intent intent= new Intent(ProductDetailsActivity.this,CartActivity.class);
+                        startActivity(intent);
 
 
                     }
@@ -178,29 +275,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.ivBackProDetail:
-                onBackPressed();
-                break;
 
-            case R.id.tvSeeAll:
-                Intent intent = new Intent(ProductDetailsActivity.this,AllProductActivity.class);
-                startActivity(intent);
-                break;
-
-            case R.id.btnAddtocart:
-
-                //AddToCart();
-                /*
-                Intent intent1 = new Intent(ProductDetailsActivity.this,CartActivity.class);
-                startActivity(intent1);*/
-                break;
-
-        }
-
-    }
 
 
 

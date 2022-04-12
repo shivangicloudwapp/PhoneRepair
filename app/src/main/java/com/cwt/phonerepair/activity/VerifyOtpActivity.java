@@ -137,6 +137,7 @@ Context context;
 
         Call<VerifyOtpResponse> call=jsonPlaceHolderApi.VerifyOtp(verifyOtpParameter);
         call.enqueue(new Callback<VerifyOtpResponse>() {
+
             @Override
             public void onResponse(Call<VerifyOtpResponse> call, Response<VerifyOtpResponse> response) {
 

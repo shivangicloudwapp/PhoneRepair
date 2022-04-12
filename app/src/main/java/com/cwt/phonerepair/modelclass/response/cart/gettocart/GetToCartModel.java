@@ -1,45 +1,32 @@
-package com.cwt.phonerepair.modelclass.response.getproduct;
+package com.cwt.phonerepair.modelclass.response.cart.gettocart;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class GetProductModel  implements Serializable {
-
+public class GetToCartModel implements Serializable {
     @SerializedName("id")
     @Expose
     private Integer id;
     @SerializedName("user_id")
     @Expose
     private Integer userId;
-
-
-    @SerializedName("store_id")
+    @SerializedName("product_id")
     @Expose
-    private Integer storeId;
-
-    @SerializedName("title")
-    @Expose
-    private String title;
-
-
-    @SerializedName("product_image")
-    @Expose
-    private String productImage;
-
-    @SerializedName("discription")
-    @Expose
-    private String discription;
+    private String productId;
     @SerializedName("price")
     @Expose
     private Integer price;
+    @SerializedName("qty")
+    @Expose
+    private String qty;
     @SerializedName("status")
     @Expose
     private String status;
-    @SerializedName("is_deleted")
+    @SerializedName("is_delete")
     @Expose
-    private String isDeleted;
+    private String isDelete;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -63,28 +50,12 @@ public class GetProductModel  implements Serializable {
         this.userId = userId;
     }
 
-    public Integer getStoreId() {
-        return storeId;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setStoreId(Integer storeId) {
-        this.storeId = storeId;
-    }
-
-    public String getProductImage() {
-        return productImage;
-    }
-
-    public void setProductImage(String productImage) {
-        this.productImage = productImage;
-    }
-
-    public String getDiscription() {
-        return discription;
-    }
-
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public Integer getPrice() {
@@ -95,6 +66,14 @@ public class GetProductModel  implements Serializable {
         this.price = price;
     }
 
+    public String getQty() {
+        return qty;
+    }
+
+    public void setQty(String qty) {
+        this.qty = qty;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -103,12 +82,12 @@ public class GetProductModel  implements Serializable {
         this.status = status;
     }
 
-    public String getIsDeleted() {
-        return isDeleted;
+    public String getIsDelete() {
+        return isDelete;
     }
 
-    public void setIsDeleted(String isDeleted) {
-        this.isDeleted = isDeleted;
+    public void setIsDelete(String isDelete) {
+        this.isDelete = isDelete;
     }
 
     public String getCreatedAt() {
@@ -125,13 +104,5 @@ public class GetProductModel  implements Serializable {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 }

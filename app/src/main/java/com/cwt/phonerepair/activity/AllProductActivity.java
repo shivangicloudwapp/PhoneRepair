@@ -115,9 +115,7 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
                 Customprogress.showPopupProgressSpinner(context,false);
 
                 if (response.isSuccessful()){
-
                     if (response.body().getStatus()){
-
                         modelArrayList= (ArrayList<GetStoreAllProdcutModel>) response.body().getData().getProduct();
                         AllProductAdapter adapter=new AllProductAdapter(modelArrayList, AllProductActivity.this);
                         rvAllPro.setLayoutManager(new GridLayoutManager(AllProductActivity.this, 2));

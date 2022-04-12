@@ -72,13 +72,14 @@
                         android:layout_centerVertical="true">
                         <Button
                             android:id="@+id/btnComplete"
-                            android:layout_width="55dp"
-                            android:layout_height="20sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="26dp"
                             android:background="@drawable/pending_btn"
                             android:fontFamily="@font/mulish_regular"
                             android:text="Completed"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
+                            android:includeFontPadding="false"
                             android:layout_gravity="center_horizontal"
                             android:textFontWeight="400"
                             android:textSize="8sp" />

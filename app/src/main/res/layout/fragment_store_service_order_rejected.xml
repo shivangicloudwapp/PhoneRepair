@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".storefragment.StoreServiceAcceptedFragment">
-
+    tools:context=".storeserviceorderfragment.StoreServiceOrderRejectedFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvAccept"
+        android:id="@+id/rvRejected"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"

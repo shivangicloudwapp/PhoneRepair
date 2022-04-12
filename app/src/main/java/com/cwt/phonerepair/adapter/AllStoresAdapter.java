@@ -1,5 +1,6 @@
 package com.cwt.phonerepair.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -46,7 +47,7 @@ public class AllStoresAdapter extends RecyclerView.Adapter<AllStoresAdapter.View
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onBindViewHolder(@NonNull AllStoresAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AllStoresAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         AllStoreModel model = modelList.get(position);
         holder.tvStoreName.setText(model.getStoreName());
         holder.tvAddress.setText(model.getAddress());
@@ -66,6 +67,8 @@ public class AllStoresAdapter extends RecyclerView.Adapter<AllStoresAdapter.View
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), StoreDetailsActivity.class);
+                intent.putExtra("store_Id",modelList.get(position));
+                System.out.println("storeId...home..."+modelList.get(position));
                 context.startActivity(intent);
             }
         });

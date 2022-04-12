@@ -29,7 +29,7 @@ Context context;
     private void initView() {
         context=OrderPlacedSuccessActivity.this;
 
-        btnHome=findViewById(R.id.btnBacktoHome);
+        btnHome=findViewById(R.id.btnHome);
         btnHome.setOnClickListener(this);
     }
 
@@ -48,4 +48,5 @@ Context context;
 
 
     }
+
 }

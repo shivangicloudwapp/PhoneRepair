@@ -1,10 +1,9 @@
-package com.cwt.phonerepair.modelclass.response.cart;
+package com.cwt.phonerepair.modelclass.response.review;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AddtoCartResponse {
-
+public class ReviewReponse {
     @SerializedName("status")
     @Expose
     private Boolean status;
@@ -27,4 +26,5 @@ public class AddtoCartResponse {
     public void setMessage(String message) {
         this.message = message;
     }
+
 }

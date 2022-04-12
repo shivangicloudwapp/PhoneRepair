@@ -1,4 +1,4 @@
-package com.cwt.phonerepair.storefragment;
+package com.cwt.phonerepair.storeserviceorderfragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,13 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.storeadapter.StoreServiceAcceptedAdapter;
 import com.cwt.phonerepair.storeadapter.StoreServicePendingAdapter;
 import com.cwt.phonerepair.storemodelclass.StoreServiceOrderModel;
 
 import java.util.ArrayList;
 
-public class StoreServicePendingFragment extends Fragment {
+public class StoreServiceOrderPendingFragment extends Fragment {
 
 
     RecyclerView rvPending;
@@ -30,7 +29,7 @@ public class StoreServicePendingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_store_service_pending, container, false);
+        View view= inflater.inflate(R.layout.fragment_store_service_order_pending, container, false);
 
 
         initView(view);

@@ -199,6 +199,8 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
                         sessionManager.setSavedUserName(name);
                         sessionManager.setSavedUserId(userId);
 
+                        System.out.println("userId..."+userId);
+
                         Log.e("response.....", response.body().getData().toString());
                         startActivity(intent);
 

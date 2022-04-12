@@ -15,9 +15,12 @@ import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.Allurls;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel;
 import com.cwt.phonerepair.modelclass.response.allStores.AllStoreModel;
+import com.cwt.phonerepair.modelclass.response.getproduct.GetProductModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ProductdetailViewPagerAdapter extends PagerAdapter {
 
@@ -26,12 +29,14 @@ public class ProductdetailViewPagerAdapter extends PagerAdapter {
 
     //  List<StoreDetailsViewPagerAdapter>list;
 
-    ArrayList<ProductManagementModel> models;
+    List<String> models;
+
+
     GetStoreId getStoreId;
     //private Integer[] images={R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg,R.drawable.viepagerimg};
 
 
-    public ProductdetailViewPagerAdapter(Context context, ArrayList<ProductManagementModel> models) {
+    public ProductdetailViewPagerAdapter(Context context, List<String> models) {
         this.context = context;
         this.models = models;
         this.models = models;
@@ -54,13 +59,17 @@ public class ProductdetailViewPagerAdapter extends PagerAdapter {
                 Context.LAYOUT_INFLATER_SERVICE
         );
 
-        ProductManagementModel detailsModel=models.get(position);
         View view =layoutInflater.inflate(R.layout.stores_image_slider,null);
         ImageView imageView=view.findViewById(R.id.image_view);
 
-        Picasso.with(context).load(Allurls.ImageUrl+detailsModel.getProductImage())
+
+
+        Picasso.with(context).load(Allurls.ImageUrl+models.get(position))
                 .placeholder(R.drawable.group1042)
                 .into(imageView);
+
+      //  List<String> result = Arrays.asList(imageView.split("\\s*,\\s*"));
+
 
         ViewPager viewPager=(ViewPager) container;
         viewPager.addView(view,0);

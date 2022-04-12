@@ -24,12 +24,9 @@ public class StoreServiceDetailsCompleteActivity extends AppCompatActivity imple
 
 
     private void initView() {
-
         ivBackComplete=findViewById(R.id.ivBackComplete);
         ivBackComplete.setOnClickListener(this);
-
     }
-
     @Override
     public void onClick(View view) {
 

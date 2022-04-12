@@ -1,18 +1,19 @@
-package com.cwt.phonerepair.modelclass.response.getproduct;
+package com.cwt.phonerepair.modelclass.response.cart.gettocart;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class GetProductReponse implements Serializable {
+public class GetToCartReponse  implements Serializable {
+
 
     @SerializedName("status")
     @Expose
     private Boolean status;
     @SerializedName("data")
     @Expose
-    private GetProductData data;
+    private GetToCartData data;
     @SerializedName("message")
     @Expose
     private String message;
@@ -25,11 +26,11 @@ public class GetProductReponse implements Serializable {
         this.status = status;
     }
 
-    public GetProductData getData() {
+    public GetToCartData getData() {
         return data;
     }
 
-    public void setData(GetProductData data) {
+    public void setData(GetToCartData data) {
         this.data = data;
     }
 
@@ -40,5 +41,4 @@ public class GetProductReponse implements Serializable {
     public void setMessage(String message) {
         this.message = message;
     }
-
 }

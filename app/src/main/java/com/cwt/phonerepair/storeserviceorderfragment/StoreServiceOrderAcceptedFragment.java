@@ -1,4 +1,4 @@
-package com.cwt.phonerepair.storefragment;
+package com.cwt.phonerepair.storeserviceorderfragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,14 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.adapter.CompleteAdapter;
-import com.cwt.phonerepair.modelclass.PendingModel;
 import com.cwt.phonerepair.storeadapter.StoreServiceAcceptedAdapter;
 import com.cwt.phonerepair.storemodelclass.StoreServiceOrderModel;
 
 import java.util.ArrayList;
 
-public class StoreServiceAcceptedFragment extends Fragment {
+public class StoreServiceOrderAcceptedFragment extends Fragment {
 
     RecyclerView rvAccept;
     Context context;
@@ -29,7 +27,7 @@ public class StoreServiceAcceptedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.fragment_store_service_accepted, container, false);
+        View view= inflater.inflate(R.layout.fragment_store_service_order_accepted, container, false);
 
 
         initView(view);

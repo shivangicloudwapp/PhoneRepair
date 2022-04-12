@@ -47,9 +47,6 @@ Context context;
         Intent intent=getIntent();
         name=intent.getStringExtra("name");
         email=intent.getStringExtra("email");
-        Log.e(name,"");
-        Log.e(email,"");
-
 
 
     }
@@ -112,7 +109,6 @@ Context context;
                 if (response.isSuccessful()){
 
                     if (response.body().getStatus()){
-
                         PhoneNumber=etPhoneNum.getText().toString();
                         Intent intent =new Intent(MobileLoginActivity.this,VerifyOtpActivity.class);
                         sessionManager.setSavedMobile(PhoneNumber);

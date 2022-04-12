@@ -63,8 +63,8 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
     HomeStoreModel homeStoreModel;
-String Store_Id;
-   // String userId;
+    String Store_Id;
+    // String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +84,6 @@ String Store_Id;
             if (intent != null) {
 
                 homeStoreModel = (HomeStoreModel) intent.getSerializableExtra("store_Id");
-
 
                 if (Utils.checkConnection(context)) {
                     allStores();
@@ -107,8 +106,8 @@ String Store_Id;
                 if (response.isSuccessful()) {
                     if (response.body().getStatus()) {
                         storeArrayList= (ArrayList<AllStoreModel>) response.body().getData().getStore();
-                       StoreDetailsViewPagerAdapter allStoresAdapter=new StoreDetailsViewPagerAdapter(StoreDetailsActivity.this,storeArrayList);
-                       view_pager.setAdapter(allStoresAdapter);
+                        StoreDetailsViewPagerAdapter allStoresAdapter=new StoreDetailsViewPagerAdapter(StoreDetailsActivity.this,storeArrayList);
+                        view_pager.setAdapter(allStoresAdapter);
                         dotsIndicator.setViewPager(view_pager);
                     }
                 }
@@ -122,7 +121,7 @@ String Store_Id;
     }
 
     private void storeDetails() {
-       Customprogress.showPopupProgressSpinner(context,true);
+        Customprogress.showPopupProgressSpinner(context,true);
         StoreDetailsParameter storeDetailsParameter= new StoreDetailsParameter();
         storeDetailsParameter.setStoreId(homeStoreModel.getId());
         System.out.println("storeId..on...storeDeails..."+homeStoreModel.getId());
@@ -185,7 +184,7 @@ String Store_Id;
         tvAddress=findViewById(R.id.tvAddress);
         tvStoreDetails=findViewById(R.id.tvStoreDetails);
         tvStoreName=findViewById(R.id.tvStoreName);
-     //  ivStore=findViewById(R.id.ivStore);
+        //  ivStore=findViewById(R.id.ivStore);
         ivBackStoreDetail.setOnClickListener(this);
         tvSeeAll.setOnClickListener(this);
 

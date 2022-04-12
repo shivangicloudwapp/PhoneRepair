@@ -1,4 +1,4 @@
-package com.cwt.phonerepair.storefragment;
+package com.cwt.phonerepair.storeserviceorderfragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,24 +12,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cwt.phonerepair.R;
-import com.cwt.phonerepair.storeadapter.StoreServicePendingAdapter;
-import com.cwt.phonerepair.storeadapter.StoreServiceRejectedAdapter;
+import com.cwt.phonerepair.storeadapter.StoreServiceCompleteAdapter;
 import com.cwt.phonerepair.storemodelclass.StoreServiceOrderModel;
 
 import java.util.ArrayList;
 
-public class StoreServiceRejectedFragment extends Fragment {
+public class StoreServiceOrderCompletedFragment extends Fragment {
 
-
-    RecyclerView rvRejected;
+    RecyclerView rvComplete;
     Context context;
     ArrayList<StoreServiceOrderModel> modelArrayList;
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.fragment_store_service_rejected, container, false);
+        View view= inflater.inflate(R.layout.fragment_store_service_order_completed, container, false);
 
 
 
@@ -40,21 +39,21 @@ public class StoreServiceRejectedFragment extends Fragment {
 
         for (int i=0;i<=9;i++){
 
-            modelArrayList.add(new StoreServiceOrderModel("#CUEP8383832", "18-02-2021  12:24PM","Jhon Deo",R.drawable.profile));
+            modelArrayList.add(new StoreServiceOrderModel ("#CUEP8383832", "18-02-2021  12:24PM","Jhon Deo", R.drawable.profile));
 
 
         }
-        StoreServiceRejectedAdapter adapter = new StoreServiceRejectedAdapter(modelArrayList, context);
-        rvRejected.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-        rvRejected.setAdapter(adapter);
-        rvRejected.setHasFixedSize(true);
+        StoreServiceCompleteAdapter adapter = new StoreServiceCompleteAdapter(modelArrayList, context);
+        rvComplete.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        rvComplete.setAdapter(adapter);
+        rvComplete.setHasFixedSize(true);
         return  view;
 
     }
 
     private void initView(View view) {
         context=getActivity();
-        rvRejected = view.findViewById(R.id.rvRejected);
+        rvComplete = view.findViewById(R.id.rvComplete);
 
     }
 

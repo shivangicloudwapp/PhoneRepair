@@ -48,4 +48,11 @@
         <item name="colorAccent">#E3FF80</item>
     </style>
 
+
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/gray_b</item>
+        <item name="colorControlActivated">@color/ratingColor</item>
+    </style>
+
 </resources>

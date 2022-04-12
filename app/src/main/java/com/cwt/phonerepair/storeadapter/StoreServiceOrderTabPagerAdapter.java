@@ -8,12 +8,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.cwt.phonerepair.fragment.WalletTransactionFragment;
-import com.cwt.phonerepair.fragment.WalletWithdrawalFragment;
-import com.cwt.phonerepair.storefragment.StoreServiceAcceptedFragment;
-import com.cwt.phonerepair.storefragment.StoreServiceCompletedFragment;
-import com.cwt.phonerepair.storefragment.StoreServicePendingFragment;
-import com.cwt.phonerepair.storefragment.StoreServiceRejectedFragment;
+import com.cwt.phonerepair.storeserviceorderfragment.StoreServiceOrderAcceptedFragment;
+import com.cwt.phonerepair.storeserviceorderfragment.StoreServiceOrderCompletedFragment;
+import com.cwt.phonerepair.storeserviceorderfragment.StoreServiceOrderPendingFragment;
+import com.cwt.phonerepair.storeserviceorderfragment.StoreServiceOrderRejectedFragment;
 
 public class StoreServiceOrderTabPagerAdapter extends FragmentPagerAdapter {
 
@@ -32,14 +30,14 @@ public class StoreServiceOrderTabPagerAdapter extends FragmentPagerAdapter {
         Log.d("asasas", position + "");
         switch (position) {
             case 0:
-                return new StoreServicePendingFragment();
+                return new StoreServiceOrderPendingFragment();
             case 1:
-                return new StoreServiceRejectedFragment();
+                return new StoreServiceOrderRejectedFragment();
             case 2:
-                return new StoreServiceAcceptedFragment();
+                return new StoreServiceOrderAcceptedFragment();
 
             case 3:
-                return new StoreServiceCompletedFragment();
+                return new StoreServiceOrderCompletedFragment();
 
 
             default:

@@ -1,15 +1,17 @@
 package com.cwt.phonerepair.activity;
 
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -20,18 +22,16 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -42,11 +42,14 @@ import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.modelclass.response.sbscriptionstore.SubscriptionStoreResponse;
 import com.cwt.phonerepair.modelclass.response.subscriptionPlan.SubscriptionPlanModel;
 import com.cwt.phonerepair.utils.Customprogress;
+import com.cwt.phonerepair.utils.RoundRectCornerImageView;
 import com.cwt.phonerepair.utils.SessionManager;
 import com.cwt.phonerepair.utils.Utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,22 +69,20 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
     Context context;
-    ArrayList<String> imageStoreList = new ArrayList<>();
-    ArrayList<String> ssmImageStoreList = new ArrayList<>();
     EditText etStoreName, etRegistrationNumber, etAddress, etAboutStore;
     LinearLayout llStoreImg, llSsmImg;
 
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 101;
     String picturePath;
     String SetImage = "StoreImg";
-    GalleryAdapter galleryAdapter;
+//    GalleryAdapter galleryAdapter;
     private Button btn;
     int PICK_IMAGE_MULTIPLE = 1;
     int PICK_IMAGE_MULTIPLE_SSM = 2;
     String imageEncoded;
     List<String> imagesEncodedList;
-    private GridView gridViewImageStore, gridViewSsmImage;
-    SsmImageAdapter ssmImageAdapter;
+    private RecyclerView rvImageStore, rvSsmImage;
+//    SsmImageAdapter ssmImageAdapter;
     ArrayList<Uri> mArrayUri;
     String imgDecodableString;
 
@@ -89,7 +90,23 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     String price, title, duration, items, startdate, enddate, planId;
     SubscriptionPlanModel subscriptionPlanModelMain;
     public static final int REQUEST_STORAGE = 2;
-    public static final int SELECT_FILE = 110;
+//    public static final int SELECT_FILE = 110;
+
+
+
+    //------------------------file code====================================
+    String encodeimg1, cartkey;
+    private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
+    private String userChoosenTask;
+    File uploadFileI;
+    ArrayList<String> storeImageFiles = new ArrayList<>();
+    ArrayList<String> ssmImageFiles = new ArrayList<>();
+    //    CustomGrid adapter;
+    StoreImagesAdapter storeImagesAdapter;
+    SsmImageAdapter ssmImageAdapter;
+    int gallery_val =10;
+    //------------------------file code====================================
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,14 +153,24 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         etAboutStore = findViewById(R.id.etAboutStore);
         llStoreImg = findViewById(R.id.llStoreImg);
         llSsmImg = findViewById(R.id.llSsmImg);
-        gridViewSsmImage = findViewById(R.id.gridViewSsmImage);
-        gridViewImageStore = findViewById(R.id.gridViewImageStore);
+        rvSsmImage = findViewById(R.id.rvSsmImage);
+        rvImageStore = findViewById(R.id.rvImageStore);
 
 
         btnSave.setOnClickListener(this);
         ivBackSubNewstore.setOnClickListener(this);
         llStoreImg.setOnClickListener(this);
         llSsmImg.setOnClickListener(this);
+
+        rvImageStore.setHasFixedSize(true);
+//        RecyclerView.LayoutManager layoutManager =new GridLayoutManager(getActivity(), 3);
+        rvImageStore.setLayoutManager(new GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false));
+
+        rvSsmImage.setHasFixedSize(true);
+//        RecyclerView.LayoutManager layoutManager =new GridLayoutManager(getActivity(), 3);
+        rvSsmImage.setLayoutManager(new GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false));
+
+
     }
 
     @Override
@@ -179,25 +206,18 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                     }
                 }
 
-               /* btnImg2.setOnClickListener(new OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-
-                        if (img1Selected2 != null) {
-                            img2Selected1 = "fulfilled";
-                            choosePictureAction();
-                        }else {
-                            Log.e("Please select first image", "Please select first image");
-                        }
-                    }
-                });*/
 
                 break;
 
             case R.id.llStoreImg:
                 SetImage = "StoreImg";
-                checkPermissionsForStorage();
+                if (storeImageFiles.size()!=0)
+                {
+                    storeImageFiles.clear();
+                    storeImagesAdapter = new StoreImagesAdapter(context, storeImageFiles);
+                    rvImageStore.setAdapter(storeImagesAdapter);
+                }
+                selectStoreImage();
                /* Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
@@ -209,8 +229,15 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
 
             case R.id.llSsmImg:
                 SetImage = "SsmImg";
+                if (ssmImageFiles.size()!=0)
+                {
+                    ssmImageFiles.clear();
+                    ssmImageAdapter = new SsmImageAdapter(context, ssmImageFiles);
+                    rvSsmImage.setAdapter(storeImagesAdapter);
+                }
+                selectSsmImage();
 
-                checkPermissionsForStorage();
+//                checkPermissionsForStorage();
 
             /*    Intent intent1 = new Intent();
                 intent1.setType("image/*");
@@ -227,7 +254,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         }
     }
 
-    private void checkPermissionsForStorage() {
+   /* private void checkPermissionsForStorage() {
 
         if (ActivityCompat.checkSelfPermission(((Activity) context), WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(((Activity) context), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 
@@ -255,7 +282,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                 Log.e("Exception>>", e.toString());
             }
         }
-    }
+    }*/
 
     public void subScribeNewStore() {
         Customprogress.showPopupProgressSpinner(context, true);
@@ -273,8 +300,8 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         data.put("store_name", createRequestBody(etStoreName.getText().toString().trim()));
 
         List<MultipartBody.Part> plan_image = new ArrayList<>();
-        for (int i = 0; i < imageStoreList.size(); i++) {
-            File file = new File(imageStoreList.get(i));
+        for (int i = 0; i < storeImageFiles.size(); i++) {
+            File file = new File(storeImageFiles.get(i));
             RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
             MultipartBody.Part filePart = MultipartBody.Part.createFormData("plan_image[]", file.getName(), requestBody);
             plan_image.add(filePart);
@@ -282,8 +309,8 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
 
 
         List<MultipartBody.Part> store_image = new ArrayList<>();
-        for (int i = 0; i < ssmImageStoreList.size(); i++) {
-            File file = new File(ssmImageStoreList.get(i));
+        for (int i = 0; i < ssmImageFiles.size(); i++) {
+            File file = new File(ssmImageFiles.get(i));
             RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
             MultipartBody.Part filePart = MultipartBody.Part.createFormData("store_image[]", file.getName(), requestBody);
             store_image.add(filePart);
@@ -350,8 +377,685 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     }
 
 
+
+
+
+    private void selectStoreImage() {
+
+
+        final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Upload Photo");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+
+                if (items[item].equals("Take Photo")) {
+                    userChoosenTask = "Take Photo";
+
+                    if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions(new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+                    } else {
+                        if(storeImageFiles!=null){
+                            if(storeImageFiles.size()==10){
+                                Toast.makeText(context,"Can select a maximum of 10 images", Toast.LENGTH_SHORT).show();
+                            }else{
+                                storeImageCameraIntent();
+                                ssmImageCameraIntent();
+                            }
+                        }else{
+                            storeImageCameraIntent();
+                            ssmImageCameraIntent();
+
+                        }
+                    }
+
+
+                }
+                else if (items[item].equals("Choose from Library"))
+                {
+                    userChoosenTask = "Choose from Library";
+
+                    if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                    } else {
+                        if(storeImageFiles!=null){
+                            if(storeImageFiles.size()>0){
+                                gallery_val= 10-storeImageFiles.size();
+                            }
+                        }
+                       /* Intent intent = new Intent(context, AlbumSelectActivity.class);
+                        intent.putExtra(ConstantsCustomGallery.INTENT_EXTRA_LIMIT, gallery_val); // set limit for image selection
+                        startActivityForResult(intent, ConstantsCustomGallery.REQUEST_CODE);*/
+                        Intent intent = new Intent();
+                        intent.setType("image/*");
+                        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                        intent.setAction(Intent.ACTION_GET_CONTENT);
+                        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+                    }
+
+                } else if (items[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+
+    }
+
+    private void  selectSsmImage(){
+        {
+            final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Upload Photo");
+            builder.setItems(items, new DialogInterface.OnClickListener() {
+                @SuppressLint("NewApi")
+                @Override
+                public void onClick(DialogInterface dialog, int item) {
+
+                    if (items[item].equals("Take Photo")) {
+                        userChoosenTask = "Take Photo";
+
+                        if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                            requestPermissions(new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+                        } else {
+                            if(storeImageFiles!=null){
+                                if(storeImageFiles.size()==10){
+                                    Toast.makeText(context,"Can select a maximum of 10 images", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    storeImageCameraIntent();
+                                    ssmImageCameraIntent();
+
+                                }
+                            }else{
+                                storeImageCameraIntent();
+                                ssmImageCameraIntent();
+
+                            }
+                        }
+
+
+                    }
+                    else if (items[item].equals("Choose from Library"))
+                    {
+                        userChoosenTask = "Choose from Library";
+
+                        if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 11);
+                        } else {
+                            if(storeImageFiles!=null){
+                                if(storeImageFiles.size()>0){
+                                    gallery_val= 10-storeImageFiles.size();
+                                }
+                            }
+                       /* Intent intent = new Intent(context, AlbumSelectActivity.class);
+                        intent.putExtra(ConstantsCustomGallery.INTENT_EXTRA_LIMIT, gallery_val); // set limit for image selection
+                        startActivityForResult(intent, ConstantsCustomGallery.REQUEST_CODE);*/
+                            Intent intent = new Intent();
+                            intent.setType("image/*");
+                            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                            intent.setAction(Intent.ACTION_GET_CONTENT);
+                            startActivityForResult(Intent.createChooser(intent, "Select Picture"), 11);
+                        }
+
+                    } else if (items[item].equals("Cancel")) {
+                        dialog.dismiss();
+                    }
+                }
+            });
+            builder.show();
+
+        }
+    }
+
+
+
+    private void storeImageCameraIntent() {
+        try {
+
+            System.out.println("CAMERA OPEN 22");
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, 2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void ssmImageCameraIntent() {
+        try {
+
+            System.out.println("CAMERA OPEN 22");
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, 22);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        System.out.println("Request Code >>>>>>>" + requestCode);
+        switch (requestCode) {
+            case 1: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                 /*   Intent intent = new Intent(context, AlbumSelectActivity.class);
+                    intent.putExtra(ConstantsCustomGallery.INTENT_EXTRA_LIMIT, gallery_val); // set limit for image selection
+                    startActivityForResult(intent, ConstantsCustomGallery.REQUEST_CODE);*/
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+
+                } else {
+//                    Toast.makeText(getApplicationContext(), "Permission denied", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+            case 2: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    storeImageCameraIntent();
+                    ssmImageCameraIntent();
+
+                } else {
+//                    Toast.makeText(getApplicationContext(), "Permission denied", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        try {
+            System.out.println("request code >>>>>>>>>"+requestCode);
+            if (requestCode == 1 && data != null) {
+             /*  ArrayList<Image> images = data.getParcelableArrayListExtra(ConstantsCustomGallery.INTENT_EXTRA_IMAGES);
+
+               for(int i=0;i<images.size();i++){
+                   Uri uri = Uri.fromFile(new File(images.get(i).path));
+                   encodeimg1 = getRealPathFromURI(uri);
+                   files.add(encodeimg1);
+               }
+               adapter = new ImagesAdapter(context,  files) ;
+               grid.setAdapter(adapter);*/
+                if (data.getClipData() != null) {
+                    System.out.println("clip data >>>>>>>>>"+data.getClipData());
+                    int count = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
+                    System.out.println("Img count >>>>>>>>>"+count);
+                    for (int i = 0; i < count; i++) {
+                        Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                        getStoreImageFilePath(imageUri);
+                    }
+                }
+                else
+                {
+                    Bitmap bm=null;
+                    if (data != null) {
+                        try {
+                            bm = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    BitmapDrawable d= new BitmapDrawable(bm);
+//define bounds for your drawable
+                    int left =0;
+                    int top = 0;
+                    int right=40;
+                    int bottom=40;
+
+                    Rect r = new Rect(left,top,right,bottom);
+       //set the new bounds to your drawable
+                    d.setBounds(r);
+                    Uri tempUri = getStoreImageUri(context,bm);
+//                getImageFilePath(tempUri);
+                    encodeimg1= getStoreImageRealPathFromURI(tempUri);
+
+                    System.out.println("encodeimg1 >>>>>>>>>>>"+encodeimg1);
+                    storeImageFiles.add(encodeimg1);
+
+
+                        storeImagesAdapter = new StoreImagesAdapter(context, storeImageFiles);
+                        rvImageStore.setAdapter(storeImagesAdapter);
+
+                }
+            }
+
+
+            else if (requestCode == 11 && data != null) {
+             /*  ArrayList<Image> images = data.getParcelableArrayListExtra(ConstantsCustomGallery.INTENT_EXTRA_IMAGES);
+
+               for(int i=0;i<images.size();i++){
+                   Uri uri = Uri.fromFile(new File(images.get(i).path));
+                   encodeimg1 = getRealPathFromURI(uri);
+                   files.add(encodeimg1);
+               }
+               adapter = new ImagesAdapter(context,  files) ;
+               grid.setAdapter(adapter);*/
+                if (data.getClipData() != null) {
+                    System.out.println("clip data >>>>>>>>>"+data.getClipData());
+                    int count = data.getClipData().getItemCount(); //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
+                    System.out.println("Img count >>>>>>>>>"+count);
+                    for (int i = 0; i < count; i++) {
+                        Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                        getSsmImageFilePath(imageUri);
+                    }
+                }
+                else
+                {
+                    Bitmap bm=null;
+                    if (data != null) {
+                        try {
+                            bm = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    BitmapDrawable d= new BitmapDrawable(bm);
+//define bounds for your drawable
+                    int left =0;
+                    int top = 0;
+                    int right=40;
+                    int bottom=40;
+
+                    Rect r = new Rect(left,top,right,bottom);
+                    //set the new bounds to your drawable
+                    d.setBounds(r);
+                    Uri tempUri = getSsmImageUri(context,bm);
+//                getImageFilePath(tempUri);
+                    encodeimg1= getSsmImageRealPathFromURI(tempUri);
+
+                    System.out.println("encodeimg1 >>>>>>>>>>>"+encodeimg1);
+                    ssmImageFiles.add(encodeimg1);
+
+
+                    ssmImageAdapter = new SsmImageAdapter(context, ssmImageFiles);
+                    rvSsmImage.setAdapter(ssmImageAdapter);
+
+                }
+            }
+
+
+            if (requestCode == 2 && null !=data) {
+
+                onCaptureStoreImageResult(data);
+
+            }
+
+            else if (requestCode == 22 && null !=data){
+                onCaptureSsmImageResult(data);
+            }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
+    private void onCaptureStoreImageResult(Intent data) {
+        try {
+
+            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+
+            File destination = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
+
+            FileOutputStream fo;
+            try {
+                destination.createNewFile();
+                fo = new FileOutputStream(destination);
+                fo.write(bytes.toByteArray());
+                fo.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Uri tempUri = getStoreImageUri(context,thumbnail);
+
+            // CALL THIS METHOD TO GET THE ACTUAL PATH
+            //   File finalFile = new File(getRealPathFromURI(tempUri));
+
+            System.out.println("data.getData() " + data.getData());
+            encodeimg1= getStoreImageRealPathFromURI(tempUri);
+
+            storeImageFiles.add(encodeimg1);
+
+            storeImagesAdapter = new StoreImagesAdapter(context, storeImageFiles);
+            rvImageStore.setAdapter(storeImagesAdapter);
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void onCaptureSsmImageResult(Intent data) {
+        try {
+
+            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+
+            File destination = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
+
+            FileOutputStream fo;
+            try {
+                destination.createNewFile();
+                fo = new FileOutputStream(destination);
+                fo.write(bytes.toByteArray());
+                fo.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Uri tempUri = getSsmImageUri(context,thumbnail);
+
+            // CALL THIS METHOD TO GET THE ACTUAL PATH
+            //   File finalFile = new File(getRealPathFromURI(tempUri));
+
+            System.out.println("data.getData() " + data.getData());
+            encodeimg1= getSsmImageRealPathFromURI(tempUri);
+
+            ssmImageFiles.add(encodeimg1);
+
+            ssmImageAdapter = new SsmImageAdapter(context, ssmImageFiles);
+            rvSsmImage.setAdapter(ssmImageAdapter);
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+
+    public Uri getStoreImageUri(Context inContext, Bitmap inImage) {
+        String path = null;
+        try {
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            Long tsLong = System.currentTimeMillis()/1000;
+            path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, ""+tsLong, null);
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return Uri.parse(path);
+    }
+
+    public Uri getSsmImageUri(Context inContext, Bitmap inImage) {
+        String path = null;
+        try {
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            Long tsLong = System.currentTimeMillis()/1000;
+            path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, ""+tsLong, null);
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return Uri.parse(path);
+    }
+
+
+
+
+
+
+    private String getStoreImageRealPathFromURI(Uri contentURI)
+    {
+        String result;
+
+
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(contentURI, projection, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            result = contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = 0;
+            idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+
+        return result;
+
+    }
+
+
+    private String getSsmImageRealPathFromURI(Uri contentURI)
+    {
+        String result;
+
+
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(contentURI, projection, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            result = contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = 0;
+            idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+
+        return result;
+
+    }
+
+    public void getStoreImageFilePath(Uri uri) {
+
+        File file = new File(uri.getPath());
+        String[] filePath = file.getPath().split(":");
+        String image_id = filePath[filePath.length - 1];
+        Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, MediaStore.Images.Media._ID + " = ? ", new String[]{image_id}, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            @SuppressLint("Range") String imagePath = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+            storeImageFiles.add(imagePath);
+            cursor.close();
+
+            storeImagesAdapter = new StoreImagesAdapter(context,   storeImageFiles);
+            rvImageStore.setAdapter(storeImagesAdapter);
+
+        }
+    }
+
+
+
+    public void getSsmImageFilePath(Uri uri) {
+
+        File file = new File(uri.getPath());
+        String[] filePath = file.getPath().split(":");
+        String image_id = filePath[filePath.length - 1];
+        Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, MediaStore.Images.Media._ID + " = ? ", new String[]{image_id}, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            @SuppressLint("Range") String image = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+            ssmImageFiles.add(image);
+            cursor.close();
+
+            ssmImageAdapter = new SsmImageAdapter(context,ssmImageFiles);
+            rvSsmImage.setAdapter(ssmImageAdapter);
+
+        }
+    }
+
+
+
+    public class StoreImagesAdapter extends RecyclerView.Adapter<StoreImagesAdapter.ViewHolder> {
+        private List<String> imageStoreList;
+        private Context context;
+
+        public StoreImagesAdapter(Context context, List<String> imageStoreList) {
+            this.imageStoreList = imageStoreList;
+            this.context = context;
+
+        }
+
+        // Create new views
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+//        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_users, null);
+            View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_single, parent, false);
+
+            ViewHolder viewHolder = new ViewHolder(itemLayoutView);
+//            ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(context));
+
+            return viewHolder;
+        }
+
+        @SuppressLint("RecyclerView")
+        @Override
+        public void onBindViewHolder(final ViewHolder viewHolder, int position)
+        {
+            Bitmap bmp = BitmapFactory.decodeFile(storeImageFiles.get(position));
+            viewHolder.grid_image.setImageBitmap(bmp);
+            viewHolder.imgcross.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("position >>>>>>>>>>>"+position);
+                    storeImageFiles.remove(position);
+                    System.out.println("web list >>>>>>>>>>>"+storeImageFiles);
+                    storeImagesAdapter = new StoreImagesAdapter(context, storeImageFiles);
+                    rvImageStore.setAdapter(storeImagesAdapter);
+                    storeImagesAdapter.notifyDataSetChanged();
+                }
+            });
+
+
+        }
+
+        // Return the size arraylist
+        @Override
+        public int getItemCount() {
+            return imageStoreList.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+
+            public LinearLayout imgcross;
+            public RoundRectCornerImageView grid_image;
+
+
+            public ViewHolder(View itemLayoutView) {
+                super(itemLayoutView);
+
+                imgcross = itemLayoutView.findViewById(R.id.imgcross);
+                grid_image = itemLayoutView.findViewById(R.id.grid_image);
+            }
+        }
+        // method to access in activity after updating selection
+        public List<String> getStoreImageList() {
+            return imageStoreList;
+        }
+
+    }
+
+
+    public class SsmImageAdapter extends RecyclerView.Adapter<SsmImageAdapter.ViewHolder> {
+        private List<String> ssmImageStoreList;
+        private Context context;
+
+        public SsmImageAdapter(Context context, List<String> ssmImageStoreList) {
+            this.ssmImageStoreList = ssmImageStoreList;
+            this.context = context;
+
+        }
+
+        // Create new views
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+//        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_users, null);
+            View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.gv_ssm_image, parent, false);
+
+            ViewHolder viewHolder = new ViewHolder(itemLayoutView);
+//            ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(context));
+
+            return viewHolder;
+        }
+
+        @SuppressLint("RecyclerView")
+        @Override
+        public void onBindViewHolder(final ViewHolder viewHolder, int position)
+        {
+            Bitmap bmp = BitmapFactory.decodeFile(ssmImageFiles.get(position));
+            viewHolder.grid_imageSsm.setImageBitmap(bmp);
+            viewHolder.imgSSmcross.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("position >>>>>>>>>>>"+position);
+                    ssmImageFiles.remove(position);
+                    System.out.println("web list >>>>>>>>>>>"+ssmImageFiles);
+                    ssmImageAdapter = new SsmImageAdapter(context, ssmImageFiles);
+                    rvSsmImage.setAdapter(ssmImageAdapter);
+                    ssmImageAdapter.notifyDataSetChanged();
+                }
+            });
+
+
+        }
+
+        // Return the size arraylist
+        @Override
+        public int getItemCount() {
+            return ssmImageStoreList.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+
+            public LinearLayout imgSSmcross;
+            public RoundRectCornerImageView grid_imageSsm;
+
+
+            public ViewHolder(View itemLayoutView) {
+                super(itemLayoutView);
+
+                imgSSmcross = itemLayoutView.findViewById(R.id.imgSSmcross);
+                grid_imageSsm = itemLayoutView.findViewById(R.id.grid_imageSsm);
+            }
+        }
+        // method to access in activity after updating selection
+        public List<String> getSsmList() {
+            return ssmImageStoreList;
+        }
+
+    }
+
+
+
+
+
+
+}
+
+/*@Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Log.d("TAG","data"+data);
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SELECT_FILE) {
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
@@ -378,255 +1082,15 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                     System.out.println("data.getData() " + data.getData());
 //                encodeimg1 = getRealPathFromURI(tempUri);
                     imgDecodableString = getRealPathFromURI(tempUri);
+
                     Log.e("GallerysingleImagePath", imgDecodableString);
+
                     imageStoreList.add(imgDecodableString);
                    /* adapter = new CustomGrid(getActivity(), pictures);
                     rv_selected_imagevideo.setAdapter(adapter);
                     adapter.notifyDataSetChanged();*/
-                    System.out.println("pictures..StoreImg>>>>"+imageStoreList);
-                    galleryAdapter = new GalleryAdapter(getApplicationContext(),imageStoreList);
-                    gridViewImageStore.setAdapter(galleryAdapter);
-                    ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewImageStore
-                            .getLayoutParams();
-                    mlp.setMargins(0, gridViewImageStore.getHorizontalSpacing(), 0, 0);
 
-
-              /*
-                if(SetImage.equals("StoreImg")){
-                    galleryAdapter = new GalleryAdapter(getApplicationContext(),pictures);
-                    gridViewImageStore.setAdapter(galleryAdapter);
-                    ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewImageStore
-                            .getLayoutParams();
-                    mlp.setMargins(0, gridViewImageStore.getHorizontalSpacing(), 0, 0);
-
-
-                }
-                else if (SetImage.equals("SsmImg")){
-
-                    System.out.println("pictures..SsmImg>>>>"+pictures);
-                    ssmImageAdapter = new SsmImageAdapter(getApplicationContext(),pictures);
-                    gridViewSsmImage.setAdapter(ssmImageAdapter);
-                    ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewSsmImage
-                            .getLayoutParams();
-                    mlp.setMargins(0, gridViewSsmImage.getHorizontalSpacing(), 0, 0);
-                }*/
-
-                }
-
-                else {
-                    if (data.getClipData() != null) {
-
-                        Bitmap bm=null;
-
-                        if (data != null) {
-                            try {
-                                bm = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        BitmapDrawable d= new BitmapDrawable(bm);
-                        int left =0;
-                        int top = 0;
-                        int right=40;
-                        int bottom=40;
-                        Rect r = new Rect(left,top,right,bottom);
-                        d.setBounds(r);
-                        Uri tempUri = getImageUri(context,bm);
-                        System.out.println("data.getData() " + data.getData());
-                        imgDecodableString = getRealPathFromURI(tempUri);
-                        Log.e("GalleryImagePath", imgDecodableString);
-                        imageStoreList.add(imgDecodableString);
-                        System.out.println("pictures..StoreImg>>>>"+imageStoreList);
-
-                        galleryAdapter = new GalleryAdapter(getApplicationContext(),imageStoreList);
-                        gridViewImageStore.setAdapter(galleryAdapter);
-                        ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewImageStore
-                                .getLayoutParams();
-                        mlp.setMargins(0, gridViewImageStore.getHorizontalSpacing(), 0, 0);
-
-
-
-                      /*  if(SetImage.equals("StoreImg")){
-
-                            galleryAdapter = new GalleryAdapter(getApplicationContext(),pictures);
-                            gridViewImageStore.setAdapter(galleryAdapter);
-                            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewImageStore
-                                    .getLayoutParams();
-                            mlp.setMargins(0, gridViewImageStore.getHorizontalSpacing(), 0, 0);
-
-
-                        }
-
-                        else if (SetImage.equals("SsmImg")){
-
-                            System.out.println("pictures..SsmImg>>>>"+pictures);
-                            ssmImageAdapter = new SsmImageAdapter(getApplicationContext(),pictures);
-                            gridViewSsmImage.setAdapter(ssmImageAdapter);
-                            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewSsmImage
-                                    .getLayoutParams();
-                            mlp.setMargins(0, gridViewSsmImage.getHorizontalSpacing(), 0, 0);
-                        } */
-
-                    }
-                }
-            }
-
-            else if (SetImage.equals("SsmImg")){
-                if (data.getData() != null) {
-                    Uri selectedMediaUri = data.getData();
-                    Bitmap bm=null;
-                    if (data != null) {
-                        try {
-                            bm = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    BitmapDrawable d= new BitmapDrawable(bm);
-                    int left =0;
-                    int top = 0;
-                    int right=40;
-                    int bottom=40;
-                    Rect r = new Rect(left,top,right,bottom);
-                    d.setBounds(r);
-                    Uri tempUri = getImageUri(context,bm);
-                    System.out.println("data.getData() " + data.getData());
-//                encodeimg1 = getRealPathFromURI(tempUri);
-                    imgDecodableString = getRealPathFromURI(tempUri);
-                    Log.e("GallerysingleImagePath", imgDecodableString);
-                    ssmImageStoreList.add(imgDecodableString);
-                   /* adapter = new CustomGrid(getActivity(), pictures);
-                    rv_selected_imagevideo.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();*/
-                    System.out.println("pictures..SsmImg>>>>"+ ssmImageStoreList);
-                    ssmImageAdapter = new SsmImageAdapter(getApplicationContext(), ssmImageStoreList);
-                    gridViewSsmImage.setAdapter(ssmImageAdapter);
-                    ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewSsmImage
-                            .getLayoutParams();
-                    mlp.setMargins(0, gridViewSsmImage.getHorizontalSpacing(), 0, 0);
-
-
-              /*
-                if(SetImage.equals("StoreImg")){
-                    galleryAdapter = new GalleryAdapter(getApplicationContext(),pictures);
-                    gridViewImageStore.setAdapter(galleryAdapter);
-                    ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewImageStore
-                            .getLayoutParams();
-                    mlp.setMargins(0, gridViewImageStore.getHorizontalSpacing(), 0, 0);
-
-
-                }
-                else if (SetImage.equals("SsmImg")){
-
-                    System.out.println("pictures..SsmImg>>>>"+pictures);
-                    ssmImageAdapter = new SsmImageAdapter(getApplicationContext(),pictures);
-                    gridViewSsmImage.setAdapter(ssmImageAdapter);
-                    ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewSsmImage
-                            .getLayoutParams();
-                    mlp.setMargins(0, gridViewSsmImage.getHorizontalSpacing(), 0, 0);
-                }*/
-
-                }
-
-                else {
-                    if (data.getClipData() != null) {
-
-                        Bitmap bm=null;
-                        if (data != null) {
-                            try {
-                                bm = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
-
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        BitmapDrawable d= new BitmapDrawable(bm);
-                        int left =0;
-                        int top = 0;
-                        int right=40;
-                        int bottom=40;
-                        Rect r = new Rect(left,top,right,bottom);
-                        d.setBounds(r);
-                        Uri tempUri = getImageUri(context,bm);
-                        System.out.println("data.getData() " + data.getData());
-                        imgDecodableString = getRealPathFromURI(tempUri);
-                        Log.e("GalleryImagePath", imgDecodableString);
-                        ssmImageStoreList.add(imgDecodableString);
-
-                        System.out.println("pictures..SsmImg>>>>"+ ssmImageStoreList);
-                        ssmImageAdapter = new SsmImageAdapter(getApplicationContext(), ssmImageStoreList);
-                        gridViewSsmImage.setAdapter(ssmImageAdapter);
-                        ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewSsmImage
-                                .getLayoutParams();
-                        mlp.setMargins(0, gridViewSsmImage.getHorizontalSpacing(), 0, 0);
-
-                      /*  if(SetImage.equals("StoreImg")){
-
-                            galleryAdapter = new GalleryAdapter(getApplicationContext(),pictures);
-                            gridViewImageStore.setAdapter(galleryAdapter);
-                            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewImageStore
-                                    .getLayoutParams();
-                            mlp.setMargins(0, gridViewImageStore.getHorizontalSpacing(), 0, 0);
-
-
-                        }
-
-                        else if (SetImage.equals("SsmImg")){
-
-                            System.out.println("pictures..SsmImg>>>>"+pictures);
-                            ssmImageAdapter = new SsmImageAdapter(getApplicationContext(),pictures);
-                            gridViewSsmImage.setAdapter(ssmImageAdapter);
-                            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) gridViewSsmImage
-                                    .getLayoutParams();
-                            mlp.setMargins(0, gridViewSsmImage.getHorizontalSpacing(), 0, 0);
-                        } */
-
-                    }
-                }
-            }
-
-        }
-
-
-
-    }
-
-    public Uri getImageUri(Context inContext, Bitmap inImage) {
-        String path = null;
-        try {
-            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            inImage.compress(Bitmap.CompressFormat.JPEG, 80, bytes);
-            path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "" + System.currentTimeMillis(), null);
-
-            return Uri.parse(path);
-
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return Uri.parse(path);
-    }
-
-    private String getRealPathFromURI(Uri contentURI) {
-        String result;
-        String[] projection = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContentResolver().query(contentURI, projection, null, null, null);
-        if (cursor == null) { // Source is Dropbox or other similar local file path
-            result = contentURI.getPath();
-        } else {
-            cursor.moveToFirst();
-            int idx = 0;
-            idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-            result = cursor.getString(idx);
-            cursor.close();
-        }
-
-        return result;
-
-    }
+   /*
 
     public class GalleryAdapter extends BaseAdapter {
         private Context ctx;
@@ -693,10 +1157,10 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         }
 
 
-    }
+    }*/
 
 
-    public class SsmImageAdapter extends BaseAdapter {
+   /* public class SsmImageAdapter extends BaseAdapter {
         private Context ctx;
         private int pos;
         private LayoutInflater inflater;
@@ -757,7 +1221,4 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         }
 
 
-    }
-
-}
-
+    }*/

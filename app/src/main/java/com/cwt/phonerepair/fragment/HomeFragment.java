@@ -84,12 +84,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         } else {
             Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     private void stores() {
-
         Customprogress.showPopupProgressSpinner(context, true);
         Call<HomeResponse> call = jsonPlaceHolderApi.Home("Bearer "+sessionManager.getSavedToken());
         call.enqueue(new Callback<HomeResponse>() {
@@ -104,9 +101,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         rvBanner.setAdapter( adapter);
                         rvourExcluStore.setHasFixedSize(true);
 
-
                         modelArrayList= (ArrayList<HomeStoreModel>) response.body().getData().getStore();
-                        OurExclusiveStoreAdapter adapter1 = new OurExclusiveStoreAdapter(modelArrayList, context/*, new GetHomeStoreId() {
+                        OurExclusiveStoreAdapter adapter1 = new OurExclusiveStoreAdapter(modelArrayList, context
+                                /*, new GetHomeStoreId() {
                             @Override
                             public void getHomeStoreId(HomeStoreModel storeModel) {
                                 System.out.println("store....id..."+storeModel.getId());

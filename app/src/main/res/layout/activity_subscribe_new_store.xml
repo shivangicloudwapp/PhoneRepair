@@ -63,16 +63,20 @@
                 android:id="@+id/etStoreName"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:hint="The Apple Store"
-                android:fontFamily="@font/poppins_light"
-                android:textFontWeight="300"
-                android:textSize="12sp"
-                android:padding="@dimen/_8sdp"
-                android:textColor="@color/black_b"
                 android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/edittxt_bac"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_light"
+                android:hint="Store Name"
                 android:imeOptions="actionNext"
+                android:includeFontPadding="false"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:singleLine="true"
+                android:textColor="@color/black_b"
                 android:textColorHint="@color/black_b"
-                android:background="@drawable/edittxt_bac"/>
+                android:textFontWeight="300"
+                android:textSize="12sp" />
 
 
 
@@ -91,11 +95,14 @@
                 android:id="@+id/etRegistrationNumber"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:hint="JFKS27372839"
+                android:hint="Registration Number"
                 android:fontFamily="@font/poppins_light"
                 android:textFontWeight="300"
                 android:textSize="12sp"
-                android:padding="@dimen/_8sdp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:singleLine="true"
+                android:ellipsize="end"
                 android:textColor="@color/black_b"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:imeOptions="actionNext"
@@ -118,12 +125,16 @@
             <EditText
                 android:id="@+id/etAddress"
                 android:layout_width="match_parent"
-                android:layout_height="63dp"
-                android:hint="New Door No. A4-72 Ground Floor c21 Mall,\nLos Angeles, California"
+                android:layout_height="48dp"
+                android:hint="Address"
                 android:fontFamily="@font/poppins_light"
                 android:textFontWeight="300"
                 android:textSize="12sp"
-                android:padding="@dimen/_8sdp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
                 android:imeOptions="actionNext"
                 android:textColorHint="@color/black_b"
                 android:textColor="@color/black_b"
@@ -145,15 +156,20 @@
                 android:id="@+id/etAboutStore"
                 android:layout_width="match_parent"
                 android:layout_height="156dp"
-                android:hint="The Mobile Store currently is covering and \n has more than 700+ outlets in different major\n cities in different states across India. Today you will virtually find no person who is not using the mobile phone for their work or for personal use. No matter whether you are college students, salesman, a storekeeper,\nor a pilot a mobile phone is a must for all."
+                android:hint="About Store"
                 android:fontFamily="@font/mulish_light"
                 android:textFontWeight="300"
                 android:textSize="12sp"
+                android:singleLine="true"
                 android:textColor="@color/black_b"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:gravity="start"
-                android:padding="@dimen/_8sdp"
+                android:paddingTop="8dp"
+                android:ellipsize="end"
                 android:imeOptions="actionDone"
+                android:includeFontPadding="false"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:textColorHint="@color/black_b"
                 android:background="@drawable/edittxt_bac"/>
 
@@ -219,8 +235,8 @@
             </LinearLayout>
 
 
-            <GridView
-                android:id="@+id/gridViewImageStore"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvImageStore"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:numColumns="3"
@@ -295,8 +311,8 @@
 
 
 
-            <GridView
-                android:id="@+id/gridViewSsmImage"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSsmImage"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:numColumns="3"

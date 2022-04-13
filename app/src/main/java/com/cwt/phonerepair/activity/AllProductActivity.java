@@ -46,9 +46,7 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
     ArrayList<StoreDetailsProductModel> storeDetailsProductModels;
-    HomeStoreModel homeStoreModel;
-    int storeId;
-    StoreDetailsModel storeDetailsModel;
+    int store_Id;
 
 
     @Override
@@ -66,7 +64,7 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
         try {
             Intent intent = getIntent();
             if (intent != null) {
-                homeStoreModel = (HomeStoreModel) intent.getSerializableExtra("store_Id");
+                store_Id =  intent.getIntExtra("store_Id",0);
                 if (Utils.checkConnection(context)) {
                     AllProduct();
                 } else {
@@ -104,9 +102,9 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
 
         Customprogress.showPopupProgressSpinner(context,true);
         GetStoreAllProdcutParameter add = new GetStoreAllProdcutParameter();
-        add.setStoreId(homeStoreModel.getId());
+        add.setStoreId(store_Id);
 
-        System.out.println("Store...Id...Product..all"+homeStoreModel.getId());
+
 
         Call<GetStoreAllProductResponse> call=jsonPlaceHolderApi.GetStoreAllProduct("Bearer "+sessionManager.getSavedToken(),add);
         call.enqueue(new Callback<GetStoreAllProductResponse>() {

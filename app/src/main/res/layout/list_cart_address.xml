@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_group_866"
+            android:layout_marginTop="@dimen/_8sdp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginStart="@dimen/_11sdp">
+            <TextView
+                android:id="@+id/tvAddType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:fontFamily="@font/mulish_regular"
+                android:textFontWeight="400"
+                android:textColor="@color/black_b"
+                android:text="Other"/>
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:fontFamily="@font/mulish_light"
+                android:textFontWeight="300"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textColor="@color/item_unsclr"
+                android:text="The Mobile Store currently is covering and has more than 700+ outlets in different major cities"/>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -205,7 +205,6 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
                         startActivity(intent);
 
                     }
-                    finish();
                 } else {
                     Toast.makeText(SignupScreenActivity.this, "faild...." + response.body().getMassage(), Toast.LENGTH_SHORT).show();
                 }

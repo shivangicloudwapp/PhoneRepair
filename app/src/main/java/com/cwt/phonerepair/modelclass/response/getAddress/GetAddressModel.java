@@ -3,7 +3,9 @@ package com.cwt.phonerepair.modelclass.response.getAddress;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetAddressModel {
+import java.io.Serializable;
+
+public class GetAddressModel implements Serializable {
 
     @SerializedName("id")
     @Expose

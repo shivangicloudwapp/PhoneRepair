@@ -7,6 +7,7 @@ import com.cwt.phonerepair.modelclass.parameter.AddtoCartParameter;
 import com.cwt.phonerepair.modelclass.parameter.GetProductParameter;
 import com.cwt.phonerepair.modelclass.parameter.GetStoreAllProdcutParameter;
 import com.cwt.phonerepair.modelclass.parameter.LoginParameter;
+import com.cwt.phonerepair.modelclass.parameter.PlaceOrderParameter;
 import com.cwt.phonerepair.modelclass.parameter.ReviewParameter;
 import com.cwt.phonerepair.modelclass.parameter.SendOtpParameter;
 import com.cwt.phonerepair.modelclass.parameter.SignupParameter;
@@ -14,10 +15,12 @@ import com.cwt.phonerepair.modelclass.parameter.StoreDetailsParameter;
 import com.cwt.phonerepair.modelclass.parameter.VerifyOtpParameter;
 import com.cwt.phonerepair.modelclass.response.AddProduct.AddProductResponse;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementResponse;
+import com.cwt.phonerepair.modelclass.response.PlaceOrderResponse;
 import com.cwt.phonerepair.modelclass.response.addAddress.AddAddressResponse;
 import com.cwt.phonerepair.modelclass.response.allStores.AllStoresResponse;
 import com.cwt.phonerepair.modelclass.response.cart.addcart.AddtoCartResponse;
 import com.cwt.phonerepair.modelclass.response.cart.gettocart.GetToCartReponse;
+import com.cwt.phonerepair.modelclass.response.cart.updatecart.UpdateCartReponse;
 import com.cwt.phonerepair.modelclass.response.getAddress.GetAddressResponse;
 import com.cwt.phonerepair.modelclass.response.getStoreallProdcut.GetStoreAllProductResponse;
 import com.cwt.phonerepair.modelclass.response.getproduct.GetProductReponse;
@@ -142,17 +145,6 @@ public interface JsonPlaceHolderApi {
 
 
 
-/*
-    @Multipart
-    @POST("User/userfeed_add")
-    Call<CommonResponse> addPost(@Header("authtoken") String authtoken,
-                                 @Part("user_id") RequestBody user_id,
-                                 @Part("description") RequestBody description,
-                                 @Part("location") RequestBody location,
-                                 @Part("location_lat") RequestBody location_lat,
-                                 @Part("location_long") RequestBody location_long,
-                                 @Part("post_time") RequestBody post_time,
-                                 @Part List<MultipartBody.Part> video);*/
 
 
     @POST("user/product-management")
@@ -173,9 +165,19 @@ public interface JsonPlaceHolderApi {
     @POST("user/add-to-cart")
     Call<AddtoCartResponse> AddtoCart(@Body AddtoCartParameter parameter,
                                       @Header("Authorization") String header );
+    @Multipart
+    @POST("user/update-cart")
+    Call<UpdateCartReponse> UpdateCart(@Header("Authorization") String header,
+                                       @PartMap Map<String,RequestBody>data);
 
 
+    @POST("user/place-order")
+    Call<PlaceOrderResponse> PlaceOrder(@Body PlaceOrderParameter parameter,
+                                        @Header("Authorization") String header );
 
+/*
+    servicelist
+    getstore-allproduct*/
 
 }
 

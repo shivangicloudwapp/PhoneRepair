@@ -22,9 +22,8 @@ import java.util.ArrayList;
 public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapter.ViewHolder> {
 
     Context context;
-
     ArrayList<SubscriptionPlanModel> modelList;
-    int previousPosition = 0;
+    int previousPosition=-1 ;
     GetSubscriptionData myAdapterListener;
 
     public SubscriptionAdapter(ArrayList<SubscriptionPlanModel> modelList, Context context, GetSubscriptionData myAdapterListener) {
@@ -50,6 +49,14 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
         holder.tvPostItem.setText(model.getItems());
         holder.tvPrice.setText(model.getPrice());
 
+         if(position==previousPosition){
+                    holder.llSubscriptionPlan.setBackgroundDrawable(context.getDrawable(R.drawable.linear_layout_black_border));
+                    myAdapterListener.getsubscriptiondata(modelList.get(position));
+                }
+                else {
+                    holder.llSubscriptionPlan.setBackgroundDrawable(context.getDrawable(R.drawable.line_bac));
+                }
+
         holder.llSubscriptionPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,44 +65,8 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
 
             }
         });
-                if(position==previousPosition){
-                    holder.llSubscriptionPlan.setBackgroundDrawable(context.getDrawable(R.drawable.linear_layout_black_border));
-
-                    myAdapterListener.getsubscriptiondata(modelList.get(position));
-                }
-                else {
-                    holder.llSubscriptionPlan.setBackgroundDrawable(context.getDrawable(R.drawable.line_bac));
 
 
-                }
-
-        /*holder.llContainer.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                int id = v.getId();
-
-                if (id == R.id.llContainer) {
-                    previousPosition = position;
-                    myAdapterListener.getsubscriptiondata(modelList.get(position));
-                    notifyDataSetChanged();
-
-
-                }
-            }
-
-        });
-
-
-        if(position==previousPosition){
-            holder.llContainer.setBackgroundDrawable(context.getDrawable(R.drawable.linear_layout_black_border));
-        }
-        else
-        {
-            holder.llContainer.setBackgroundDrawable(context.getDrawable(R.drawable.line_bac));
-
-        }
-*/
 
     }
 

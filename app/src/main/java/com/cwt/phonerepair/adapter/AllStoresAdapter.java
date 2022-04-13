@@ -13,12 +13,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.Allurls;
 import com.cwt.phonerepair.activity.StoreDetailsActivity;
 import com.cwt.phonerepair.modelclass.response.allStores.AllStoreModel;
+import com.cwt.phonerepair.modelclass.response.home.HomeStoreModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -67,12 +69,19 @@ public class AllStoresAdapter extends RecyclerView.Adapter<AllStoresAdapter.View
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), StoreDetailsActivity.class);
-                intent.putExtra("store_Id",modelList.get(position));
-                System.out.println("storeId...home..."+modelList.get(position));
+                intent.putExtra("store_Id",modelList.get(position).getId());
                 context.startActivity(intent);
             }
         });
 
+        holder.cvAllStores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), StoreDetailsActivity.class);
+                intent.putExtra("store_Id",modelList.get(position).getId());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -87,12 +96,15 @@ public class AllStoresAdapter extends RecyclerView.Adapter<AllStoresAdapter.View
         ImageView ivStoreimg;
         Button btnSeedetail;
 
+        CardView cvAllStores;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvStoreName = itemView.findViewById(R.id.tvStoreName);
             tvAddress = itemView.findViewById(R.id.tvAddress);
             ivStoreimg = itemView.findViewById(R.id.ivStoreimg);
             btnSeedetail = itemView.findViewById(R.id.btnSeedetail);
+            cvAllStores = itemView.findViewById(R.id.cvAllStores);
 
 
 

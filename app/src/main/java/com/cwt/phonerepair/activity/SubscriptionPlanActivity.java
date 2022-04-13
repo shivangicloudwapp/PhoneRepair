@@ -132,8 +132,6 @@ Button btnBuyMembership;
                     startActivity(intent);
                 }
 
-//                subscriptionPlan();
-
                 break;
 
             default:

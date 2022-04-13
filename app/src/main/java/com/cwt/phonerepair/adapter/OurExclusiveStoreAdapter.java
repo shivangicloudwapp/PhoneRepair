@@ -62,8 +62,7 @@ public class OurExclusiveStoreAdapter extends RecyclerView.Adapter<OurExclusiveS
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), StoreDetailsActivity.class);
-                intent.putExtra("store_Id",modelList.get(position));
-                System.out.println("storeId...home..."+modelList.get(position));
+                intent.putExtra("store_Id",modelList.get(position).getId());
 
              //   homeStoreId.getHomeStoreId(modelList.get(position));
                 context.startActivity(intent);
@@ -74,8 +73,7 @@ public class OurExclusiveStoreAdapter extends RecyclerView.Adapter<OurExclusiveS
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), StoreDetailsActivity.class);
-                intent.putExtra("store_Id",modelList.get(position));
-                System.out.println("storeId...home..."+modelList.get(position));
+                intent.putExtra("store_Id",modelList.get(position).getId());
 
                 //   homeStoreId.getHomeStoreId(modelList.get(position));
                 context.startActivity(intent);

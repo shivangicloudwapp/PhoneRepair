@@ -62,8 +62,7 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
     int storeId;
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
-    HomeStoreModel homeStoreModel;
-    String Store_Id;
+    int store_Id;
     // String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +82,8 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
             Intent intent = getIntent();
             if (intent != null) {
 
-                homeStoreModel = (HomeStoreModel) intent.getSerializableExtra("store_Id");
+                store_Id = intent.getIntExtra("store_Id",0);
+                System.out.println("id...store"+store_Id);
 
                 if (Utils.checkConnection(context)) {
                     allStores();
@@ -123,8 +123,8 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
     private void storeDetails() {
         Customprogress.showPopupProgressSpinner(context,true);
         StoreDetailsParameter storeDetailsParameter= new StoreDetailsParameter();
-        storeDetailsParameter.setStoreId(homeStoreModel.getId());
-        System.out.println("storeId..on...storeDeails..."+homeStoreModel.getId());
+        storeDetailsParameter.setStoreId(store_Id);
+
 
         Call<StoreDetailsResponse> call=jsonPlaceHolderApi.StoreDetails(storeDetailsParameter,"Bearer "+sessionManager.getSavedToken());
         call.enqueue(new Callback<StoreDetailsResponse>() {
@@ -136,21 +136,22 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
                     if (response.body().getStatus()){
                         Customprogress.showPopupProgressSpinner(context, false);
                         Log.d("TAG","status"+response.body().getStatus());
-                        if(!response.body().getProduct().isEmpty()){
-                            modelArrayList= (ArrayList<StoreDetailsProductModel>) response.body().getProduct();
 
-                            ProdcutAdapter adapter=new ProdcutAdapter(modelArrayList,context);
 
+                        tvStoreName.setText(response.body().getData().getStore().getStoreName());
+                        tvStoreDetails.setText(response.body().getData().getStore().getAboutStore());
+                        tvAddress.setText(response.body().getData().getStore().getAddress());
+
+
+
+                        modelArrayList= (ArrayList<StoreDetailsProductModel>) response.body().getProduct();
+
+                        ProdcutAdapter adapter=new ProdcutAdapter(modelArrayList,context);
                             rv_Prodcut.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
                             rv_Prodcut.setAdapter(adapter);
                             rv_Prodcut.setHasFixedSize(true);
 
-                            tvStoreName.setText(response.body().getData().getStore().getStoreName());
-                            tvStoreDetails.setText(response.body().getData().getStore().getAboutStore());
-                            tvAddress.setText(response.body().getData().getStore().getAddress());
 
-
-                        }
 
                     }else{
                         Log.d("TAG","status>>>>"+response.body().getStatus());
@@ -202,8 +203,8 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
 
             case R.id.tvSeeAll:
                 Intent intent = new Intent(StoreDetailsActivity.this, AllProductActivity.class);
-                intent.putExtra("store_Id", (Serializable) homeStoreModel);
-                System.out.println("storeId...seeAll..."+homeStoreModel.getId());
+                intent.putExtra("store_Id", store_Id);
+
 
                 startActivity(intent);
                 break;

@@ -21,6 +21,7 @@ import com.cwt.phonerepair.Server.Allurls;
 import com.cwt.phonerepair.activity.StoreDetailsActivity;
 import com.cwt.phonerepair.modelclass.response.allStores.AllStoreModel;
 import com.cwt.phonerepair.modelclass.response.home.HomeStoreModel;
+import com.cwt.phonerepair.utils.RoundRectCornerImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -93,7 +94,7 @@ public class AllStoresAdapter extends RecyclerView.Adapter<AllStoresAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvStoreName,tvAddress;
-        ImageView ivStoreimg;
+        RoundRectCornerImageView ivStoreimg;
         Button btnSeedetail;
 
         CardView cvAllStores;

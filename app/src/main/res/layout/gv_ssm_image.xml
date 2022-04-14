@@ -39,40 +39,39 @@
     </RelativeLayout>-->
 
 
-
     <RelativeLayout
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <com.cwt.phonerepair.utils.RoundRectCornerImageView
-            android:id="@+id/grid_imageSsm"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:scaleType="fitXY" />
 
-        <LinearLayout
-            android:layout_alignRight="@id/grid_imageSsm"
-            android:layout_gravity="end"
+        <RelativeLayout
+            android:layout_width="@dimen/_53sdp"
+            android:layout_height="@dimen/_53sdp"
+            android:layout_marginTop="@dimen/_9sdp">
+
+            <com.cwt.phonerepair.utils.RoundRectCornerImageView
+                android:id="@+id/grid_imageSsm"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/img5" />
+
+        </RelativeLayout>
+
+
+
+
+        <ImageView
             android:id="@+id/imgSSmcross"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="end"
-            android:background="@drawable/dot_white"
-            android:padding="10dp"
-            android:elevation="5dp"
-            android:layout_marginRight="10dp">
-
-            <ImageView
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:src="@drawable/ic_vector__65_" />
-
-        </LinearLayout>
-
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:src="@drawable/ic_vector__65_"
+            android:padding="@dimen/_4sdp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:background="@drawable/white_circle_bac"/>
     </RelativeLayout>
 
+
 </RelativeLayout>
+

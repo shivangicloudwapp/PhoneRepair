@@ -1,5 +1,6 @@
 package com.cwt.phonerepair.storeadapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -24,6 +25,7 @@ import com.cwt.phonerepair.activity.SubscriptionPlanActivity;
 import com.cwt.phonerepair.modelclass.ProductModel;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel;
 import com.cwt.phonerepair.storeactivity.AddProductActivity;
+import com.cwt.phonerepair.utils.RoundRectCornerImageView;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
@@ -55,7 +57,7 @@ public class ProductManagementAdapter extends RecyclerView.Adapter<ProductManage
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onBindViewHolder(@NonNull ProductManagementAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductManagementAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         ProductManagementModel model = modelList.get(position);
         holder.tvProductName.setText(model.getTitle());
         holder.tvProductPrice.setText(Integer.toString(model.getPrice()));
@@ -106,7 +108,9 @@ public class ProductManagementAdapter extends RecyclerView.Adapter<ProductManage
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvProductName,tvProductPrice;
 
-        ImageView ivProdcut,menu;
+        ImageView menu;
+
+        RoundRectCornerImageView ivProdcut;
 
         RelativeLayout rlProduct;
 

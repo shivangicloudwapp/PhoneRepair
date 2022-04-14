@@ -14,7 +14,6 @@ public class BookServiceActivity extends AppCompatActivity implements View.OnCli
 
 
 Button btnSubmit;
-
 ImageView ivBackBookSer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +26,12 @@ ImageView ivBackBookSer;
         btnSubmit.setOnClickListener(this);
         ivBackBookSer.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View v) {
-
         if (v==btnSubmit){
             Intent intent =new Intent(BookServiceActivity.this, ConfirmServiceActtivity.class);
             startActivity(intent);
         }
-
         else if (v==ivBackBookSer){
 
             onBackPressed();

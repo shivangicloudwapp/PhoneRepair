@@ -105,7 +105,6 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
         add.setStoreId(store_Id);
 
 
-
         Call<GetStoreAllProductResponse> call=jsonPlaceHolderApi.GetStoreAllProduct("Bearer "+sessionManager.getSavedToken(),add);
         call.enqueue(new Callback<GetStoreAllProductResponse>() {
             @Override

@@ -160,7 +160,7 @@
                 android:fontFamily="@font/mulish_light"
                 android:textFontWeight="300"
                 android:textSize="12sp"
-                android:singleLine="true"
+                android:singleLine="false"
                 android:textColor="@color/black_b"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:gravity="start"
@@ -255,7 +255,7 @@
                 android:text="Upload SSM Image"
                 android:textColor="@color/black_b"
                 android:textFontWeight="600"
-                android:layout_marginTop="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_11sdp"
                 android:textSize="15sp" />
 
             <LinearLayout

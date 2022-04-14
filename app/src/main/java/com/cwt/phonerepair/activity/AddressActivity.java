@@ -31,10 +31,7 @@ import retrofit2.Response;
 public class AddressActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnAddaddress,btnSubmit;
-
     ImageView ivBackAddress;
-
-
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
     Context context;

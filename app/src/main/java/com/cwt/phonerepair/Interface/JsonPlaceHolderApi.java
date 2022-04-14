@@ -175,9 +175,10 @@ public interface JsonPlaceHolderApi {
     Call<PlaceOrderResponse> PlaceOrder(@Body PlaceOrderParameter parameter,
                                         @Header("Authorization") String header );
 
+
 /*
     servicelist
-    getstore-allproduct*/
+   */
 
 }
 

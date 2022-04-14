@@ -29,15 +29,17 @@
             android:text="Product management"
             android:textColor="@color/black_b"
             android:textFontWeight="800"
+            android:layout_centerVertical="true"
             android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/iv"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_group__24_" />
+            android:src="@drawable/ic_group__24_"
+            app:tint="@color/black_b" />
 
     </RelativeLayout>
 

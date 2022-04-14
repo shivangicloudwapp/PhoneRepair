@@ -44,7 +44,6 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
     Context context;
     EditText etFlatNo,etLandmark,etAlternateNum,etName,etContact,etAddress;
        String flatNum,landmark,alternateNum,name,contactNum,address;
-
     String Type="home";
     String latitude, longitude;
     private static final int REQUEST_LOCATION = 1;

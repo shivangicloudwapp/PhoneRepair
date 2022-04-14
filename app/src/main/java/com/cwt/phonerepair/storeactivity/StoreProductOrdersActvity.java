@@ -29,7 +29,6 @@ public class StoreProductOrdersActvity extends AppCompatActivity {
         setContentView(R.layout.activity_store_product_orders_actvity);
         initView();
         modelList = new ArrayList<>();
-
         for (int i=0;i<=9;i++){
 
             modelList.add(new OrderModel ("4 Items","#CUEP8383832","18-02-2021  12:24PM"));

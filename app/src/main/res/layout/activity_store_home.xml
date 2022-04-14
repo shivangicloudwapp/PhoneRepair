@@ -23,7 +23,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="128dp"
+                android:layout_height="130dp"
                 android:background="@color/green"
                 android:orientation="vertical">
 
@@ -31,8 +31,8 @@
                     android:id="@+id/tvUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_15sdp"
-                    android:layout_marginTop="@dimen/_33sdp"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="@font/mulish_extrabold"
                     android:text="Benjamin"
                     android:textColor="@color/black_b"
@@ -43,8 +43,8 @@
                     android:id="@+id/tvPhoneEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_15sdp"
-                    android:layout_marginTop="@dimen/_9sdp"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/mulish_light"
                     android:text="+61 42226335897  Benjamin@gmail.com"
                     android:textColor="@color/black_b"
@@ -53,91 +53,96 @@
 
             </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_90sdp"
-                android:background="@drawable/group1019"
-                android:layout_marginHorizontal="@dimen/_15sdp">
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_70sdp"
+                android:weightSum="2"
+                android:background="@drawable/group1019">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
                     android:orientation="vertical"
-                    android:layout_marginTop="@dimen/_16sdp">
+                    android:layout_weight="1.7">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="40sp"
-                        android:textColor="@color/black_b"
                         android:layout_marginLeft="@dimen/_12sdp"
                         android:fontFamily="@font/mulish_extrabold"
+                        android:text="Silver "
+                        android:textColor="@color/black_b"
                         android:textFontWeight="500"
-                        android:text="Silver "/>
+                        android:textSize="32sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/_20sdp"
-                        android:textColor="@color/black_b"
                         android:layout_marginLeft="@dimen/_12sdp"
                         android:fontFamily="@font/mulish_light"
+                        android:text="3 Months"
+                        android:textColor="@color/black_b"
                         android:textFontWeight="300"
-                        android:text="3 Months"/>
+                        android:textSize="26sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/_10sdp"
-                        android:textColor="@color/black_b"
                         android:layout_marginLeft="@dimen/_13sdp"
-                        android:fontFamily="@font/mulish_regular"
-                        android:textFontWeight="400"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:text="Post 3 Items"/>
+                        android:fontFamily="@font/mulish_regular"
+                        android:text="Post 3 Items"
+                        android:textColor="@color/black_b"
+                        android:textFontWeight="400"
+                        android:textSize="@dimen/_10sdp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/_9sdp"
-                        android:textColor="@color/black_b"
                         android:layout_marginLeft="@dimen/_13sdp"
-                        android:fontFamily="@font/mulish_regular"
-                        android:textFontWeight="400"
                         android:layout_marginTop="@dimen/_6sdp"
-                        android:text="Expire Date : 31-09-2022"/>
+                        android:fontFamily="@font/mulish_regular"
+                        android:text="Expire Date : 31-09-2022"
+                        android:textColor="@color/black_b"
+                        android:textFontWeight="400"
+                        android:textSize="@dimen/_9sdp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginRight="@dimen/_16sdp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="@dimen/_40sdp"
-                    android:layout_alignParentRight="true">
+                    android:layout_marginRight="@dimen/_16sdp"
+                    android:orientation="vertical"
+                    android:layout_weight=".3">
 
                     <ImageView
                         android:layout_width="@dimen/_38sdp"
                         android:layout_height="@dimen/_38sdp"
-                        android:src="@drawable/ic_group_1015"
-                        android:layout_gravity="center_horizontal"/>
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_group_1015" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="RM33.00"
                         android:fontFamily="@font/mulish_bold"
-                        android:textSize="@dimen/_15sdp"
+                        android:text="RM33.00"
+                        android:singleLine="true"
                         android:textColor="@color/black_b"
-                        android:textFontWeight="700"/>
-
+                        android:textFontWeight="700"
+                        android:ellipsize="end"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="@dimen/_15sdp" />
 
 
                 </LinearLayout>
 
 
-
-            </RelativeLayout>
+            </LinearLayout>
 
 
 

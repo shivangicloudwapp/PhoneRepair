@@ -92,10 +92,8 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     public static final int REQUEST_STORAGE = 2;
 //    public static final int SELECT_FILE = 110;
 
-
-
     //------------------------file code====================================
-    String encodeimg1, cartkey;
+    String encodeStoreimg,encodeSsmimg, cartkey;
     private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
     private String userChoosenTask;
     File uploadFileI;
@@ -106,14 +104,11 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     SsmImageAdapter ssmImageAdapter;
     int gallery_val =10;
     //------------------------file code====================================
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subscribe_new_store);
         initView();
-
         getData();
 
     }
@@ -143,8 +138,6 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         sessionManager = new SessionManager(this);
         jsonPlaceHolderApi = ApiUtils.getAPIService();
         modelArrayList = new ArrayList<>();
-
-
         btnSave = findViewById(R.id.btnSave);
         ivBackSubNewstore = findViewById(R.id.ivBackSubNewstore);
         etStoreName = findViewById(R.id.etStoreName);
@@ -196,14 +189,11 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
 
                 } else {
 
-                    if (Utils.checkConnection(context)) {
 
                         subScribeNewStore();
-                        showBottomSheetDialog();
 
-                    } else {
-                        Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
-                    }
+
+
                 }
 
 
@@ -236,6 +226,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                     rvSsmImage.setAdapter(storeImagesAdapter);
                 }
                 selectSsmImage();
+                break;
 
 //                checkPermissionsForStorage();
 
@@ -245,7 +236,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                 intent1.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent1, "Select Picture"), PICK_IMAGE_MULTIPLE_SSM);*/
                 //  ChooseSSmImage(context);
-                break;
+
             case R.id.ivBackSubNewstore:
                 onBackPressed();
                 break;
@@ -254,35 +245,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         }
     }
 
-   /* private void checkPermissionsForStorage() {
 
-        if (ActivityCompat.checkSelfPermission(((Activity) context), WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(((Activity) context), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-
-            System.out.println("GALLERY OPEN 22");
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-       //    true intent.putExtra(android.provider.MediaStore.EXTRA_VIDEO_QUALITY, -1);
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Select File"), SELECT_FILE);
-
-
-        } else {
-            requestStoragePermission();
-        }
-    }
-
-    private void requestStoragePermission() {
-
-        {
-            try {
-                ActivityCompat.requestPermissions(((Activity) context), new String[]{WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_STORAGE);
-            } catch (Exception e) {
-                e.printStackTrace();
-                Log.e("Exception>>", e.toString());
-            }
-        }
-    }*/
 
     public void subScribeNewStore() {
         Customprogress.showPopupProgressSpinner(context, true);
@@ -325,7 +288,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                 if (response.isSuccessful()) {
 
                     if (response.body().getStatus()) {
-
+                        showBottomSheetDialog();
                         Intent intent = new Intent(SubscribeNewStoreActivity.this, DashboardActivity.class);
                         startActivity(intent);
 
@@ -347,7 +310,6 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     private RequestBody createRequestBody(String s) {
 
         return RequestBody.create(MediaType.parse("multipart/form-data"), s);
-
     }
 
     private void showBottomSheetDialog() {
@@ -359,13 +321,12 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
         window.setGravity(Gravity.CENTER);
         customdialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-
         Button btnSave1 = customdialog.findViewById(R.id.btnDone);
+
+        customdialog.show();
         btnSave1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 customdialog.cancel();
             }
 
@@ -373,12 +334,10 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         });
 
 
-        customdialog.show();
+
     }
 
-
-
-
+    //.....................StoreImageSelect........................//
 
     private void selectStoreImage() {
 
@@ -403,11 +362,11 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                                 Toast.makeText(context,"Can select a maximum of 10 images", Toast.LENGTH_SHORT).show();
                             }else{
                                 storeImageCameraIntent();
-                                ssmImageCameraIntent();
+
                             }
                         }else{
                             storeImageCameraIntent();
-                            ssmImageCameraIntent();
+
 
                         }
                     }
@@ -445,6 +404,20 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
 
     }
 
+    private void storeImageCameraIntent() {
+        try {
+
+            System.out.println("CAMERA OPEN 22");
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, 2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    //.....................SsmImageSelect........................//
+
     private void  selectSsmImage(){
         {
             final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
@@ -460,18 +433,16 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                         userChoosenTask = "Take Photo";
 
                         if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                            requestPermissions(new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+                            requestPermissions(new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE}, 22);
                         } else {
                             if(storeImageFiles!=null){
                                 if(storeImageFiles.size()==10){
                                     Toast.makeText(context,"Can select a maximum of 10 images", Toast.LENGTH_SHORT).show();
                                 }else{
-                                    storeImageCameraIntent();
                                     ssmImageCameraIntent();
 
                                 }
                             }else{
-                                storeImageCameraIntent();
                                 ssmImageCameraIntent();
 
                             }
@@ -511,20 +482,6 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         }
     }
 
-
-
-    private void storeImageCameraIntent() {
-        try {
-
-            System.out.println("CAMERA OPEN 22");
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(intent, 2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
     private void ssmImageCameraIntent() {
         try {
 
@@ -535,8 +492,6 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
             e.printStackTrace();
         }
     }
-
-
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -577,7 +532,6 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         try {
             System.out.println("request code >>>>>>>>>"+requestCode);
             if (requestCode == 1 && data != null) {
@@ -617,22 +571,21 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                     int bottom=40;
 
                     Rect r = new Rect(left,top,right,bottom);
-       //set the new bounds to your drawable
+                    //set the new bounds to your drawable
                     d.setBounds(r);
                     Uri tempUri = getStoreImageUri(context,bm);
 //                getImageFilePath(tempUri);
-                    encodeimg1= getStoreImageRealPathFromURI(tempUri);
+                    encodeStoreimg = getStoreImageRealPathFromURI(tempUri);
 
-                    System.out.println("encodeimg1 >>>>>>>>>>>"+encodeimg1);
-                    storeImageFiles.add(encodeimg1);
+                    System.out.println("encodeimg1 >>>>>>>>>>>"+ encodeStoreimg);
+                    storeImageFiles.add(encodeStoreimg);
 
 
-                        storeImagesAdapter = new StoreImagesAdapter(context, storeImageFiles);
-                        rvImageStore.setAdapter(storeImagesAdapter);
+                    storeImagesAdapter = new StoreImagesAdapter(context, storeImageFiles);
+                    rvImageStore.setAdapter(storeImagesAdapter);
 
                 }
             }
-
 
             else if (requestCode == 11 && data != null) {
              /*  ArrayList<Image> images = data.getParcelableArrayListExtra(ConstantsCustomGallery.INTENT_EXTRA_IMAGES);
@@ -675,10 +628,10 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
                     d.setBounds(r);
                     Uri tempUri = getSsmImageUri(context,bm);
 //                getImageFilePath(tempUri);
-                    encodeimg1= getSsmImageRealPathFromURI(tempUri);
+                    encodeSsmimg = getSsmImageRealPathFromURI(tempUri);
 
-                    System.out.println("encodeimg1 >>>>>>>>>>>"+encodeimg1);
-                    ssmImageFiles.add(encodeimg1);
+                    System.out.println("encodeimg1 >>>>>>>>>>>"+ encodeSsmimg);
+                    ssmImageFiles.add(encodeSsmimg);
 
 
                     ssmImageAdapter = new SsmImageAdapter(context, ssmImageFiles);
@@ -704,15 +657,14 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
 
 
     }
+    //.....................StoreImageCapture........................//
 
-
-
-    private void onCaptureStoreImageResult(Intent data) {
+    private void onCaptureStoreImageResult(Intent StoreImagedata) {
         try {
 
-            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            Bitmap storeImagethumbnail = (Bitmap) StoreImagedata.getExtras().get("StoreImagedata");
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            storeImagethumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
 
             File destination = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
 
@@ -727,15 +679,15 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Uri tempUri = getStoreImageUri(context,thumbnail);
+            Uri tempUri = getStoreImageUri(context,storeImagethumbnail);
 
             // CALL THIS METHOD TO GET THE ACTUAL PATH
             //   File finalFile = new File(getRealPathFromURI(tempUri));
 
-            System.out.println("data.getData() " + data.getData());
-            encodeimg1= getStoreImageRealPathFromURI(tempUri);
+            System.out.println("StoreImagedata.getData() " + StoreImagedata.getData());
+            encodeStoreimg = getStoreImageRealPathFromURI(tempUri);
 
-            storeImageFiles.add(encodeimg1);
+            storeImageFiles.add(encodeStoreimg);
 
             storeImagesAdapter = new StoreImagesAdapter(context, storeImageFiles);
             rvImageStore.setAdapter(storeImagesAdapter);
@@ -745,13 +697,30 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         }
     }
 
+    public Uri getStoreImageUri(Context inContext, Bitmap inImage) {
+        String storeImagepath = null;
+        try {
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            Long tsLong = System.currentTimeMillis()/1000;
+            storeImagepath = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, ""+tsLong, null);
 
-    private void onCaptureSsmImageResult(Intent data) {
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return Uri.parse(storeImagepath);
+    }
+
+    //.............SsmImageCapture.............//
+
+    private void onCaptureSsmImageResult(Intent ssmImagedata) {
         try {
 
-            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            Bitmap ssmImagethumbnail = (Bitmap) ssmImagedata.getExtras().get("SsmImagedata");
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            ssmImagethumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
 
             File destination = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
 
@@ -766,15 +735,15 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Uri tempUri = getSsmImageUri(context,thumbnail);
+            Uri tempUri = getSsmImageUri(context,ssmImagethumbnail);
 
             // CALL THIS METHOD TO GET THE ACTUAL PATH
             //   File finalFile = new File(getRealPathFromURI(tempUri));
 
-            System.out.println("data.getData() " + data.getData());
-            encodeimg1= getSsmImageRealPathFromURI(tempUri);
+            System.out.println("SsmImagedata.getData() " + ssmImagedata.getData());
+            encodeSsmimg = getSsmImageRealPathFromURI(tempUri);
 
-            ssmImageFiles.add(encodeimg1);
+            ssmImageFiles.add(encodeSsmimg);
 
             ssmImageAdapter = new SsmImageAdapter(context, ssmImageFiles);
             rvSsmImage.setAdapter(ssmImageAdapter);
@@ -784,53 +753,34 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         }
     }
 
-
-    public Uri getStoreImageUri(Context inContext, Bitmap inImage) {
-        String path = null;
-        try {
-            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-            Long tsLong = System.currentTimeMillis()/1000;
-            path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, ""+tsLong, null);
-
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        return Uri.parse(path);
-    }
-
     public Uri getSsmImageUri(Context inContext, Bitmap inImage) {
-        String path = null;
+        String ssmImagePath = null;
         try {
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
             Long tsLong = System.currentTimeMillis()/1000;
-            path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, ""+tsLong, null);
+            ssmImagePath = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, ""+tsLong, null);
 
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-        return Uri.parse(path);
+        return Uri.parse(ssmImagePath);
     }
 
 
 
+    //.....................StorePathUri........................//
 
-
-
-    private String getStoreImageRealPathFromURI(Uri contentURI)
-    {
+    private String getStoreImageRealPathFromURI(Uri StoreImagecontentURI) {
         String result;
 
 
         String[] projection = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContentResolver().query(contentURI, projection, null, null, null);
+        Cursor cursor = getContentResolver().query(StoreImagecontentURI, projection, null, null, null);
         if (cursor == null) { // Source is Dropbox or other similar local file path
-            result = contentURI.getPath();
+            result = StoreImagecontentURI.getPath();
         } else {
             cursor.moveToFirst();
             int idx = 0;
@@ -843,31 +793,9 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
 
     }
 
+    public void getStoreImageFilePath(Uri storeImageUri) {
 
-    private String getSsmImageRealPathFromURI(Uri contentURI)
-    {
-        String result;
-
-
-        String[] projection = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContentResolver().query(contentURI, projection, null, null, null);
-        if (cursor == null) { // Source is Dropbox or other similar local file path
-            result = contentURI.getPath();
-        } else {
-            cursor.moveToFirst();
-            int idx = 0;
-            idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-            result = cursor.getString(idx);
-            cursor.close();
-        }
-
-        return result;
-
-    }
-
-    public void getStoreImageFilePath(Uri uri) {
-
-        File file = new File(uri.getPath());
+        File file = new File(storeImageUri.getPath());
         String[] filePath = file.getPath().split(":");
         String image_id = filePath[filePath.length - 1];
         Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, MediaStore.Images.Media._ID + " = ? ", new String[]{image_id}, null);
@@ -884,10 +812,30 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     }
 
 
+    //.............SsmPathUri.............//
+    private String getSsmImageRealPathFromURI(Uri ssmImagecontentURI) {
+        String result;
 
-    public void getSsmImageFilePath(Uri uri) {
 
-        File file = new File(uri.getPath());
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(ssmImagecontentURI, projection, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            result = ssmImagecontentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = 0;
+            idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+
+        return result;
+
+    }
+
+    public void getSsmImageFilePath(Uri ssmImageUri) {
+
+        File file = new File(ssmImageUri.getPath());
         String[] filePath = file.getPath().split(":");
         String image_id = filePath[filePath.length - 1];
         Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, MediaStore.Images.Media._ID + " = ? ", new String[]{image_id}, null);
@@ -905,6 +853,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
 
 
 
+    //.....................StoreAdapter........................//
     public class StoreImagesAdapter extends RecyclerView.Adapter<StoreImagesAdapter.ViewHolder> {
         private List<String> imageStoreList;
         private Context context;
@@ -933,8 +882,8 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         public void onBindViewHolder(final ViewHolder viewHolder, int position)
         {
             Bitmap bmp = BitmapFactory.decodeFile(storeImageFiles.get(position));
-            viewHolder.grid_image.setImageBitmap(bmp);
-            viewHolder.imgcross.setOnClickListener(new View.OnClickListener() {
+            viewHolder.gridStoreimage.setImageBitmap(bmp);
+            viewHolder.imgStorecross.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     System.out.println("position >>>>>>>>>>>"+position);
@@ -957,15 +906,15 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
 
         public class ViewHolder extends RecyclerView.ViewHolder {
 
-            public LinearLayout imgcross;
-            public RoundRectCornerImageView grid_image;
+            public ImageView imgStorecross;
+            public RoundRectCornerImageView gridStoreimage;
 
 
             public ViewHolder(View itemLayoutView) {
                 super(itemLayoutView);
 
-                imgcross = itemLayoutView.findViewById(R.id.imgcross);
-                grid_image = itemLayoutView.findViewById(R.id.grid_image);
+                gridStoreimage = itemLayoutView.findViewById(R.id.gridStoreimage);
+                imgStorecross = itemLayoutView.findViewById(R.id.imgStorecross);
             }
         }
         // method to access in activity after updating selection
@@ -976,6 +925,8 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     }
 
 
+
+    //.............SsmAdapter.............//
     public class SsmImageAdapter extends RecyclerView.Adapter<SsmImageAdapter.ViewHolder> {
         private List<String> ssmImageStoreList;
         private Context context;
@@ -1028,7 +979,7 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
 
         public class ViewHolder extends RecyclerView.ViewHolder {
 
-            public LinearLayout imgSSmcross;
+            public ImageView imgSSmcross;
             public RoundRectCornerImageView grid_imageSsm;
 
 
@@ -1045,11 +996,6 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         }
 
     }
-
-
-
-
-
 
 }
 

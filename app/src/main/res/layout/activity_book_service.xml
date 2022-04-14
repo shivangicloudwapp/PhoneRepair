@@ -122,8 +122,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
-                                android:checked="true"
-                                android:layout_marginRight="@dimen/_12sdp" />
+                                android:layout_marginRight="@dimen/_12sdp"
+                                android:checked="true" />
 
 
                         </RelativeLayout>

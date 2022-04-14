@@ -150,10 +150,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
     }
 
-
-
-
-
     private void allProdcuts() {
 
         Customprogress.showPopupProgressSpinner(context,true);

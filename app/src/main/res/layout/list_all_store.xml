@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center">
-            <ImageView
+            <com.cwt.phonerepair.utils.RoundRectCornerImageView
                 android:id="@+id/ivStoreimg"
                 android:layout_width="102dp"
                 android:layout_height="wrap_content"

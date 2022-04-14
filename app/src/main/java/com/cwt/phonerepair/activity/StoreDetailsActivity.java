@@ -37,6 +37,7 @@ import com.cwt.phonerepair.utils.Customprogress;
 import com.cwt.phonerepair.utils.SessionManager;
 import com.cwt.phonerepair.utils.Utils;
 import com.squareup.picasso.Picasso;
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
 
 import java.io.Serializable;
@@ -48,7 +49,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class StoreDetailsActivity extends AppCompatActivity implements View.OnClickListener {
-    SpringDotsIndicator dotsIndicator;
+    DotsIndicator dotsIndicator;
     TextView tvSeeAll,tvStoreDetails,tvAddress,tvStoreName;
     ViewPager view_pager;
     StoreDetailsViewPagerAdapter adapter;

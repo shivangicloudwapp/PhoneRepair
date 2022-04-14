@@ -39,7 +39,7 @@ public class StoreDetailsViewPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return models.size();
+        return models.size()-6;
     }
 
     @Override

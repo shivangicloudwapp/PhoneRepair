@@ -150,7 +150,6 @@ TextView tvTotalAmount;
 
                             }
 
-
                         });
 
                         rvCartProductList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
@@ -159,6 +158,7 @@ TextView tvTotalAmount;
                         double total=0.0;
 
                         for (int i=0;i<modelArrayList.size();i++){
+
                             total=total+(Double.parseDouble(modelArrayList.get(i).getQty())*Double.parseDouble(modelArrayList.get(i).getPrice().toString()));
 
                         }

@@ -115,15 +115,13 @@
 
 
 
-
-
-       <GridView
-            android:id="@+id/gridViewProduct"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvImageProduct"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:numColumns="3"
-           android:scrollbars="none"
-           android:layout_marginTop="@dimen/_11sdp"
+            android:scrollbars="none"
+            android:layout_marginTop="@dimen/_11sdp"
             android:layout_weight="1"/>
 -->
 
@@ -221,7 +219,10 @@
             android:textColor="@color/black_b"
             android:layout_marginTop="@dimen/_15sdp"
             android:gravity="start"
+            android:imeOptions="actionNext"
             android:padding="@dimen/_8sdp"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
             android:background="@drawable/edittxt_bac"/>
 
 
@@ -250,6 +251,8 @@
                 android:fontFamily="@font/poppins_light"
                 android:textFontWeight="300"
                 android:textSize="12sp"
+                android:imeOptions="actionDone"
+                android:ellipsize="end"
                 android:textColorHint="@color/black_b"
                 android:textColor="@color/black_b"
                 android:layout_marginTop="@dimen/_15sdp"

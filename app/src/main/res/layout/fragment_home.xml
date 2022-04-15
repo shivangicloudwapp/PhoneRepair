@@ -27,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_12sdp"
@@ -36,63 +36,61 @@
                         android:orientation="horizontal">
 
                         <ImageView
+                            android:layout_gravity="center"
                             android:id="@+id/ivLocation"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_centerVertical="true"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
                             android:src="@drawable/ic_group__19_" />
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_80sdp"
-                            android:layout_toRightOf="@+id/ivLocation"
                             android:orientation="horizontal"
-                            android:weightSum="2">
+                            android:layout_marginStart="8dp">
 
                             <TextView
-                                android:id="@+id/tvAddress"
+                                android:id="@+id/tvCurrentLocation"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_12sdp"
-                                android:layout_weight="1.5"
+                                android:layout_marginEnd="@dimen/_12sdp"
                                 android:fontFamily="@font/mulish_regular"
-                                android:text="Āzenes iela 22A, Kurzemes Rīga, LV-1048, Latvia"
+                                android:text="Āzenes iela 22A, Kurzemes\n Rīga, LV-1048, Latvia"
                                 android:textColor="@color/textClr"
                                 android:textFontWeight="400"
                                 android:textSize="@dimen/_8sdp"
-                                tools:ignore="Suspicious0dp" />
+                             android:drawableRight="@drawable/ic_vector__46_"/>
 
-                            <ImageView
-                                android:layout_width="@dimen/_22sdp"
-                                android:layout_height="@dimen/_22sdp"
-                                android:layout_marginRight="@dimen/_14sdp"
-                                android:layout_weight=".5"
-                                android:src="@drawable/ic_vector__46_" />
+                        <!--  <ImageView
+                              android:id="@+id/ivPlacePicker"
+                                android:layout_width="10dp"
+                                android:layout_height="8dp"
+                                android:drawableEnd="@drawable/ic_vector__46_"/>-->
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true">
+                            android:layout_height="wrap_content">
 
                             <ImageView
                                 android:id="@+id/tvCart"
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
-                                android:layout_marginRight="@dimen/_11sdp"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
                                 android:src="@drawable/ic_group__22_" />
 
                             <ImageView
                                 android:id="@+id/tvNotification"
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_gravity="center"
                                 android:src="@drawable/ic_vector__43_" />
 
                         </LinearLayout>
 
-                    </RelativeLayout>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"

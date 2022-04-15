@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +38,7 @@ import android.widget.Toast;
 import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
+import com.cwt.phonerepair.activity.SubscribeNewStoreActivity;
 import com.cwt.phonerepair.modelclass.response.AddProduct.AddProductResponse;
 import com.cwt.phonerepair.modelclass.response.AddProduct.ProductManagementModel;
 import com.cwt.phonerepair.utils.Customprogress;
@@ -72,16 +74,13 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
     ProductManagementModel productManagementModel;
-    ArrayList<String> imageList;
-
-    private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
-    private String userChoosenTask;
-    File uploadFileI;
+    ArrayList<String> productImageFiles = new ArrayList<>();
     RecyclerView rvImageProduct;
-    ArrayList<String> ProductImageFiles = new ArrayList<>();
-    AddProductImageAdapter addProductImageAdapter;
-    int gallery_val = 10;
+    private String userChoosenTask;
+
+    ProductImageAdapter productImageAdapter;
     String encodeProductimg;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +96,6 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             Intent intent = getIntent();
             if (intent != null) {
                 productManagementModel = (ProductManagementModel) intent.getSerializableExtra("store_id");
-
-
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -111,7 +108,6 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         context = AddProductActivity.this;
         jsonPlaceHolderApi = ApiUtils.getAPIService();
         sessionManager = new SessionManager(this);
-        imageList = new ArrayList<>();
 
         ivBackAllPro = findViewById(R.id.ivBackAllPro);
         rvImageProduct = findViewById(R.id.rvImageProduct);
@@ -154,9 +150,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
                 } else {
 
                     if (Utils.checkConnection(context)) {
-
                         addProduct();
-
                     } else {
                         Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
                     }
@@ -164,12 +158,13 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
                 break;
 
             case R.id.llProductImg:
+                if (productImageFiles.size()!=0)
+                {
 
-                if (ProductImageFiles.size() != 0) {
-                    ProductImageFiles.clear();
-                    addProductImageAdapter = new AddProductImageAdapter(context, ProductImageFiles);
-                    rvImageProduct.setAdapter(addProductImageAdapter);
+                    productImageAdapter = new AddProductActivity.ProductImageAdapter(context, productImageFiles);
+                    rvImageProduct.setAdapter(productImageAdapter);
                 }
+
                 selectProductImage();
 
                 break;
@@ -181,12 +176,9 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
     }
 
-
-
-    //.....................ProductImage........................//
-
-
     private void selectProductImage() {
+
+
 
         final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
 
@@ -201,17 +193,17 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
                     userChoosenTask = "Take Photo";
 
                     if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                        requestPermissions(new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+                        ActivityCompat.requestPermissions(AddProductActivity.this,new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
                     } else {
-                        if(ProductImageFiles!=null){
-                            if(ProductImageFiles.size()==10){
+                        if(productImageFiles!=null){
+                            if(productImageFiles.size()==10){
                                 Toast.makeText(context,"Can select a maximum of 10 images", Toast.LENGTH_SHORT).show();
                             }else{
-                                storeProductImageCameraIntent();
+                                productImageCameraIntent();
 
                             }
                         }else{
-                            storeProductImageCameraIntent();
+                            productImageCameraIntent();
 
 
                         }
@@ -224,13 +216,13 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
                     userChoosenTask = "Choose from Library";
 
                     if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                        ActivityCompat.requestPermissions(AddProductActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                     } else {
-                        if(ProductImageFiles!=null){
-                            if(ProductImageFiles.size()>0){
-                                gallery_val= 10-ProductImageFiles.size();
+                        /*if(storeImageFiles!=null){
+                            if(storeImageFiles.size()>0){
+                                gallery_val= 10-storeImageFiles.size();
                             }
-                        }
+                        }*/
                        /* Intent intent = new Intent(context, AlbumSelectActivity.class);
                         intent.putExtra(ConstantsCustomGallery.INTENT_EXTRA_LIMIT, gallery_val); // set limit for image selection
                         startActivityForResult(intent, ConstantsCustomGallery.REQUEST_CODE);*/
@@ -250,7 +242,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
     }
 
-    private void storeProductImageCameraIntent() {
+    private void productImageCameraIntent() {
         try {
 
             System.out.println("CAMERA OPEN 22");
@@ -279,15 +271,12 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
                     intent.setAction(Intent.ACTION_GET_CONTENT);
                     startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
 
-                } else {
-//                    Toast.makeText(getApplicationContext(), "Permission denied", Toast.LENGTH_SHORT).show();
                 }
                 return;
             }
             case 2: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    storeProductImageCameraIntent();
-
+                    productImageCameraIntent();
 
                 } else {
 //                    Toast.makeText(getApplicationContext(), "Permission denied", Toast.LENGTH_SHORT).show();
@@ -299,6 +288,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             // permissions this app might request
         }
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -321,7 +311,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
                     System.out.println("Img count >>>>>>>>>"+count);
                     for (int i = 0; i < count; i++) {
                         Uri imageUri = data.getClipData().getItemAt(i).getUri();
-                        getProductImageFilePath(imageUri);
+                         getProductImageFilePath(imageUri);
                     }
                 }
                 else
@@ -342,30 +332,23 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
                     int bottom=40;
 
                     Rect r = new Rect(left,top,right,bottom);
-                    //set the new bounds to your drawable
+//set the new bounds to your drawable
                     d.setBounds(r);
                     Uri tempUri = getProductImageUri(context,bm);
 //                getImageFilePath(tempUri);
-                    encodeProductimg = getProductImageRealPathFromURI(tempUri);
+                    encodeProductimg=getProductImageRealPathFromURI   (tempUri);
 
-                    System.out.println("encodeimg1 >>>>>>>>>>>"+ encodeProductimg);
-                    ProductImageFiles.add(encodeProductimg);
+                    System.out.println("encodeimg1 >>>>>>>>>>>"+encodeProductimg);
+                    productImageFiles.add(encodeProductimg);
 
-
-                    addProductImageAdapter = new AddProductActivity.AddProductImageAdapter(context, ProductImageFiles);
-                    rvImageProduct.setAdapter(addProductImageAdapter);
-
+                    productImageAdapter = new AddProductActivity.ProductImageAdapter(context, productImageFiles);
+                    rvImageProduct.setAdapter(productImageAdapter);
                 }
             }
-
-
-
             if (requestCode == 2 && null !=data) {
 
                 onCaptureProductImageResult(data);
-
             }
-
         }catch (Exception e)
         {
             e.printStackTrace();
@@ -374,15 +357,14 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
     }
 
-
-    private void onCaptureProductImageResult(Intent ProductImageData) {
+    private void onCaptureProductImageResult(Intent data) {
         try {
 
-            Bitmap storeImagethumbnail = (Bitmap) ProductImageData.getExtras().get("ProductImagedata");
+            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            storeImagethumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
 
-            File destination = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
+            File destination = new File(Environment.getExternalStorageDirectory(), ""+System.currentTimeMillis() + ".jpg");
 
             FileOutputStream fo;
             try {
@@ -395,18 +377,18 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Uri tempUri = getProductImageUri(context,storeImagethumbnail);
+            Uri tempUri = getProductImageUri(context,thumbnail);
 
             // CALL THIS METHOD TO GET THE ACTUAL PATH
             //   File finalFile = new File(getRealPathFromURI(tempUri));
 
-            System.out.println("ProductImagedata.getData() " + ProductImageData.getData());
+            System.out.println("data.getData() " + data.getData());
             encodeProductimg = getProductImageRealPathFromURI(tempUri);
 
-            ProductImageFiles.add(encodeProductimg);
+            productImageFiles.add(encodeProductimg);
 
-            addProductImageAdapter = new AddProductActivity.AddProductImageAdapter(context, ProductImageFiles);
-            rvImageProduct.setAdapter(addProductImageAdapter);
+            productImageAdapter = new AddProductActivity.ProductImageAdapter(context, productImageFiles);
+            rvImageProduct.setAdapter(productImageAdapter);
         }catch (Exception e)
         {
             e.printStackTrace();
@@ -414,85 +396,75 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     }
 
 
+    private String getProductImageRealPathFromURI(Uri contentURI) {
+        String result;
+
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(contentURI, projection, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            result = contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = 0;
+            idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+
+        return result;
+
+    }
 
     private Uri getProductImageUri(Context context, Bitmap inImage) {
-
-        String storeImagepath = null;
+        String path = null;
         try {
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-            Long tsLong = System.currentTimeMillis()/1000;
-            storeImagepath = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, ""+tsLong, null);
+            path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, ""+System.currentTimeMillis(), null);
 
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-        return Uri.parse(storeImagepath);
+        return Uri.parse(path);
     }
 
-
-
-    private String getProductImageRealPathFromURI(Uri ProductImagecontentURI) {
-            String result;
-
-
-            String[] projection = {MediaStore.Images.Media.DATA};
-            Cursor cursor = getContentResolver().query(ProductImagecontentURI, projection, null, null, null);
-            if (cursor == null) { // Source is Dropbox or other similar local file path
-                result = ProductImagecontentURI.getPath();
-            } else {
+    private void getProductImageFilePath(Uri Uri) {
+            File file = new File(Uri.getPath());
+            String[] filePath = file.getPath().split(":");
+            String image_id = filePath[filePath.length - 1];
+            Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, MediaStore.Images.Media._ID + " = ? ", new String[]{image_id}, null);
+            if (cursor != null) {
                 cursor.moveToFirst();
-                int idx = 0;
-                idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-                result = cursor.getString(idx);
+                @SuppressLint("Range") String imagePath = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+                productImageFiles.add(imagePath);
                 cursor.close();
+
+                productImageAdapter = new AddProductActivity.ProductImageAdapter(context,productImageFiles);
+                rvImageProduct.setAdapter(productImageAdapter);
+
             }
-
-            return result;
-
         }
 
-
-    public void getProductImageFilePath(Uri storeImageUri) {
-
-        File file = new File(storeImageUri.getPath());
-        String[] filePath = file.getPath().split(":");
-        String image_id = filePath[filePath.length - 1];
-        Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, MediaStore.Images.Media._ID + " = ? ", new String[]{image_id}, null);
-        if (cursor != null) {
-            cursor.moveToFirst();
-            @SuppressLint("Range") String imagePath = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
-            ProductImageFiles.add(imagePath);
-            cursor.close();
-
-            addProductImageAdapter = new AddProductActivity.AddProductImageAdapter(context,ProductImageFiles);
-            rvImageProduct.setAdapter(addProductImageAdapter);
-
-        }
-    }
-
-
-
-    public class AddProductImageAdapter extends RecyclerView.Adapter<AddProductActivity.AddProductImageAdapter.ViewHolder> {
-        private List<String> productImageList;
+    private class ProductImageAdapter extends RecyclerView.Adapter<AddProductActivity.ProductImageAdapter.ViewHolder> {
+        private List<String> imageProducteList;
         private Context context;
 
-        public AddProductImageAdapter(Context context, List<String> imageStoreList) {
-            this.productImageList = imageStoreList;
+        public ProductImageAdapter(Context context, List<String> imageStoreList) {
+            this.imageProducteList = imageStoreList;
             this.context = context;
 
         }
 
         // Create new views
         @Override
-        public AddProductActivity.AddProductImageAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public AddProductActivity.ProductImageAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
 //        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_users, null);
-            View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_single, parent, false);
+            View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.gv_storeimage_addproduct, parent, false);
 
-            AddProductActivity.AddProductImageAdapter.ViewHolder viewHolder = new AddProductActivity.AddProductImageAdapter.ViewHolder(itemLayoutView);
+            AddProductActivity.ProductImageAdapter.ViewHolder viewHolder = new AddProductActivity.ProductImageAdapter.ViewHolder(itemLayoutView);
 //            ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(context));
 
             return viewHolder;
@@ -500,19 +472,19 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
         @SuppressLint("RecyclerView")
         @Override
-        public void onBindViewHolder(final AddProductActivity.AddProductImageAdapter.ViewHolder viewHolder, int position)
+        public void onBindViewHolder(final AddProductActivity.ProductImageAdapter.ViewHolder viewHolder, int position)
         {
-            Bitmap bmp = BitmapFactory.decodeFile(ProductImageFiles.get(position));
-            viewHolder.gridStoreimage.setImageBitmap(bmp);
-            viewHolder.imgStorecross.setOnClickListener(new View.OnClickListener() {
+            Bitmap bmp = BitmapFactory.decodeFile(productImageFiles.get(position));
+            viewHolder.gridProductimage.setImageBitmap(bmp);
+            viewHolder.imgProductcross.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     System.out.println("position >>>>>>>>>>>"+position);
-                    ProductImageFiles.remove(position);
-                    System.out.println("web list >>>>>>>>>>>"+ProductImageFiles);
-                    addProductImageAdapter = new AddProductActivity.AddProductImageAdapter(context, ProductImageFiles);
-                    rvImageProduct.setAdapter(addProductImageAdapter);
-                    addProductImageAdapter.notifyDataSetChanged();
+                    productImageFiles.remove(position);
+                    System.out.println("web list >>>>>>>>>>>"+productImageFiles);
+                    productImageAdapter = new AddProductActivity.ProductImageAdapter(context, productImageFiles);
+                    rvImageProduct.setAdapter(productImageAdapter);
+                    productImageAdapter.notifyDataSetChanged();
                 }
             });
 
@@ -522,33 +494,28 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         // Return the size arraylist
         @Override
         public int getItemCount() {
-            return productImageList.size();
+            return imageProducteList.size();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
 
-            public ImageView imgStorecross;
-            public RoundRectCornerImageView gridStoreimage;
+            public ImageView imgProductcross;
+            public RoundRectCornerImageView gridProductimage;
 
 
             public ViewHolder(View itemLayoutView) {
                 super(itemLayoutView);
 
-                gridStoreimage = itemLayoutView.findViewById(R.id.gridStoreimage);
-                imgStorecross = itemLayoutView.findViewById(R.id.imgStorecross);
+                gridProductimage = itemLayoutView.findViewById(R.id.gridProductimage);
+                imgProductcross = itemLayoutView.findViewById(R.id.imgProductcross);
             }
         }
         // method to access in activity after updating selection
-        public List<String> getProductImageList() {
-            return productImageList;
+        public List<String> getStoreImageList() {
+            return imageProducteList;
         }
 
     }
-
-
-
-//................Api--AddProduct....................//
-
 
 
     private void addProduct() {
@@ -562,8 +529,8 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
         List<MultipartBody.Part> productImage = new ArrayList<>();
 
-        for (int i = 0; i < ProductImageFiles.size(); i++) {
-            File file = new File(ProductImageFiles.get(i));
+        for (int i = 0; i < productImageFiles.size(); i++) {
+            File file = new File(productImageFiles.get(i));
             RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
             MultipartBody.Part filePart = MultipartBody.Part.createFormData("product_image[]", file.getName(), requestBody);
             productImage.add(filePart);
@@ -600,6 +567,8 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
     }
 }
+
+
 
 
 

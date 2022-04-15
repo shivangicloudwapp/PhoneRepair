@@ -3,14 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.cwt.phonerepair">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+    <uses-feature android:name="android.hardware.location" android:required="true" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -21,10 +31,13 @@
         android:theme="@style/Theme.PhoneRepair">
         <activity
             android:name=".storeactivity.AddProductActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity
             android:name=".storeactivity.ProductManagementActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".storeactivity.StoreProductOrderDetails"
             android:exported="true" />
@@ -54,7 +67,8 @@
             android:exported="true" />
         <activity
             android:name=".activity.SubscribeNewStoreActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activity.SubscriptionPlanActivity"
             android:exported="true" />
@@ -66,13 +80,16 @@
             android:exported="true" />
         <activity
             android:name=".activity.RateUsActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activity.AddAddressActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activity.ProfileActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activity.OrderPlacedSuccessActivity"
             android:exported="true" />
@@ -93,13 +110,16 @@
             android:exported="true" />
         <activity
             android:name=".activity.ConfirmServiceActtivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activity.BookServiceActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activity.StoreDetailsActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activity.AllStoresActivity"
             android:exported="true" />
@@ -134,12 +154,9 @@
             android:name=".storeactivity.StoreProductOrdersActvity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
-
-
         <activity
             android:name=".activity.serviceActivity.ServiceDetailsCompleteActivity"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
@@ -153,5 +170,8 @@
             </intent-filter>
         </activity>
     </application>
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyAV5_zjsBpHKLv3BzNUytjul6CCJNprjDk"/>
 
 </manifest>

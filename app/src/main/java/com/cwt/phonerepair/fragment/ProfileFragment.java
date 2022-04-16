@@ -39,10 +39,6 @@ JsonPlaceHolderApi jsonPlaceHolderApi;
         View view= inflater.inflate(R.layout.fragment_profile, container, false);
 
         initView(view);
-
-
-
-
         return view;
     }
 

@@ -96,7 +96,7 @@ public class OrderFragment extends Fragment {
 
                     }
                     else {
-                        Toast.makeText(getActivity(), "faild...."+response.body().getMassage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Please Check Internet Connection "+response.body().getMassage(), Toast.LENGTH_SHORT).show();
 
                     }
                 }

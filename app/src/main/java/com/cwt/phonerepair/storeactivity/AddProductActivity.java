@@ -176,6 +176,10 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
     }
 
+
+    //..................................Select Image from Camera and Gallery................................//
+
+
     private void selectProductImage() {
 
 
@@ -517,6 +521,8 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
     }
 
+
+    //..................................Api AddProduct................................//
 
     private void addProduct() {
         Customprogress.showPopupProgressSpinner(context, true);

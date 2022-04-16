@@ -75,8 +75,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
   TextView tvSeeAll;
   JsonPlaceHolderApi jsonPlaceHolderApi;
   SessionManager sessionManager;
-    HomeStoreModel model;
-ImageView ivGetCurruntLocation;
+
     private static final int REQUEST_LOCATION = 1;
     protected LocationManager locationManager;
     double lat = 0.0, lng = 0.0;
@@ -166,6 +165,12 @@ ImageView ivGetCurruntLocation;
 
 
                     }
+
+
+                }
+
+                else{
+                    Toast.makeText(context, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -204,6 +209,11 @@ ImageView ivGetCurruntLocation;
 
         }
     }
+
+
+
+
+    //....................Get Current Location.......................//
 
     @SuppressLint("NewApi")
     private void getLocation()
@@ -323,6 +333,10 @@ ImageView ivGetCurruntLocation;
 
         }
     }
+
+
+
+    //....................Get Place Picker.......................//
     private void getAutoLocation()
     {
         List<Place.Field> placeFields = new ArrayList<>(Arrays.asList(com.google.android.libraries.places.api.model.Place.Field.values()));

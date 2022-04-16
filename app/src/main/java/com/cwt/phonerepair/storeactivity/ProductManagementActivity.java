@@ -74,6 +74,10 @@ public class ProductManagementActivity extends AppCompatActivity implements View
         rvAllPro.setHasFixedSize(true);
 
                      }
+
+                    else{
+                        Toast.makeText(ProductManagementActivity.this, "Please Check Network Connection", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
 

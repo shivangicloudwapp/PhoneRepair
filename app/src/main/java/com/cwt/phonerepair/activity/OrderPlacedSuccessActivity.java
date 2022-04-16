@@ -29,12 +29,13 @@ import retrofit2.Response;
 public class OrderPlacedSuccessActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-Context context;
+   Context context;
     Button btnHome;
-    GetAddressModel getAddressModelMain;
 
+    GetAddressModel getAddressModelMain;
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +61,9 @@ Context context;
         context=OrderPlacedSuccessActivity.this;
         jsonPlaceHolderApi= ApiUtils.getAPIService();
         sessionManager= new SessionManager(context);
+
         btnHome=findViewById(R.id.btnHome);
+
         btnHome.setOnClickListener(this);
     }
 
@@ -75,8 +78,6 @@ Context context;
                 else {
                     Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
                 }
-
-
                 break;
 
             default:
@@ -104,6 +105,10 @@ Context context;
                 startActivity(intent);
 
 
+                    }
+
+                    else {
+                        Toast.makeText(OrderPlacedSuccessActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
 

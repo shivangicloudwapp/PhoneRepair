@@ -15,27 +15,43 @@ public class BookServiceActivity extends AppCompatActivity implements View.OnCli
 
 Button btnSubmit;
 ImageView ivBackBookSer;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_service);
 
-         btnSubmit =findViewById(R.id.btnSubmit);
+        initView();
+
+    }
+
+    private void initView() {
+
+        btnSubmit =findViewById(R.id.btnSubmit);
         ivBackBookSer =findViewById(R.id.ivBackBookSer);
 
         btnSubmit.setOnClickListener(this);
         ivBackBookSer.setOnClickListener(this);
     }
+
     @Override
     public void onClick(View v) {
-        if (v==btnSubmit){
-            Intent intent =new Intent(BookServiceActivity.this, ConfirmServiceActtivity.class);
-            startActivity(intent);
-        }
-        else if (v==ivBackBookSer){
+        switch (v.getId()){
+            case R.id.btnSubmit:
+                Intent intent =new Intent(BookServiceActivity.this, ConfirmServiceActtivity.class);
+                startActivity(intent);
+                break;
 
-            onBackPressed();
+            case R.id.ivBackBookSer:
+                onBackPressed();
+
+                break;
         }
+
+
+
+
 
     }
 }

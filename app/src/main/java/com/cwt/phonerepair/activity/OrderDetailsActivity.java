@@ -16,18 +16,25 @@ public class OrderDetailsActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_details);
+        initView();
 
+
+
+    }
+
+    private void initView() {
         ivBackOrder=findViewById(R.id.ivBackOrder);
         ivBackOrder.setOnClickListener(this);
-
     }
 
     @Override
     public void onClick(View view) {
 
-        if (view==ivBackOrder){
-            onBackPressed();
+        switch(view.getId()){
+            case R.id.ivBackOrder:
+                onBackPressed();
         }
+
 
     }
 }

@@ -49,34 +49,34 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class StoreDetailsActivity extends AppCompatActivity implements View.OnClickListener {
-    DotsIndicator dotsIndicator;
-    TextView tvSeeAll,tvStoreDetails,tvAddress,tvStoreName;
-    ViewPager view_pager;
-    StoreDetailsViewPagerAdapter adapter;
-    RecyclerView rv_Prodcut;
     Context context;
-    ArrayList<StoreDetailsProductModel> modelArrayList;
-    ImageView ivBackStoreDetail,ivStore;
-
-
-    ArrayList<AllStoreModel> storeArrayList;
-    int storeId;
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
+
+    DotsIndicator dotsIndicator;
+    ViewPager view_pager;
+    StoreDetailsViewPagerAdapter adapter;
+
+
+    TextView tvSeeAll,tvStoreDetails,tvAddress,tvStoreName;
+    RecyclerView rv_Prodcut;
+    ImageView ivBackStoreDetail;
+
+
+    ArrayList<StoreDetailsProductModel> modelArrayList;
+    ArrayList<AllStoreModel> storeArrayList;
+
     int store_Id;
-    // String userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_details);
 
-
         initView();
-
 
         getData();
 
-        //   userId=sessionManager.getSavedUserId();
     }
     private void getData() {
         try {
@@ -99,6 +99,55 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+    private void initView() {
+        jsonPlaceHolderApi= ApiUtils.getAPIService();
+        context=StoreDetailsActivity.this;
+        modelArrayList=new ArrayList<>() ;
+        storeArrayList=new ArrayList<>() ;
+
+        sessionManager= new SessionManager(context);
+        dotsIndicator =  findViewById(R.id.dots_indicator);
+        view_pager =  findViewById(R.id.view_pager);
+        rv_Prodcut=findViewById(R.id.rv_Prodcut);
+        ivBackStoreDetail=findViewById(R.id.ivBackStoreDetail);
+        tvSeeAll=findViewById(R.id.tvSeeAll);
+        tvStoreName=findViewById(R.id.tvStoreName);
+        tvAddress=findViewById(R.id.tvAddress);
+        tvStoreDetails=findViewById(R.id.tvStoreDetails);
+        tvStoreName=findViewById(R.id.tvStoreName);
+
+        //  ivStore=findViewById(R.id.ivStore);
+        ivBackStoreDetail.setOnClickListener(this);
+        tvSeeAll.setOnClickListener(this);
+
+
+
+    }
+
+
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.ivBackStoreDetail:
+                onBackPressed();
+                break;
+
+            case R.id.tvSeeAll:
+                Intent intent = new Intent(StoreDetailsActivity.this, AllProductActivity.class);
+                intent.putExtra("store_Id", store_Id);
+                startActivity(intent);
+                break;
+
+        }
+
+    }
+
+
+
+    //..............All Stores.............//
+
     private void allStores() {
         Call<AllStoresResponse> call = jsonPlaceHolderApi.AllStore("Bearer "+sessionManager.getSavedToken());
         call.enqueue(new Callback<AllStoresResponse>() {
@@ -111,6 +160,10 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
                         view_pager.setAdapter(allStoresAdapter);
                         dotsIndicator.setViewPager(view_pager);
                     }
+
+                    else{
+                        Toast.makeText(StoreDetailsActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -120,6 +173,8 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
             }
         });
     }
+
+    //................Stores Details.............//
 
     private void storeDetails() {
         Customprogress.showPopupProgressSpinner(context,true);
@@ -148,14 +203,14 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
                         modelArrayList= (ArrayList<StoreDetailsProductModel>) response.body().getProduct();
 
                         ProdcutAdapter adapter=new ProdcutAdapter(modelArrayList,context);
-                            rv_Prodcut.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-                            rv_Prodcut.setAdapter(adapter);
-                            rv_Prodcut.setHasFixedSize(true);
+                        rv_Prodcut.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+                        rv_Prodcut.setAdapter(adapter);
+                        rv_Prodcut.setHasFixedSize(true);
 
 
 
                     }else{
-                        Log.d("TAG","status>>>>"+response.body().getStatus());
+                        Toast.makeText(StoreDetailsActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -171,46 +226,6 @@ public class StoreDetailsActivity extends AppCompatActivity implements View.OnCl
         });
     }
 
-    private void initView() {
-        jsonPlaceHolderApi= ApiUtils.getAPIService();
-        context=StoreDetailsActivity.this;
-        modelArrayList=new ArrayList<>() ;
-        storeArrayList=new ArrayList<>() ;
-        sessionManager= new SessionManager(context);
-        dotsIndicator =  findViewById(R.id.dots_indicator);
-        view_pager =  findViewById(R.id.view_pager);
-        rv_Prodcut=findViewById(R.id.rv_Prodcut);
-        ivBackStoreDetail=findViewById(R.id.ivBackStoreDetail);
-        tvSeeAll=findViewById(R.id.tvSeeAll);
-        tvStoreName=findViewById(R.id.tvStoreName);
-        tvAddress=findViewById(R.id.tvAddress);
-        tvStoreDetails=findViewById(R.id.tvStoreDetails);
-        tvStoreName=findViewById(R.id.tvStoreName);
-        //  ivStore=findViewById(R.id.ivStore);
-        ivBackStoreDetail.setOnClickListener(this);
-        tvSeeAll.setOnClickListener(this);
 
 
-
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()){
-            case R.id.ivBackStoreDetail:
-                onBackPressed();
-                break;
-
-            case R.id.tvSeeAll:
-                Intent intent = new Intent(StoreDetailsActivity.this, AllProductActivity.class);
-                intent.putExtra("store_Id", store_Id);
-
-
-                startActivity(intent);
-                break;
-
-        }
-
-    }
 }

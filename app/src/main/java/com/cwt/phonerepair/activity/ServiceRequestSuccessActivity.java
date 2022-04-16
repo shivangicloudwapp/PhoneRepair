@@ -17,17 +17,30 @@ public class ServiceRequestSuccessActivity extends AppCompatActivity implements 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_request_placed);
+
+        initView();
+
+
+
+    }
+
+    private void initView() {
+
         btnBacktoHome=findViewById(R.id.btnBacktoHome);
         btnBacktoHome.setOnClickListener(this);
-
     }
 
     @Override
     public void onClick(View v) {
-        if (v==btnBacktoHome){
-            Intent intent =new Intent(ServiceRequestSuccessActivity.this, DashboardActivity.class);
-            startActivity(intent);
+        switch (v.getId()){
+            case R.id.btnBacktoHome:
+                Intent intent =new Intent(ServiceRequestSuccessActivity.this, DashboardActivity.class);
+                startActivity(intent);
+                break;
         }
+
+
+
 
     }
 }

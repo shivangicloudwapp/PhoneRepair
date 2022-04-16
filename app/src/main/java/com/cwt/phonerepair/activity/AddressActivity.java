@@ -30,12 +30,15 @@ import retrofit2.Response;
 
 public class AddressActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnAddaddress,btnSubmit;
-    ImageView ivBackAddress;
+
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
     Context context;
+
+    Button btnAddaddress,btnSubmit;
+    ImageView ivBackAddress;
     RecyclerView rvGetAddress;
+
     ArrayList<GetAddressModel> addressModels;
 
 
@@ -44,9 +47,9 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
         initView();
-
-
     }
+
+
 
     private void initView() {
         context=AddressActivity.this;
@@ -58,8 +61,6 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
         btnSubmit=findViewById(R.id.btnSubmit);
         ivBackAddress=findViewById(R.id.ivBackAddress);
         rvGetAddress=findViewById(R.id.rvGetAddress);
-
-
 
         btnAddaddress.setOnClickListener(this);
         ivBackAddress.setOnClickListener(this);
@@ -75,40 +76,6 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    private void getAddress() {
-
-        Customprogress.showPopupProgressSpinner(context,true);
-        Call<GetAddressResponse> call=jsonPlaceHolderApi.GetAddress("Bearer "+sessionManager.getSavedToken());
-        call.enqueue(new Callback<GetAddressResponse>() {
-            @Override
-            public void onResponse(retrofit2.Call<GetAddressResponse> call, Response<GetAddressResponse> response) {
-                Customprogress.showPopupProgressSpinner(context, false);
-                if (response.isSuccessful()) {
-                    if (response.body().getStatus()) {
-
-
-                        addressModels= (ArrayList<GetAddressModel>) response.body().getData().getAddress();
-                        GetAddressAdapter adapter = new GetAddressAdapter( addressModels,context);
-                        rvGetAddress.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-                        rvGetAddress.setAdapter( adapter);
-                        rvGetAddress.setHasFixedSize(true);
-
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(retrofit2.Call<GetAddressResponse> call, Throwable t) {
-                Customprogress.showPopupProgressSpinner(context, false);
-                Toast.makeText(AddressActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-
-
-
-
-
-    }
 
     @Override
     public void onClick(View v) {
@@ -131,4 +98,47 @@ public class AddressActivity extends AppCompatActivity implements View.OnClickLi
 
 
     }
+
+
+//...................Api..GetAddress...................//
+
+    private void getAddress() {
+
+        Customprogress.showPopupProgressSpinner(context,true);
+        Call<GetAddressResponse> call=jsonPlaceHolderApi.GetAddress("Bearer "+sessionManager.getSavedToken());
+        call.enqueue(new Callback<GetAddressResponse>() {
+            @Override
+            public void onResponse(retrofit2.Call<GetAddressResponse> call, Response<GetAddressResponse> response) {
+                Customprogress.showPopupProgressSpinner(context, false);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+
+                        addressModels= (ArrayList<GetAddressModel>) response.body().getData().getAddress();
+                        GetAddressAdapter adapter = new GetAddressAdapter( addressModels,context);
+                        rvGetAddress.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+                        rvGetAddress.setAdapter( adapter);
+                        rvGetAddress.setHasFixedSize(true);
+
+                    }
+
+
+                    else {
+                        Toast.makeText(AddressActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<GetAddressResponse> call, Throwable t) {
+                Customprogress.showPopupProgressSpinner(context, false);
+                Toast.makeText(AddressActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+
+
+    }
+
 }

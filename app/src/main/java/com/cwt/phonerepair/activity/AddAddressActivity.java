@@ -35,19 +35,19 @@ import retrofit2.Response;
 
 public class AddAddressActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView ivBackAddAddress;
-    Button btnSubmit;
-
-    LinearLayout llHome,llWork,llOther;
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
     Context context;
+
+    ImageView ivBackAddAddress;
+    Button btnSubmit;
+    LinearLayout llHome,llWork,llOther;
     EditText etFlatNo,etLandmark,etAlternateNum,etName,etContact,etAddress;
-       String flatNum,landmark,alternateNum,name,contactNum,address;
+    String flatNum,landmark,alternateNum,name,contactNum,address;
+
     String Type="home";
     String latitude, longitude;
     private static final int REQUEST_LOCATION = 1;
-
     LocationManager locationManager;
 
     @Override
@@ -57,17 +57,18 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
 
         initView();
 
+        //.........Location Permission..........//
 
-        ActivityCompat.requestPermissions( this,
-                new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+        ActivityCompat.requestPermissions( this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
 
 
     }
 
     private void initView() {
         context= AddAddressActivity.this;
-         jsonPlaceHolderApi= ApiUtils.getAPIService();
+        jsonPlaceHolderApi= ApiUtils.getAPIService();
         sessionManager= new SessionManager(context);
+
         btnSubmit=findViewById(R.id.btnSubmit);
         ivBackAddAddress=findViewById(R.id.ivBackAddAddress);
         etFlatNo=findViewById(R.id.etFlatNo);
@@ -79,6 +80,7 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
         llHome=findViewById(R.id.llHome);
         llWork=findViewById(R.id.llWork);
         llOther=findViewById(R.id.llOther);
+
 
         ivBackAddAddress.setOnClickListener(this);
         btnSubmit.setOnClickListener(this);
@@ -99,6 +101,8 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
                 name=etName.getText().toString().trim();
                 contactNum=etContact.getText().toString().trim();
                 address=etAddress.getText().toString().trim();
+
+                //.........For LatLong........//
 
                  locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                 if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -150,43 +154,42 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
 
                         addAddress();
                     } else {
-                        Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Check  Check Internet Connection", Toast.LENGTH_SHORT).show();
                     }
 
                 }
 
-
-
                 break;
+
             case R.id.ivBackAddAddress:
                 onBackPressed();
                 break;
+
             case R.id.llHome:
                 Type="home";
                 Toast.makeText(context, Type, Toast.LENGTH_SHORT).show();
                 break;
+
             case R.id.llWork:
                 Type="work";
-
                 Toast.makeText(context, Type, Toast.LENGTH_SHORT).show();
-
                 break;
 
             case R.id.llOther:
                 Type="other";
+                Toast.makeText(context, Type, Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(context, Type, Toast.LENGTH_SHORT).show();
-
-
+                break;
             default:
                 break;
 
-
-
         }
 
-
     }
+
+
+    //.........For LatLong........//
+
 
     private void OnGPS()   {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -224,6 +227,10 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
+
+    //.............Api...AddAddress.............//
+
+
     private void addAddress() {
         Customprogress.showPopupProgressSpinner(context,true);
         AddAddressParameter parameter= new AddAddressParameter(flatNum,landmark,alternateNum,name,contactNum,Type,latitude,longitude,address);
@@ -240,7 +247,7 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
                     }
 
                     else {
-                        Toast.makeText(AddAddressActivity.this, "failed...."+response.body().getMassage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddAddressActivity.this, "Please Internet Connection"+response.body().getMassage(), Toast.LENGTH_SHORT).show();
 
                     }
 

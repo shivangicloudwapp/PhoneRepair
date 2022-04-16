@@ -20,6 +20,14 @@ public class ConfirmServiceActtivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_service_acttivity);
 
+        initView();
+
+
+
+    }
+
+    private void initView() {
+
 
         btnBookService=findViewById(R.id.btnBookService);
         ivBackConSer=findViewById(R.id.ivBackConSer);
@@ -30,14 +38,20 @@ public class ConfirmServiceActtivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
-        if (v==btnBookService){
+
+        switch(v.getId()){
+            case R.id.btnBookService:
 
                 Intent intent =new Intent(ConfirmServiceActtivity.this, AddressActivity.class);
                 startActivity(intent);
-        }
-       else if (v==ivBackConSer){
+                break;
 
-            onBackPressed();
+            case R.id.ivBackConSer:
+
+                onBackPressed();
+                break;
         }
+
+
     }
 }

@@ -18,13 +18,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,9 +31,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cwt.phonerepair.Interface.DrawableClickListener;
 import com.cwt.phonerepair.Interface.JsonPlaceHolderApi;
-import com.cwt.phonerepair.MainActivity;
 import com.cwt.phonerepair.R;
 import com.cwt.phonerepair.Server.ApiUtils;
 import com.cwt.phonerepair.activity.AllStoresActivity;
@@ -51,11 +47,15 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.Places;
-import com.google.android.gms.location.places.ui.PlacePicker;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.TypeFilter;
+import com.google.android.libraries.places.widget.Autocomplete;
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -63,12 +63,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment implements View.OnClickListener ,GoogleApiClient.OnConnectionFailedListener {
+public class HomeFragment extends Fragment implements View.OnClickListener{
 
 
     int PLACE_PICKER_REQUEST    =   1;
-    private GoogleApiClient mGoogleApiClient;
-
     RecyclerView rvourExcluStore,rvBanner;
     Context context;
     ArrayList<HomeStoreModel> modelArrayList;
@@ -86,6 +84,8 @@ ImageView ivGetCurruntLocation;
 
 
     TextView tvCurrentLocation;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,12 +99,7 @@ ImageView ivGetCurruntLocation;
 
         initView(view);
         CurrentLocation();
-      /*  mGoogleApiClient = new GoogleApiClient
-                .Builder(context)
-                .addApi(Places.GEO_DATA_API)
-                .addApi(Places.PLACE_DETECTION_API)
-                .enableAutoManage(getActivity(),this)
-                .build();*/
+
         return view;
 
     }
@@ -114,32 +109,14 @@ ImageView ivGetCurruntLocation;
         context=getActivity();
         jsonPlaceHolderApi= ApiUtils.getAPIService();
         sessionManager = new SessionManager(context);
+        Places.initialize(context, "AIzaSyAV5_zjsBpHKLv3BzNUytjul6CCJNprjDk");
         tvSeeAll=view.findViewById(R.id.tvSeeAll);
         rvBanner=view.findViewById(R.id.rvBanner);
         rvourExcluStore=view.findViewById(R.id.rvourExcluStore);
-       // ivGetCurruntLocation=view.findViewById(R.id.ivGetCurruntLocation);
         tvCurrentLocation=view.findViewById(R.id.tvCurrentLocation);
         tvSeeAll.setOnClickListener(this);
 
         tvCurrentLocation.setOnClickListener(this);
-/*
-
-    tvCurrentLocation.setDrawableClickListener(new DrawableClickListener() {
-
-
-            public void onClick(DrawablePosition target) {
-                switch (target) {
-                    case RIGHT:
-                        //Do something here
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-
-        });
-*/
 
         modelArrayList=new ArrayList<>() ;
         bannerList=new ArrayList<>();
@@ -210,18 +187,7 @@ ImageView ivGetCurruntLocation;
                 startActivity(intent);
                 break;
             case R.id.tvCurrentLocation:
-
-                PlacePicker.IntentBuilder builder   =   new PlacePicker.IntentBuilder();
-                Intent intent1;
-                try {
-                    intent1  =   builder.build(getActivity());
-                    startActivityForResult(intent1,PLACE_PICKER_REQUEST );
-                } catch (GooglePlayServicesRepairableException e) {
-                    e.printStackTrace();
-                } catch (GooglePlayServicesNotAvailableException e) {
-                    e.printStackTrace();
-                }
-
+                getAutoLocation();
                 break;
         }
 
@@ -335,25 +301,40 @@ ImageView ivGetCurruntLocation;
     }
 
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        if( requestCode == PLACE_PICKER_REQUEST)
-        {
-            if(resultCode == RESULT_OK)
-            {
-                Place place =   PlacePicker.getPlace(data,context);
-                Double latitude = place.getLatLng().latitude;
-                Double longitude = place.getLatLng().longitude;
-                String address = String.valueOf(latitude)+String.valueOf(longitude);
-                tvCurrentLocation.setText(address);
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+             if (requestCode == PLACE_PICKER_REQUEST) {
+                if (data!=null)
+                {
+                    Place place = Autocomplete.getPlaceFromIntent(data);
+                    LatLng latLng = place.getLatLng();
 
+                    double latti = latLng.latitude;
+                    double longi = latLng.longitude;
+                    lat = latti;
+                    lng = longi;
+                    tvCurrentLocation.setText(place.getAddress());
+                    address = place.getAddress();
+                }
             }
+
+
         }
     }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+    private void getAutoLocation()
+    {
+        List<Place.Field> placeFields = new ArrayList<>(Arrays.asList(com.google.android.libraries.places.api.model.Place.Field.values()));
+        List<TypeFilter> typeFilters = new ArrayList<>(Arrays.asList(TypeFilter.values()));
+        System.out.println("typeFilters >>>>>>>" + typeFilters);
+        Intent autocompleteIntent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, placeFields)
+                .setTypeFilter(typeFilters.get(0))
+//                .setCountry("US")
+                .build(context);
+        startActivityForResult(autocompleteIntent, PLACE_PICKER_REQUEST);
     }
+
 }
 
 

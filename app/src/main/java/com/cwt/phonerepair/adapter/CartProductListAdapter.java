@@ -74,10 +74,14 @@ public class CartProductListAdapter extends RecyclerView.Adapter<CartProductList
         holder.ivproductAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //...............for add Product........//
                 int count = Integer.parseInt(holder.tvProductQty.getText().toString());
                 int Ins = count + 1;
 
                 holder.tvProductQty.setText(String.valueOf(Ins));
+
+                //...............update add Product on Cart........//
+
                 updateCartInterface.getUpdateCart(modelList.get(position),action);
 
 
@@ -88,15 +92,23 @@ public class CartProductListAdapter extends RecyclerView.Adapter<CartProductList
         holder.ivproductRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //...............for remove Product........//
+
                 int count = Integer.parseInt(holder.tvProductQty.getText().toString());
 
                 if (count==0){
                 }
 
                 else {
+
+
                     int Ins=count-1;
 
                     holder.tvProductQty.setText(String.valueOf(Ins));
+
+                    //...............update remove Product on Cart........//
+
                     updateCartInterface.getUpdateCart(modelList.get(position),action);
                 }
 

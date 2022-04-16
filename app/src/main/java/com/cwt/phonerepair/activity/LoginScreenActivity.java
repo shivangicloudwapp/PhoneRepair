@@ -29,16 +29,18 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginScreenActivity extends AppCompatActivity implements View.OnClickListener {
-Button btnLogin;
-TextView tvSignup;
 
-EditText etEmail,etPassword;
-ImageView ivShowHidePass;
-    JsonPlaceHolderApi jsonPlaceHolderApi;
-    SessionManager sessionManager;
-Context context;
+     Button btnLogin;
+     TextView tvSignup;
+     EditText etEmail,etPassword;
+     ImageView ivShowHidePass;
 
+     JsonPlaceHolderApi jsonPlaceHolderApi;
+     SessionManager sessionManager;
+    Context context;
     boolean is_click=true;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +48,6 @@ Context context;
 
         intView();
 
-       /* ivShowHidePass.setBackgroundResource(R.drawable.ic_baseline_visibility_off_24);
-        etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-        etPassword.setSelection(etPassword.getText().length());
-        show=false;*/
     }
 
     private void intView() {
@@ -73,7 +71,6 @@ Context context;
     public void onClick(View v) {
 
         switch(v.getId()){
-
 
             case R.id.btnLogin:
                 String email=etEmail.getText().toString().trim();
@@ -104,9 +101,6 @@ Context context;
                 } else {
                     Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
                 }
-
-
-
 
                 break;
 
@@ -161,7 +155,7 @@ Context context;
                     }
 
                     else {
-                        Toast.makeText(LoginScreenActivity.this, "faild...."+response.body().getMassage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginScreenActivity.this, "Please Check Internet Connection"+response.body().getMassage(), Toast.LENGTH_SHORT).show();
 
                     }
 

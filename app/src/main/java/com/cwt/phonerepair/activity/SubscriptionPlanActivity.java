@@ -76,6 +76,8 @@ Button btnBuyMembership;
 
     }
 
+
+    //.......................Api...subscriptionPlan...................//
     private void subscriptionPlan() {
         Customprogress.showPopupProgressSpinner(context,true);
         Call<SubscriptionPlanResponse>call=jsonPlaceHolderApi.SubScriptionPlan("Bearer "+sessionManager.getSavedToken());
@@ -98,6 +100,10 @@ Button btnBuyMembership;
                         rvSubPlan.setAdapter( adapter);
                         rvSubPlan.setHasFixedSize(true);
                     }
+
+                    else{
+                        Toast.makeText(SubscriptionPlanActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
@@ -111,6 +117,8 @@ Button btnBuyMembership;
 
 
     }
+
+
 
     @Override
     public void onClick(View view) {

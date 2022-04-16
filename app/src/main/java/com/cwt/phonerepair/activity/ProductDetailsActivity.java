@@ -43,21 +43,24 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProductDetailsActivity extends AppCompatActivity implements View.OnClickListener {
-    DotsIndicator dotsIndicator;
-    TextView tvSeeAll,tvproductName,tvPrice,tvProductHighLight;
-    ViewPager view_pager;
-    ArrayList <ProductManagementModel> productManagementModel;
-    RecyclerView rv_Prodcut,rvCustomerFeedback;
+
     Context context;
-    GetStoreAllProdcutModel prodcutModel;
+
+    DotsIndicator dotsIndicator;
+    ViewPager view_pager;
+    RecyclerView rv_Prodcut,rvCustomerFeedback;
+
+    TextView tvSeeAll,tvproductName,tvPrice,tvProductHighLight,tvCustomerFeedback;
     ImageView ivBackProDetail,image_view;
     Button btnAddtocart;
+
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
+
+    GetStoreAllProdcutModel prodcutModel;
+    ArrayList <ProductManagementModel> productManagementModel;
     ArrayList<GetProductModel>getProductModelArrayList;
     ArrayList<GetStoreAllProdcutModel> getStoreAllProdcutModels;
-    TextView tvCustomerFeedback;
-    HomeStoreModel homeStoreModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +68,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_product_details);
         initView();
         getData();
-        sessionManager.getSavedUserId();
     }
 
     private void getData() {
@@ -78,7 +80,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
                 if (Utils.checkConnection(context)) {
 
                     productDetails();
-                   //addToCart();
+
                     allProdcuts();
 
                 } else {
@@ -95,11 +97,12 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
         jsonPlaceHolderApi= ApiUtils.getAPIService();
         context=ProductDetailsActivity.this;
+        sessionManager= new SessionManager(context);
+
         getProductModelArrayList=new ArrayList<>() ;
         getStoreAllProdcutModels=new ArrayList<>() ;
         productManagementModel=new ArrayList<>();
 
-        sessionManager= new SessionManager(context);
           dotsIndicator = (DotsIndicator) findViewById(R.id.dots_indicator);
         view_pager = (ViewPager) findViewById(R.id.view_pager);
        rv_Prodcut=findViewById(R.id.rv_Prodcut);
@@ -150,6 +153,9 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
     }
 
+
+    //..................allProdcuts Api Call....................//
+
     private void allProdcuts() {
 
         Customprogress.showPopupProgressSpinner(context,true);
@@ -186,6 +192,9 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
     }
 
+
+    //..................ProductDetails Api Call....................//
+
     private void productDetails() {
 
         GetProductParameter getProductParameter= new GetProductParameter();
@@ -200,15 +209,12 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
                 if (response.isSuccessful()){
                     if (response.body().getStatus()){
 
-                        //     getProductModelArrayList=(ArrayList<GetProductModel>) response.body().getData().getProduct();
-
-
-
                         tvproductName.setText(response.body().getData().getProduct().getTitle());
                         tvPrice.setText(response.body().getData().getProduct().getPrice().toString());
                         tvProductHighLight.setText(response.body().getData().getProduct().getDiscription());
 
 
+                        //....................Convert ComaSeprated Image Into List.............//
 
                         String image=response.body().getData().getProduct().getProductImage();
                         List<String> result = Arrays.asList(image.split("\\s*,\\s*",4));
@@ -235,15 +241,19 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
     }
 
+
+    //..................Add To cart....................//
+
     private void addToCart()  {
 
         Customprogress.showPopupProgressSpinner(context,true);
         AddtoCartParameter add = new AddtoCartParameter();
         add.setProductId(prodcutModel.getId());
         System.out.println("productId...forCart..."+prodcutModel.getId());
+
+        //............................ When Add To cart Qty of Product Default 1 ..........................//
         add.setQty("1");
 
-        //   System.out.println("Store...Id...Product..all"+homeStoreModel.getId());
 
         Call<AddtoCartResponse> call=jsonPlaceHolderApi.AddtoCart(add,"Bearer "+sessionManager.getSavedToken());
         call.enqueue(new Callback<AddtoCartResponse>() {
@@ -255,8 +265,10 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
                     if (response.body().getStatus()){
                         Intent intent= new Intent(ProductDetailsActivity.this,CartActivity.class);
                         startActivity(intent);
+                    }
 
-
+                    else{
+                        Toast.makeText(ProductDetailsActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
 

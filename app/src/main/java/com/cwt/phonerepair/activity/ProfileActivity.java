@@ -54,11 +54,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     TextView tvChange;
     String UserName,Email,Phone;
     EditText etPhone,etEmail,etName;
-
     Button btnSave;
-
     CircleImageView ivProfile;
-String picturePath;
+
+   String picturePath;
 
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 101;
 
@@ -74,6 +73,69 @@ String picturePath;
             chooseImage(ProfileActivity.this);
         }
     }
+
+    private void initView() {
+
+        context=ProfileActivity.this;
+        sessionManager= new SessionManager(context);
+        jsonPlaceHolderApi= ApiUtils.getAPIService();
+
+        etPhone=findViewById(R.id.etPhone);
+        etName=findViewById(R.id.etName);
+        etEmail=findViewById(R.id.etEmail);
+        ivProfile=findViewById(R.id.ivProfile);
+        btnSave=findViewById(R.id.btnSave);
+        tvChange=findViewById(R.id.tvChange);
+
+
+        //.............Get Signup Data............//
+
+
+
+        UserName= sessionManager.getSavedUserName();
+        Email= sessionManager.getSavedEmail();
+        Phone= sessionManager.getSavedMobile();
+
+        etEmail.setText(Email);
+        etName.setText(UserName);
+        etPhone.setText(Phone);
+
+
+        ivProfile.setOnClickListener(this);
+        tvChange.setOnClickListener(this);
+        btnSave.setOnClickListener(this);
+
+
+
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()){
+            case R.id.ivProfile:
+                chooseImage(context);
+                break;
+
+            case R.id.btnSave:
+                if (Utils.checkConnection(context)) {
+
+                    updateProfile();
+                } else {
+                    Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+
+            default:
+                break;
+        }
+
+    }
+
+    //................................GetImage From Gallery And Camera...........................//
+
 
     private boolean checkAndRequestPermissions(ProfileActivity profileActivity) {
 
@@ -128,36 +190,6 @@ String picturePath;
 
     }
 
-    private void initView() {
-
-        context=ProfileActivity.this;
-        sessionManager= new SessionManager(context);
-        jsonPlaceHolderApi= ApiUtils.getAPIService();
-
-        etPhone=findViewById(R.id.etPhone);
-        etName=findViewById(R.id.etName);
-        etEmail=findViewById(R.id.etEmail);
-        ivProfile=findViewById(R.id.ivProfile);
-        btnSave=findViewById(R.id.btnSave);
-        tvChange=findViewById(R.id.tvChange);
-
-       UserName= sessionManager.getSavedUserName();
-       Email= sessionManager.getSavedEmail();
-       Phone= sessionManager.getSavedMobile();
-
-        etEmail.setText(Email);
-        etName.setText(UserName);
-        etPhone.setText(Phone);
-
-
-        ivProfile.setOnClickListener(this);
-        tvChange.setOnClickListener(this);
-        btnSave.setOnClickListener(this);
-
-
-
-
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -215,39 +247,9 @@ String picturePath;
         }
     }
 
-    @Override
-    public void onClick(View view) {
-
-        switch (view.getId()){
-            case R.id.ivProfile:
-                chooseImage(context);
-                break;
-
-            case R.id.btnSave:
 
 
-                if (Utils.checkConnection(context)) {
-
-                    updateProfile();
-                } else {
-                    Toast.makeText(context, "Check Internet Connection", Toast.LENGTH_SHORT).show();
-                }
-
-
-
-
-                break;
-
-/*
-            case R.id.tvChange:
-                break;*/
-
-            default:
-                break;
-        }
-
-    }
-
+    //................................updateProfile...........................//
 
 
     private void updateProfile() {
@@ -257,9 +259,8 @@ String picturePath;
         HashMap<String, RequestBody> data = new HashMap<>();
         data.put("name", createRequestBody(etName.getText().toString()));
 
-
         MultipartBody.Part image = null;
-       String pathMain=picturePath;
+        String pathMain=picturePath;
         if (pathMain != null && !pathMain.equals("")) {
             File file = new File(pathMain);
             RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
@@ -278,7 +279,10 @@ String picturePath;
                         Intent intent= new Intent(ProfileActivity.this,DashboardActivity.class);
                         startActivity(intent);
 
+                    }
 
+                    else{
+                        Toast.makeText(ProfileActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
 

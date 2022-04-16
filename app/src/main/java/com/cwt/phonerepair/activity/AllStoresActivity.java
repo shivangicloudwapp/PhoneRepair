@@ -31,6 +31,7 @@ public class AllStoresActivity extends AppCompatActivity implements View.OnClick
     RecyclerView  rvAllStores;
     Context context;
     ImageView ivBackAllStores;
+
     ArrayList<AllStoreModel> storeArrayList;
     JsonPlaceHolderApi jsonPlaceHolderApi;
     SessionManager sessionManager;
@@ -53,6 +54,9 @@ public class AllStoresActivity extends AppCompatActivity implements View.OnClick
         ivBackAllStores=findViewById(R.id.ivBackAllStores);
 
         ivBackAllStores.setOnClickListener(this);
+
+        //...............Api AllStore............//
+
         if (Utils.checkConnection(context)) {
             allStores();
 
@@ -61,6 +65,19 @@ public class AllStoresActivity extends AppCompatActivity implements View.OnClick
         }
 
     }
+
+    @Override
+    public void onClick(View v) {
+
+        if (v==ivBackAllStores){
+            onBackPressed();
+        }
+
+    }
+
+
+    //...............Api AllStore............//
+
 
     private void allStores() {
 
@@ -92,12 +109,7 @@ public class AllStoresActivity extends AppCompatActivity implements View.OnClick
         });
     }
 
-    @Override
-    public void onClick(View v) {
 
-        if (v==ivBackAllStores){
-            onBackPressed();
-        }
 
-    }
+
 }

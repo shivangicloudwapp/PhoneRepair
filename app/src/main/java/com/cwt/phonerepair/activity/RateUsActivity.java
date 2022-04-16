@@ -68,9 +68,11 @@ public class RateUsActivity extends AppCompatActivity implements View.OnClickLis
         context=RateUsActivity.this;
         sessionManager= new SessionManager(context);
         getStoreAllProdcutModels=new ArrayList<>();
+
         rbRateUs=findViewById(R.id.rbRateUs);
         btnSubmit=findViewById(R.id.btnSubmit);
         etReview=findViewById(R.id.etReview);
+
         btnSubmit.setOnClickListener(this);
 
     }
@@ -89,6 +91,8 @@ public class RateUsActivity extends AppCompatActivity implements View.OnClickLis
 
 
     }
+
+    //.................Api Review.................//
 
 
     private void reviews() {
@@ -120,6 +124,10 @@ public class RateUsActivity extends AppCompatActivity implements View.OnClickLis
                         Intent intent=new Intent(RateUsActivity.this,DashboardActivity.class);
                         startActivity(intent);
 
+                    }
+
+                    else{
+                        Toast.makeText(RateUsActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
 

@@ -38,9 +38,11 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
     Button btnSignUp;
     TextView tvLogin;
     ImageView ivBackSignUp, ivShowHidePass, ivShowConHidePass;
+
     JsonPlaceHolderApi jsonPlaceHolderApi;
     Context context;
     SessionManager sessionManager;
+
     String name, email, password, confirmpass,userId;
     boolean is_click = true;
 
@@ -206,7 +208,7 @@ public class SignupScreenActivity extends AppCompatActivity implements View.OnCl
 
                     }
                 } else {
-                    Toast.makeText(SignupScreenActivity.this, "faild...." + response.body().getMassage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupScreenActivity.this, "Please Check Internet Connection" + response.body().getMassage(), Toast.LENGTH_SHORT).show();
                 }
 
             }

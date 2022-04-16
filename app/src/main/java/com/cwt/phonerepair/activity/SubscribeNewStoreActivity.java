@@ -72,21 +72,13 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     EditText etStoreName, etRegistrationNumber, etAddress, etAboutStore;
     LinearLayout llStoreImg, llSsmImg;
 
-    public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 101;
-    String picturePath;
-    String SetImage = "StoreImg";
-//    GalleryAdapter galleryAdapter;
     private Button btn;
-    int PICK_IMAGE_MULTIPLE = 1;
-    int PICK_IMAGE_MULTIPLE_SSM = 2;
 
      RecyclerView rvImageStore, rvSsmImage;
 
     ArrayList<SubscriptionPlanModel> modelArrayList;
     String price, title, duration, items, startdate, enddate, planId;
     SubscriptionPlanModel subscriptionPlanModelMain;
-    public static final int REQUEST_STORAGE = 2;
-//    public static final int SELECT_FILE = 110;
 
     //------------------------file code====================================
     String encodeStoreimg,encodeSsmimg;
@@ -95,11 +87,12 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
     File uploadFileI;
     ArrayList<String> storeImageFiles = new ArrayList<>();
     ArrayList<String> ssmImageFiles = new ArrayList<>();
-    //    CustomGrid adapter;
     StoreImagesAdapter storeImagesAdapter;
     SsmImageAdapter ssmImageAdapter;
     int gallery_val =10;
     //------------------------file code====================================
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,12 +144,16 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         llStoreImg.setOnClickListener(this);
         llSsmImg.setOnClickListener(this);
 
+        //........................for Recyclerview Image Store.......................//
+
         rvImageStore.setHasFixedSize(true);
-//        RecyclerView.LayoutManager layoutManager =new GridLayoutManager(getActivity(), 3);
         rvImageStore.setLayoutManager(new GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false));
 
+
+        //........................for Recyclerview SSm Image.......................//
+
+
         rvSsmImage.setHasFixedSize(true);
-//        RecyclerView.LayoutManager layoutManager =new GridLayoutManager(getActivity(), 3);
         rvSsmImage.setLayoutManager(new GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false));
 
 
@@ -192,7 +189,6 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
             case R.id.llStoreImg:
                 if (storeImageFiles.size()!=0)
                 {
-
                     storeImagesAdapter = new StoreImagesAdapter(context, storeImageFiles);
                     rvImageStore.setAdapter(storeImagesAdapter);
                 }
@@ -218,97 +214,6 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
 
             default:
         }
-    }
-
-
-
-    public void subScribeNewStore() {
-        Customprogress.showPopupProgressSpinner(context, true);
-        HashMap<String, RequestBody> data = new HashMap<>();
-        data.put("plan_title", createRequestBody(subscriptionPlanModelMain.getTitle()));
-        data.put("plan_duration", createRequestBody(subscriptionPlanModelMain.getDuration()));
-        data.put("plan_items", createRequestBody(subscriptionPlanModelMain.getItems()));
-        data.put("plan_price", createRequestBody(subscriptionPlanModelMain.getPrice()));
-        data.put("start_date", createRequestBody(subscriptionPlanModelMain.getCreatedAt()));
-        data.put("end_date", createRequestBody(subscriptionPlanModelMain.getIsDeleted()));
-        data.put("registration_no", createRequestBody(etRegistrationNumber.getText().toString()));
-        data.put("address", createRequestBody(etAddress.getText().toString().trim()));
-        data.put("about_store", createRequestBody(etAboutStore.getText().toString().trim()));
-        data.put("plan_id", createRequestBody(subscriptionPlanModelMain.getId().toString()));
-        data.put("store_name", createRequestBody(etStoreName.getText().toString().trim()));
-
-        List<MultipartBody.Part> plan_image = new ArrayList<>();
-        for (int i = 0; i < storeImageFiles.size(); i++) {
-            File file = new File(storeImageFiles.get(i));
-            RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
-            MultipartBody.Part filePart = MultipartBody.Part.createFormData("plan_image[]", file.getName(), requestBody);
-            plan_image.add(filePart);
-        }
-
-
-        List<MultipartBody.Part> store_image = new ArrayList<>();
-        for (int i = 0; i < ssmImageFiles.size(); i++) {
-            File file = new File(ssmImageFiles.get(i));
-            RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
-            MultipartBody.Part filePart = MultipartBody.Part.createFormData("store_image[]", file.getName(), requestBody);
-            store_image.add(filePart);
-        }
-
-        Call<SubscriptionStoreResponse> call = jsonPlaceHolderApi.SubscriptionStore("Bearer " + sessionManager.getSavedToken(), data, plan_image, store_image);
-        call.enqueue(new Callback<SubscriptionStoreResponse>() {
-            @Override
-            public void onResponse(Call<SubscriptionStoreResponse> call, Response<SubscriptionStoreResponse> response) {
-                Customprogress.showPopupProgressSpinner(context, false);
-
-                if (response.isSuccessful()) {
-
-                    if (response.body().getStatus()) {
-                        showBottomSheetDialog();
-
-
-
-                    }
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<SubscriptionStoreResponse> call, Throwable t) {
-                Customprogress.showPopupProgressSpinner(context, false);
-                Toast.makeText(SubscribeNewStoreActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-
-
-    }
-
-    private RequestBody createRequestBody(String s) {
-
-        return RequestBody.create(MediaType.parse("multipart/form-data"), s);
-    }
-
-    private void showBottomSheetDialog() {
-
-        Dialog customdialog = new Dialog(this);
-        customdialog.setContentView(R.layout.subscribe_new_store_dailog);
-        Window window = customdialog.getWindow();
-        window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
-        window.setGravity(Gravity.CENTER);
-        customdialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        Button btnSave1 = customdialog.findViewById(R.id.btnDone);
-
-        customdialog.show();
-        btnSave1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                customdialog.dismiss();
-                Intent intent = new Intent(SubscribeNewStoreActivity.this, DashboardActivity.class);
-                startActivity(intent);
-            }
-
-        });
-
-
     }
 
     //.....................StoreImageSelect........................//
@@ -982,5 +887,109 @@ public class SubscribeNewStoreActivity extends AppCompatActivity implements View
         }
 
     }
+
+
+
+
+
+
+
+
+//.........................Api...subScribeNewStore.........................//
+
+    public void subScribeNewStore() {
+        Customprogress.showPopupProgressSpinner(context, true);
+        HashMap<String, RequestBody> data = new HashMap<>();
+        data.put("plan_title", createRequestBody(subscriptionPlanModelMain.getTitle()));
+        data.put("plan_duration", createRequestBody(subscriptionPlanModelMain.getDuration()));
+        data.put("plan_items", createRequestBody(subscriptionPlanModelMain.getItems()));
+        data.put("plan_price", createRequestBody(subscriptionPlanModelMain.getPrice()));
+        data.put("start_date", createRequestBody(subscriptionPlanModelMain.getCreatedAt()));
+        data.put("end_date", createRequestBody(subscriptionPlanModelMain.getIsDeleted()));
+        data.put("registration_no", createRequestBody(etRegistrationNumber.getText().toString()));
+        data.put("address", createRequestBody(etAddress.getText().toString().trim()));
+        data.put("about_store", createRequestBody(etAboutStore.getText().toString().trim()));
+        data.put("plan_id", createRequestBody(subscriptionPlanModelMain.getId().toString()));
+        data.put("store_name", createRequestBody(etStoreName.getText().toString().trim()));
+
+        List<MultipartBody.Part> plan_image = new ArrayList<>();
+        for (int i = 0; i < storeImageFiles.size(); i++) {
+            File file = new File(storeImageFiles.get(i));
+            RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
+            MultipartBody.Part filePart = MultipartBody.Part.createFormData("plan_image[]", file.getName(), requestBody);
+            plan_image.add(filePart);
+        }
+
+
+        List<MultipartBody.Part> store_image = new ArrayList<>();
+        for (int i = 0; i < ssmImageFiles.size(); i++) {
+            File file = new File(ssmImageFiles.get(i));
+            RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
+            MultipartBody.Part filePart = MultipartBody.Part.createFormData("store_image[]", file.getName(), requestBody);
+            store_image.add(filePart);
+        }
+
+        Call<SubscriptionStoreResponse> call = jsonPlaceHolderApi.SubscriptionStore("Bearer " + sessionManager.getSavedToken(), data, plan_image, store_image);
+        call.enqueue(new Callback<SubscriptionStoreResponse>() {
+            @Override
+            public void onResponse(Call<SubscriptionStoreResponse> call, Response<SubscriptionStoreResponse> response) {
+                Customprogress.showPopupProgressSpinner(context, false);
+
+                if (response.isSuccessful()) {
+
+                    if (response.body().getStatus()) {
+                        showBottomSheetDialog();
+
+                    }
+                    else{
+                        Toast.makeText(SubscribeNewStoreActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<SubscriptionStoreResponse> call, Throwable t) {
+                Customprogress.showPopupProgressSpinner(context, false);
+                Toast.makeText(SubscribeNewStoreActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+    }
+
+    private RequestBody createRequestBody(String s) {
+
+        return RequestBody.create(MediaType.parse("multipart/form-data"), s);
+    }
+
+    private void showBottomSheetDialog() {
+
+        Dialog customdialog = new Dialog(this);
+        customdialog.setContentView(R.layout.subscribe_new_store_dailog);
+        Window window = customdialog.getWindow();
+        window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+        window.setGravity(Gravity.CENTER);
+        customdialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        Button btnSave1 = customdialog.findViewById(R.id.btnDone);
+
+        customdialog.show();
+        btnSave1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customdialog.dismiss();
+                Intent intent = new Intent(SubscribeNewStoreActivity.this, DashboardActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+
+    }
+
+
+
+
+
 
 }

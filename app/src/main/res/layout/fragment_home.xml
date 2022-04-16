@@ -62,11 +62,6 @@
                                 android:textSize="@dimen/_8sdp"
                              android:drawableRight="@drawable/ic_vector__46_"/>
 
-                        <!--  <ImageView
-                              android:id="@+id/ivPlacePicker"
-                                android:layout_width="10dp"
-                                android:layout_height="8dp"
-                                android:drawableEnd="@drawable/ic_vector__46_"/>-->
                         </LinearLayout>
 
                         <LinearLayout

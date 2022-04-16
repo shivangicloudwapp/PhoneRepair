@@ -57,14 +57,9 @@ public class AllStoresAdapter extends RecyclerView.Adapter<AllStoresAdapter.View
 
 
 
-
         Picasso.with(context).load(Allurls.ImageUrl+model.getStoreImage())
                 .placeholder(R.drawable.group1042)
                 .into(holder.ivStoreimg);
-
-
-
-
 
         holder.btnSeedetail.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -28,14 +28,15 @@ import retrofit2.Response;
 public class MobileLoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText etPhoneNum;
-
     Button btnSendOtp;
-
     ImageView ivBackSignUp;
-Context context;
+
+   Context context;
     JsonPlaceHolderApi jsonPlaceHolderApi;
-    String PhoneNumber,name,email;
     SessionManager sessionManager;
+
+    String PhoneNumber;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,20 +45,17 @@ Context context;
 
         initView();
 
-        Intent intent=getIntent();
-        name=intent.getStringExtra("name");
-        email=intent.getStringExtra("email");
-
-
     }
 
     private void initView() {
         context=MobileLoginActivity.this;
         jsonPlaceHolderApi = ApiUtils.getAPIService();
         sessionManager=new SessionManager(context);
+
         etPhoneNum = findViewById(R.id.etPhoneNum);
         btnSendOtp = findViewById(R.id.btnSendOtp);
         ivBackSignUp = findViewById(R.id.ivBackSignUp);
+
         btnSendOtp.setOnClickListener(this);
         ivBackSignUp.setOnClickListener(this);
     }
@@ -78,6 +76,7 @@ Context context;
                 else if (phoneNum.length()<9) {
                     etPhoneNum.setError("Enter enter valid 10 digit phone number");
                 }
+
                 if (Utils.checkConnection(context)) {
 
                     sendOtp();
@@ -97,6 +96,11 @@ Context context;
         }
     }
 
+
+
+    //............................SendOtp......................//
+
+
     private void sendOtp() {
         Customprogress.showPopupProgressSpinner(context,true);
 
@@ -109,8 +113,11 @@ Context context;
                 if (response.isSuccessful()){
 
                     if (response.body().getStatus()){
+
                         PhoneNumber=etPhoneNum.getText().toString();
                         Intent intent =new Intent(MobileLoginActivity.this,VerifyOtpActivity.class);
+
+                       //...........setMobileNumber............//
                         sessionManager.setSavedMobile(PhoneNumber);
                        startActivity(intent);
                        finish();

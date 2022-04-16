@@ -39,12 +39,15 @@ import retrofit2.Response;
 
 public class AllProductActivity extends AppCompatActivity implements View.OnClickListener {
 
+
+    JsonPlaceHolderApi jsonPlaceHolderApi;
+    SessionManager sessionManager;
+
     RecyclerView rvAllPro;
     Context context;
     ImageView ivBackAllPro;
+
     ArrayList<GetStoreAllProdcutModel> modelArrayList;
-    JsonPlaceHolderApi jsonPlaceHolderApi;
-    SessionManager sessionManager;
     ArrayList<StoreDetailsProductModel> storeDetailsProductModels;
     int store_Id;
 
@@ -54,17 +57,25 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_product);
 
-
     initView();
+
+
+
         getData();
 
     }
+
+
+    //...........getData For GetId From Privious Screen.............//
 
     private void getData() {
         try {
             Intent intent = getIntent();
             if (intent != null) {
                 store_Id =  intent.getIntExtra("store_Id",0);
+
+                //.................Api...AllProduct................//
+
                 if (Utils.checkConnection(context)) {
                     AllProduct();
                 } else {
@@ -81,29 +92,40 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
     private void initView() {
 
         context=this;
-        modelArrayList=new ArrayList<>();
-        storeDetailsProductModels=new ArrayList<>();
         jsonPlaceHolderApi= ApiUtils.getAPIService();
-
         sessionManager=new SessionManager(context);
 
+        modelArrayList=new ArrayList<>();
+        storeDetailsProductModels=new ArrayList<>();
 
         rvAllPro=findViewById(R.id.rvAllPro);
         ivBackAllPro=findViewById(R.id.ivBackAllPro);
+
         ivBackAllPro.setOnClickListener(this);
 
 
     }
 
+
+    @Override
+    public void onClick(View v) {
+        if (v==ivBackAllPro){
+            onBackPressed();
+        }
+
+    }
+
+
+
+
+    //.................Api...AllProduct................//
+
+
     private void AllProduct() {
-
-        // storeId= String.valueOf(((storeDetailsProductModel.getStoreId())));
-
 
         Customprogress.showPopupProgressSpinner(context,true);
         GetStoreAllProdcutParameter add = new GetStoreAllProdcutParameter();
         add.setStoreId(store_Id);
-
 
         Call<GetStoreAllProductResponse> call=jsonPlaceHolderApi.GetStoreAllProduct("Bearer "+sessionManager.getSavedToken(),add);
         call.enqueue(new Callback<GetStoreAllProductResponse>() {
@@ -120,6 +142,10 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
                         rvAllPro.setHasFixedSize(true);
 
                     }
+
+                    else {
+                        Toast.makeText(AllProductActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
@@ -133,11 +159,7 @@ public class AllProductActivity extends AppCompatActivity implements View.OnClic
 
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v==ivBackAllPro){
-            onBackPressed();
-        }
 
-    }
+
+
 }

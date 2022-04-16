@@ -34,7 +34,7 @@ public class VerifyOtpActivity extends AppCompatActivity implements View.OnClick
 
     ImageView ivBackVerifyotp;
     Button btnVerifyOtp;
-    String phone_num;
+
     TextView  tvPhoneNumber;
     OtpTextView otp_view;
     String otp;
@@ -48,20 +48,16 @@ Context context;
         setContentView(R.layout.activity_verify_otp);
 
         initView();
-
-       /* Intent intent=getIntent();
-        phone_num=intent.getStringExtra("phone_num");
-
-        spannBuilder();*/
-
-/*
-         sessionManager.getSavedMobile();*/
         spannBuilder();
 
     }
 
+
+    //.............................For On Textview change Text Color of Different text...................................//
+
     private void spannBuilder() {
         SpannableStringBuilder builder = new SpannableStringBuilder();
+
         String strclr = "Enter the four digit code we sent to you ";
         SpannableString strSpan= new SpannableString(strclr);
         strSpan.setSpan(new ForegroundColorSpan(Color.parseColor("#868889")), 0, strclr.length(), 0);
@@ -129,6 +125,9 @@ Context context;
         }
 
     }
+
+
+    //....................................Api...VerifyOtp..............................//
 
     private void verifyOtp() {
 

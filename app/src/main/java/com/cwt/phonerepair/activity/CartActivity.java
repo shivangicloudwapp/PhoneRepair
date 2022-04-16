@@ -86,6 +86,12 @@ TextView tvTotalAmount;
         ivBackCart.setOnClickListener(this);
         btnOrderNow.setOnClickListener(this);
 
+
+
+
+        //................Call Api Method..Cart&Address....................//
+
+
         if (Utils.checkConnection(context)) {
 
             Cart();
@@ -121,6 +127,9 @@ TextView tvTotalAmount;
 
 
 
+
+
+    //................ Api..Cart....................//
     private void Cart() {
         Call<GetToCartReponse> call=jsonPlaceHolderApi.GetToCart("Bearer "+sessionManager.getSavedToken());
         call.enqueue(new Callback<GetToCartReponse>() {
@@ -133,7 +142,11 @@ TextView tvTotalAmount;
 
                         CartProductListAdapter adapter=new CartProductListAdapter(modelArrayList, context, new UpdateCartInterface() {
                             @Override
+
+                            //............... UpdateCartInterface Interface for Product Add and Remove.................//
                             public void getUpdateCart(GetToCartModel getToCartModel,String action) {
+
+                                //.......................Add and Remove Product from cart ................//
                                 action="add";
                                 if (action.equals("add")){
                                     System.out.println("plan....."+getToCartModel.getId());
@@ -166,6 +179,10 @@ TextView tvTotalAmount;
                         tvTotalAmount.setText(String.valueOf(total));
 
                     }
+
+                    else{
+                        Toast.makeText(CartActivity.this, "Please Check Network Connection", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
@@ -182,6 +199,8 @@ TextView tvTotalAmount;
 
 
     }
+
+    //................ Api..Address....................//
     private void Address() {
 
         Customprogress.showPopupProgressSpinner(context,true);
@@ -206,6 +225,11 @@ TextView tvTotalAmount;
                         rvAddress.setHasFixedSize(true);
 
                     }
+
+
+                    else {
+                        Toast.makeText(CartActivity.this, "Please Check Network Connection", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -222,7 +246,12 @@ TextView tvTotalAmount;
 
     }
 
+    //................ Api..UpdateCart....................//
+
     private void updateCart(String action) {
+
+        //................For Multipart Data.............//
+
         HashMap<String, RequestBody> data = new HashMap<>();
         data.put("cart_id", createRequestBody(getToCartModelMain.getId().toString()));
         data.put("action", createRequestBody (action));
@@ -237,11 +266,13 @@ TextView tvTotalAmount;
 
                 if (response.isSuccessful()){
                     if (response.body().getStatus()){
-                        Cart();
+
+                        //..............Calling  Again Cart api for update product................//
+                         Cart();
                     }
 
                     else {
-                        Toast.makeText(CartActivity.this, "Check Network Connection", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CartActivity.this, "Please Check Network Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
 
